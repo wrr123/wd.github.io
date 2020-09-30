@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.0.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/002.jpg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/002.jpg">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-material.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"wrr123.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="概述这是阿里的一个开源的 Java 诊断工具。 这个工具可以协助你做哪些事情：  这个类是从哪个 jar 包加载进来的？ 为什么会报各种类相关的 Exception ? 线上遇到问题无法 debug 好蛋疼，难道只能反复通过增加 System.out 或通过加日志再重新发布吗？ 线上的代码为什么没有执行到这里？是由于代码没有提交？还是搞错了分支？ 线上遇到某个用户的数据处理有问题，但线上同样无法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ali-arthas">
+<meta property="og:url" content="https://wrr123.github.io/2020/08/18/ali-arthas/index.html">
+<meta property="og:site_name" content="一缕烟气">
+<meta property="og:description" content="概述这是阿里的一个开源的 Java 诊断工具。 这个工具可以协助你做哪些事情：  这个类是从哪个 jar 包加载进来的？ 为什么会报各种类相关的 Exception ? 线上遇到问题无法 debug 好蛋疼，难道只能反复通过增加 System.out 或通过加日志再重新发布吗？ 线上的代码为什么没有执行到这里？是由于代码没有提交？还是搞错了分支？ 线上遇到某个用户的数据处理有问题，但线上同样无法">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://localhost:4000/2020/08/18/ali-arthas/001.png">
+<meta property="article:published_time" content="2020-08-18T06:18:21.000Z">
+<meta property="article:modified_time" content="2020-08-18T14:55:50.945Z">
+<meta property="article:author" content="田园隐士">
+<meta property="article:tag" content="java">
+<meta property="article:tag" content="ali">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://localhost:4000/2020/08/18/ali-arthas/001.png">
+
+<link rel="canonical" href="https://wrr123.github.io/2020/08/18/ali-arthas/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>ali-arthas | 一缕烟气</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">一缕烟气</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">沧海月明珠有泪，蓝田日暖玉生烟</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2020/08/18/ali-arthas/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="田园隐士">
+      <meta itemprop="description" content="talk is cheap, show me the code">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一缕烟气">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ali-arthas
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-08-18 14:18:21 / 修改时间：22:55:50" itemprop="dateCreated datePublished" datetime="2020-08-18T14:18:21+08:00">2020-08-18</time>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><p>这是阿里的一个开源的 Java 诊断工具。</p>
+<p>这个工具可以协助你做哪些事情：</p>
+<ol>
+<li>这个类是从哪个 jar 包加载进来的？</li>
+<li>为什么会报各种类相关的 Exception ?</li>
+<li>线上遇到问题无法 debug 好蛋疼，难道只能反复通过增加 System.out 或通过加日志再重新发布吗？</li>
+<li>线上的代码为什么没有执行到这里？是由于代码没有提交？还是搞错了分支？</li>
+<li>线上遇到某个用户的数据处理有问题，但线上同样无法 debug ，线下无法重现？</li>
+<li>是否有一个全局视角来查看系统的运行状况？</li>
+<li>有什么办法可以监控到 JVM 的实时运行状态？</li>
+</ol>
+<a id="more"></a>
+
+<h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><ol>
+<li><h5 id="基础命令"><a href="#基础命令" class="headerlink" title="基础命令"></a>基础命令</h5><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">help——查看命令帮助信息</span><br><span class="line">cls——清空当前屏幕区域</span><br><span class="line">session——查看当前会话的信息</span><br><span class="line">reset——重置增强类，将被 Arthas 增强过的类全部还原，Arthas 服务端关闭时会重置所有增强过的类</span><br><span class="line">version——输出当前目标 Java 进程所加载的 Arthas 版本号</span><br><span class="line">quit——退出当前 Arthas 客户端，其他 Arthas 客户端不受影响</span><br><span class="line">shutdown——关闭 Arthas 服务端，所有 Arthas 客户端全部退出</span><br><span class="line">keymap——Arthas快捷键列表及自定义快捷键</span><br></pre></td></tr></table></figure>
+</li>
+<li><h5 id="jvm-相关"><a href="#jvm-相关" class="headerlink" title="jvm 相关"></a>jvm 相关</h5><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dashboard——当前系统的实时数据面板</span><br><span class="line">thread——查看当前 JVM 的线程堆栈信息</span><br><span class="line">jvm——查看当前 JVM 的信息</span><br><span class="line">sysprop——查看和修改JVM的系统属性</span><br><span class="line">New! getstatic——查看类的静态属性</span><br></pre></td></tr></table></figure>
+</li>
+<li><h5 id="class-classloader-相关"><a href="#class-classloader-相关" class="headerlink" title="class/classloader 相关"></a>class/classloader 相关</h5><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sc——查看JVM已加载的类信息</span><br><span class="line">sm——查看已加载类的方法信息</span><br><span class="line">dump——dump 已加载类的 byte code 到特定目录</span><br><span class="line">redefine——加载外部的.class文件，redefine到JVM里</span><br><span class="line">jad——反编译指定已加载类的源码</span><br><span class="line">classloader——查看classloader的继承树，urls，类加载信息，使用classloader去getResource</span><br></pre></td></tr></table></figure>
+</li>
+<li><h5 id="monitor-watch-trace-相关"><a href="#monitor-watch-trace-相关" class="headerlink" title="monitor/watch/trace 相关"></a>monitor/watch/trace 相关</h5><blockquote>
+<p>请注意，这些命令，都通过字节码增强技术来实现的，会在指定类的方法中插入一些切面来实现数据统计和观测，因此在线上、预发使用时，请尽量明确需要观测的类、方法以及条件，诊断结束要执行 shutdown 或将增强过的类执行 reset 命令。</p>
+</blockquote>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">monitor——方法执行监控</span><br><span class="line">watch——方法执行数据观测</span><br><span class="line">trace——方法内部调用路径，并输出方法路径上的每个节点上耗时</span><br><span class="line">stack——输出当前方法被调用的调用路径</span><br><span class="line">tt——方法执行数据的时空隧道，记录下指定方法每次调用的入参和返回信息，并能对这些不同的时间下调用进行观测</span><br></pre></td></tr></table></figure>
+</li>
+<li><h5 id="options"><a href="#options" class="headerlink" title="options"></a>options</h5><p><code>options——查看或设置Arthas全局开关</code></p>
+</li>
+<li><h5 id="管道"><a href="#管道" class="headerlink" title="管道"></a>管道</h5><blockquote>
+<p>Arthas支持使用管道对上述命令的结果进行进一步的处理，如sm org.apache.log4j.Logger | grep</p>
+</blockquote>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">grep——搜索满足条件的结果</span><br><span class="line">plaintext——将命令的结果去除颜色</span><br><span class="line">wc——按行统计输出结果</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Web Console</p>
+<p>通过 websocket 来连接 Arthas 。</p>
+<blockquote>
+<p><strong>Arthas</strong> 目前支持 <code>Web Console</code>，在成功启动连接进程之后就已经自动启动，可以直接访问 <a target="_blank" rel="noopener" href="http://127.0.0.1:8563/">http://127.0.0.1:8563/</a> 访问，页面上的操作模式和控制台完全一样。</p>
+</blockquote>
+</li>
+</ol>
+<h4 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h4><h5 id="退出"><a href="#退出" class="headerlink" title="退出"></a>退出</h5><p>使用 shutdown 退出时，<strong>Arthas</strong> 会同时自动重置所有增加过的类。</p>
+<h5 id="在-windows-下操作-as-sh-命令"><a href="#在-windows-下操作-as-sh-命令" class="headerlink" title="在 windows 下操作 as.sh 命令"></a>在 windows 下操作 <code>as.sh</code> 命令</h5><p><em>Please start cmd.exe from Windows start menu, and then run telnet 127.0.0.1 3658 to connect to target process.</em></p>
+<h4 id="常用操作"><a href="#常用操作" class="headerlink" title="常用操作"></a>常用操作</h4><h5 id="全局监控"><a href="#全局监控" class="headerlink" title="全局监控"></a>全局监控</h5><p>使用 <strong>dashboard</strong> 命令可以概览程序的线程、内存、GC 、运行环境信息。</p>
+<h5 id="CPU-为什么起飞了"><a href="#CPU-为什么起飞了" class="headerlink" title="CPU 为什么起飞了"></a>CPU 为什么起飞了</h5><p>使用 <strong>thread</strong> 查看所有线程信息，同时会列出每个线程的 <code>CPU</code> 使用率，如下图：</p>
+<p><img src="http://localhost:4000/2020/08/18/ali-arthas/001.png"></p>
+<p><strong>使用命令 thread -n [显示的线程个数]，就可以排列出 CPU 使用率 TOP n 的线程。</strong></p>
+<h5 id="线程池线程状态"><a href="#线程池线程状态" class="headerlink" title="线程池线程状态"></a>线程池线程状态</h5><ul>
+<li><strong>runnable</strong> 运行中</li>
+<li><strong>timed_waiting</strong> 调用了下面的方法，线程会进入 <strong>time_waiting：</strong><ol>
+<li>Thread#sleep()</li>
+<li>Object#wait() 并加了超时参数</li>
+<li>Thread#join() 并加了超时参数</li>
+<li>LockSupport#parkNanos()</li>
+<li>LockSupport#parkUntil()</li>
+</ol>
+</li>
+<li><strong>waiting</strong> 当线程调用了以下方法，会进入 <strong>waiting：</strong><ul>
+<li>Object#wait() 但是不加超时参数</li>
+<li>Thread#join() 但是不加超时参数</li>
+<li>LockSupport#park()</li>
+</ul>
+</li>
+<li><strong>blocked</strong> 阻塞，等待锁</li>
+</ul>
+<h5 id="线程死锁"><a href="#线程死锁" class="headerlink" title="线程死锁"></a>线程死锁</h5><p>使用 <code>thread -b</code> 命令查看直接定位到死锁信息。</p>
+<h5 id="反编译"><a href="#反编译" class="headerlink" title="反编译"></a>反编译</h5><p>使用 <strong>jad</strong> 命令直接反编译 class。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 反编译只显示源码</span></span><br><span class="line">jad --<span class="built_in">source</span>-only com.Arthas</span><br><span class="line"><span class="comment"># 反编译某个类的某个方法</span></span><br><span class="line">jad --<span class="built_in">source</span>-only com.Arthas mysql</span><br></pre></td></tr></table></figure>
+
+<h5 id="查看字段信息"><a href="#查看字段信息" class="headerlink" title="查看字段信息"></a>查看字段信息</h5><p>使用 <strong>sc -d -f</strong> 命令查看类的字段信息。</p>
+<h5 id="查看方法信息"><a href="#查看方法信息" class="headerlink" title="查看方法信息"></a>查看方法信息</h5><p>使用 <strong>sm</strong> 命令查看类的方法信息。</p>
+<h5 id="对变量的值很是好奇"><a href="#对变量的值很是好奇" class="headerlink" title="对变量的值很是好奇"></a>对变量的值很是好奇</h5><p>使用 <strong>ognl</strong> 命令，ognl 表达式可以轻松操作想要的信息。</p>
+<h5 id="程序有没有问题"><a href="#程序有没有问题" class="headerlink" title="程序有没有问题"></a>程序有没有问题</h5><h6 id="运行较慢、耗时较长"><a href="#运行较慢、耗时较长" class="headerlink" title="运行较慢、耗时较长"></a>运行较慢、耗时较长</h6><p>使用 <strong>trace</strong> 命令可以跟踪、统计方法耗时。</p>
+<h6 id="统计方法耗时"><a href="#统计方法耗时" class="headerlink" title="统计方法耗时"></a>统计方法耗时</h6><p>使用 <strong>monitor</strong> 命令监控统计方法的执行情况。</p>
+<p>一个栗子：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 每 5 秒统计一次 `com.UserServiceImpl` 类的 `get` 方法执行情况</span><br><span class="line">monitor -c 5 com.UserServiceImpl get</span><br></pre></td></tr></table></figure>
+
+<h5 id="想观察方法信息"><a href="#想观察方法信息" class="headerlink" title="想观察方法信息"></a>想观察方法信息</h5><h6 id="观察方法的入参出参信息"><a href="#观察方法的入参出参信息" class="headerlink" title="观察方法的入参出参信息"></a>观察方法的入参出参信息</h6><p>使用 <strong>watch</strong> 命令轻松查看输入输出参数以及异常等信息。</p>
+<p>常见操作：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看入参和出参</span></span><br><span class="line">$ watch com.Arthas addHashSet <span class="string">&#x27;&#123;params[0],returnObj&#125;&#x27;</span></span><br><span class="line"><span class="comment"># 查看入参和出参大小</span></span><br><span class="line">$ watch com.Arthas addHashSet <span class="string">&#x27;&#123;params[0],returnObj.size&#125;&#x27;</span></span><br><span class="line"><span class="comment"># 查看入参和出参中是否包含 &#x27;count10&#x27;</span></span><br><span class="line">$ watch com.Arthas addHashSet <span class="string">&#x27;&#123;params[0],returnObj.contains(&quot;count10&quot;)&#125;&#x27;</span></span><br><span class="line"><span class="comment"># 查看入参和出参，出参 toString</span></span><br><span class="line">$ watch com.Arthas addHashSet <span class="string">&#x27;&#123;params[0],returnObj.toString()&#125;&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="观察方法的调用路径"><a href="#观察方法的调用路径" class="headerlink" title="观察方法的调用路径"></a>观察方法的调用路径</h6><p>使用 <strong>stack</strong> 命令查看方法的调用参数</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 观察 类com.UserServiceImpl的 mysql 方法调用路径</span></span><br><span class="line">stack com.UserServiceImpl mysql</span><br></pre></td></tr></table></figure>
+
+<h5 id="方法调用时空隧道"><a href="#方法调用时空隧道" class="headerlink" title="方法调用时空隧道"></a>方法调用时空隧道</h5><p>使用 <strong>tt</strong> 命令记录方法执行的详细情况</p>
+<blockquote>
+<p><strong>tt</strong> 命令方法执行数据的时空隧道，记录下指定方法每次调用的入参和返回信息，并能对这些不同的时间下调用进行观测 。</p>
+</blockquote>
+<p>常用操作：</p>
+<p>开始记录方法的调用信息：<code>tt -t com.UserServiceImpl check</code></p>
+<p>查看记录的方法调用信息：<code>tt -l</code></p>
+<p>查看调用记录的详细信息（-i 指定 INDEX）：<code>tt -i 1001</code></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/java/" rel="tag"># java</a>
+              <a href="/tags/ali/" rel="tag"># ali</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/08/18/java%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88/" rel="prev" title="java快慢指针">
+      <i class="fa fa-chevron-left"></i> java快慢指针
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/08/18/gradle/" rel="next" title="gradle">
+      gradle <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">2.</span> <span class="nav-text">常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4"><span class="nav-number">2.1.</span> <span class="nav-text">基础命令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#jvm-%E7%9B%B8%E5%85%B3"><span class="nav-number">2.2.</span> <span class="nav-text">jvm 相关</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#class-classloader-%E7%9B%B8%E5%85%B3"><span class="nav-number">2.3.</span> <span class="nav-text">class&#x2F;classloader 相关</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#monitor-watch-trace-%E7%9B%B8%E5%85%B3"><span class="nav-number">2.4.</span> <span class="nav-text">monitor&#x2F;watch&#x2F;trace 相关</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#options"><span class="nav-number">2.5.</span> <span class="nav-text">options</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AE%A1%E9%81%93"><span class="nav-number">2.6.</span> <span class="nav-text">管道</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8"><span class="nav-number">3.</span> <span class="nav-text">如何使用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%80%80%E5%87%BA"><span class="nav-number">3.1.</span> <span class="nav-text">退出</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9C%A8-windows-%E4%B8%8B%E6%93%8D%E4%BD%9C-as-sh-%E5%91%BD%E4%BB%A4"><span class="nav-number">3.2.</span> <span class="nav-text">在 windows 下操作 as.sh 命令</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C"><span class="nav-number">4.</span> <span class="nav-text">常用操作</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%85%A8%E5%B1%80%E7%9B%91%E6%8E%A7"><span class="nav-number">4.1.</span> <span class="nav-text">全局监控</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#CPU-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%B5%B7%E9%A3%9E%E4%BA%86"><span class="nav-number">4.2.</span> <span class="nav-text">CPU 为什么起飞了</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81"><span class="nav-number">4.3.</span> <span class="nav-text">线程池线程状态</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E6%AD%BB%E9%94%81"><span class="nav-number">4.4.</span> <span class="nav-text">线程死锁</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8F%8D%E7%BC%96%E8%AF%91"><span class="nav-number">4.5.</span> <span class="nav-text">反编译</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E5%AD%97%E6%AE%B5%E4%BF%A1%E6%81%AF"><span class="nav-number">4.6.</span> <span class="nav-text">查看字段信息</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E6%96%B9%E6%B3%95%E4%BF%A1%E6%81%AF"><span class="nav-number">4.7.</span> <span class="nav-text">查看方法信息</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AF%B9%E5%8F%98%E9%87%8F%E7%9A%84%E5%80%BC%E5%BE%88%E6%98%AF%E5%A5%BD%E5%A5%87"><span class="nav-number">4.8.</span> <span class="nav-text">对变量的值很是好奇</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F%E6%9C%89%E6%B2%A1%E6%9C%89%E9%97%AE%E9%A2%98"><span class="nav-number">4.9.</span> <span class="nav-text">程序有没有问题</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E8%BE%83%E6%85%A2%E3%80%81%E8%80%97%E6%97%B6%E8%BE%83%E9%95%BF"><span class="nav-number">4.9.1.</span> <span class="nav-text">运行较慢、耗时较长</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95%E8%80%97%E6%97%B6"><span class="nav-number">4.9.2.</span> <span class="nav-text">统计方法耗时</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%83%B3%E8%A7%82%E5%AF%9F%E6%96%B9%E6%B3%95%E4%BF%A1%E6%81%AF"><span class="nav-number">4.10.</span> <span class="nav-text">想观察方法信息</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E8%A7%82%E5%AF%9F%E6%96%B9%E6%B3%95%E7%9A%84%E5%85%A5%E5%8F%82%E5%87%BA%E5%8F%82%E4%BF%A1%E6%81%AF"><span class="nav-number">4.10.1.</span> <span class="nav-text">观察方法的入参出参信息</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E8%A7%82%E5%AF%9F%E6%96%B9%E6%B3%95%E7%9A%84%E8%B0%83%E7%94%A8%E8%B7%AF%E5%BE%84"><span class="nav-number">4.10.2.</span> <span class="nav-text">观察方法的调用路径</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E8%B0%83%E7%94%A8%E6%97%B6%E7%A9%BA%E9%9A%A7%E9%81%93"><span class="nav-number">4.11.</span> <span class="nav-text">方法调用时空隧道</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="田园隐士"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">田园隐士</p>
+  <div class="site-description" itemprop="description">talk is cheap, show me the code</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">152</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">45</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">田园隐士</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">289k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">4:23</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

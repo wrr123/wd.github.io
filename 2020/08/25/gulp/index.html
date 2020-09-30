@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.0.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/002.jpg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/002.jpg">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-material.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"wrr123.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="定义和特点Builds can be the most awful sinkhole for terms to waste their time with - gulp is a serious win for any project. gulp 将开发流程中让人痛苦或耗时的任务自动化，从而减少你所浪费的时间、创造更大的价值。 特点：  简单 代码优于配置、node 最佳实践、精简的 API 集，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="gulp">
+<meta property="og:url" content="https://wrr123.github.io/2020/08/25/gulp/index.html">
+<meta property="og:site_name" content="一缕烟气">
+<meta property="og:description" content="定义和特点Builds can be the most awful sinkhole for terms to waste their time with - gulp is a serious win for any project. gulp 将开发流程中让人痛苦或耗时的任务自动化，从而减少你所浪费的时间、创造更大的价值。 特点：  简单 代码优于配置、node 最佳实践、精简的 API 集，">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-08-25T05:37:30.000Z">
+<meta property="article:modified_time" content="2020-08-28T16:06:18.513Z">
+<meta property="article:author" content="田园隐士">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="构建工具">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://wrr123.github.io/2020/08/25/gulp/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>gulp | 一缕烟气</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">一缕烟气</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">沧海月明珠有泪，蓝田日暖玉生烟</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2020/08/25/gulp/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="田园隐士">
+      <meta itemprop="description" content="talk is cheap, show me the code">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一缕烟气">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          gulp
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-08-25 13:37:30" itemprop="dateCreated datePublished" datetime="2020-08-25T13:37:30+08:00">2020-08-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-08-29 00:06:18" itemprop="dateModified" datetime="2020-08-29T00:06:18+08:00">2020-08-29</time>
+              </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h4 id="定义和特点"><a href="#定义和特点" class="headerlink" title="定义和特点"></a>定义和特点</h4><p><strong>Builds can be the most awful sinkhole for terms to waste their time with - gulp is a serious win for any project.</strong></p>
+<p><strong>gulp</strong> 将开发流程中让人痛苦或耗时的任务自动化，从而减少你所浪费的时间、创造更大的价值。</p>
+<p>特点：</p>
+<ol>
+<li><p><strong>简单</strong></p>
+<p>代码优于配置、node 最佳实践、精简的 API 集，gulp 让工具前所未有的简单。</p>
+</li>
+<li><p><strong>高效</strong></p>
+<p>基于 node 强大的流（stream）能力，gulp 在构建过程中并不把文件立即写入磁盘，从而提高了构建速度。</p>
+</li>
+<li><p><strong>生态</strong></p>
+<p>遵循严格的准则，确保我们的插件结构简单、运行结果可控。</p>
+</li>
+</ol>
+<a id="more"></a>
+
+<h5 id="官网的一个-gulpfile-js-文件"><a href="#官网的一个-gulpfile-js-文件" class="headerlink" title="官网的一个 gulpfile.js 文件"></a>官网的一个 gulpfile.js 文件</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; src, dest, parallel &#125; = <span class="built_in">require</span>(<span class="string">&#x27;gulp&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> pug = <span class="built_in">require</span>(<span class="string">&#x27;gulp-pug&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> less = <span class="built_in">require</span>(<span class="string">&#x27;gulp-less&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> minifyCSS = <span class="built_in">require</span>(<span class="string">&#x27;gulp-csso&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> concat = <span class="built_in">require</span>(<span class="string">&#x27;gulp-concat&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">html</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> src(<span class="string">&#x27;client/templates/*.pug&#x27;</span>)</span><br><span class="line">    .pipe(pug())</span><br><span class="line">    .pipe(dest(<span class="string">&#x27;build/html&#x27;</span>))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">css</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> src(<span class="string">&#x27;client/templates/*.less&#x27;</span>)</span><br><span class="line">    .pipe(less())</span><br><span class="line">    .pipe(minifyCSS())</span><br><span class="line">    .pipe(dest(<span class="string">&#x27;build/css&#x27;</span>))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">js</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> src(<span class="string">&#x27;client/javascript/*.js&#x27;</span>, &#123; <span class="attr">sourcemaps</span>: <span class="literal">true</span> &#125;)</span><br><span class="line">    .pipe(concat(<span class="string">&#x27;app.min.js&#x27;</span>))</span><br><span class="line">    .pipe(dest(<span class="string">&#x27;build/js&#x27;</span>, &#123; <span class="attr">sourcemaps</span>: <span class="literal">true</span> &#125;))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">exports</span>.js = js;</span><br><span class="line"><span class="built_in">exports</span>.css = css;</span><br><span class="line"><span class="built_in">exports</span>.html = html;</span><br><span class="line"><span class="built_in">exports</span>.default = parallel(html, css, js);</span><br></pre></td></tr></table></figure>
+
+<h4 id="入门指南"><a href="#入门指南" class="headerlink" title="入门指南"></a>入门指南</h4><h5 id="JavaScript-和-Gulpfile"><a href="#JavaScript-和-Gulpfile" class="headerlink" title="JavaScript 和 Gulpfile"></a>JavaScript 和 Gulpfile</h5><p>Gulp 允许你使用现有 JavaScript 知识来书写 gulpfile 文件，或者利用你所掌握的 gulpfile 经验来书写普通的 JavaScript 代码。虽然 gulp 提供了一些使用工具来简化文件系统和命令行的操作，但是你所编写的其他代码都是纯 JavaScript 代码。</p>
+<h6 id="Gulpfile-详解"><a href="#Gulpfile-详解" class="headerlink" title="Gulpfile 详解"></a>Gulpfile 详解</h6><p>gulpfile 是项目目录下名为 <code>gulpfile.js</code> （或者首字母大写 <code>Gulpfile.js</code>, 就像 Makefile 一样命名）的文件，在运行 <code>gulp</code> 命令时会被自动加载。在这个文件中，你经常会看到类似<code>src()</code>、<code>dest()</code>、<code>series()</code> 或 <code>parallel()</code> 函数之类的 gulp API，除此之外，纯 JavaScript 代码 或 Node 模块也会被使用。任何导出（export）的函数都将注册到 gulp 的任务（task）系统中。</p>
+<h6 id="Gulpfile-转译"><a href="#Gulpfile-转译" class="headerlink" title="Gulpfile 转译"></a>Gulpfile 转译</h6><p>你可以使用需要转译的编程语言来书写 gulpfile 文件，例如 TypeScript 或者 Babel，通过修改 <code>gulpfile.js</code> 文件的扩展名来表名所用的编程语言并安装对应的转译模块。</p>
+<ul>
+<li>对于 TypeScript，重命名为 <code>gulpfile.ts</code> 并安装 <code>ts-mode</code> 模块。</li>
+<li>对于 Babel，重命名为 <code>gulpfile.babel.js</code> 并安装 <code>@babel/register</code> 模块。</li>
+</ul>
+<h6 id="Gulpfile-分割"><a href="#Gulpfile-分割" class="headerlink" title="Gulpfile 分割"></a>Gulpfile 分割</h6><p>大部分用户起初是将所有业务逻辑都写到一个 gulpfile 文件中。随着文件的变大，可以将此文件重构成数个独立的文件。</p>
+<p>每个任务（task）可以被分割成独立的文件，然后导入（import）到 gulpfile 文件中并组合。这不仅使事情变得井然有序，而且可以对每个任务（task）进行单独测试，或者根据条件改变组合。</p>
+<p>Node 的模块解析功能允许你将 <code>gulpfile.js</code> 文件替换为同样命名为 <code>gulpfile.js</code> 的目录，该目录中包含了一个名为 <code>index.js</code> 的文件，该文件被当作  <code>gulpfile.js</code> 使用。并且，该目录中还可以包含各个独立的任务（task）模块。</p>
+<h5 id="创建任务（task）"><a href="#创建任务（task）" class="headerlink" title="创建任务（task）"></a>创建任务（task）</h5><p>每个 gulp 任务（task）都是一个异步的 JavaScript 函数，此函数是一个接受 callback 作为参数的函数，或者是一个返回 stream、promise、event emitter、child process 或 observable 类型值的函数。</p>
+<h6 id="导出任务"><a href="#导出任务" class="headerlink" title="导出任务"></a>导出任务</h6><p>任务（tasks）可以是 public （<strong>公共</strong>）或 private （<strong>私有</strong>）类型的。</p>
+<ul>
+<li><strong>公开任务（Public tasks）</strong> 从 gulpfile 中被导出（export），可以通过 <code>gulp</code> 命令直接调用</li>
+<li><strong>私有任务（Private tasks）</strong> 被设计为在内部使用，通常作为 <code>series()</code> 或 <code>parallel()</code> 组合的组成部分。</li>
+</ul>
+<h6 id="组合任务"><a href="#组合任务" class="headerlink" title="组合任务"></a>组合任务</h6>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+              <a href="/tags/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/" rel="tag"># 构建工具</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/08/25/java%E4%BD%8D%E8%BF%90%E7%AE%97/" rel="prev" title="java位运算">
+      <i class="fa fa-chevron-left"></i> java位运算
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/08/26/faq-linux/" rel="next" title="faq-linux">
+      faq-linux <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E5%92%8C%E7%89%B9%E7%82%B9"><span class="nav-number">1.</span> <span class="nav-text">定义和特点</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%98%E7%BD%91%E7%9A%84%E4%B8%80%E4%B8%AA-gulpfile-js-%E6%96%87%E4%BB%B6"><span class="nav-number">1.1.</span> <span class="nav-text">官网的一个 gulpfile.js 文件</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97"><span class="nav-number">2.</span> <span class="nav-text">入门指南</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#JavaScript-%E5%92%8C-Gulpfile"><span class="nav-number">2.1.</span> <span class="nav-text">JavaScript 和 Gulpfile</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Gulpfile-%E8%AF%A6%E8%A7%A3"><span class="nav-number">2.1.1.</span> <span class="nav-text">Gulpfile 详解</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Gulpfile-%E8%BD%AC%E8%AF%91"><span class="nav-number">2.1.2.</span> <span class="nav-text">Gulpfile 转译</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Gulpfile-%E5%88%86%E5%89%B2"><span class="nav-number">2.1.3.</span> <span class="nav-text">Gulpfile 分割</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E4%BB%BB%E5%8A%A1%EF%BC%88task%EF%BC%89"><span class="nav-number">2.2.</span> <span class="nav-text">创建任务（task）</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%AF%BC%E5%87%BA%E4%BB%BB%E5%8A%A1"><span class="nav-number">2.2.1.</span> <span class="nav-text">导出任务</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E7%BB%84%E5%90%88%E4%BB%BB%E5%8A%A1"><span class="nav-number">2.2.2.</span> <span class="nav-text">组合任务</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="田园隐士"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">田园隐士</p>
+  <div class="site-description" itemprop="description">talk is cheap, show me the code</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">152</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">45</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">田园隐士</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">289k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">4:23</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

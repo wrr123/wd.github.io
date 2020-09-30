@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.0.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/002.jpg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/002.jpg">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-material.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"wrr123.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="将oracle中的表转为java实体类 swagger实体类注解@ApiModelProperty  123select listagg(&amp;#x27;@ApiModelProperty(&quot;&amp;#x27;||t.COMMENTS||&amp;#x27;&quot;)&amp;#x27;||chr(13)||&amp;#x27;private String &amp;#x27;||lower(t.COLUMN_NAME)||">
+<meta property="og:type" content="article">
+<meta property="og:title" content="oracle表2java实体类">
+<meta property="og:url" content="https://wrr123.github.io/2020/08/04/oracle%E8%A1%A82java%E5%AE%9E%E4%BD%93%E7%B1%BB/index.html">
+<meta property="og:site_name" content="一缕烟气">
+<meta property="og:description" content="将oracle中的表转为java实体类 swagger实体类注解@ApiModelProperty  123select listagg(&amp;#x27;@ApiModelProperty(&quot;&amp;#x27;||t.COMMENTS||&amp;#x27;&quot;)&amp;#x27;||chr(13)||&amp;#x27;private String &amp;#x27;||lower(t.COLUMN_NAME)||">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-08-04T01:44:36.000Z">
+<meta property="article:modified_time" content="2020-08-11T13:41:09.806Z">
+<meta property="article:author" content="田园隐士">
+<meta property="article:tag" content="java">
+<meta property="article:tag" content="oracle">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://wrr123.github.io/2020/08/04/oracle%E8%A1%A82java%E5%AE%9E%E4%BD%93%E7%B1%BB/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>oracle表2java实体类 | 一缕烟气</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">一缕烟气</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">沧海月明珠有泪，蓝田日暖玉生烟</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2020/08/04/oracle%E8%A1%A82java%E5%AE%9E%E4%BD%93%E7%B1%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="田园隐士">
+      <meta itemprop="description" content="talk is cheap, show me the code">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一缕烟气">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          oracle表2java实体类
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-08-04 09:44:36" itemprop="dateCreated datePublished" datetime="2020-08-04T09:44:36+08:00">2020-08-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-08-11 21:41:09" itemprop="dateModified" datetime="2020-08-11T21:41:09+08:00">2020-08-11</time>
+              </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h4 id="将oracle中的表转为java实体类"><a href="#将oracle中的表转为java实体类" class="headerlink" title="将oracle中的表转为java实体类"></a>将oracle中的表转为java实体类</h4><ul>
+<li>swagger实体类注解<code>@ApiModelProperty</code></li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> </span><br><span class="line"><span class="keyword">listagg</span>(<span class="string">&#x27;@ApiModelProperty(&quot;&#x27;</span>||t.COMMENTS||<span class="string">&#x27;&quot;)&#x27;</span>||<span class="keyword">chr</span>(<span class="number">13</span>)||<span class="string">&#x27;private String &#x27;</span>||<span class="keyword">lower</span>(t.COLUMN_NAME)||<span class="string">&#x27;;&#x27;</span>||<span class="keyword">chr</span>(<span class="number">13</span>)||<span class="keyword">chr</span>(<span class="number">13</span>), <span class="string">&#x27;&#x27;</span>) <span class="keyword">within</span> <span class="keyword">group</span>(<span class="keyword">order</span> <span class="keyword">by</span> t.COLUMN_NAME)</span><br><span class="line"><span class="keyword">from</span> all_col_comments t <span class="keyword">where</span> t.TABLE_NAME = <span class="string">&#x27;TEMP01&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>​    <u><em>listagg函数可以使用wm_concat函数来替换</em></u></p>
+<h4 id="oracle中一些特殊符号的转换"><a href="#oracle中一些特殊符号的转换" class="headerlink" title="oracle中一些特殊符号的转换"></a>oracle中一些特殊符号的转换</h4><table>
+<thead>
+<tr>
+<th>说明</th>
+<th>转换</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>制表符</td>
+<td>chr(9)</td>
+</tr>
+<tr>
+<td>换行符</td>
+<td>chr(10)</td>
+</tr>
+<tr>
+<td>回车符</td>
+<td>chr(13)</td>
+</tr>
+</tbody></table>
+<h4 id="oracle和java的数据类型对应关系"><a href="#oracle和java的数据类型对应关系" class="headerlink" title="oracle和java的数据类型对应关系"></a>oracle和java的数据类型对应关系</h4><table>
+<thead>
+<tr>
+<th align="left">SQL数据类型</th>
+<th align="left">JDBC类型代码</th>
+<th align="left">标准的Java类型</th>
+<th align="left">Oracle扩展的Java类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"></td>
+<td align="left">1.0标准的JDBC类型:</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>CHAR</code></td>
+<td align="left"><code>java.sql.Types.CHAR</code></td>
+<td align="left"><code>java.lang.String</code></td>
+<td align="left"><code>oracle.sql.CHAR</code></td>
+</tr>
+<tr>
+<td align="left"><code>VARCHAR2</code></td>
+<td align="left"><code>java.sql.Types.VARCHAR</code></td>
+<td align="left"><code>java.lang.String</code></td>
+<td align="left"><code>oracle.sql.CHAR</code></td>
+</tr>
+<tr>
+<td align="left"><code>LONG</code></td>
+<td align="left"><code>java.sql.Types.LONGVARCHAR</code></td>
+<td align="left"><code>java.lang.String</code></td>
+<td align="left"><code>oracle.sql.CHAR</code></td>
+</tr>
+<tr>
+<td align="left"><code>NUMBER</code></td>
+<td align="left"><code>java.sql.Types.NUMERIC</code></td>
+<td align="left"><code>java.math.BigDecimal</code></td>
+<td align="left"><code>oracle.sql.NUMBER</code></td>
+</tr>
+<tr>
+<td align="left"><code>NUMBER</code></td>
+<td align="left"><code>java.sql.Types.DECIMAL</code></td>
+<td align="left"><code>java.math.BigDecimal</code></td>
+<td align="left"><code>oracle.sql.NUMBER</code></td>
+</tr>
+<tr>
+<td align="left"><code>NUMBER</code></td>
+<td align="left"><code>java.sql.Types.BIT</code></td>
+<td align="left"><code>boolean</code></td>
+<td align="left"><code>oracle.sql.NUMBER</code></td>
+</tr>
+<tr>
+<td align="left"><code>NUMBER</code></td>
+<td align="left"><code>java.sql.Types.TINYINT</code></td>
+<td align="left"><code>byte</code></td>
+<td align="left"><code>oracle.sql.NUMBER</code></td>
+</tr>
+<tr>
+<td align="left"><code>NUMBER</code></td>
+<td align="left"><code>java.sql.Types.SMALLINT</code></td>
+<td align="left"><code>short</code></td>
+<td align="left"><code>oracle.sql.NUMBER</code></td>
+</tr>
+<tr>
+<td align="left"><code>NUMBER</code></td>
+<td align="left"><code>java.sql.Types.INTEGER</code></td>
+<td align="left"><code>int</code></td>
+<td align="left"><code>oracle.sql.NUMBER</code></td>
+</tr>
+<tr>
+<td align="left"><code>NUMBER</code></td>
+<td align="left"><code>java.sql.Types.BIGINT</code></td>
+<td align="left"><code>long</code></td>
+<td align="left"><code>oracle.sql.NUMBER</code></td>
+</tr>
+<tr>
+<td align="left"><code>NUMBER</code></td>
+<td align="left"><code>java.sql.Types.REAL</code></td>
+<td align="left"><code>float</code></td>
+<td align="left"><code>oracle.sql.NUMBER</code></td>
+</tr>
+<tr>
+<td align="left"><code>NUMBER</code></td>
+<td align="left"><code>java.sql.Types.FLOAT</code></td>
+<td align="left"><code>double</code></td>
+<td align="left"><code>oracle.sql.NUMBER</code></td>
+</tr>
+<tr>
+<td align="left"><code>NUMBER</code></td>
+<td align="left"><code>java.sql.Types.DOUBLE</code></td>
+<td align="left"><code>double</code></td>
+<td align="left"><code>oracle.sql.NUMBER</code></td>
+</tr>
+<tr>
+<td align="left"><code>RAW</code></td>
+<td align="left"><code>java.sql.Types.BINARY</code></td>
+<td align="left"><code>byte[]</code></td>
+<td align="left"><code>oracle.sql.RAW</code></td>
+</tr>
+<tr>
+<td align="left"><code>RAW</code></td>
+<td align="left"><code>java.sql.Types.VARBINARY</code></td>
+<td align="left"><code>byte[]</code></td>
+<td align="left"><code>oracle.sql.RAW</code></td>
+</tr>
+<tr>
+<td align="left"><code>LONGRAW</code></td>
+<td align="left"><code>java.sql.Types.LONGVARBINARY</code></td>
+<td align="left"><code>byte[]</code></td>
+<td align="left"><code>oracle.sql.RAW</code></td>
+</tr>
+<tr>
+<td align="left"><code>DATE</code></td>
+<td align="left"><code>java.sql.Types.DATE</code></td>
+<td align="left"><code>java.sql.Date</code></td>
+<td align="left"><code>oracle.sql.DATE</code></td>
+</tr>
+<tr>
+<td align="left"><code>DATE</code></td>
+<td align="left"><code>java.sql.Types.TIME</code></td>
+<td align="left"><code>java.sql.Time</code></td>
+<td align="left"><code>oracle.sql.DATE</code></td>
+</tr>
+<tr>
+<td align="left"><code>TIMESTAMP</code></td>
+<td align="left"><code>java.sql.Types.TIMESTAMP</code></td>
+<td align="left"><code>javal.sql.Timestamp</code></td>
+<td align="left"><code>oracle.sql.TIMESTAMP</code></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">2.0标准的JDBC类型:</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>BLOB</code></td>
+<td align="left"><code>java.sql.Types.BLOB</code></td>
+<td align="left"><code>java.sql.Blob</code></td>
+<td align="left"><code>oracle.sql.BLOB</code></td>
+</tr>
+<tr>
+<td align="left"><code>CLOB</code></td>
+<td align="left"><code>java.sql.Types.CLOB</code></td>
+<td align="left"><code>java.sql.Clob</code></td>
+<td align="left"><code>oracle.sql.CLOB</code></td>
+</tr>
+<tr>
+<td align="left">用户定义的对象</td>
+<td align="left"><code>java.sql.Types.STRUCT</code></td>
+<td align="left"><code>java.sql.Struct</code></td>
+<td align="left"><code>oracle.sql.STRUCT</code></td>
+</tr>
+<tr>
+<td align="left">用户定义的参考</td>
+<td align="left"><code>java.sql.Types.REF</code></td>
+<td align="left"><code>java.sql.Ref</code></td>
+<td align="left"><code>oracle.sql.REF</code></td>
+</tr>
+<tr>
+<td align="left">用户定义的集合</td>
+<td align="left"><code>java.sql.Types.ARRAY</code></td>
+<td align="left"><code>java.sql.Array</code></td>
+<td align="left"><code>oracle.sql.ARRAY</code></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Oracle扩展:</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>BFILE</code></td>
+<td align="left"><code>oracle.jdbc.OracleTypes.BFILE</code></td>
+<td align="left">N/A</td>
+<td align="left"><code>oracle.sql.BFILE</code></td>
+</tr>
+<tr>
+<td align="left"><code>ROWID</code></td>
+<td align="left"><code>oracle.jdbc.OracleTypes.ROWID</code></td>
+<td align="left">N/A</td>
+<td align="left"><code>oracle.sql.ROWID</code></td>
+</tr>
+<tr>
+<td align="left"><code>REF CURSOR</code></td>
+<td align="left"><code>oracle.jdbc.OracleTypes.CURSOR</code></td>
+<td align="left"><code>java.sql.ResultSet</code></td>
+<td align="left"><code>oracle.jdbc.OracleResultSet</code></td>
+</tr>
+<tr>
+<td align="left"><code>TIMESTAMP</code></td>
+<td align="left"><code>oracle.jdbc.OracleTypes.TIMESTAMP</code></td>
+<td align="left"><code>java.sql.Timestamp</code></td>
+<td align="left"><code>oracle.sql.TIMESTAMP</code></td>
+</tr>
+<tr>
+<td align="left"><code>TIMESTAMP WITH TIME ZONE</code></td>
+<td align="left"><code>oracle.jdbc.OracleTypes.TIMESTAMPTZ</code></td>
+<td align="left"><code>java.sql.Timestamp</code></td>
+<td align="left"><code>oracle.sql.TIMESTAMPTZ</code></td>
+</tr>
+<tr>
+<td align="left"><code>TIMESTAMP WITH LOCAL TIME ZONE</code></td>
+<td align="left"><code>oracle.jdbc.OracleTypes.TIMESTAMPLTZ</code></td>
+<td align="left"><code>java.sql.Timestamp</code></td>
+<td align="left"><code>oracle.sql.TIMESTAMPLTZ</code></td>
+</tr>
+</tbody></table>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/java/" rel="tag"># java</a>
+              <a href="/tags/oracle/" rel="tag"># oracle</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/08/03/spring-boot%E8%BF%9E%E6%8E%A5sqlserver/" rel="prev" title="spring-boot连接sqlserver">
+      <i class="fa fa-chevron-left"></i> spring-boot连接sqlserver
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/08/04/spring%E4%B8%AD-RequestBody%E5%92%8C-ReuqestParam%E7%9A%84%E5%8C%BA%E5%88%AB/" rel="next" title="spring中@RequestBody和@ReuqestParam的区别">
+      spring中@RequestBody和@ReuqestParam的区别 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%86oracle%E4%B8%AD%E7%9A%84%E8%A1%A8%E8%BD%AC%E4%B8%BAjava%E5%AE%9E%E4%BD%93%E7%B1%BB"><span class="nav-number">1.</span> <span class="nav-text">将oracle中的表转为java实体类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#oracle%E4%B8%AD%E4%B8%80%E4%BA%9B%E7%89%B9%E6%AE%8A%E7%AC%A6%E5%8F%B7%E7%9A%84%E8%BD%AC%E6%8D%A2"><span class="nav-number">2.</span> <span class="nav-text">oracle中一些特殊符号的转换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#oracle%E5%92%8Cjava%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%AF%B9%E5%BA%94%E5%85%B3%E7%B3%BB"><span class="nav-number">3.</span> <span class="nav-text">oracle和java的数据类型对应关系</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="田园隐士"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">田园隐士</p>
+  <div class="site-description" itemprop="description">talk is cheap, show me the code</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">152</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">45</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">田园隐士</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">289k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">4:23</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

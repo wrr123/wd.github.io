@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.0.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/002.jpg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/002.jpg">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-material.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"wrr123.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="数据库基础操作新建数据库1create database 数据库名；  有一个特殊符号 - 横杠，若数据库名称中包含横杠的话，可以使用反引号 &#96;&#96; 来包裹数据库名称。 删除数据库1drop database 数据库名;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mysql基础操作">
+<meta property="og:url" content="https://wrr123.github.io/2020/09/25/mysql%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/index.html">
+<meta property="og:site_name" content="一缕烟气">
+<meta property="og:description" content="数据库基础操作新建数据库1create database 数据库名；  有一个特殊符号 - 横杠，若数据库名称中包含横杠的话，可以使用反引号 &#96;&#96; 来包裹数据库名称。 删除数据库1drop database 数据库名;">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-09-25T05:54:40.000Z">
+<meta property="article:modified_time" content="2020-09-27T05:26:52.167Z">
+<meta property="article:author" content="田园隐士">
+<meta property="article:tag" content="mysql">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://wrr123.github.io/2020/09/25/mysql%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>mysql基础操作 | 一缕烟气</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">一缕烟气</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">沧海月明珠有泪，蓝田日暖玉生烟</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2020/09/25/mysql%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="田园隐士">
+      <meta itemprop="description" content="talk is cheap, show me the code">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一缕烟气">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          mysql基础操作
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-09-25 13:54:40" itemprop="dateCreated datePublished" datetime="2020-09-25T13:54:40+08:00">2020-09-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-27 13:26:52" itemprop="dateModified" datetime="2020-09-27T13:26:52+08:00">2020-09-27</time>
+              </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>11k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>10 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h4 id="数据库基础操作"><a href="#数据库基础操作" class="headerlink" title="数据库基础操作"></a>数据库基础操作</h4><h5 id="新建数据库"><a href="#新建数据库" class="headerlink" title="新建数据库"></a>新建数据库</h5><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create database 数据库名；</span><br></pre></td></tr></table></figure>
+
+<p>有一个特殊符号 <code>-</code> 横杠，若数据库名称中包含横杠的话，可以使用反引号 `` 来包裹数据库名称。</p>
+<h5 id="删除数据库"><a href="#删除数据库" class="headerlink" title="删除数据库"></a>删除数据库</h5><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drop database 数据库名;</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<h4 id="关于数据库"><a href="#关于数据库" class="headerlink" title="关于数据库"></a>关于数据库</h4><ul>
+<li>创建数据库 <code>create database h_test;</code></li>
+<li>查看数据库 <code>show databases;</code></li>
+<li>查看当前所在数据库位置 <code>select database();</code></li>
+<li>查看数据库创建信息 <code>show create database h_test;</code></li>
+<li>修改数据库编码，可以使用上一条语句查看是否修改成功 <code>alter database h_test default character set gbk collate gbk_bin;</code></li>
+<li>删除数据库 <code>drop database h_test;</code></li>
+<li>可以直接创建数据库且设置编码方式 <code>create database h_test default character set utf8 collate utf8_general_ci;</code></li>
+</ul>
+<h4 id="关于数据表"><a href="#关于数据表" class="headerlink" title="关于数据表"></a>关于数据表</h4><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">//首先选定操作的数据库</span><br><span class="line">use h_test;</span><br><span class="line">//创建表student</span><br><span class="line">create table student(</span><br><span class="line">  id  int(11),</span><br><span class="line">  name  varchar(20),</span><br><span class="line">  age int(11)</span><br><span class="line">);</span><br><span class="line">// 复制表</span><br><span class="line">// 1. 复制表结构和表数据（ps：主键自增、索引、触发器、外键不会被复制）</span><br><span class="line">create table tb2 select * from tb1;</span><br><span class="line">// 2. 只复制表结构（ps：数据、触发器、外键不会被复制）</span><br><span class="line">create table tb2 like tb1;</span><br><span class="line">//查看数据表</span><br><span class="line">show tables;</span><br><span class="line">//查看数据表信息，后面加上参数/G可使结果更加美观</span><br><span class="line">show create table student;</span><br><span class="line">//查看表的的字段信息</span><br><span class="line">desc student;</span><br><span class="line">//修改表名</span><br><span class="line">alter table student rename [to] h_student;</span><br><span class="line">//修改字段名</span><br><span class="line">alter table h_student change name stu_name varchar(20);</span><br><span class="line">//修改字段的数据类型</span><br><span class="line">alter table h_student modify id int(20);</span><br><span class="line">//添加字段</span><br><span class="line">alter table h_student add grade float;</span><br><span class="line">//删除字段</span><br><span class="line">alter table h_student drop grade;</span><br><span class="line">//修改字段的位置</span><br><span class="line">alter table h_student modify stu_name varchar(20) first;</span><br><span class="line">alter table h_student modify id int(11) after age;</span><br><span class="line">//删除数据表</span><br><span class="line">drop table h_student;</span><br></pre></td></tr></table></figure>
+
+<h4 id="表的约束"><a href="#表的约束" class="headerlink" title="表的约束"></a>表的约束</h4><table>
+<thead>
+<tr>
+<th>约束条件</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>primary key</td>
+<td>主键约束，用于唯一标识对应的记录</td>
+</tr>
+<tr>
+<td>foreign key</td>
+<td>外键约束</td>
+</tr>
+<tr>
+<td>not null</td>
+<td>非空约束</td>
+</tr>
+<tr>
+<td>unique</td>
+<td>唯一性约束</td>
+</tr>
+<tr>
+<td>default</td>
+<td>默认值约束，用于设置字段的默认值</td>
+</tr>
+</tbody></table>
+<h4 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h4><blockquote>
+<p>作用：提高表中数据的查询速度<br>1.普通索引<br>2.唯一性索引<br>3.全文索引<br>4.单列索引<br>5.多列索引<br>6.空间索引</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;创建索引</span><br><span class="line">&#x2F;&#x2F;一.创建表的时候创建索引</span><br><span class="line">create table 表名(</span><br><span class="line">        字段名 数据类型[完整性约束条件],</span><br><span class="line">        ...</span><br><span class="line">        字段名 数据类型,</span><br><span class="line">        [UNIQUE|FULLTEXT|SPATIAL] INDEX|KEY</span><br><span class="line">  );</span><br><span class="line">&#x2F;&#x2F;1-1.创建普通索引</span><br><span class="line">create table test1(</span><br><span class="line">  id  INT,</span><br><span class="line">  name VARCHAR(20),</span><br><span class="line">  age INT,</span><br><span class="line">  INDEX (id)</span><br><span class="line">);</span><br><span class="line">&#x2F;&#x2F;可以插入一条数据,查看索引是否被使用</span><br><span class="line">explain select * from test1 where id&#x3D;1 \G;</span><br><span class="line">&#x2F;&#x2F;1-2.创建唯一性索引</span><br><span class="line">create table test2(</span><br><span class="line">  id  INT,</span><br><span class="line">  name VARCHAR(20),</span><br><span class="line">  age INT,</span><br><span class="line">  UNIQUE INDEX unique_id(id asc)</span><br><span class="line">);</span><br><span class="line">&#x2F;&#x2F;1-3.创建全文索引</span><br><span class="line">create table test3(</span><br><span class="line">  id  INT,</span><br><span class="line">  name VARCHAR(20),</span><br><span class="line">  age INT,</span><br><span class="line">  FULLTEXT INDEX fulltext_name(name)</span><br><span class="line">)ENGINE&#x3D;MyISAM;</span><br><span class="line">&#x2F;&#x2F;1-4.创建单列索引</span><br><span class="line">create table test4(</span><br><span class="line">  id  INT,</span><br><span class="line">  name VARCHAR(20),</span><br><span class="line">  age INT,</span><br><span class="line">  INDEX single_name(name(20))</span><br><span class="line">);</span><br><span class="line">&#x2F;&#x2F;1-5.创建多列索引</span><br><span class="line">create table test5(</span><br><span class="line">  id  INT,</span><br><span class="line">  name VARCHAR(20),</span><br><span class="line">  age INT,</span><br><span class="line">  INDEX multi(id,name(20))</span><br><span class="line">);</span><br><span class="line">&#x2F;&#x2F;1-6.创建空间索引</span><br><span class="line">create table test6(</span><br><span class="line">  id  INT,</span><br><span class="line">  space GEOMETRY NOT NULL,</span><br><span class="line">  SPATIAL INDEX sp(space)</span><br><span class="line">)ENGINE&#x3D;MyISAM;</span><br><span class="line">---------------------------------------------------</span><br><span class="line">&#x2F;&#x2F;二.使用create index语句在已经存在的表上创建索引</span><br><span class="line">&#x2F;&#x2F;首先新建一个表,这个表没有索引</span><br><span class="line">create table student(</span><br><span class="line">  id int,</span><br><span class="line">  age int,</span><br><span class="line">  name varchar(20),</span><br><span class="line">  intro varchar(40),</span><br><span class="line">  g GEOMETRY NOT NULL</span><br><span class="line">)ENGINE&#x3D;MyISAM;</span><br><span class="line">&#x2F;&#x2F;2-1.创建普通索引</span><br><span class="line">create index index_id on student(id);</span><br><span class="line">&#x2F;&#x2F;2-2.创建唯一性索引</span><br><span class="line">create unique index uniqueidx on student(id);</span><br><span class="line">&#x2F;&#x2F;2-3.创建单列索引</span><br><span class="line">create index singleidx on student(age);</span><br><span class="line">&#x2F;&#x2F;2-4.创建多列索引</span><br><span class="line">create index mulitidx on student(name(20),intro(40));</span><br><span class="line">&#x2F;&#x2F;2-5.创建全文索引</span><br><span class="line">create fulltext index fulltextidx on student(name);</span><br><span class="line">&#x2F;&#x2F;2-6.创建空间索引</span><br><span class="line">create spatial index spatidx on student(g); </span><br><span class="line">&#x2F;&#x2F;下图是第二种方法创建索引演示后的所有索引</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;删除索引，有下面两种方式</span><br><span class="line">&#x2F;&#x2F;1.使用alter table删除索引fulltextidx</span><br><span class="line">alter table student drop index fulltextidx;</span><br><span class="line">&#x2F;&#x2F;2.使用drop index删除索引spatidx</span><br><span class="line">drop index spatidx on student;</span><br><span class="line">&#x2F;&#x2F;下图可看到删除成功</span><br></pre></td></tr></table></figure>
+
+<h4 id="添加数据"><a href="#添加数据" class="headerlink" title="添加数据"></a>添加数据</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;重新建立表student</span><br><span class="line">drop table student;</span><br><span class="line">create table student(</span><br><span class="line">  id int,</span><br><span class="line">  name varchar(20) not null,</span><br><span class="line">  grade float</span><br><span class="line">);</span><br><span class="line">&#x2F;&#x2F;插入一条数据，也可以少某个字段的同时也少对应的数据</span><br><span class="line">insert into student(id,name,grade) values(1,&#39;howie&#39;,70);</span><br><span class="line">&#x2F;&#x2F;也可以不指定字段名，但要注意顺序</span><br><span class="line">insert into student values(2,&#39;howie&#39;,80);</span><br><span class="line">&#x2F;&#x2F;也可以这样添加数据</span><br><span class="line">insert into student set id&#x3D;3,name&#x3D;&quot;howie&quot;,grade&#x3D;90;</span><br><span class="line">&#x2F;&#x2F;同时添加多条数据</span><br><span class="line">insert into student values</span><br><span class="line">(4,&#39;howie&#39;,80),</span><br><span class="line">(5,&#39;howie&#39;,80),</span><br><span class="line">(6,&#39;howie&#39;,80);</span><br></pre></td></tr></table></figure>
+
+<h4 id="更新数据"><a href="#更新数据" class="headerlink" title="更新数据"></a>更新数据</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;更新id&#x3D;1的数据</span><br><span class="line">update student set name&#x3D;&quot;howie1&quot;,grade&#x3D;60 where id&#x3D;1;</span><br><span class="line">&#x2F;&#x2F;批量更新,如果没有where子句，会更新表中所有对应数据</span><br><span class="line">update student set grade&#x3D;100 where id&lt;4;</span><br></pre></td></tr></table></figure>
+
+<p>删除数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;删除id&#x3D;6的数据</span><br><span class="line">delete from student where id&#x3D;6;</span><br><span class="line">&#x2F;&#x2F;批量删除数据</span><br><span class="line">delete from student where id&gt;3;</span><br><span class="line">&#x2F;&#x2F;删除所有数据,DDL(数据定义语言)语句 truncate table student也可以删除表内所有数据</span><br><span class="line">delete from student;</span><br></pre></td></tr></table></figure>
+
+<h4 id="单表查询和多表操作"><a href="#单表查询和多表操作" class="headerlink" title="单表查询和多表操作"></a>单表查询和多表操作</h4><h5 id="单表查询"><a href="#单表查询" class="headerlink" title="单表查询"></a>单表查询</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;建立表student</span><br><span class="line">create table student(</span><br><span class="line">  id int not null auto_increment,</span><br><span class="line">  name varchar(20) not null,</span><br><span class="line">  grade float,</span><br><span class="line">  primary key(id)</span><br><span class="line">);</span><br><span class="line">&#x2F;&#x2F;插入数据</span><br><span class="line">insert into student (name,grade) values</span><br><span class="line">(&quot;howie1&quot;,40),</span><br><span class="line">(&quot;howie1&quot;,50),</span><br><span class="line">(&quot;howie2&quot;,50),</span><br><span class="line">(&quot;howie3&quot;,60),</span><br><span class="line">(&quot;howie4&quot;,70),</span><br><span class="line">(&quot;howie5&quot;,80),</span><br><span class="line">(&quot;howie6&quot;,null);</span><br><span class="line">&#x2F;&#x2F;查询全部</span><br><span class="line">select * from student;</span><br><span class="line">&#x2F;&#x2F;查询某个字段</span><br><span class="line">select name from student;</span><br><span class="line">&#x2F;&#x2F;条件查询,查询id&#x3D;2学生的信息</span><br><span class="line">select * from student where id&#x3D;2;</span><br><span class="line">&#x2F;&#x2F;in关键字查询,也可以使用not in</span><br><span class="line">select * from student where id IN(1,2,3);</span><br><span class="line">&#x2F;&#x2F;between and关键字查询</span><br><span class="line">select * from student where id between 2 and 5;</span><br><span class="line">&#x2F;&#x2F;空值(NULL)查询，使用IS NULL来判断</span><br><span class="line">select * from student where grade is null;</span><br><span class="line">&#x2F;&#x2F;distinct关键字查询</span><br><span class="line">select distinct name from student;</span><br><span class="line">&#x2F;&#x2F;like关键字查询,查询以h开头，e结尾的数据</span><br><span class="line">select * from student where name like &quot;h%e&quot;;</span><br><span class="line">&#x2F;&#x2F;and关键字多条件查询,or关键字的使用也是类似</span><br><span class="line">select * from student where id&gt;5 and grade&gt;60;</span><br></pre></td></tr></table></figure>
+
+<h5 id="高级查询"><a href="#高级查询" class="headerlink" title="高级查询"></a>高级查询</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;聚合函数</span><br><span class="line">&#x2F;&#x2F;count()函数,sum()函数,avg()函数,max()函数,min()函数</span><br><span class="line">select count(*) from student;</span><br><span class="line">select sum(grade) from student;</span><br><span class="line">select avg(grade) from student;</span><br><span class="line">select max(grade) from student;</span><br><span class="line">select min(grade) from student;</span><br><span class="line">&#x2F;&#x2F;对查询结果进行排序</span><br><span class="line">select * from student order by grade;</span><br><span class="line">&#x2F;&#x2F;分组查询</span><br><span class="line">&#x2F;&#x2F;1.单独使用group by分组</span><br><span class="line">select * from student group by grade;</span><br><span class="line">&#x2F;&#x2F;2.和聚合函数一起使用</span><br><span class="line">select count(*),grade from student group by grade;</span><br><span class="line">&#x2F;&#x2F;3.和having关键字一起使用</span><br><span class="line">select sum(grade),name from student group by grade having sum(grade) &gt;100;</span><br><span class="line">&#x2F;&#x2F;使用limit限制查询结果的数量</span><br><span class="line">select * from student limit 5;</span><br><span class="line">select * from student limit 2,2;</span><br><span class="line">select * from student order by grade desc limit 2,2;</span><br><span class="line">&#x2F;&#x2F;函数,mysql提供了许多函数</span><br><span class="line">select concat(id,&#39;:&#39;,name,&#39;:&#39;,grade) from student;</span><br><span class="line">&#x2F;&#x2F;为表取别名</span><br><span class="line">select * from student as stu where stu.name&#x3D;&quot;howie&quot;;</span><br><span class="line">&#x2F;&#x2F;为字段取别名,as关键字也可以不写</span><br><span class="line">select name as stu_name,grade stu_grade from student;</span><br></pre></td></tr></table></figure>
+
+<h5 id="多表操作"><a href="#多表操作" class="headerlink" title="多表操作"></a>多表操作</h5><ul>
+<li><p>外键</p>
+<p>  外键指引用另一个表中的一列或者多列，被引用的列应该具有主键约束或者唯一性约束，用于建立和加强两个数据库表之间的连接。</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;创建表class,student</span><br><span class="line">create table class(</span><br><span class="line">   id int not null primary key,</span><br><span class="line">   classname varchar(20) not null</span><br><span class="line">)ENGINE&#x3D;InnoDB;</span><br><span class="line">create table student(</span><br><span class="line">   stu_id int not null primary key,</span><br><span class="line">   stu_name varchar(20) not null,</span><br><span class="line">   cid int not null      -- 表示班级id，它就是class表的外键</span><br><span class="line">)ENGINE&#x3D;InnoDB;</span><br><span class="line">&#x2F;&#x2F;添加外键约束</span><br><span class="line">alter table student add constraint FK_ID foreign key(cid) references class(id);</span><br><span class="line">&#x2F;&#x2F;删除外键约束</span><br><span class="line">alter table student drop foreign key FK_ID;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>操作关联表</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;数据表有三种关联关系，多对一、多对多、一对一</span><br><span class="line">&#x2F;&#x2F;学生(student)和班级(class)是多对一关系，添加数据</span><br><span class="line">&#x2F;&#x2F;首选添加外键约束</span><br><span class="line">alter table student add constraint FK_ID foreign key(cid) references class(id);</span><br><span class="line">&#x2F;&#x2F;添加数据,这两个表便有了关联若插入中文在终端显示空白，可设置set names &#39;gbk&#39;;</span><br><span class="line">insert into class values(1,&quot;软件一班&quot;),(2,&quot;软件二班&quot;);</span><br><span class="line">insert into student values(1,&quot;howie&quot;,1),(2,&quot;howie1&quot;,2),(3,&quot;howie2&quot;,1),(4,&quot;howie3&quot;,2);</span><br><span class="line">&#x2F;&#x2F;交叉连接</span><br><span class="line">select * from student cross join class;</span><br><span class="line">&#x2F;&#x2F;内连接，该功能也可以使用where语句实现</span><br><span class="line">select student.stu_name,class.classname from student join class on class.id&#x3D;student.cid;</span><br><span class="line">&#x2F;&#x2F;外连接</span><br><span class="line">&#x2F;&#x2F;首先在student,class表中插入数据</span><br><span class="line">insert into class values(3,&quot;软件三班&quot;);</span><br><span class="line">&#x2F;&#x2F;左连接，右连接</span><br><span class="line">select s.stu_id,s.stu_name,c.classname from student s left join class c on c.id&#x3D;s.cid;</span><br><span class="line">select s.stu_id,s.stu_name,c.classname from student s right join class c on c.id&#x3D;s.cid;</span><br><span class="line">&#x2F;&#x2F;复合条件连接查询就是添加过滤条件</span><br><span class="line">&#x2F;&#x2F;子查询</span><br><span class="line">&#x2F;&#x2F;in关键字子查询跟上面的in关键字查询类似</span><br><span class="line">select * from student where cid in(select id from class where id&#x3D;2);</span><br><span class="line">&#x2F;&#x2F;exists关键字查询,相当于测试，不产生数据，只返回true或者false，只有返回true，外层才会执行，具体看下图</span><br><span class="line">select * from student where exists(select id from class where id&#x3D;12);   -- 外层不会执行</span><br><span class="line">select * from student where exists(select id from class where id&#x3D;1);    -- 外层会执行</span><br><span class="line">&#x2F;&#x2F;any关键字查询</span><br><span class="line"> select * from student where cid&gt;any(select id from class);</span><br><span class="line">&#x2F;&#x2F;all关键字查询</span><br><span class="line"> select * from student where cid&#x3D;any(select id from class);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="事务和存储过程"><a href="#事务和存储过程" class="headerlink" title="事务和存储过程"></a>事务和存储过程</h4><blockquote>
+<p>事务的概念，会开启、提交和回滚事务<br>事务的四种隔离级别<br>创建存储过程<br>调用、查看、修改和删除存储过程</p>
+</blockquote>
+<h5 id="事务管理"><a href="#事务管理" class="headerlink" title="事务管理"></a>事务管理</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">start transaction;  -- 开启事务</span><br><span class="line">commit;             -- 提交事务</span><br><span class="line">rollback;           -- 取消事务(回滚)</span><br><span class="line">&#x2F;&#x2F;创建表account，插入数据</span><br><span class="line">create table account(</span><br><span class="line">  id int primary key auto_increment,</span><br><span class="line">  name varchar(40),</span><br><span class="line">  money float</span><br><span class="line">);</span><br><span class="line">insert into account(name,money) values(&#39;a&#39;,1000),(&#39;b&#39;,2000),(&#39;c&#39;,3000);</span><br><span class="line">&#x2F;&#x2F;利用事务实现转账功能，首先开启事务，然后执行语句，提交事务</span><br><span class="line">start transaction;</span><br><span class="line">update account set money&#x3D;money-100 where name&#x3D;&#39;a&#39;;</span><br><span class="line">update account set money&#x3D;money+100 where name&#x3D;&#39;b&#39;;</span><br><span class="line">commit;</span><br><span class="line">&#x2F;&#x2F;事务的提交，通过这个命令查看mysql提交方式</span><br><span class="line">select @@autocommit; -- 若为1，表示自动提交，为0，就要手动提交</span><br><span class="line">&#x2F;&#x2F;若事务的提交方式为手动提交</span><br><span class="line">set @@autocommit &#x3D; 0; -- 设置为手动提交</span><br><span class="line">start transaction;</span><br><span class="line">update account set money&#x3D;money+100 where name&#x3D;&#39;a&#39;;</span><br><span class="line">update account set money&#x3D;money-100 where name&#x3D;&#39;b&#39;;</span><br><span class="line">&#x2F;&#x2F;现在执行select * from account 可以看到转账成功，若此时退出数据库重新登录，会看到各账户余额没有改变，所以一定要用commit语句提交事务，否则会失败</span><br><span class="line">&#x2F;&#x2F;事务的回滚，别忘记设置为手动提交的模式</span><br><span class="line">start transaction;</span><br><span class="line">update account set money&#x3D;money-100 where name&#x3D;&#39;a&#39;;</span><br><span class="line">update account set money&#x3D;money+100 where name&#x3D;&#39;b&#39;;</span><br><span class="line">&#x2F;&#x2F;若此时a不想转账给b，可以使用事务的回滚</span><br><span class="line">rollback;</span><br><span class="line">&#x2F;&#x2F;事务的隔离级别</span><br><span class="line">read uncommitted;</span><br><span class="line">read committed;</span><br><span class="line">repeatable read;</span><br><span class="line">serializable;</span><br></pre></td></tr></table></figure>
+
+<h5 id="存储过程"><a href="#存储过程" class="headerlink" title="存储过程"></a>存储过程</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;创建查看student表的存储过程</span><br><span class="line">&#x2F;&#x2F;创建student表</span><br><span class="line">create table student( </span><br><span class="line">  id int not null primary key auto_increment, </span><br><span class="line">  name varchar(4), </span><br><span class="line">  grade float </span><br><span class="line">)ENGINE&#x3D;InnoDB default character set utf8;</span><br><span class="line">delimiter &#x2F;&#x2F;  -- 将mysql的结束符设置为&#x2F;&#x2F;</span><br><span class="line">create procedure Proc()</span><br><span class="line">  begin</span><br><span class="line">  select * from student;</span><br><span class="line">  end &#x2F;&#x2F;</span><br><span class="line">delimiter ;   -- 将mysql的结束符设置为;</span><br><span class="line">call Proc();  -- 这样就可以调用该存储过程</span><br><span class="line">&#x2F;&#x2F;变量的使用,mysql中变量不用事前申明，在用的时候直接用“@变量名”使用就可以</span><br><span class="line">set @number&#x3D;100; -- 或set @num:&#x3D;1;</span><br><span class="line">&#x2F;&#x2F;定义条件和处理程序</span><br><span class="line">&#x2F;&#x2F;光标的使用</span><br><span class="line">&#x2F;&#x2F;1.声明光标</span><br><span class="line">DECLARE * cursor_name* CURSOR FOR select_statement</span><br><span class="line">2. 光标OPEN语句</span><br><span class="line">OPEN cursor_name</span><br><span class="line">3. 光标FETCH语句</span><br><span class="line">FETCH cursor_name INTO var_name [, var_name] ...</span><br><span class="line">4. 光标CLOSE语句</span><br><span class="line">CLOSE cursor_name</span><br><span class="line">&#x2F;&#x2F;流程控制的使用  不做介绍</span><br></pre></td></tr></table></figure>
+
+<h5 id="调用存储过程"><a href="#调用存储过程" class="headerlink" title="调用存储过程"></a>调用存储过程</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;定义存储过程</span><br><span class="line">delimiter &#x2F;&#x2F;</span><br><span class="line">create procedure proc1(in name varchar(4),out num int)</span><br><span class="line">begin</span><br><span class="line">select count(*) into num from student where name&#x3D;name;</span><br><span class="line">end&#x2F;&#x2F;</span><br><span class="line">delimiter ;</span><br><span class="line">&#x2F;&#x2F;调用存储过程</span><br><span class="line">call proc1(&quot;tom&quot;,@num) -- 查找名为tom学生人数</span><br><span class="line">&#x2F;&#x2F;查看结果</span><br><span class="line">select @num;  -- 看下图</span><br></pre></td></tr></table></figure>
+
+<h4 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h4><blockquote>
+<p>如何创建视图<br>查看、修改、更新、删除视图</p>
+</blockquote>
+<h5 id="视图的基本操作"><a href="#视图的基本操作" class="headerlink" title="视图的基本操作"></a>视图的基本操作</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;在单表上创建视图,重新创建student表，插入数据</span><br><span class="line">create table student(</span><br><span class="line">  id int not null primary key auto_increment,</span><br><span class="line">  name varchar(10) not null,</span><br><span class="line">  math float,</span><br><span class="line">  chinese float</span><br><span class="line">);</span><br><span class="line">insert into student(name,math,chinese) values</span><br><span class="line">(&#39;howie1&#39;,66,77),</span><br><span class="line">(&#39;howie2&#39;,66,77),</span><br><span class="line">(&#39;howie3&#39;,66,77);</span><br><span class="line">&#x2F;&#x2F;开始创建视图</span><br><span class="line">create view stu_view as select math,chinese,math+chinese from student;  -- 下图可看出创建成功</span><br><span class="line">&#x2F;&#x2F;也可以创建自定义字段名称的视图</span><br><span class="line">create view stu_view2(math,chin,sum) as select math,chinese,math+chinese from student;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;在多表上创建视图，创建表stu_info，插入数据</span><br><span class="line">create table stu_info(</span><br><span class="line">  id int not null primary key auto_increment,</span><br><span class="line">  class varchar(10) not null,</span><br><span class="line">  addr varchar(100)</span><br><span class="line">);</span><br><span class="line">insert into stu_info(class,addr) values</span><br><span class="line">(&#39;1&#39;,&#39;anhui&#39;),</span><br><span class="line">(&#39;2&#39;,&#39;fujian&#39;),</span><br><span class="line">(&#39;3&#39;,&#39;guangdong&#39;);</span><br><span class="line">&#x2F;&#x2F;创建视图stu_class</span><br><span class="line">create view stu_class(id,name,class) as </span><br><span class="line">select student.id,student.name,stu_info.class from </span><br><span class="line">student,stu_info where student.id&#x3D;stu_info.id;</span><br><span class="line">&#x2F;&#x2F;查看视图</span><br><span class="line">desc stu_class;</span><br><span class="line">show table status like &#39;stu_class&#39;\G</span><br><span class="line">show create view stu_class\G</span><br><span class="line">&#x2F;&#x2F;修改视图</span><br><span class="line">create or replace view stu_view as select * from student;</span><br><span class="line">alter view stu_view as select chinese from student;</span><br><span class="line">&#x2F;&#x2F;更新视图</span><br><span class="line">update stu_view set chinese&#x3D;100;</span><br><span class="line">insert into student values(null,&#39;haha&#39;,100,100);</span><br><span class="line">delete from stu_view2 where math&#x3D;100;</span><br><span class="line">&#x2F;&#x2F;删除视图</span><br><span class="line">drop view if exists stu_view2;</span><br></pre></td></tr></table></figure>
+
+<h4 id="导入和导出"><a href="#导入和导出" class="headerlink" title="导入和导出"></a>导入和导出</h4><ul>
+<li><p>将 lamp138 库导出</p>
+<p>  <code>mysqldump -u root -p lamp138 &gt; lamp138.sql</code></p>
+</li>
+<li><p>将 lamp138 库中的 stu 表导出</p>
+<p>  <code>mysqldump -u root -p lamp138 stu &gt; lamp138_stu.sql</code></p>
+</li>
+<li><p>将 lamp138 库导入</p>
+<p>  <code>mysql -u root -p lamp138 &lt; lamp138.sql</code></p>
+</li>
+<li><p>将 lamp138 库中的 stu 表导入</p>
+<p>  <code>mysql -u root -p lamp138 &lt; lamp138_stu.sql</code></p>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/mysql/" rel="tag"># mysql</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/09/22/java%E9%87%8D%E5%AE%9A%E5%90%91%E5%92%8C%E8%BD%AC%E5%8F%91/" rel="prev" title="java重定向和转发">
+      <i class="fa fa-chevron-left"></i> java重定向和转发
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/09/27/java%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/" rel="next" title="java代码规范">
+      java代码规范 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C"><span class="nav-number">1.</span> <span class="nav-text">数据库基础操作</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%96%B0%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">1.1.</span> <span class="nav-text">新建数据库</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">1.2.</span> <span class="nav-text">删除数据库</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">2.</span> <span class="nav-text">关于数据库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E6%95%B0%E6%8D%AE%E8%A1%A8"><span class="nav-number">3.</span> <span class="nav-text">关于数据表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A1%A8%E7%9A%84%E7%BA%A6%E6%9D%9F"><span class="nav-number">4.</span> <span class="nav-text">表的约束</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95"><span class="nav-number">5.</span> <span class="nav-text">索引</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E6%95%B0%E6%8D%AE"><span class="nav-number">6.</span> <span class="nav-text">添加数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0%E6%95%B0%E6%8D%AE"><span class="nav-number">7.</span> <span class="nav-text">更新数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%95%E8%A1%A8%E6%9F%A5%E8%AF%A2%E5%92%8C%E5%A4%9A%E8%A1%A8%E6%93%8D%E4%BD%9C"><span class="nav-number">8.</span> <span class="nav-text">单表查询和多表操作</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8D%95%E8%A1%A8%E6%9F%A5%E8%AF%A2"><span class="nav-number">8.1.</span> <span class="nav-text">单表查询</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%AB%98%E7%BA%A7%E6%9F%A5%E8%AF%A2"><span class="nav-number">8.2.</span> <span class="nav-text">高级查询</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A4%9A%E8%A1%A8%E6%93%8D%E4%BD%9C"><span class="nav-number">8.3.</span> <span class="nav-text">多表操作</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8B%E5%8A%A1%E5%92%8C%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B"><span class="nav-number">9.</span> <span class="nav-text">事务和存储过程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86"><span class="nav-number">9.1.</span> <span class="nav-text">事务管理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B"><span class="nav-number">9.2.</span> <span class="nav-text">存储过程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%B0%83%E7%94%A8%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B"><span class="nav-number">9.3.</span> <span class="nav-text">调用存储过程</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%86%E5%9B%BE"><span class="nav-number">10.</span> <span class="nav-text">视图</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%86%E5%9B%BE%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="nav-number">10.1.</span> <span class="nav-text">视图的基本操作</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%BC%E5%85%A5%E5%92%8C%E5%AF%BC%E5%87%BA"><span class="nav-number">11.</span> <span class="nav-text">导入和导出</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="田园隐士"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">田园隐士</p>
+  <div class="site-description" itemprop="description">talk is cheap, show me the code</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">152</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">45</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">田园隐士</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">289k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">4:23</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
