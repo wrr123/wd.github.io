@@ -29,15 +29,15 @@
 <meta property="og:site_name" content="一缕烟气">
 <meta property="og:description" content="定义一种接口文档的规范 简介是一套基于OpenAPI规范构建的开源工具，可以帮助我们设计、构建、记录以及使用RestAPI。swagger主要包含了以下三个方面：  Swagger Editor：基于浏览器的编辑器，我们可以使用它编写我们的OpenAPI规范。 Swagger UI: 它会将我们编写的OpenAPI规范呈现为交互式的API文档。 Swagger Codegen: 它可以通过Open">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://localhost:4000/2020/08/03/swagger%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/001.png">
-<meta property="og:image" content="http://localhost:4000/2020/08/03/swagger%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/002.png">
-<meta property="og:image" content="http://localhost:4000/2020/08/03/swagger%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/003.png">
+<meta property="og:image" content="http://wrr123.github.io/2020/08/03/swagger%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/001.png">
+<meta property="og:image" content="http://wrr123.github.io/2020/08/03/swagger%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/002.png">
+<meta property="og:image" content="http://wrr123.github.io/2020/08/03/swagger%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/003.png">
 <meta property="article:published_time" content="2020-08-03T02:19:23.000Z">
 <meta property="article:modified_time" content="2020-08-11T13:41:09.809Z">
 <meta property="article:author" content="田园隐士">
 <meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://localhost:4000/2020/08/03/swagger%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/001.png">
+<meta name="twitter:image" content="http://wrr123.github.io/2020/08/03/swagger%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/001.png">
 
 <link rel="canonical" href="https://wrr123.github.io/2020/08/03/swagger%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/">
 
@@ -310,7 +310,7 @@
 <h6 id="访问验证"><a href="#访问验证" class="headerlink" title="访问验证"></a>访问验证</h6><blockquote>
 <p>其实就只需要添加一下依赖就可以了，我们重新启动一下项目，然后在浏览器中访问 <code>http://localhost:8080/swagger-ui.html</code> 就可以看到如下的效果了:</p>
 </blockquote>
-<p><img src="http://localhost:4000/2020/08/03/swagger%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/001.png"></p>
+<p><img src="http://wrr123.github.io/2020/08/03/swagger%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/001.png"></p>
 <h4 id="高级配置"><a href="#高级配置" class="headerlink" title="高级配置"></a>高级配置</h4><h5 id="文档相关描述配置"><a href="#文档相关描述配置" class="headerlink" title="文档相关描述配置"></a>文档相关描述配置</h5><ol>
 <li><p>通过在控制器类上增加<code>@Api</code>注解，可以给控制器增加描述和标签信息。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Api(tags = &quot;用户相关接口&quot;, description = &quot;提供用户相关的 Rest API&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserController</span></span></span><br></pre></td></tr></table></figure>
@@ -329,7 +329,7 @@
 </li>
 </ol>
 <p>补全信息后的swagger文档界面</p>
-<p><img src="http://localhost:4000/2020/08/03/swagger%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/002.png"></p>
+<p><img src="http://wrr123.github.io/2020/08/03/swagger%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/002.png"></p>
 <h4 id="接口过滤"><a href="#接口过滤" class="headerlink" title="接口过滤"></a>接口过滤</h4><blockquote>
 <p>有些时候我们并不是希望所有的 Rest API 都呈现在文档上，这种情况下 Swagger2 提供给我们了两种方式配置，一种是基于 <code>@ApiIgnore</code> 注解，另一种是在 Docket 上增加筛选。</p>
 </blockquote>
@@ -487,7 +487,7 @@
 <td align="left">该字段允许的值，当我们 API 的某个参数为枚举类型时，使用这个属性就可以清楚地告诉 API 使用者该参数所能允许传入的值。</td>
 </tr>
 </tbody></table>
-<h4 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h4><h5 id="Required-String-parameter-39-xxxx-39-is-not-present？"><a href="#Required-String-parameter-39-xxxx-39-is-not-present？" class="headerlink" title="Required String parameter &#39;xxxx&#39; is not present？"></a><code>Required String parameter &#39;xxxx&#39; is not present</code>？</h5><p><img src="http://localhost:4000/2020/08/03/swagger%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/003.png"></p>
+<h4 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h4><h5 id="Required-String-parameter-39-xxxx-39-is-not-present？"><a href="#Required-String-parameter-39-xxxx-39-is-not-present？" class="headerlink" title="Required String parameter &#39;xxxx&#39; is not present？"></a><code>Required String parameter &#39;xxxx&#39; is not present</code>？</h5><p><img src="http://wrr123.github.io/2020/08/03/swagger%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/003.png"></p>
 
     </div>
 
