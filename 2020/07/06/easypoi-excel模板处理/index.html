@@ -29,14 +29,14 @@
 <meta property="og:site_name" content="一缕烟气">
 <meta property="og:description" content="模板指令介绍123456789101112131415161718&gt; 下面列举下EasyPoi支持的指令以及作用，**最主要的就是各种fe的用法**&gt;&gt; - 空格分割&gt; - 三目运算 &amp;#123;&amp;#123;test ? obj:obj2&amp;#125;&amp;#125;&gt; - n: 表示 这个cell是数值类型 &amp;#123;&amp;#123;n:&amp;#125;&amp;#125;&gt; -">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://wrr123.github.io/2020/07/06/easypoi-excel%E6%A8%A1%E6%9D%BF%E5%A4%84%E7%90%86/11.png">
+<meta property="og:image" content="http://localhost:4000/2020/07/06/easypoi-excel%E6%A8%A1%E6%9D%BF%E5%A4%84%E7%90%86/11.png">
 <meta property="article:published_time" content="2020-07-06T03:14:28.000Z">
 <meta property="article:modified_time" content="2020-08-11T13:41:09.791Z">
 <meta property="article:author" content="田园隐士">
 <meta property="article:tag" content="java">
 <meta property="article:tag" content="excel">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://wrr123.github.io/2020/07/06/easypoi-excel%E6%A8%A1%E6%9D%BF%E5%A4%84%E7%90%86/11.png">
+<meta name="twitter:image" content="http://localhost:4000/2020/07/06/easypoi-excel%E6%A8%A1%E6%9D%BF%E5%A4%84%E7%90%86/11.png">
 
 <link rel="canonical" href="https://wrr123.github.io/2020/07/06/easypoi-excel%E6%A8%A1%E6%9D%BF%E5%A4%84%E7%90%86/">
 
@@ -277,7 +277,7 @@
         <h4 id="模板指令介绍"><a href="#模板指令介绍" class="headerlink" title="模板指令介绍"></a>模板指令介绍</h4><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&gt; 下面列举下EasyPoi支持的指令以及作用，**最主要的就是各种fe的用法**</span><br><span class="line">&gt;</span><br><span class="line">&gt; - 空格分割</span><br><span class="line">&gt; - 三目运算 &#123;&#123;test ? obj:obj2&#125;&#125;</span><br><span class="line">&gt; - n: 表示 这个cell是数值类型 &#123;&#123;n:&#125;&#125;</span><br><span class="line">&gt; - le: 代表长度&#123;&#123;le:()&#125;&#125; 在if/else 运用&#123;&#123;le:() &gt; 8 ? obj1 : obj2&#125;&#125;</span><br><span class="line">&gt; - fd: 格式化时间 &#123;&#123;fd:(obj;yyyy-MM-dd)&#125;&#125;</span><br><span class="line">&gt; - fn: 格式化数字 &#123;&#123;fn:(obj;###.00)&#125;&#125;</span><br><span class="line">&gt; - fe: 遍历数据,创建row</span><br><span class="line">&gt; - !fe: 遍历数据不创建row</span><br><span class="line">&gt; - $fe: 下移插入,把当前行,下面的行全部下移.size()行,然后插入</span><br><span class="line">&gt; - \#fe: 横向遍历</span><br><span class="line">&gt; - v_fe: 横向遍历值</span><br><span class="line">&gt; - !if: 删除当前列 &#123;&#123;!if:(test)&#125;&#125;</span><br><span class="line">&gt; - 单引号表示常量值 &#x27;&#x27; 比如&#x27;1&#x27; 那么输出的就是 1</span><br><span class="line">&gt; - &amp;NULL&amp; 空格</span><br><span class="line">&gt; - ]] 换行符 多行遍历导出</span><br><span class="line">&gt; - sum： 统计数据</span><br></pre></td></tr></table></figure>
 
 <h4 id="基本导出"><a href="#基本导出" class="headerlink" title="基本导出"></a>基本导出</h4><p>是插入数据的，不是单纯的导出一个标题和表头。</p>
-<p><img src="http://wrr123.github.io/2020/07/06/easypoi-excel%E6%A8%A1%E6%9D%BF%E5%A4%84%E7%90%86/11.png"></p>
+<p><img src="http://localhost:4000/2020/07/06/easypoi-excel%E6%A8%A1%E6%9D%BF%E5%A4%84%E7%90%86/11.png"></p>
 <h4 id="单纯的导出excel文件的表头信息"><a href="#单纯的导出excel文件的表头信息" class="headerlink" title="单纯的导出excel文件的表头信息"></a>单纯的导出excel文件的表头信息</h4><p>使用注解@Excel,在实体类上使用</p>
 <p>设置导出参数类，<code>ExportParams</code></p>
 <p>使用导出工具类实现导出，<code>ExcelExportUtil</code></p>
@@ -381,7 +381,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">152</span>
+          <span class="site-state-item-count">160</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -394,7 +394,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">45</span>
+        <span class="site-state-item-count">46</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -430,12 +430,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">289k</span>
+    <span title="站点总字数">301k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:23</span>
+    <span title="站点阅读时长">4:34</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>

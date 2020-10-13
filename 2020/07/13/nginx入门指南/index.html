@@ -29,14 +29,14 @@
 <meta property="og:site_name" content="一缕烟气">
 <meta property="og:description" content="windows下启动nginx注意不要直接双击nginx.exe，这样会导致修改配置后重启、停止nginx无效，需要手动关闭任务管理器内的所有nginx进程  cmd 进入Nginx解压目录 执行以下命令 1234![22](&#x2F;22.png)start nginx : 启动nginx服务nginx -s reload  ：修改配置后重新加载生效nginx -s reopen  ：重新打开日志文件n">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://wrr123.github.io/2020/07/13/nginx%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/22.png">
-<meta property="og:image" content="http://wrr123.github.io/2020/07/13/nginx%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/11.png">
+<meta property="og:image" content="http://localhost:4000/2020/07/13/nginx%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/22.png">
+<meta property="og:image" content="http://localhost:4000/2020/07/13/nginx%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/11.png">
 <meta property="article:published_time" content="2020-07-13T11:30:53.000Z">
 <meta property="article:modified_time" content="2020-08-21T15:09:10.726Z">
 <meta property="article:author" content="田园隐士">
 <meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://wrr123.github.io/2020/07/13/nginx%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/22.png">
+<meta name="twitter:image" content="http://localhost:4000/2020/07/13/nginx%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/22.png">
 
 <link rel="canonical" href="https://wrr123.github.io/2020/07/13/nginx%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/">
 
@@ -273,7 +273,7 @@
 <p>window下检查nginx服务是否启动</p>
 <blockquote>
 <p><code>tasklist /fi &quot;imagename eq nginx.exe&quot;</code>,在cmd窗口输入前面的命令，若如下图所示，表示已经启动了。</p>
-<p><img src="http://wrr123.github.io/2020/07/13/nginx%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/22.png"></p>
+<p><img src="http://localhost:4000/2020/07/13/nginx%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/22.png"></p>
 </blockquote>
 <h4 id="nginx常用命令"><a href="#nginx常用命令" class="headerlink" title="nginx常用命令"></a>nginx常用命令</h4><blockquote>
 <p>验证配置是否正确: nginx -t</p>
@@ -286,7 +286,7 @@
 <h4 id="nginx反向代理的作用"><a href="#nginx反向代理的作用" class="headerlink" title="nginx反向代理的作用"></a>nginx反向代理的作用</h4><blockquote>
 <p>项目部署在多个tomcat上，即使其中一个tomcat不能访问了也能访问其他的tomcat服务，</p>
 </blockquote>
-<p><img src="http://wrr123.github.io/2020/07/13/nginx%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/11.png"></p>
+<p><img src="http://localhost:4000/2020/07/13/nginx%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/11.png"></p>
 <h4 id="nginx配置并部署-案例1"><a href="#nginx配置并部署-案例1" class="headerlink" title="nginx配置并部署(案例1)"></a>nginx配置并部署(案例1)</h4><blockquote>
 <p>配置两个Tomcat服务指向 localhost:8070 和 localhost:8071他们的权重都是5（权重越大就越容易被访问）</p>
 </blockquote>
@@ -398,7 +398,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">152</span>
+          <span class="site-state-item-count">160</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -411,7 +411,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">45</span>
+        <span class="site-state-item-count">46</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -447,12 +447,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">289k</span>
+    <span title="站点总字数">301k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:23</span>
+    <span title="站点阅读时长">4:34</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>

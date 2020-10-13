@@ -30,7 +30,7 @@
 <meta property="og:description" content="代码折叠vim 代码折叠方式可以用 “foldmethod” 选项来设置，如: set foldmethod &#x3D; indent 有 6 种方式来折叠代码 manual 手工定义折叠 indent 用缩进来表示折叠 expr 用表达式来定义折叠 syntax 用语法高亮来定义折叠 diff 对没有更改的文本进行折叠 marker 用标志折叠">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-08-20T02:41:04.000Z">
-<meta property="article:modified_time" content="2020-09-09T01:15:20.110Z">
+<meta property="article:modified_time" content="2020-10-12T07:10:11.370Z">
 <meta property="article:author" content="田园隐士">
 <meta property="article:tag" content="编辑器">
 <meta name="twitter:card" content="summary">
@@ -227,7 +227,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-09 09:15:20" itemprop="dateModified" datetime="2020-09-09T09:15:20+08:00">2020-09-09</time>
+                <time title="修改时间：2020-10-12 15:10:11" itemprop="dateModified" datetime="2020-10-12T15:10:11+08:00">2020-10-12</time>
               </span>
 
           
@@ -243,14 +243,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1.1k</span>
+              <span>3.4k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
+              <span>3 分钟</span>
             </span>
 
         </div>
@@ -295,6 +295,152 @@
 <p><code>%s/</code>，这时候使用 <code>ctrl-R 再按 &quot;</code>,那么复制的内容就会出现在命令行中了。</p>
 <h4 id="统计一个字符串出现的次数"><a href="#统计一个字符串出现的次数" class="headerlink" title="统计一个字符串出现的次数"></a>统计一个字符串出现的次数</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:%s/string/&amp;/gn</span><br></pre></td></tr></table></figure>
 
+<h4 id="Movement-Characters"><a href="#Movement-Characters" class="headerlink" title="Movement: Characters"></a>Movement: Characters</h4><p><code>t [char]</code> : Jump to one character before the next occurence of [char]</p>
+<p><code>T [char]</code>: Jump to one character after the next occurence of [char]</p>
+<p><code>;</code>: repeat last <code>f F t T</code> movement</p>
+<p><code>,</code>: repeat last <code>f F t T</code> movement in the opposite direction</p>
+<h4 id="Movement-Code"><a href="#Movement-Code" class="headerlink" title="Movement: Code"></a>Movement: Code</h4><p><code>[[</code> : Jump to previous function</p>
+<p><code>]]</code>: Jump to next function</p>
+<p><code>[&#123;</code>: Jump to beginning of current block</p>
+<p><code>]&#125;</code>: Jump to end of currnet block</p>
+<h4 id="Indenting-text"><a href="#Indenting-text" class="headerlink" title="Indenting text"></a>Indenting text</h4><ul>
+<li><p><code>&gt;aB</code></p>
+<p>  Indent current block (defined by curly braces).</p>
+</li>
+<li><p><code>&gt;ap</code></p>
+<p>  Indent current paragraph.</p>
+</li>
+<li><p><code>&gt;i&#123;</code></p>
+<p>  Indent inside current set of curly braces.</p>
+</li>
+<li><p><code>=</code></p>
+<p>  In visual mode: Reformat selected text.</p>
+</li>
+</ul>
+<h4 id="buffers"><a href="#buffers" class="headerlink" title="buffers"></a>buffers</h4><ul>
+<li><p><code>:ls</code></p>
+<p>  List open buffers.</p>
+</li>
+<li><p><code>:buf 2</code></p>
+<p>  Switch to buffer #2.</p>
+</li>
+<li><p><code>:bn</code></p>
+<p>  Switch to next buffer.</p>
+</li>
+<li><p><code>:bp</code></p>
+<p>  Switch to previous buffer.</p>
+</li>
+<li><p><code>:bd</code></p>
+<p>  Close current buffer.</p>
+</li>
+</ul>
+<h4 id="Scrolling"><a href="#Scrolling" class="headerlink" title="Scrolling"></a>Scrolling</h4><ul>
+<li><p>H</p>
+<p>  Jump to the high part of the screen.</p>
+</li>
+<li><p>M</p>
+<p>  Jump to the middle part of the screen.</p>
+</li>
+<li><p>L</p>
+<p>  Jump to the low part of the screen.</p>
+</li>
+<li><p>zt</p>
+<p>  Scroll so the current line is at the top of the screen.</p>
+</li>
+<li><p>zz</p>
+<p>  Scroll so the current line is in the middle of the screen.</p>
+</li>
+<li><p>zb</p>
+<p>  Scroll so the current line is at the bottom of the screen.</p>
+</li>
+</ul>
+<h4 id="Floding"><a href="#Floding" class="headerlink" title="Floding"></a>Floding</h4><ul>
+<li><p>:fold</p>
+<p>  In visual mode: Fold selected lines.</p>
+</li>
+<li><p>3zF</p>
+<p>  Fold 3 lines.</p>
+</li>
+<li><p>zo</p>
+<p>  Open current fold under the cursor.</p>
+</li>
+<li><p>zc</p>
+<p>  Close current fold under the cursor.</p>
+</li>
+<li><p>za</p>
+<p>  Toggle current fold under the cursor.</p>
+</li>
+<li><p>zR</p>
+<p>  Open all folds.</p>
+</li>
+<li><p>zM</p>
+<p>  Close all folds.</p>
+</li>
+<li><p>zd</p>
+<p>  Delete fold under the cursor. (Leaves text intact, just removes fold.)</p>
+</li>
+</ul>
+<h4 id="Bookmark-and-History"><a href="#Bookmark-and-History" class="headerlink" title="Bookmark and History"></a>Bookmark and History</h4><ul>
+<li><p>ma</p>
+<p>  Set current position as mark ‘a’ (any lowercase letter will do).</p>
+</li>
+<li><p>`a</p>
+<p>  Jump to mark ‘a’. (The first character is a backtick, left of the ‘1’ on your keyboard.)</p>
+</li>
+<li><p>g;</p>
+<p>  Go back to the last place you edited. (You can do it multiple times in a row.)</p>
+</li>
+</ul>
+<h4 id="Miscellaneous"><a href="#Miscellaneous" class="headerlink" title="Miscellaneous"></a>Miscellaneous</h4><ul>
+<li><p>:sort</p>
+<p>  Sort selected text.</p>
+</li>
+<li><p>:%sort</p>
+<p>  Sort the whole file.</p>
+</li>
+<li><p>:1,10sort</p>
+<p>  Sort the first ten lines of the file.</p>
+</li>
+<li><p>:!sort -n</p>
+<p>  Sort selected text using the external Unix <code>sort</code> command with the <code>-n</code> option.</p>
+</li>
+<li><p>:%!uniq</p>
+<p>  Run the whole file through the external <code>uniq</code> command.</p>
+</li>
+<li><p>vimdiff <em>[file1]</em> <em>[file2]</em></p>
+<p>  Diff <em>[file1]</em> and <em>[file2]</em> using synchronized split windows.</p>
+</li>
+<li><p>]c</p>
+<p>  In vimdiff mode, move to next line with differences.</p>
+</li>
+<li><p>[c</p>
+<p>  In vimdiff mode, move to previous line with differences.</p>
+</li>
+<li><p>vim + <em>[file]</em></p>
+<p>  Open <em>[file]</em> in Vim and jump to the end of the file.</p>
+</li>
+<li><p>vim +21 <em>[file]</em></p>
+<p>  Open <em>[file]</em> in Vim and jump to line 21.</p>
+</li>
+<li><p>[i</p>
+<p>  Show (in the status line) the first line containing the word under the cursor.</p>
+</li>
+<li><p>[I</p>
+<p>  Show (in the status line) all lines containing the word under the cursor.</p>
+</li>
+<li><p>:g/pattern/</p>
+<p>  Show (in the status line) all lines that match the regex <code>/pattern/</code>.</p>
+</li>
+<li><p>:e scp://username@server//path/to/file</p>
+<p>  Open a remote file over SSH.</p>
+</li>
+<li><p>:au! BufNewFile,BufRead *.php set filetype=php.html.javascript.css</p>
+<p>  When you open or create a .php file, set the filetype to include HTML, JS, and CSS (for good syntax highlighting).</p>
+</li>
+<li><p>:iab <expr> dts strftime(“%-d %b %Y (%a)”)</expr></p>
+<p>  Make it so typing ‘dts’ followed by a space will insert the current date.</p>
+</li>
+</ul>
 
     </div>
 
@@ -378,7 +524,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E6%8A%98%E5%8F%A0"><span class="nav-number">1.</span> <span class="nav-text">代码折叠</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9C%89-6-%E7%A7%8D%E6%96%B9%E5%BC%8F%E6%9D%A5%E6%8A%98%E5%8F%A0%E4%BB%A3%E7%A0%81"><span class="nav-number">1.1.</span> <span class="nav-text">有 6 种方式来折叠代码</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#indent-%E6%8A%98%E5%8F%A0%E5%91%BD%E4%BB%A4"><span class="nav-number">1.2.</span> <span class="nav-text">indent 折叠命令</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C"><span class="nav-number">1.2.1.</span> <span class="nav-text">操作</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#marker-%E6%8A%98%E5%8F%A0%E5%91%BD%E4%BB%A4"><span class="nav-number">1.3.</span> <span class="nav-text">marker 折叠命令</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F%E4%B8%8B%E7%B2%98%E8%B4%B4%E6%95%B0%E6%8D%AE"><span class="nav-number">2.</span> <span class="nav-text">在命令模式下粘贴数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%9F%E8%AE%A1%E4%B8%80%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%BA%E7%8E%B0%E7%9A%84%E6%AC%A1%E6%95%B0"><span class="nav-number">3.</span> <span class="nav-text">统计一个字符串出现的次数</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E6%8A%98%E5%8F%A0"><span class="nav-number">1.</span> <span class="nav-text">代码折叠</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9C%89-6-%E7%A7%8D%E6%96%B9%E5%BC%8F%E6%9D%A5%E6%8A%98%E5%8F%A0%E4%BB%A3%E7%A0%81"><span class="nav-number">1.1.</span> <span class="nav-text">有 6 种方式来折叠代码</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#indent-%E6%8A%98%E5%8F%A0%E5%91%BD%E4%BB%A4"><span class="nav-number">1.2.</span> <span class="nav-text">indent 折叠命令</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C"><span class="nav-number">1.2.1.</span> <span class="nav-text">操作</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#marker-%E6%8A%98%E5%8F%A0%E5%91%BD%E4%BB%A4"><span class="nav-number">1.3.</span> <span class="nav-text">marker 折叠命令</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F%E4%B8%8B%E7%B2%98%E8%B4%B4%E6%95%B0%E6%8D%AE"><span class="nav-number">2.</span> <span class="nav-text">在命令模式下粘贴数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%9F%E8%AE%A1%E4%B8%80%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%BA%E7%8E%B0%E7%9A%84%E6%AC%A1%E6%95%B0"><span class="nav-number">3.</span> <span class="nav-text">统计一个字符串出现的次数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Movement-Characters"><span class="nav-number">4.</span> <span class="nav-text">Movement: Characters</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Movement-Code"><span class="nav-number">5.</span> <span class="nav-text">Movement: Code</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Indenting-text"><span class="nav-number">6.</span> <span class="nav-text">Indenting text</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#buffers"><span class="nav-number">7.</span> <span class="nav-text">buffers</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Scrolling"><span class="nav-number">8.</span> <span class="nav-text">Scrolling</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Floding"><span class="nav-number">9.</span> <span class="nav-text">Floding</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Bookmark-and-History"><span class="nav-number">10.</span> <span class="nav-text">Bookmark and History</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Miscellaneous"><span class="nav-number">11.</span> <span class="nav-text">Miscellaneous</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -394,7 +540,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">152</span>
+          <span class="site-state-item-count">160</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -407,7 +553,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">45</span>
+        <span class="site-state-item-count">46</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -443,12 +589,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">289k</span>
+    <span title="站点总字数">301k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:23</span>
+    <span title="站点阅读时长">4:34</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
