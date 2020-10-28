@@ -1,52 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>JavaScript</title>
-    <url>/2020/08/24/JavaScript/</url>
-    <content><![CDATA[<h4 id="JavaScript-严格模式"><a href="#JavaScript-严格模式" class="headerlink" title="JavaScript 严格模式"></a>JavaScript 严格模式</h4><p>JavaScript 严格模式（strict mode）即在严格的条件下运行。</p>
-<h5 id="使用-“use-strict”-指令"><a href="#使用-“use-strict”-指令" class="headerlink" title="使用 “use strict” 指令"></a>使用 “use strict” 指令</h5><p>“use strict” 指令在 JavaScript 1.8.5 （ECMAScript5）中新增。</p>
-<p>它不是一条语句，但是是一个字面量表达式，在 JavaScript 旧版本中会被忽略。</p>
-<p>“use strict” 的目的是指定代码在严格条件下执行。</p>
-<p>严格模式下你不能使用 <strong>未声明的变量 。</strong></p>
-<a id="more"></a>
-
-<h5 id="严格模式声明"><a href="#严格模式声明" class="headerlink" title="严格模式声明"></a>严格模式声明</h5><p>严格模式通过在脚本或函数的头部添加 <code>“use strict”；</code> 表达式来声明。</p>
-<h4 id="js-清除空格的几种类型"><a href="#js-清除空格的几种类型" class="headerlink" title="js 清除空格的几种类型"></a>js 清除空格的几种类型</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">str为要去除空格的字符串:</span><br><span class="line">去除所有空格:</span><br><span class="line">str = str.replace(<span class="regexp">/\s+/g</span>,<span class="string">&quot;&quot;</span>);</span><br><span class="line">去除两头空格:</span><br><span class="line">str = str.replace(<span class="regexp">/^\s+|\s+$/g</span>,<span class="string">&quot;&quot;</span>);</span><br><span class="line">去除左空格：</span><br><span class="line">str=str.replace( <span class="regexp">/^\s/</span>, <span class="string">&#x27;&#x27;</span>);</span><br><span class="line">去除右空格：</span><br><span class="line">str=str.replace(<span class="regexp">/(\s$)/g</span>, <span class="string">&quot;&quot;</span>);</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-]]></content>
-      <tags>
-        <tag>JavaScript</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>FAQ-JavaScript</title>
     <url>/2020/08/07/FAQ-JavaScript/</url>
     <content><![CDATA[<h4 id="数值0-0的布尔值是true-还是false？"><a href="#数值0-0的布尔值是true-还是false？" class="headerlink" title="数值0,-0的布尔值是true,还是false？"></a>数值<code>0,-0</code>的布尔值是true,还是false？</h4><p>几个栗子</p>
@@ -92,10 +46,75 @@
 <p>offsetWidth：元素的 width + 元素的 padding + 边框的宽度</p>
 </li>
 </ul>
+<h4 id="将字符串转换为数字的几种方式"><a href="#将字符串转换为数字的几种方式" class="headerlink" title="将字符串转换为数字的几种方式"></a>将字符串转换为数字的几种方式</h4><ol>
+<li><p>转换函数 <code>parseInt</code> <code>parseFloat</code></p>
+</li>
+<li><p>强制类型转换 </p>
+<blockquote>
+<p>Boolean(value)——把给定的值转换成Boolean型；<br>Number(value)——把给定的值转换成数字（可以是整数或浮点数）；<br>String(value)——把给定的值转换成字符串。</p>
+</blockquote>
+</li>
+<li><p>利用 js 的弱类型转换</p>
+<p> 一个栗子：</p>
+ <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line"><span class="keyword">var</span>   str= <span class="string">&#x27;012.345 &#x27;</span>;</span><br><span class="line"><span class="keyword">var</span>   x   =   str<span class="number">-0</span>;</span><br><span class="line">x   =   x*<span class="number">1</span>;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h4 id="js数组合并的方法（一个数组的元素添加到另一个元素中）"><a href="#js数组合并的方法（一个数组的元素添加到另一个元素中）" class="headerlink" title="js数组合并的方法（一个数组的元素添加到另一个元素中）"></a>js数组合并的方法（一个数组的元素添加到另一个元素中）</h4><p>直接使用 <code>push</code> 方法的话，一个数组会成为另一个数组的子元素。</p>
+<p><strong>concat(Array)方法</strong></p>
+<blockquote>
+<p>concat() 方法用于连接两个或多个数组。该方法不会改变现有的数组，而仅仅会返回被连接数组的一个副本。<br>array1.concat([item1[, item2[, . . . [, itemN]]]])</p>
+</blockquote>
 ]]></content>
       <tags>
         <tag>js</tag>
-        <tag>FAQ</tag>
+        <tag>faq</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JavaScript</title>
+    <url>/2020/08/24/JavaScript/</url>
+    <content><![CDATA[<h4 id="JavaScript-严格模式"><a href="#JavaScript-严格模式" class="headerlink" title="JavaScript 严格模式"></a>JavaScript 严格模式</h4><p>JavaScript 严格模式（strict mode）即在严格的条件下运行。</p>
+<h5 id="使用-“use-strict”-指令"><a href="#使用-“use-strict”-指令" class="headerlink" title="使用 “use strict” 指令"></a>使用 “use strict” 指令</h5><p>“use strict” 指令在 JavaScript 1.8.5 （ECMAScript5）中新增。</p>
+<p>它不是一条语句，但是是一个字面量表达式，在 JavaScript 旧版本中会被忽略。</p>
+<p>“use strict” 的目的是指定代码在严格条件下执行。</p>
+<p>严格模式下你不能使用 <strong>未声明的变量 。</strong></p>
+<a id="more"></a>
+
+<h5 id="严格模式声明"><a href="#严格模式声明" class="headerlink" title="严格模式声明"></a>严格模式声明</h5><p>严格模式通过在脚本或函数的头部添加 <code>“use strict”；</code> 表达式来声明。</p>
+<h4 id="js-清除空格的几种类型"><a href="#js-清除空格的几种类型" class="headerlink" title="js 清除空格的几种类型"></a>js 清除空格的几种类型</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">str为要去除空格的字符串:</span><br><span class="line">去除所有空格:</span><br><span class="line">str = str.replace(<span class="regexp">/\s+/g</span>,<span class="string">&quot;&quot;</span>);</span><br><span class="line">去除两头空格:</span><br><span class="line">str = str.replace(<span class="regexp">/^\s+|\s+$/g</span>,<span class="string">&quot;&quot;</span>);</span><br><span class="line">去除左空格：</span><br><span class="line">str=str.replace( <span class="regexp">/^\s/</span>, <span class="string">&#x27;&#x27;</span>);</span><br><span class="line">去除右空格：</span><br><span class="line">str=str.replace(<span class="regexp">/(\s$)/g</span>, <span class="string">&quot;&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+]]></content>
+      <tags>
+        <tag>JavaScript</tag>
       </tags>
   </entry>
   <entry>
@@ -183,43 +202,6 @@
       </tags>
   </entry>
   <entry>
-    <title>StringBuffer-StringBuilder区别</title>
-    <url>/2020/08/13/StringBuffer-StringBuilder%E5%8C%BA%E5%88%AB/</url>
-    <content><![CDATA[<h4 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h4><p>StringBuffer 支持并发操作，是线程安全的，适合多线程使用。</p>
-<p>StringBuilder 不支持并发操作，不是线程安全的，但是在单线程中的性能比 StringBuffer 高。 </p>
-<a id="more"></a>
-
-<h4 id="延申1：和-String-类型有什么区别"><a href="#延申1：和-String-类型有什么区别" class="headerlink" title="延申1：和 String 类型有什么区别"></a>延申1：和 String 类型有什么区别</h4><p>String 是不可变的对象，因此每次在对 String 类型进行改变的时候，都会生成一个新的 String 对象，然后将指针指向新的 String 对象，所以经常改变内容的字符串最好不要使用 String，因为每次生成对象都会对系统性能产生影响，特别当内存中 <strong>无引用对象</strong> 多了以后，JVM 的 GC 就会开始工作，性能就会降低。</p>
-<h5 id="使用策略"><a href="#使用策略" class="headerlink" title="使用策略"></a>使用策略</h5><ul>
-<li><p>基本原则：如果要操作少量的数据，用 String；单线程操作大量的数据，用 StringBuilder；多线程操作大量的数据，用 StringBuffer。</p>
-</li>
-<li><p>不要使用 String 类的 “+” 来进行频繁的拼接，因为那样的性能极差，应该使用 StringBuffer 或者 StringBuilder 类，这在 Java 的优化上是一条比较重要的原则。</p>
-<p>一个栗子：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">String result = <span class="string">&quot;&quot;</span>;</span><br><span class="line"><span class="keyword">for</span> (String s : hugeArray) &#123;</span><br><span class="line">    result = result + s;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用StringBuilder</span></span><br><span class="line">StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line"><span class="keyword">for</span> (String s : hugeArray) &#123;</span><br><span class="line">    sb.append(s);</span><br><span class="line">&#125;</span><br><span class="line">String result = sb.toString();</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>当出现上面的情况时，显然我们要采用第二种方法，因为第一种方法，每次循环都会<strong>创建一个String result用于保存结果，除此之外二者基本相同（对于jdk1.5及之后版本）</strong>。</p>
-</blockquote>
-</li>
-<li><blockquote>
-<p>为了获得更好的性能，在构造 StringBuffer 或 StringBuilder 时应尽可能指定它们的容量。当然，如果你操作的字符串长度（length）不超过 16 个字符就不用了，当不指定容量（capacity）时默认构造一个容量为16的对象。不指定容量会显著降低性能。</p>
-</blockquote>
-</li>
-<li><blockquote>
-<p>StringBuilder 一般使用在方法内部来完成类似 <strong>+</strong> 功能，因为是线程不安全的，所以用完以后可以丢弃。StringBuffer 主要用在全局变量中。</p>
-</blockquote>
-</li>
-<li><blockquote>
-<p>相同情况下使用 StringBuilder 相比使用 StringBuffer 仅能获得 10%~15% 左右的性能提升，但却要冒多线程不安全的风险。而在现实的模块化编程中，负责某一模块的程序员不一定能清晰地判断该模块是否会放入多线程的环境中运行，因此：除非确定系统的瓶颈是在 StringBuffer 上，并且确定你的模块不会运行在多线程模式下，才可以采用 StringBuilder；否则还是用 StringBuffer。</p>
-</blockquote>
-</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Pull Request命令行整理</title>
     <url>/2020/07/08/Pull-Request%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%95%B4%E7%90%86/</url>
     <content><![CDATA[<h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><p>官方定义</p>
@@ -257,6 +239,43 @@
 ]]></content>
       <tags>
         <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>StringBuffer-StringBuilder区别</title>
+    <url>/2020/08/13/StringBuffer-StringBuilder%E5%8C%BA%E5%88%AB/</url>
+    <content><![CDATA[<h4 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h4><p>StringBuffer 支持并发操作，是线程安全的，适合多线程使用。</p>
+<p>StringBuilder 不支持并发操作，不是线程安全的，但是在单线程中的性能比 StringBuffer 高。 </p>
+<a id="more"></a>
+
+<h4 id="延申1：和-String-类型有什么区别"><a href="#延申1：和-String-类型有什么区别" class="headerlink" title="延申1：和 String 类型有什么区别"></a>延申1：和 String 类型有什么区别</h4><p>String 是不可变的对象，因此每次在对 String 类型进行改变的时候，都会生成一个新的 String 对象，然后将指针指向新的 String 对象，所以经常改变内容的字符串最好不要使用 String，因为每次生成对象都会对系统性能产生影响，特别当内存中 <strong>无引用对象</strong> 多了以后，JVM 的 GC 就会开始工作，性能就会降低。</p>
+<h5 id="使用策略"><a href="#使用策略" class="headerlink" title="使用策略"></a>使用策略</h5><ul>
+<li><p>基本原则：如果要操作少量的数据，用 String；单线程操作大量的数据，用 StringBuilder；多线程操作大量的数据，用 StringBuffer。</p>
+</li>
+<li><p>不要使用 String 类的 “+” 来进行频繁的拼接，因为那样的性能极差，应该使用 StringBuffer 或者 StringBuilder 类，这在 Java 的优化上是一条比较重要的原则。</p>
+<p>一个栗子：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">String result = <span class="string">&quot;&quot;</span>;</span><br><span class="line"><span class="keyword">for</span> (String s : hugeArray) &#123;</span><br><span class="line">    result = result + s;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用StringBuilder</span></span><br><span class="line">StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line"><span class="keyword">for</span> (String s : hugeArray) &#123;</span><br><span class="line">    sb.append(s);</span><br><span class="line">&#125;</span><br><span class="line">String result = sb.toString();</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>当出现上面的情况时，显然我们要采用第二种方法，因为第一种方法，每次循环都会<strong>创建一个String result用于保存结果，除此之外二者基本相同（对于jdk1.5及之后版本）</strong>。</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>为了获得更好的性能，在构造 StringBuffer 或 StringBuilder 时应尽可能指定它们的容量。当然，如果你操作的字符串长度（length）不超过 16 个字符就不用了，当不指定容量（capacity）时默认构造一个容量为16的对象。不指定容量会显著降低性能。</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>StringBuilder 一般使用在方法内部来完成类似 <strong>+</strong> 功能，因为是线程不安全的，所以用完以后可以丢弃。StringBuffer 主要用在全局变量中。</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>相同情况下使用 StringBuilder 相比使用 StringBuffer 仅能获得 10%~15% 左右的性能提升，但却要冒多线程不安全的风险。而在现实的模块化编程中，负责某一模块的程序员不一定能清晰地判断该模块是否会放入多线程的环境中运行，因此：除非确定系统的瓶颈是在 StringBuffer 上，并且确定你的模块不会运行在多线程模式下，才可以采用 StringBuilder；否则还是用 StringBuffer。</p>
+</blockquote>
+</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>java</tag>
       </tags>
   </entry>
   <entry>
@@ -422,6 +441,15 @@
       <tags>
         <tag>java</tag>
         <tag>ali</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>axios与ajax比较</title>
+    <url>/2020/09/05/axios%E4%B8%8Eajax%E6%AF%94%E8%BE%83/</url>
+    <content><![CDATA[<h4 id="什么叫-axios"><a href="#什么叫-axios" class="headerlink" title="什么叫 axios"></a>什么叫 axios</h4>]]></content>
+      <tags>
+        <tag>vuejs</tag>
+        <tag>nodejs</tag>
       </tags>
   </entry>
   <entry>
@@ -676,15 +704,6 @@
       </tags>
   </entry>
   <entry>
-    <title>axios与ajax比较</title>
-    <url>/2020/09/05/axios%E4%B8%8Eajax%E6%AF%94%E8%BE%83/</url>
-    <content><![CDATA[<h4 id="什么叫-axios"><a href="#什么叫-axios" class="headerlink" title="什么叫 axios"></a>什么叫 axios</h4>]]></content>
-      <tags>
-        <tag>vuejs</tag>
-        <tag>nodejs</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>css四个定位之间的区别</title>
     <url>/2020/09/15/css%E5%9B%9B%E4%B8%AA%E5%AE%9A%E4%BD%8D%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
     <content><![CDATA[<h4 id="CSS-的四个定位"><a href="#CSS-的四个定位" class="headerlink" title="CSS 的四个定位"></a>CSS 的四个定位</h4><ul>
@@ -781,44 +800,6 @@
       </tags>
   </entry>
   <entry>
-    <title>data3c项目</title>
-    <url>/2020/06/28/data3c%E9%A1%B9%E7%9B%AE/</url>
-    <content><![CDATA[<h5 id="npm镜像推荐和使用"><a href="#npm镜像推荐和使用" class="headerlink" title="npm镜像推荐和使用"></a>npm镜像推荐和使用</h5><p>镜像推荐<br>淘宝镜像： </p>
-<ul>
-<li>搜索地址 <a href="http://npm.taobao.org/">http://npm.taobao.org/</a></li>
-<li>registry地址 <a href="http://registry.npm.taobao.org/">http://registry.npm.taobao.org/</a></li>
-</ul>
-<p>使用:</p>
-<ul>
-<li>临时使用 <code>npm --registry https://registry.npm.taobao.org install express</code></li>
-<li>永久使用<figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">npm config set registry https://registry.npm.taobao.org</span><br><span class="line"></span><br><span class="line">// 配置后可通过下面方式来验证是否成功</span><br><span class="line">npm config get registry</span><br><span class="line">// 或</span><br><span class="line">npm info express</span><br></pre></td></tr></table></figure></li>
-<li>使用<code>cnpm</code>命令<figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="code"><pre><span class="line">npm install -g cnpm --registry=https://registry.npm.taobao.org</span><br><span class="line">// 使用</span><br><span class="line">cnpm install expresstall express</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h5 id="vue的计算属性和观察属性"><a href="#vue的计算属性和观察属性" class="headerlink" title="vue的计算属性和观察属性"></a>vue的计算属性和观察属性</h5><p>计算属性是自动监听依赖值的变化，从而动态返回内容；<br>监听是一个过程，在监听的值变化时，可以触发一个回调，并做一些事情。</p>
-<p>计算属性由两部分组成：get和set，分别用来获取计算属性和设置计算属性。<br>默认只有get，如果需要set，要自己添加。<br>set设置属性，并不是直接修改计算属性，而是修改它的依赖。</p>
-<p>计算属性和普通属性的区别？<br>可以像绑定普通属性一样在模板中绑定计算属性，<br>在定义上存在区别： 计算属性的属性值必须是一个函数。</p>
-<p>计算属性VS方法<br>computed是可以缓存的，methods不可以缓存<br><strong>只要相关的依赖没有改变，多次访问计算属性得到的值就是之前缓存的计算结果，不会多次执行</strong></p>
-<p>侦听属性（观察属性）<code>watch</code><br>watch中可以执行任何逻辑，如函数节流、Ajax异步获取数据、甚至操作DOM(<strong>不建议</strong>)</p>
-<h5 id="lombok"><a href="#lombok" class="headerlink" title="lombok"></a>lombok</h5><ul>
-<li>注解<code>@Cleanup</code><br>使用在局部变量上面。<br>在需要关闭流对象时，帮助你自动关闭。</li>
-</ul>
-<h5 id="java-try-with-resources-语法糖"><a href="#java-try-with-resources-语法糖" class="headerlink" title="java try-with-resources 语法糖"></a>java try-with-resources 语法糖</h5><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">try(声明并初始化需要关闭资源的变量，多个的话使用分号`;`分隔) &#123;</span><br><span class="line">&#125;catch(e) &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>java 获取项目中文件的输入流<br>获取到<code>this.getClass().getClassLoader().getResourceStream(&quot;文件的类路径&quot;);</code><br>or<br>使用springboot下的<code>ResourceUtils.getFile(&quot;classpath:类路径&quot;)</code></p>
-<p>java 文件下载到浏览器端<br>前端调用： <code>window.open(url)</code>, 使用ajax的话，下载不了。<br>后端下载： HttpServletResponse的输出流</p>
-<h5 id="springboot-多数据源实现"><a href="#springboot-多数据源实现" class="headerlink" title="springboot 多数据源实现"></a>springboot 多数据源实现</h5><p>在application.yml中添加其他数据源的配置信息，<br>在config中初始化每个数据源，</p>
-<h5 id="oracle-用户对表空间’XXXX’无权限"><a href="#oracle-用户对表空间’XXXX’无权限" class="headerlink" title="oracle,用户对表空间’XXXX’无权限"></a>oracle,用户对表空间’XXXX’无权限</h5><p>为用户授予resource权限，则不对用户的表空间进行限制<br><code>grant resource to username</code><br>授予用户表空间不受限制的权限<br><code>grant unlimited tablespace to username</code></p>
-<h5 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h5><ol>
-<li>Q1: 在springboot中，注解@RequestMapping的<strong>produces</strong>属性的含义?<br> 作用： 指定返回值的类型，不仅如此，也可以设定返回值的字符编码。<br> 与之相对应的一个属性为<em>consume</em>, 指定处理请求的提交内容的类型，如application/json,text/html.</li>
-</ol>
-]]></content>
-      <tags>
-        <tag>vueJs springboot element-ui</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>easypoi-excel模板处理</title>
     <url>/2020/07/06/easypoi-excel%E6%A8%A1%E6%9D%BF%E5%A4%84%E7%90%86/</url>
     <content><![CDATA[<h4 id="模板指令介绍"><a href="#模板指令介绍" class="headerlink" title="模板指令介绍"></a>模板指令介绍</h4><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">&gt; 下面列举下EasyPoi支持的指令以及作用，**最主要的就是各种fe的用法**</span><br><span class="line">&gt;</span><br><span class="line">&gt; - 空格分割</span><br><span class="line">&gt; - 三目运算 &#123;&#123;test ? obj:obj2&#125;&#125;</span><br><span class="line">&gt; - n: 表示 这个cell是数值类型 &#123;&#123;n:&#125;&#125;</span><br><span class="line">&gt; - le: 代表长度&#123;&#123;le:()&#125;&#125; 在if/else 运用&#123;&#123;le:() &gt; 8 ? obj1 : obj2&#125;&#125;</span><br><span class="line">&gt; - fd: 格式化时间 &#123;&#123;fd:(obj;yyyy-MM-dd)&#125;&#125;</span><br><span class="line">&gt; - fn: 格式化数字 &#123;&#123;fn:(obj;###.00)&#125;&#125;</span><br><span class="line">&gt; - fe: 遍历数据,创建row</span><br><span class="line">&gt; - !fe: 遍历数据不创建row</span><br><span class="line">&gt; - $fe: 下移插入,把当前行,下面的行全部下移.size()行,然后插入</span><br><span class="line">&gt; - \#fe: 横向遍历</span><br><span class="line">&gt; - v_fe: 横向遍历值</span><br><span class="line">&gt; - !if: 删除当前列 &#123;&#123;!if:(test)&#125;&#125;</span><br><span class="line">&gt; - 单引号表示常量值 &#x27;&#x27; 比如&#x27;1&#x27; 那么输出的就是 1</span><br><span class="line">&gt; - &amp;NULL&amp; 空格</span><br><span class="line">&gt; - ]] 换行符 多行遍历导出</span><br><span class="line">&gt; - sum： 统计数据</span><br></pre></td></tr></table></figure>
@@ -872,6 +853,44 @@
       </categories>
       <tags>
         <tag>excel</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>data3c项目</title>
+    <url>/2020/06/28/data3c%E9%A1%B9%E7%9B%AE/</url>
+    <content><![CDATA[<h5 id="npm镜像推荐和使用"><a href="#npm镜像推荐和使用" class="headerlink" title="npm镜像推荐和使用"></a>npm镜像推荐和使用</h5><p>镜像推荐<br>淘宝镜像： </p>
+<ul>
+<li>搜索地址 <a href="http://npm.taobao.org/">http://npm.taobao.org/</a></li>
+<li>registry地址 <a href="http://registry.npm.taobao.org/">http://registry.npm.taobao.org/</a></li>
+</ul>
+<p>使用:</p>
+<ul>
+<li>临时使用 <code>npm --registry https://registry.npm.taobao.org install express</code></li>
+<li>永久使用<figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">npm config set registry https://registry.npm.taobao.org</span><br><span class="line"></span><br><span class="line">// 配置后可通过下面方式来验证是否成功</span><br><span class="line">npm config get registry</span><br><span class="line">// 或</span><br><span class="line">npm info express</span><br></pre></td></tr></table></figure></li>
+<li>使用<code>cnpm</code>命令<figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="code"><pre><span class="line">npm install -g cnpm --registry=https://registry.npm.taobao.org</span><br><span class="line">// 使用</span><br><span class="line">cnpm install expresstall express</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h5 id="vue的计算属性和观察属性"><a href="#vue的计算属性和观察属性" class="headerlink" title="vue的计算属性和观察属性"></a>vue的计算属性和观察属性</h5><p>计算属性是自动监听依赖值的变化，从而动态返回内容；<br>监听是一个过程，在监听的值变化时，可以触发一个回调，并做一些事情。</p>
+<p>计算属性由两部分组成：get和set，分别用来获取计算属性和设置计算属性。<br>默认只有get，如果需要set，要自己添加。<br>set设置属性，并不是直接修改计算属性，而是修改它的依赖。</p>
+<p>计算属性和普通属性的区别？<br>可以像绑定普通属性一样在模板中绑定计算属性，<br>在定义上存在区别： 计算属性的属性值必须是一个函数。</p>
+<p>计算属性VS方法<br>computed是可以缓存的，methods不可以缓存<br><strong>只要相关的依赖没有改变，多次访问计算属性得到的值就是之前缓存的计算结果，不会多次执行</strong></p>
+<p>侦听属性（观察属性）<code>watch</code><br>watch中可以执行任何逻辑，如函数节流、Ajax异步获取数据、甚至操作DOM(<strong>不建议</strong>)</p>
+<h5 id="lombok"><a href="#lombok" class="headerlink" title="lombok"></a>lombok</h5><ul>
+<li>注解<code>@Cleanup</code><br>使用在局部变量上面。<br>在需要关闭流对象时，帮助你自动关闭。</li>
+</ul>
+<h5 id="java-try-with-resources-语法糖"><a href="#java-try-with-resources-语法糖" class="headerlink" title="java try-with-resources 语法糖"></a>java try-with-resources 语法糖</h5><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">try(声明并初始化需要关闭资源的变量，多个的话使用分号`;`分隔) &#123;</span><br><span class="line">&#125;catch(e) &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>java 获取项目中文件的输入流<br>获取到<code>this.getClass().getClassLoader().getResourceStream(&quot;文件的类路径&quot;);</code><br>or<br>使用springboot下的<code>ResourceUtils.getFile(&quot;classpath:类路径&quot;)</code></p>
+<p>java 文件下载到浏览器端<br>前端调用： <code>window.open(url)</code>, 使用ajax的话，下载不了。<br>后端下载： HttpServletResponse的输出流</p>
+<h5 id="springboot-多数据源实现"><a href="#springboot-多数据源实现" class="headerlink" title="springboot 多数据源实现"></a>springboot 多数据源实现</h5><p>在application.yml中添加其他数据源的配置信息，<br>在config中初始化每个数据源，</p>
+<h5 id="oracle-用户对表空间’XXXX’无权限"><a href="#oracle-用户对表空间’XXXX’无权限" class="headerlink" title="oracle,用户对表空间’XXXX’无权限"></a>oracle,用户对表空间’XXXX’无权限</h5><p>为用户授予resource权限，则不对用户的表空间进行限制<br><code>grant resource to username</code><br>授予用户表空间不受限制的权限<br><code>grant unlimited tablespace to username</code></p>
+<h5 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h5><ol>
+<li>Q1: 在springboot中，注解@RequestMapping的<strong>produces</strong>属性的含义?<br> 作用： 指定返回值的类型，不仅如此，也可以设定返回值的字符编码。<br> 与之相对应的一个属性为<em>consume</em>, 指定处理请求的提交内容的类型，如application/json,text/html.</li>
+</ol>
+]]></content>
+      <tags>
+        <tag>vueJs springboot element-ui</tag>
       </tags>
   </entry>
   <entry>
@@ -1233,8 +1252,8 @@
 
 <h4 id="el-menu-在折叠状态时，鼠标在菜单上显示子菜单列表时，会出现有些菜单不够显示的问题。"><a href="#el-menu-在折叠状态时，鼠标在菜单上显示子菜单列表时，会出现有些菜单不够显示的问题。" class="headerlink" title="el-menu 在折叠状态时，鼠标在菜单上显示子菜单列表时，会出现有些菜单不够显示的问题。"></a><code>el-menu</code> 在折叠状态时，鼠标在菜单上显示子菜单列表时，会出现有些菜单不够显示的问题。</h4>]]></content>
       <tags>
-        <tag>element-ui</tag>
         <tag>faq</tag>
+        <tag>element-ui</tag>
       </tags>
   </entry>
   <entry>
@@ -1349,6 +1368,35 @@
       </categories>
   </entry>
   <entry>
+    <title>faq-mybatis</title>
+    <url>/2020/10/23/faq-mybatis/</url>
+    <content><![CDATA[<h4 id><a href="#" class="headerlink" title></a></h4>]]></content>
+      <categories>
+        <category>faq</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>faq-mysql</title>
+    <url>/2020/10/23/faq-mysql/</url>
+    <content><![CDATA[<h4 id="discard-long-time-none-received-connection-错误信息"><a href="#discard-long-time-none-received-connection-错误信息" class="headerlink" title="discard long time none received connection 错误信息"></a><code>discard long time none received connection</code> 错误信息</h4><p>可能原因：</p>
+<blockquote>
+<p>druid的版本问题，从最新的1.1.23 回退到 1.1.22可解决。</p>
+</blockquote>
+<h4 id="慢-sql-的问题"><a href="#慢-sql-的问题" class="headerlink" title="慢 sql 的问题"></a>慢 sql 的问题</h4><p>使用 <code>druid-spring-boot-starter</code> 时，某些 sql 执行的速度很慢。</p>
+<h5 id="慢-sql-监控"><a href="#慢-sql-监控" class="headerlink" title="慢 sql 监控"></a>慢 sql 监控</h5><figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="comment">#是否开启慢sql查询监控  </span></span><br><span class="line"><span class="meta">spring.datasource.druid.filter.stat.log-slow-sql</span>=<span class="string">true  </span></span><br><span class="line">  </span><br><span class="line"><span class="comment">#慢SQL执行时间  </span></span><br><span class="line"><span class="meta">spring.datasource.druid.filter.stat.slow-sql-millis</span>=<span class="string">1  </span></span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>]]></content>
+      <categories>
+        <category>faq</category>
+      </categories>
+      <tags>
+        <tag>database</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>faq-oracle</title>
     <url>/2020/07/01/faq-oracle/</url>
     <content><![CDATA[<h4 id="ORA-01861-文字与格式字符串不匹配"><a href="#ORA-01861-文字与格式字符串不匹配" class="headerlink" title="ORA-01861: 文字与格式字符串不匹配"></a>ORA-01861: 文字与格式字符串不匹配</h4><p>原因：数据库中字段定义的为date类型，而在java中定义的为string字符串类型</p>
@@ -1359,6 +1407,7 @@
 <p>注意点：</p>
 <p><img src="http://localhost:4000/2020/07/01/faq-oracle/11.png"></p>
 <h5 id="wm-concat"><a href="#wm-concat" class="headerlink" title="wm_concat()"></a>wm_concat()</h5><p>wm_concat()默认以逗号<code>,</code>来分割字段；</p>
+<h4 id="oracle-判断除数不为-0-的方法"><a href="#oracle-判断除数不为-0-的方法" class="headerlink" title="oracle 判断除数不为 0 的方法"></a>oracle 判断除数不为 0 的方法</h4><p><code>decode(column_name, 0, 0, column_name_1 / column_name)</code></p>
 ]]></content>
       <categories>
         <category>FAQ</category>
@@ -1440,6 +1489,7 @@
 <li>官方给出的方法是通过 watch 监听路由变化，做判断路由路径然后调用响应的方法</li>
 <li>通过组件导航守卫来设置对应的 meta 属性</li>
 </ol>
+<h4 id="出现-Uncaught-in-Promise-错误"><a href="#出现-Uncaught-in-Promise-错误" class="headerlink" title="出现 Uncaught (in Promise) 错误"></a>出现 <code>Uncaught (in Promise)</code> 错误</h4><p>错误原因：<code>你的某个 promise 没有加上 catch 语句。</code></p>
 ]]></content>
       <categories>
         <category>前端</category>
@@ -1968,6 +2018,29 @@
       </tags>
   </entry>
   <entry>
+    <title>jQuery基本函数使用</title>
+    <url>/2020/08/10/jQuery%E5%9F%BA%E6%9C%AC%E5%87%BD%E6%95%B0%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<h4 id="删除元素"><a href="#删除元素" class="headerlink" title="删除元素"></a>删除元素</h4><ul>
+<li><code>remove()</code> 删除被选元素</li>
+<li><code>empty()</code> 从被选元素中删除子元素</li>
+</ul>
+<h4 id="next"><a href="#next" class="headerlink" title=".next()"></a><code>.next()</code></h4><p>描述：取得匹配的元素集合中每一个元素 <strong>紧邻的后面同辈元素</strong> 的元素集合。</p>
+<p>如果提供一个选择器，那么只有紧跟着的兄弟元素满足选择器时，才会返回此元素。</p>
+<a id="more"></a>
+
+<h5 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h5><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">.next([selector])</span><br><span class="line"><span class="comment">// selector 类型，一个字符串，其中包含一个选择器表达式针对匹配元素。</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="一个栗子"><a href="#一个栗子" class="headerlink" title="一个栗子"></a>一个栗子</h5><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>list item 1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>list item 2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;third-item&quot;</span>&gt;</span>list item 3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>list item 4<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>list item 5<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 从第三个项目开始，查找紧随其后的元素</span></span><br><span class="line">$(<span class="string">&#x27;li.third-item&#x27;</span>).next().css(<span class="string">&#x27;background-color&#x27;</span>, <span class="string">&#x27;red&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>js</tag>
+        <tag>jQuery</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>java-import的使用</title>
     <url>/2020/10/13/java-import%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<h4 id="静态导入"><a href="#静态导入" class="headerlink" title="静态导入"></a>静态导入</h4><p><code>import static xxx.类名</code></p>
@@ -2059,29 +2132,6 @@
       </tags>
   </entry>
   <entry>
-    <title>jQuery基本函数使用</title>
-    <url>/2020/08/10/jQuery%E5%9F%BA%E6%9C%AC%E5%87%BD%E6%95%B0%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<h4 id="删除元素"><a href="#删除元素" class="headerlink" title="删除元素"></a>删除元素</h4><ul>
-<li><code>remove()</code> 删除被选元素</li>
-<li><code>empty()</code> 从被选元素中删除子元素</li>
-</ul>
-<h4 id="next"><a href="#next" class="headerlink" title=".next()"></a><code>.next()</code></h4><p>描述：取得匹配的元素集合中每一个元素 <strong>紧邻的后面同辈元素</strong> 的元素集合。</p>
-<p>如果提供一个选择器，那么只有紧跟着的兄弟元素满足选择器时，才会返回此元素。</p>
-<a id="more"></a>
-
-<h5 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h5><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">.next([selector])</span><br><span class="line"><span class="comment">// selector 类型，一个字符串，其中包含一个选择器表达式针对匹配元素。</span></span><br></pre></td></tr></table></figure>
-
-<h5 id="一个栗子"><a href="#一个栗子" class="headerlink" title="一个栗子"></a>一个栗子</h5><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>list item 1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>list item 2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;third-item&quot;</span>&gt;</span>list item 3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>list item 4<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>list item 5<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 从第三个项目开始，查找紧随其后的元素</span></span><br><span class="line">$(<span class="string">&#x27;li.third-item&#x27;</span>).next().css(<span class="string">&#x27;background-color&#x27;</span>, <span class="string">&#x27;red&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <tags>
-        <tag>js</tag>
-        <tag>jQuery</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>java二分查找</title>
     <url>/2020/08/11/java%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/</url>
     <content><![CDATA[<h4 id="二分查找的原理"><a href="#二分查找的原理" class="headerlink" title="二分查找的原理"></a>二分查找的原理</h4><p>要求：必须要有一个有序的列表。如果没有的话，可以先使用排序算法进行排序。</p>
@@ -2098,10 +2148,28 @@
 <p>其实我们在获取一个列表的很多时候，可以直接使用数据库针对某个字段进行排序，在程序中需要找出某个值的元素时，就很适合使用二分查找了。</p>
 <p>二分查找适合元素稍微多一些的数列，如果元素只有十几或者几十个，则其实可以直接使用顺序查找。</p>
 <p>一般对一个有序列表，如果只需要对其进行一次排序，之后不再变化或者很少变化，则每次进行二分查找的效率就会很高；但是如果在一个有序列表中频繁地插入、删除数据，那么维护这个有序数列就会感觉很累。</p>
+<h4 id="在数据结构中-非递减排序-的意思"><a href="#在数据结构中-非递减排序-的意思" class="headerlink" title="在数据结构中 非递减排序 的意思"></a>在数据结构中 <code>非递减排序</code> 的意思</h4><p>一个栗子：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">1,2,3,4,5,........ : 递增排列</span><br><span class="line">9,8,7,6,5......... : 递减排列</span><br><span class="line">1，2，3，3，4，5，8，8，.............. : 非递减排列</span><br><span class="line">9，8，7，7，6，5，5，2，1，........ : 非递增排列</span><br></pre></td></tr></table></figure>
+
 ]]></content>
       <tags>
         <tag>java</tag>
         <tag>java算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>java二维数组</title>
+    <url>/2020/10/28/java%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84/</url>
+    <content><![CDATA[<h4 id="创建二维数组"><a href="#创建二维数组" class="headerlink" title="创建二维数组"></a>创建二维数组</h4><p>在 java 中二维数组被看作数组的数组，即二维数组是一个特殊的一维数组，其每个元素又是一个一维数组。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">type arr[][];</span><br><span class="line">type[][] arr;</span><br><span class="line"><span class="comment">// 其中 type 表示二维数组的类型，arr 表示数组名称，第一个中括号表示行，第二个中括号表示列。</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="初始化二维数组"><a href="#初始化二维数组" class="headerlink" title="初始化二维数组"></a>初始化二维数组</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">array=<span class="keyword">new</span> type[][]&#123;值 <span class="number">1</span>,值 <span class="number">2</span>,值 <span class="number">3</span>,…,值 n&#125;;</span><br><span class="line">array=<span class="keyword">new</span> type[][]&#123;<span class="keyword">new</span> 构造方法(参数列),…&#125;;</span><br><span class="line">type[][] array=&#123;&#123;第<span class="number">1</span>行第<span class="number">1</span>列的值,第<span class="number">1</span>行第<span class="number">2</span>列的值,…&#125;,&#123;第<span class="number">2</span>行第<span class="number">1</span>列的值,第<span class="number">2</span>行第<span class="number">2</span>列的值,…&#125;,…&#125;;</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+]]></content>
+      <tags>
+        <tag>java</tag>
       </tags>
   </entry>
   <entry>
@@ -2251,6 +2319,49 @@
       </tags>
   </entry>
   <entry>
+    <title>java关键字用法</title>
+    <url>/2020/10/12/java%E5%85%B3%E9%94%AE%E5%AD%97%E7%94%A8%E6%B3%95/</url>
+    <content><![CDATA[<h4 id="this-关键字"><a href="#this-关键字" class="headerlink" title="this 关键字"></a>this 关键字</h4><h5 id="构造方法中的-this-关键字"><a href="#构造方法中的-this-关键字" class="headerlink" title="构造方法中的 this 关键字"></a>构造方法中的 this 关键字</h5><p>构造方法是一个类的对象在通过 new 关键字创建时自动调用的，在程序中不能像调用其他方法一样通过方法名（也就是类名）来调用。但如果一个类有多个构造方法，可以在一个构造方法中通过 <code>this(...params)</code> 来调用其他的构造方法。</p>
+<p>使用 this 在调用其他构造方法存在如下的几个约束：</p>
+<ol>
+<li>只能在构造方法中通过 this 来调用其他构造方法，在普通方法中不行。</li>
+<li>不能使用 this 递归调用构造方法，即不能在一个构造方法中直接或间接调用其本身。</li>
+<li>通过 this 调用其他构造方法必须放在构造方法的第一行执行。由于 super 调用父类的构造方法也必须放在构造方法的第一行执行，因此，this 和 super 不能出现在同一个构造方法中。</li>
+<li>在构造方法中也可以使用 this 关键字来访问本类中的成员变量和成员函数。其用法和非构造方法中的 this 关键字相同。</li>
+</ol>
+<a id="more"></a>
+
+<h5 id="非构造方法中的-this-关键字"><a href="#非构造方法中的-this-关键字" class="headerlink" title="非构造方法中的 this 关键字"></a>非构造方法中的 this 关键字</h5><p>可以通过 this 关键字来调用类中的成员变量和成员方法（函数）。</p>
+<h5 id="继承关系下的-this-关键字"><a href="#继承关系下的-this-关键字" class="headerlink" title="继承关系下的 this 关键字"></a>继承关系下的 this 关键字</h5><p>在继承关系下，父类中的 this 关键字并不总是表示父类中的变量和方法。</p>
+<p>this 关键字的 4 中用法如下：</p>
+<ol>
+<li>this(params…) 访问其他的构造方法</li>
+<li>this.xxx 访问类中的成员变量xxx</li>
+<li>this.yyy(params…) 访问类中的成员方法yyy</li>
+<li>this 当前类对象的引用</li>
+</ol>
+<blockquote>
+<p>对第一种，无论子类是否有相同参数的构造方法，this(paras…);访问的始终是父类中的构造方法。<br>对第二种，无论子类是否有覆盖了该成员变量，this.xxx;访问的始终是父类中的成员变量。<br>对第三种，如果子类重写了该成员方法，则this.yyy(paras…);访问的是子类的成员方法，如果子类没有重写该成员方法，则this.yyy(paras…);访问的是父类的成员方法。<br>对第四种，this始终代表的是子类的对象。</p>
+</blockquote>
+<h5 id="super-和-this-的异同"><a href="#super-和-this-的异同" class="headerlink" title="super 和 this 的异同"></a>super 和 this 的异同</h5><blockquote>
+<p>super在一个类中用来引用其父类的成员，它是在子类中访问父类成员的一个桥梁，并不是任何一个对象的引用，而this则表示当前类对象的引用。在代码中Object o = super;是错误的，Object o = this;则是允许的。<br>super关键字的作用在于当子类中覆盖了父类的某个成员变量，或者重写了父类的某个成员方法时还能够访问到父类的成员变量和成员方法。如果子类中没有重写父类的成员变量和成员方法，则子类会继承父类的所有非private的成员变量和成员方法。这时在子类中无论通过this来访问成员和通过super来访问成员，结果都是一样的</p>
+</blockquote>
+]]></content>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>java分布式系统</title>
+    <url>/2020/09/13/java%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/</url>
+    <content><![CDATA[<h4 id="什么叫分布式系统"><a href="#什么叫分布式系统" class="headerlink" title="什么叫分布式系统"></a>什么叫分布式系统</h4><p>分布式系统是一组通过网络进行通信、为了完成共同的任务而协调工作的计算机节点组成的系统。</p>
+<p>分布式系统的出现是为了用廉价的、普通的机器完成单个计算机无法完成的计算、存储任务。其目的是 <strong>利用更多的机器，处理更多的数据。</strong></p>
+<a id="more"></a>]]></content>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>java位运算</title>
     <url>/2020/08/25/java%E4%BD%8D%E8%BF%90%E7%AE%97/</url>
     <content><![CDATA[<h4 id="二进制"><a href="#二进制" class="headerlink" title="二进制"></a>二进制</h4><p>位：二进制位，简称 “位” 。是二进制计数系统中表示小于 2 的整数的符号，一般用 0 或者 1 表示，是具有相等概率的两种状态中的一种。二进制位的位数可表示一个机器字的字长，一个二进制位包含的信息量称为一比特（bit）。</p>
@@ -2343,73 +2454,10 @@
       </tags>
   </entry>
   <entry>
-    <title>java关键字用法</title>
-    <url>/2020/10/12/java%E5%85%B3%E9%94%AE%E5%AD%97%E7%94%A8%E6%B3%95/</url>
-    <content><![CDATA[<h4 id="this-关键字"><a href="#this-关键字" class="headerlink" title="this 关键字"></a>this 关键字</h4><h5 id="构造方法中的-this-关键字"><a href="#构造方法中的-this-关键字" class="headerlink" title="构造方法中的 this 关键字"></a>构造方法中的 this 关键字</h5><p>构造方法是一个类的对象在通过 new 关键字创建时自动调用的，在程序中不能像调用其他方法一样通过方法名（也就是类名）来调用。但如果一个类有多个构造方法，可以在一个构造方法中通过 <code>this(...params)</code> 来调用其他的构造方法。</p>
-<p>使用 this 在调用其他构造方法存在如下的几个约束：</p>
-<ol>
-<li>只能在构造方法中通过 this 来调用其他构造方法，在普通方法中不行。</li>
-<li>不能使用 this 递归调用构造方法，即不能在一个构造方法中直接或间接调用其本身。</li>
-<li>通过 this 调用其他构造方法必须放在构造方法的第一行执行。由于 super 调用父类的构造方法也必须放在构造方法的第一行执行，因此，this 和 super 不能出现在同一个构造方法中。</li>
-<li>在构造方法中也可以使用 this 关键字来访问本类中的成员变量和成员函数。其用法和非构造方法中的 this 关键字相同。</li>
-</ol>
-<a id="more"></a>
-
-<h5 id="非构造方法中的-this-关键字"><a href="#非构造方法中的-this-关键字" class="headerlink" title="非构造方法中的 this 关键字"></a>非构造方法中的 this 关键字</h5><p>可以通过 this 关键字来调用类中的成员变量和成员方法（函数）。</p>
-<h5 id="继承关系下的-this-关键字"><a href="#继承关系下的-this-关键字" class="headerlink" title="继承关系下的 this 关键字"></a>继承关系下的 this 关键字</h5><p>在继承关系下，父类中的 this 关键字并不总是表示父类中的变量和方法。</p>
-<p>this 关键字的 4 中用法如下：</p>
-<ol>
-<li>this(params…) 访问其他的构造方法</li>
-<li>this.xxx 访问类中的成员变量xxx</li>
-<li>this.yyy(params…) 访问类中的成员方法yyy</li>
-<li>this 当前类对象的引用</li>
-</ol>
-<blockquote>
-<p>对第一种，无论子类是否有相同参数的构造方法，this(paras…);访问的始终是父类中的构造方法。<br>对第二种，无论子类是否有覆盖了该成员变量，this.xxx;访问的始终是父类中的成员变量。<br>对第三种，如果子类重写了该成员方法，则this.yyy(paras…);访问的是子类的成员方法，如果子类没有重写该成员方法，则this.yyy(paras…);访问的是父类的成员方法。<br>对第四种，this始终代表的是子类的对象。</p>
-</blockquote>
-<h5 id="super-和-this-的异同"><a href="#super-和-this-的异同" class="headerlink" title="super 和 this 的异同"></a>super 和 this 的异同</h5><blockquote>
-<p>super在一个类中用来引用其父类的成员，它是在子类中访问父类成员的一个桥梁，并不是任何一个对象的引用，而this则表示当前类对象的引用。在代码中Object o = super;是错误的，Object o = this;则是允许的。<br>super关键字的作用在于当子类中覆盖了父类的某个成员变量，或者重写了父类的某个成员方法时还能够访问到父类的成员变量和成员方法。如果子类中没有重写父类的成员变量和成员方法，则子类会继承父类的所有非private的成员变量和成员方法。这时在子类中无论通过this来访问成员和通过super来访问成员，结果都是一样的</p>
-</blockquote>
-]]></content>
-      <tags>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>java内存区域</title>
     <url>/2020/09/30/java%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F/</url>
     <content><![CDATA[<h4 id="概览图"><a href="#概览图" class="headerlink" title="概览图"></a>概览图</h4><p>java内存区域分布图</p>
 <p><img src="http://localhost:4000/2020/09/30/java%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F/java%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F.png"></p>
-<a id="more"></a>]]></content>
-      <tags>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>java分布式系统</title>
-    <url>/2020/09/13/java%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/</url>
-    <content><![CDATA[<h4 id="什么叫分布式系统"><a href="#什么叫分布式系统" class="headerlink" title="什么叫分布式系统"></a>什么叫分布式系统</h4><p>分布式系统是一组通过网络进行通信、为了完成共同的任务而协调工作的计算机节点组成的系统。</p>
-<p>分布式系统的出现是为了用廉价的、普通的机器完成单个计算机无法完成的计算、存储任务。其目的是 <strong>利用更多的机器，处理更多的数据。</strong></p>
-<a id="more"></a>]]></content>
-      <tags>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>java初始化二维数组</title>
-    <url>/2020/08/11/java%E5%88%9D%E5%A7%8B%E5%8C%96%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84/</url>
-    <content><![CDATA[<h4 id="定义二维数组"><a href="#定义二维数组" class="headerlink" title="定义二维数组"></a>定义二维数组</h4><ul>
-<li><p>先 new 对象，然后再初始化每个元素</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">nt[][] a = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">3</span>][<span class="number">5</span>]; </span><br><span class="line"></span><br><span class="line">a[<span class="number">0</span>][<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">a[<span class="number">0</span>][<span class="number">1</span>]=<span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">a[<span class="number">0</span>][<span class="number">2</span>]=<span class="number">3</span>;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>直接赋初值来创建对象</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span>[][] b = &#123;&#123;<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>&#125;, &#123;<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>&#125;, &#123;<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>&#125; &#125;;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>new 完对象直接初始化</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span>[][] a = <span class="keyword">new</span> <span class="keyword">int</span>[][] &#123;&#123;<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>&#125;, &#123;<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>&#125;, &#123;<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>&#125; &#125;;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
 <a id="more"></a>]]></content>
       <tags>
         <tag>java</tag>
@@ -2553,6 +2601,23 @@
       </tags>
   </entry>
   <entry>
+    <title>java排列组合算法</title>
+    <url>/2020/10/21/java%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88%E7%AE%97%E6%B3%95/</url>
+    <content><![CDATA[<h4 id="组合和排列的区别"><a href="#组合和排列的区别" class="headerlink" title="组合和排列的区别"></a>组合和排列的区别</h4><p>排列：需要考虑取出元素的顺序。</p>
+<p>组合：组合取出元素的顺序是不考虑的。</p>
+<p><strong>因组合是不考虑顺序的，故组合的个数比排列的个数要少。</strong></p>
+<p>计算公式：</p>
+<p><img src="http://localhost:4000/2020/10/21/java%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88%E7%AE%97%E6%B3%95/002.png"></p>
+<a id="more"></a>
+
+<h4 id="经典的案例：从-n-个数中取出-m-个数的组合"><a href="#经典的案例：从-n-个数中取出-m-个数的组合" class="headerlink" title="经典的案例：从 n 个数中取出 m 个数的组合"></a>经典的案例：从 n 个数中取出 m 个数的组合</h4><p>实现方法一</p>
+<p><img src="http://localhost:4000/2020/10/21/java%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88%E7%AE%97%E6%B3%95/001.png"></p>
+]]></content>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>java数组扩容</title>
     <url>/2020/08/11/java%E6%95%B0%E7%BB%84%E6%89%A9%E5%AE%B9/</url>
     <content><![CDATA[<h4 id="数组扩容的几个方法"><a href="#数组扩容的几个方法" class="headerlink" title="数组扩容的几个方法"></a>数组扩容的几个方法</h4><h5 id="数组拷贝"><a href="#数组拷贝" class="headerlink" title="数组拷贝"></a>数组拷贝</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span>[] copy = Arrays.copyOf(array, <span class="number">2</span> * array.length);</span><br><span class="line"><span class="comment">// 第一个参数为原数组对象</span></span><br><span class="line"><span class="comment">// 第二个参数为新数组的长度</span></span><br></pre></td></tr></table></figure>
@@ -2570,6 +2635,36 @@
 </ul>
 <p><strong>ArrayList 使用一个内置数组来存储元素，起始容量是 10， 当数组需要扩容时，扩容公式为 <code>(old * 3) / 2 + 1</code>，也就是说每次容量会增加 50%。这意味着如果包含大量元素，将会浪费很大的空间。这种浪费是由 ArrayList 本身决定的。</strong></p>
 ]]></content>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>java初始化二维数组</title>
+    <url>/2020/08/11/java%E5%88%9D%E5%A7%8B%E5%8C%96%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84/</url>
+    <content><![CDATA[<h4 id="定义二维数组"><a href="#定义二维数组" class="headerlink" title="定义二维数组"></a>定义二维数组</h4><ul>
+<li><p>先 new 对象，然后再初始化每个元素</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">nt[][] a = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">3</span>][<span class="number">5</span>]; </span><br><span class="line"></span><br><span class="line">a[<span class="number">0</span>][<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">a[<span class="number">0</span>][<span class="number">1</span>]=<span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">a[<span class="number">0</span>][<span class="number">2</span>]=<span class="number">3</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>直接赋初值来创建对象</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span>[][] b = &#123;&#123;<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>&#125;, &#123;<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>&#125;, &#123;<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>&#125; &#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>new 完对象直接初始化</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span>[][] a = <span class="keyword">new</span> <span class="keyword">int</span>[][] &#123;&#123;<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>&#125;, &#123;<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>&#125;, &#123;<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>&#125; &#125;;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<a id="more"></a>]]></content>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>java日志框架</title>
+    <url>/2020/10/23/java%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6/</url>
+    <content><![CDATA[<h4 id="java-日志框架的等级和优先级"><a href="#java-日志框架的等级和优先级" class="headerlink" title="java 日志框架的等级和优先级"></a>java 日志框架的等级和优先级</h4><p>log4j 定义了 8 个级别的 log ，优先级 <strong>从高到低</strong> 依次为：</p>
+<p><code>OFF &gt; FATAL &gt; ERROR &gt; WARN &gt; INFO &gt; DEBUG &gt; TRACE &gt; ALL</code> 。</p>
+<a id="more"></a>]]></content>
       <tags>
         <tag>java</tag>
       </tags>
@@ -2613,23 +2708,6 @@
       </tags>
   </entry>
   <entry>
-    <title>java深度优先搜索</title>
-    <url>/2020/08/11/java%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/</url>
-    <content><![CDATA[<h4 id="深度优先搜索"><a href="#深度优先搜索" class="headerlink" title="深度优先搜索"></a>深度优先搜索</h4><h5 id="英文缩写"><a href="#英文缩写" class="headerlink" title="英文缩写"></a>英文缩写</h5><p>DFS(Depth First Search)</p>
-<h5 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h5><p>所谓深度优先搜索( <strong>亦称为回溯法</strong> )，是从图的一个顶点出发，每次遍历当前访问顶点的临界点，一直到访问的顶点没有未被访问的临界点为止。然后采用依次回退的方式，查看来的路上每一个顶点是否有其他未被访问的临界点。访问完成后，判断图中的顶点是否已经全部完成遍历，如果没有，以未访问的顶点为起始点，重复上述的过程。</p>
-<p><strong>深度优先搜索是一个不断回溯的过程。</strong></p>
-<a id="more"></a>
-
-<h4 id="广度优先搜索"><a href="#广度优先搜索" class="headerlink" title="广度优先搜索"></a>广度优先搜索</h4><h5 id="英文缩写-1"><a href="#英文缩写-1" class="headerlink" title="英文缩写"></a>英文缩写</h5><p>BFS(Breadth First Search)</p>
-<p>亦称为 “宽度优先搜索”，“横向优先搜索”</p>
-<h5 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h5><p>其类似于树的层次遍历。从图中的某一顶点出发，遍历每个顶点时，依次遍历其所有的邻接点，然后从这些邻接点出发，同样依次访问它们的邻接点。按照此过程，直到图中所有被访问过的顶点的邻接点都被访问到。</p>
-<p>最后还需要做的操作就是查看图中是否存在尚未被访问的顶点，若有，则以该顶点为起始点，重复上述的过程。</p>
-]]></content>
-      <tags>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>java科学计数法</title>
     <url>/2020/08/22/java%E7%A7%91%E5%AD%A6%E8%AE%A1%E6%95%B0%E6%B3%95/</url>
     <content><![CDATA[<h4 id="什么叫-Java-的科学计数法"><a href="#什么叫-Java-的科学计数法" class="headerlink" title="什么叫 Java 的科学计数法"></a>什么叫 Java 的科学计数法</h4><h5 id="1-有效数字"><a href="#1-有效数字" class="headerlink" title="1. 有效数字"></a>1. 有效数字</h5><p>在一个近似数中，从左边第一个不是 0 的数字起，到精确到的位数止，这中间的所有数字都叫做这个近似数的有效数字。</p>
@@ -2645,19 +2723,6 @@
 <li>BigDecimal</li>
 </ol>
 ]]></content>
-      <tags>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>java类图</title>
-    <url>/2020/09/16/java%E7%B1%BB%E5%9B%BE/</url>
-    <content><![CDATA[<h4 id="IDEA-开发工具中，java-类图"><a href="#IDEA-开发工具中，java-类图" class="headerlink" title="IDEA 开发工具中，java 类图"></a>IDEA 开发工具中，java 类图</h4><h5 id="一些线条解释"><a href="#一些线条解释" class="headerlink" title="一些线条解释"></a>一些线条解释</h5><ul>
-<li>单箭头蓝色实线 <strong>类继承类</strong></li>
-<li>单箭头绿色实线 <strong>接口继承接口</strong></li>
-<li>单箭头绿色虚线 <strong>类实现接口</strong></li>
-</ul>
-<h5 id="延伸-1：Set-里面的-key-值不能重复，为什么？"><a href="#延伸-1：Set-里面的-key-值不能重复，为什么？" class="headerlink" title="延伸-1：Set 里面的 key 值不能重复，为什么？"></a>延伸-1：Set 里面的 key 值不能重复，为什么？</h5>]]></content>
       <tags>
         <tag>java</tag>
       </tags>
@@ -2738,6 +2803,23 @@
 <p>同时，由于重定向方式产生了一个新的请求，所以经过一次重定向后，request 内的对象将无法使用。</p>
 <p>转发只转发项目内部的 Web 网页，重定向 <strong>可以将页面跳转到项目外的web界面。</strong></p>
 <p>转发方法的调用者和被调用者之间共享相同的 request 对象和 response 对象，它们属于同一个访问请求和响应过程；而重定向方法调用者与被调用者使用各自的 request 对象和 response 对象，它们属于两个独立的访问请求和响应过程。</p>
+]]></content>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>java深度优先搜索</title>
+    <url>/2020/08/11/java%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/</url>
+    <content><![CDATA[<h4 id="深度优先搜索"><a href="#深度优先搜索" class="headerlink" title="深度优先搜索"></a>深度优先搜索</h4><h5 id="英文缩写"><a href="#英文缩写" class="headerlink" title="英文缩写"></a>英文缩写</h5><p>DFS(Depth First Search)</p>
+<h5 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h5><p>所谓深度优先搜索( <strong>亦称为回溯法</strong> )，是从图的一个顶点出发，每次遍历当前访问顶点的临界点，一直到访问的顶点没有未被访问的临界点为止。然后采用依次回退的方式，查看来的路上每一个顶点是否有其他未被访问的临界点。访问完成后，判断图中的顶点是否已经全部完成遍历，如果没有，以未访问的顶点为起始点，重复上述的过程。</p>
+<p><strong>深度优先搜索是一个不断回溯的过程。</strong></p>
+<a id="more"></a>
+
+<h4 id="广度优先搜索"><a href="#广度优先搜索" class="headerlink" title="广度优先搜索"></a>广度优先搜索</h4><h5 id="英文缩写-1"><a href="#英文缩写-1" class="headerlink" title="英文缩写"></a>英文缩写</h5><p>BFS(Breadth First Search)</p>
+<p>亦称为 “宽度优先搜索”，“横向优先搜索”</p>
+<h5 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h5><p>其类似于树的层次遍历。从图中的某一顶点出发，遍历每个顶点时，依次遍历其所有的邻接点，然后从这些邻接点出发，同样依次访问它们的邻接点。按照此过程，直到图中所有被访问过的顶点的邻接点都被访问到。</p>
+<p>最后还需要做的操作就是查看图中是否存在尚未被访问的顶点，若有，则以该顶点为起始点，重复上述的过程。</p>
 ]]></content>
       <tags>
         <tag>java</tag>
@@ -2994,6 +3076,19 @@
       </categories>
       <tags>
         <tag>js</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>java类图</title>
+    <url>/2020/09/16/java%E7%B1%BB%E5%9B%BE/</url>
+    <content><![CDATA[<h4 id="IDEA-开发工具中，java-类图"><a href="#IDEA-开发工具中，java-类图" class="headerlink" title="IDEA 开发工具中，java 类图"></a>IDEA 开发工具中，java 类图</h4><h5 id="一些线条解释"><a href="#一些线条解释" class="headerlink" title="一些线条解释"></a>一些线条解释</h5><ul>
+<li>单箭头蓝色实线 <strong>类继承类</strong></li>
+<li>单箭头绿色实线 <strong>接口继承接口</strong></li>
+<li>单箭头绿色虚线 <strong>类实现接口</strong></li>
+</ul>
+<h5 id="延伸-1：Set-里面的-key-值不能重复，为什么？"><a href="#延伸-1：Set-里面的-key-值不能重复，为什么？" class="headerlink" title="延伸-1：Set 里面的 key 值不能重复，为什么？"></a>延伸-1：Set 里面的 key 值不能重复，为什么？</h5>]]></content>
+      <tags>
+        <tag>java</tag>
       </tags>
   </entry>
   <entry>
@@ -3474,11 +3569,40 @@
 <h5 id="方案二"><a href="#方案二" class="headerlink" title="方案二"></a>方案二</h5><p>使用 <code>&lt;![CDATA[sql语句]]&gt;</code></p>
 <figure class="highlight"><table><tr><td class="code"><pre><span class="line">num &lt;![CDATA[ &lt;= ]]&gt; #&#123;num&#125;</span><br></pre></td></tr></table></figure>
 
+<a id="more"></a>
 
-
-<a id="more"></a>]]></content>
+<h4 id="mybatis-的-trim-标签的使用"><a href="#mybatis-的-trim-标签的使用" class="headerlink" title="mybatis 的 trim 标签的使用"></a>mybatis 的 trim 标签的使用</h4><p>trim 标签是一个格式化的标记，可以完成 set 或者是 where 标记的功能。</p>
+<h5 id="trim-标签的属性"><a href="#trim-标签的属性" class="headerlink" title="trim 标签的属性"></a>trim 标签的属性</h5><ul>
+<li>prefix 前缀覆盖并增加其内容，也就是给 sql 语句加上前缀</li>
+<li>suffix 后缀覆盖并增加其内容，也就是给 sql 语句加上后缀</li>
+<li>pfixOverrides 前缀判断的条件。取消指定的前缀，如 where，即删除第一次出现的 where</li>
+<li>suffixOverrides 后缀判断的条件。取消指定的后缀，如 <code>and | . or ,</code> 等（自动去除多余的逗号），即删除最后一次出现的后缀。</li>
+</ul>
+]]></content>
       <tags>
         <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>mybatis分页插件</title>
+    <url>/2020/10/22/mybatis%E5%88%86%E9%A1%B5%E6%8F%92%E4%BB%B6/</url>
+    <content><![CDATA[<h4 id="Mybatis通用分页插件-PageHelper"><a href="#Mybatis通用分页插件-PageHelper" class="headerlink" title="Mybatis通用分页插件 PageHelper"></a>Mybatis通用分页插件 PageHelper</h4><h5 id="简述-mybatis-中-PageHelper-的使用"><a href="#简述-mybatis-中-PageHelper-的使用" class="headerlink" title="简述 mybatis 中 PageHelper 的使用"></a>简述 mybatis 中 PageHelper 的使用</h5><ol>
+<li><p>需要引入 PageHelper 的 jar 包</p>
+ <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.github.pagehelper<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>pagehelper<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.1.4<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在 mybatis 的全局配置文件 SqlMapConfig.xml 中配置该插件</p>
+ <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">configuration</span></span></span><br><span class="line"><span class="meta">        <span class="meta-keyword">PUBLIC</span> <span class="meta-string">&quot;-//mybatis.org//DTD Config 3.0//EN&quot;</span></span></span><br><span class="line"><span class="meta">        <span class="meta-string">&quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 配置分页插件 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span> <span class="attr">interceptor</span>=<span class="string">&quot;com.github.pagehelper.PageHelper&quot;</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- 设置数据库类型 Oracle,Mysql,MariaDB,SQLite,Hsqldb,PostgreSQL六种数据库--&gt;</span>        </span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;dialect&quot;</span> <span class="attr">value</span>=<span class="string">&quot;mysql&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在执行 sql 前，添加插件完成分页功能</p>
+ <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">public class TestPageHelper &#123;</span><br><span class="line"></span><br><span class="line">    @Test</span><br><span class="line">    public void testPageHelper() &#123;</span><br><span class="line">        // 创建一个spring容器</span><br><span class="line">        ApplicationContext context = new ClassPathXmlApplicationContext(&quot;classpath:spring/applicationContext-*&quot;);</span><br><span class="line">        // 从spring容器中获取mapper代理对象</span><br><span class="line">        TbItemMapper mapper = context.getBean(TbItemMapper.class);</span><br><span class="line">        // 执行查询并分页,TbItemExample是逆向工程自动生成的，用来进行条件查询，这里不设置则表示无条件</span><br><span class="line">        TbItemExample example = new TbItemExample();</span><br><span class="line">        //分页处理，显示第一页的10条数据</span><br><span class="line">        PageHelper.startPage(1, 10);</span><br><span class="line">        List<span class="tag">&lt;<span class="name">TbItem</span>&gt;</span> list = mapper.selectByExample(example);//查询</span><br><span class="line">        // 取商品列表</span><br><span class="line">        for(TbItem item : list) &#123;</span><br><span class="line">            System.out.println(item.getTitle());</span><br><span class="line">        &#125;</span><br><span class="line">        // 取分页信息</span><br><span class="line">        PageInfo<span class="tag">&lt;<span class="name">TbItem</span>&gt;</span> pageInfo = new PageInfo<span class="tag">&lt;<span class="name">TbItem</span>&gt;</span>(list);</span><br><span class="line">        long total = pageInfo.getTotal(); //获取总记录数</span><br><span class="line">        System.out.println(&quot;共有商品信息：&quot; + total);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+]]></content>
+      <tags>
+        <tag>mybatis</tag>
       </tags>
   </entry>
   <entry>
@@ -3772,18 +3896,6 @@
       </tags>
   </entry>
   <entry>
-    <title>notebook-demandAnalysis</title>
-    <url>/2020/08/16/notebook-demandAnalysis/</url>
-    <content><![CDATA[<h1 id="2020年-1月-2日-星期四-19时12分10秒-CST"><a href="#2020年-1月-2日-星期四-19时12分10秒-CST" class="headerlink" title="2020年 1月 2日 星期四 19时12分10秒 CST"></a>2020年 1月 2日 星期四 19时12分10秒 CST</h1><h2 id="通用的socket客户端服务"><a href="#通用的socket客户端服务" class="headerlink" title="通用的socket客户端服务"></a>通用的socket客户端服务</h2><ul>
-<li>数据结构设计<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">entity</span><br><span class="line">    请求报文</span><br><span class="line">      属性--需要的一些字段</span><br><span class="line">    返回报文</span><br><span class="line">dao</span><br><span class="line">service(interface)</span><br><span class="line">    人行客户端</span><br><span class="line">        全局变量</span><br><span class="line">        method</span><br><span class="line">            1. send message</span><br><span class="line">            2. receive message</span><br><span class="line">  impl</span><br><span class="line">controller</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>notebook</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>notebook-docker</title>
     <url>/2020/08/16/notebook-docker/</url>
     <content><![CDATA[<h1 id="Thu-Nov-7-12-35-57-CST-2019"><a href="#Thu-Nov-7-12-35-57-CST-2019" class="headerlink" title="Thu Nov  7 12:35:57 CST 2019"></a>Thu Nov  7 12:35:57 CST 2019</h1><h2 id="将本地的文件复制到docker容器中"><a href="#将本地的文件复制到docker容器中" class="headerlink" title="将本地的文件复制到docker容器中"></a>将本地的文件复制到docker容器中</h2><ol>
@@ -3796,6 +3908,18 @@
 </ol>
 <ul>
 <li><code>docker cp 容器名:容器文件路径 本地路径</code></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>notebook</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>notebook-demandAnalysis</title>
+    <url>/2020/08/16/notebook-demandAnalysis/</url>
+    <content><![CDATA[<h1 id="2020年-1月-2日-星期四-19时12分10秒-CST"><a href="#2020年-1月-2日-星期四-19时12分10秒-CST" class="headerlink" title="2020年 1月 2日 星期四 19时12分10秒 CST"></a>2020年 1月 2日 星期四 19时12分10秒 CST</h1><h2 id="通用的socket客户端服务"><a href="#通用的socket客户端服务" class="headerlink" title="通用的socket客户端服务"></a>通用的socket客户端服务</h2><ul>
+<li>数据结构设计<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">entity</span><br><span class="line">    请求报文</span><br><span class="line">      属性--需要的一些字段</span><br><span class="line">    返回报文</span><br><span class="line">dao</span><br><span class="line">service(interface)</span><br><span class="line">    人行客户端</span><br><span class="line">        全局变量</span><br><span class="line">        method</span><br><span class="line">            1. send message</span><br><span class="line">            2. receive message</span><br><span class="line">  impl</span><br><span class="line">controller</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 ]]></content>
       <tags>
@@ -6335,6 +6459,10 @@
 <li>beforeDestroyed</li>
 <li>destroyed</li>
 </ul>
+<h4 id="生命周期-created-和-mounted-两者间的区别"><a href="#生命周期-created-和-mounted-两者间的区别" class="headerlink" title="生命周期 created 和 mounted 两者间的区别"></a>生命周期 created 和 mounted 两者间的区别</h4><ul>
+<li><code>created</code>: 在模板渲染成 HTML 前调用，即通常初始化某些属性值，然后再渲染成视图。</li>
+<li><code>mounted</code>: 在模板渲染成 HTML 后调用，通常是初始化页面完成后，再对 HTML 的 dom 节点进行一些需要的操作。</li>
+</ul>
 ]]></content>
       <tags>
         <tag>vuejs</tag>
@@ -6804,6 +6932,21 @@ window.location本身也是一个对象。
 ]]></content>
       <tags>
         <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>日常生活中的基础概念</title>
+    <url>/2020/10/14/%E6%97%A5%E5%B8%B8%E7%94%9F%E6%B4%BB%E4%B8%AD%E7%9A%84%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/</url>
+    <content><![CDATA[<h4 id="什么叫同比和环比"><a href="#什么叫同比和环比" class="headerlink" title="什么叫同比和环比"></a>什么叫同比和环比</h4><p>同比是 <code>month-on-month</code> 翻译过来的；环比是 <code>year-on-yaer</code> 翻译过来的。</p>
+<p>环比可分为 <code>日环比、周环比、月环比和年环比。</code></p>
+<p>计算公式：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">环比增长率 = （本期数 - 上期数）/ 上期数 * 100%</span><br><span class="line">同比增长率 = （本期数 - 同期数）/ 同期数 * 100%</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+]]></content>
+      <tags>
+        <tag>日常生活</tag>
       </tags>
   </entry>
   <entry>
