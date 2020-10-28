@@ -160,7 +160,7 @@
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">（parameters） -&gt; expression</span><br><span class="line">或</span><br><span class="line">（parameters） -&gt; &#123;statements;&#125;</span><br></pre></td></tr></table></figure>
 
 <p>一些基本的lambda表达式的例子：</p>
-<p><img src="http://localhost:4000/2020/07/23/Mybatis-plus%E7%9A%84lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/001.png"></p>
+<p><img src="http://wrr123.github.io/2020/07/23/Mybatis-plus%E7%9A%84lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/001.png"></p>
 <h5 id="方法引用"><a href="#方法引用" class="headerlink" title="方法引用"></a>方法引用</h5><p>本质上，方法引用就是一个lambda表达式</p>
 <p>基本语法</p>
 <p><code>类名::方法名</code></p>
@@ -390,7 +390,7 @@
 <h5 id="在-windows-下操作-as-sh-命令"><a href="#在-windows-下操作-as-sh-命令" class="headerlink" title="在 windows 下操作 as.sh 命令"></a>在 windows 下操作 <code>as.sh</code> 命令</h5><p><em>Please start cmd.exe from Windows start menu, and then run telnet 127.0.0.1 3658 to connect to target process.</em></p>
 <h4 id="常用操作"><a href="#常用操作" class="headerlink" title="常用操作"></a>常用操作</h4><h5 id="全局监控"><a href="#全局监控" class="headerlink" title="全局监控"></a>全局监控</h5><p>使用 <strong>dashboard</strong> 命令可以概览程序的线程、内存、GC 、运行环境信息。</p>
 <h5 id="CPU-为什么起飞了"><a href="#CPU-为什么起飞了" class="headerlink" title="CPU 为什么起飞了"></a>CPU 为什么起飞了</h5><p>使用 <strong>thread</strong> 查看所有线程信息，同时会列出每个线程的 <code>CPU</code> 使用率，如下图：</p>
-<p><img src="http://localhost:4000/2020/08/18/ali-arthas/001.png"></p>
+<p><img src="http://wrr123.github.io/2020/08/18/ali-arthas/001.png"></p>
 <p><strong>使用命令 thread -n [显示的线程个数]，就可以排列出 CPU 使用率 TOP n 的线程。</strong></p>
 <h5 id="线程池线程状态"><a href="#线程池线程状态" class="headerlink" title="线程池线程状态"></a>线程池线程状态</h5><ul>
 <li><strong>runnable</strong> 运行中</li>
@@ -444,15 +444,6 @@
       </tags>
   </entry>
   <entry>
-    <title>axios与ajax比较</title>
-    <url>/2020/09/05/axios%E4%B8%8Eajax%E6%AF%94%E8%BE%83/</url>
-    <content><![CDATA[<h4 id="什么叫-axios"><a href="#什么叫-axios" class="headerlink" title="什么叫 axios"></a>什么叫 axios</h4>]]></content>
-      <tags>
-        <tag>vuejs</tag>
-        <tag>nodejs</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>bootstrap-select基本使用</title>
     <url>/2020/08/10/bootstrap-select%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<h4 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h4><ul>
@@ -486,13 +477,22 @@
 <li><p>从官网下载<code>bootstrap.min.css.map</code>文件放到本地服务器上</p>
 </li>
 <li><p>修改chrome浏览器的设置</p>
-<p><img src="http://localhost:4000/2020/08/06/chrome%E6%8E%A7%E5%88%B6%E5%8F%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AD%A6%E5%91%8A/001.png"></p>
+<p><img src="http://wrr123.github.io/2020/08/06/chrome%E6%8E%A7%E5%88%B6%E5%8F%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AD%A6%E5%91%8A/001.png"></p>
 </li>
 </ol>
 <h4 id="Synchronous-XMLHttpRequest-on-the-main-thread-is-deprecated-because-of-its-detrimental-effects-to-the-end-user’s-experience"><a href="#Synchronous-XMLHttpRequest-on-the-main-thread-is-deprecated-because-of-its-detrimental-effects-to-the-end-user’s-experience" class="headerlink" title="Synchronous XMLHttpRequest on the main thread is deprecated because of its detrimental effects to the end user’s experience"></a>Synchronous XMLHttpRequest on the main thread is deprecated because of its detrimental effects to the end user’s experience</h4><h5 id="原因："><a href="#原因：" class="headerlink" title="原因："></a>原因：</h5><p>chrome认为ajax在主线程中应该都是异步的，才没有不利的影响。</p>
 ]]></content>
       <tags>
         <tag>js</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>axios与ajax比较</title>
+    <url>/2020/09/05/axios%E4%B8%8Eajax%E6%AF%94%E8%BE%83/</url>
+    <content><![CDATA[<h4 id="什么叫-axios"><a href="#什么叫-axios" class="headerlink" title="什么叫 axios"></a>什么叫 axios</h4>]]></content>
+      <tags>
+        <tag>vuejs</tag>
+        <tag>nodejs</tag>
       </tags>
   </entry>
   <entry>
@@ -576,7 +576,7 @@
 <p>为了创建一个径向渐变，你也必须至少定义两种颜色节点。颜色节点即你想要呈现平稳过渡的颜色。同时，你也可以指定渐变的中心、形状（圆形或椭圆形）、大小。默认情况下，渐变的中心是 center（表示在中心点），渐变的形状是 ellipse（表示椭圆形），渐变的大小是 farthest-corner（表示到最远的角落）。</p>
 </blockquote>
 <p>一个图片栗子：</p>
-<p><img src="http://localhost:4000/2020/08/05/css/001.png"></p>
+<p><img src="http://wrr123.github.io/2020/08/05/css/001.png"></p>
 <p><strong>语法</strong></p>
 <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">background-image</span>: <span class="selector-tag">radial-gradient</span>(<span class="selector-tag">shape</span> <span class="selector-tag">size</span> <span class="selector-tag">at</span> <span class="selector-tag">position</span>, <span class="selector-tag">start-color</span>, ..., <span class="selector-tag">last-color</span>);</span><br></pre></td></tr></table></figure>
 
@@ -738,7 +738,7 @@
     <url>/2020/06/30/data3c%E9%A1%B9%E7%9B%AE-2/</url>
     <content><![CDATA[<h4 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h4><ol>
 <li><p>在lombok中, 注解@RequiredArgsConstructor的基本使用？</p>
-<img src="http://localhost:4000/2020/06/30/data3c%E9%A1%B9%E7%9B%AE-2/XxxConstructor注解.png" alt="注解">
+<img src="http://wrr123.github.io/2020/06/30/data3c%E9%A1%B9%E7%9B%AE-2/XxxConstructor注解.png" alt="注解">
 </li>
 <li><p>windows下，plsql的oracle数据库中文注释等显示乱码？</p>
 <p>一般只要设置环境变量<code>NLS_LANG = SIMPLIFIED CHINESE_CHINA.ZHS16GBK</code>即可。</p>
@@ -805,7 +805,7 @@
     <content><![CDATA[<h4 id="模板指令介绍"><a href="#模板指令介绍" class="headerlink" title="模板指令介绍"></a>模板指令介绍</h4><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">&gt; 下面列举下EasyPoi支持的指令以及作用，**最主要的就是各种fe的用法**</span><br><span class="line">&gt;</span><br><span class="line">&gt; - 空格分割</span><br><span class="line">&gt; - 三目运算 &#123;&#123;test ? obj:obj2&#125;&#125;</span><br><span class="line">&gt; - n: 表示 这个cell是数值类型 &#123;&#123;n:&#125;&#125;</span><br><span class="line">&gt; - le: 代表长度&#123;&#123;le:()&#125;&#125; 在if/else 运用&#123;&#123;le:() &gt; 8 ? obj1 : obj2&#125;&#125;</span><br><span class="line">&gt; - fd: 格式化时间 &#123;&#123;fd:(obj;yyyy-MM-dd)&#125;&#125;</span><br><span class="line">&gt; - fn: 格式化数字 &#123;&#123;fn:(obj;###.00)&#125;&#125;</span><br><span class="line">&gt; - fe: 遍历数据,创建row</span><br><span class="line">&gt; - !fe: 遍历数据不创建row</span><br><span class="line">&gt; - $fe: 下移插入,把当前行,下面的行全部下移.size()行,然后插入</span><br><span class="line">&gt; - \#fe: 横向遍历</span><br><span class="line">&gt; - v_fe: 横向遍历值</span><br><span class="line">&gt; - !if: 删除当前列 &#123;&#123;!if:(test)&#125;&#125;</span><br><span class="line">&gt; - 单引号表示常量值 &#x27;&#x27; 比如&#x27;1&#x27; 那么输出的就是 1</span><br><span class="line">&gt; - &amp;NULL&amp; 空格</span><br><span class="line">&gt; - ]] 换行符 多行遍历导出</span><br><span class="line">&gt; - sum： 统计数据</span><br></pre></td></tr></table></figure>
 
 <h4 id="基本导出"><a href="#基本导出" class="headerlink" title="基本导出"></a>基本导出</h4><p>是插入数据的，不是单纯的导出一个标题和表头。</p>
-<p><img src="http://localhost:4000/2020/07/06/easypoi-excel%E6%A8%A1%E6%9D%BF%E5%A4%84%E7%90%86/11.png"></p>
+<p><img src="http://wrr123.github.io/2020/07/06/easypoi-excel%E6%A8%A1%E6%9D%BF%E5%A4%84%E7%90%86/11.png"></p>
 <h4 id="单纯的导出excel文件的表头信息"><a href="#单纯的导出excel文件的表头信息" class="headerlink" title="单纯的导出excel文件的表头信息"></a>单纯的导出excel文件的表头信息</h4><p>使用注解@Excel,在实体类上使用</p>
 <p>设置导出参数类，<code>ExportParams</code></p>
 <p>使用导出工具类实现导出，<code>ExcelExportUtil</code></p>
@@ -815,43 +815,6 @@
       </categories>
       <tags>
         <tag>java</tag>
-        <tag>excel</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>easypoi</title>
-    <url>/2020/06/30/easypoi/</url>
-    <content><![CDATA[<h3 id="EasyPoi-Excel和Word简易工具类"><a href="#EasyPoi-Excel和Word简易工具类" class="headerlink" title="EasyPoi Excel和Word简易工具类"></a>EasyPoi Excel和Word简易工具类</h3><p>主打功能： 让一个没接触过POI的人员，可以方便的写出Excel导出，Excel模板导出，Excel导入，word模板导出，通过简单的注解和模板语言（熟悉的表达式语法），完成以前复杂的写法。</p>
-<p><a href="https://opensource.afterturn.cn/">官网</a> <a href="https://github.com/jueyue/easypoi/blob/master/README.md">英文介绍</a></p>
-<h5 id="开发指南"><a href="#开发指南" class="headerlink" title="开发指南"></a>开发指南</h5><p><strong><a href="http://opensource.afterturn.cn/doc/easypoi.html">https://opensource.afterturn.cn/doc/easypoi.html</a></strong></p>
-<h5 id="版本介绍"><a href="#版本介绍" class="headerlink" title="版本介绍"></a>版本介绍</h5><p><a href="https://gitee.com/lemur/easypoi/blob/master/history.md">history.md</a></p>
-<h5 id="基础示例"><a href="#基础示例" class="headerlink" title="基础示例"></a>基础示例</h5><p><a href="https://gitee.com/lemur/easypoi/blob/master/basedemo.md">basedemo.md</a></p>
-<p><a href="http://git.oschina.net/lemur/easypoi-test">测试项目</a>: <a href="http://git.oschina.net/lemur/easypoi-test">http://git.oschina.net/lemur/easypoi-test</a></p>
-<hr>
-<h4 id="EasyPoi的主要特点"><a href="#EasyPoi的主要特点" class="headerlink" title="EasyPoi的主要特点"></a>EasyPoi的主要特点</h4><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">1.设计精巧,使用简单</span><br><span class="line">2.接口丰富,扩展简单</span><br><span class="line">3.默认值多,write less do more</span><br><span class="line">4.AbstractView 支持,web导出可以简单明了</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h4 id="什么场景该用哪个方法"><a href="#什么场景该用哪个方法" class="headerlink" title="什么场景该用哪个方法"></a>什么场景该用哪个方法</h4><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">- 导出</span><br><span class="line">    1.正规excel导出 (格式简单,数据量可以,5W以内吧)</span><br><span class="line">        注解方式:  ExcelExportUtil.exportExcel(ExportParams entity, Class&lt;?&gt; pojoClass,Collection&lt;?&gt; dataSet) </span><br><span class="line">    2.不定多少列,但是格式依然简单数据库不大</span><br><span class="line">        自定义方式: ExcelExportUtil.exportExcel(ExportParams entity, List&lt;ExcelExportEntity&gt; entityList,Collection&lt;?&gt; dataSet)</span><br><span class="line">    3.数据量大超过5W,还在100W以内</span><br><span class="line">        注解方式 ExcelExportUtil.exportBigExcel(ExportParams entity, Class&lt;?&gt; pojoClass,IExcelExportServer server, Object queryParams)</span><br><span class="line">        自定义方式: ExcelExportUtil.exportBigExcel(ExportParams entity, List&lt;ExcelExportEntity&gt; excelParams,IExcelExportServer server, Object queryParams)</span><br><span class="line">    4.样式复杂,数据量尽量别大</span><br><span class="line">        模板导出 ExcelExportUtil.exportExcel(TemplateExportParams params, Map&lt;String, Object&gt; map)</span><br><span class="line">    5.一次导出多个风格不一致的sheet</span><br><span class="line">        模板导出 ExcelExportUtil.exportExcel(Map&lt;Integer, Map&lt;String, Object&gt;&gt; map,TemplateExportParams params) </span><br><span class="line">    6.一个模板但是要导出非常多份</span><br><span class="line">        模板导出 ExcelExportUtil.exportExcelClone(Map&lt;Integer, List&lt;Map&lt;String, Object&gt;&gt;&gt; map,TemplateExportParams params)</span><br><span class="line">    7.模板无法满足你的自定义,试试html</span><br><span class="line">        自己构造html,然后我给你转成excel  ExcelXorHtmlUtil.htmlToExcel(String html, ExcelType type)</span><br><span class="line">    8.数据量过百万级了.放弃excel吧,csv导出</span><br><span class="line">        注解方式: CsvExportUtil.exportCsv(CsvExportParams params, Class&lt;?&gt; pojoClass, OutputStream outputStream)</span><br><span class="line">        自定义方式: CsvExportUtil.exportCsv(CsvExportParams params, List&lt;ExcelExportEntity&gt; entityList, OutputStream outputStream)</span><br><span class="line">    9.word导出</span><br><span class="line">        模板导出: WordExportUtil.exportWord07(String url, Map&lt;String, Object&gt; map)</span><br><span class="line">    10.PDF导出</span><br><span class="line">        模板导出: TODO </span><br><span class="line">- 导入 </span><br><span class="line">    如果想提高性能 ImportParams 的concurrentTask 可以帮助并发导入,仅单行,最小1000</span><br><span class="line">    excel有单个的那种特殊读取,readSingleCell 参数可以支持</span><br><span class="line">    1. 不需要检验,数据量不大(5W以内)</span><br><span class="line">        注解或者MAP: ExcelImportUtil.importExcel(File file, Class&lt;?&gt; pojoClass, ImportParams params)</span><br><span class="line">    2. 需要导入,数据量不大</span><br><span class="line">        注解或者MAP: ExcelImportUtil.importExcelMore(InputStream inputstream, Class&lt;?&gt; pojoClass, ImportParams params)</span><br><span class="line">    3. 数据量大了,或者你有特别多的导入操作,内存比较少,仅支持单行</span><br><span class="line">       SAX方式  ExcelImportUtil.importExcelBySax(InputStream inputstream, Class&lt;?&gt; pojoClass, ImportParams params, IReadHandler handler)</span><br><span class="line">    4. 数据量超过EXCEL限制,CSV读取</span><br><span class="line">        小数据量: CsvImportUtil.importCsv(InputStream inputstream, Class&lt;?&gt; pojoClass,CsvImportParams params)</span><br><span class="line">        大数据量: CsvImportUtil.importCsv(InputStream inputstream, Class&lt;?&gt; pojoClass,CsvImportParams params, IReadHandler readHandler)</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h4 id="关于Excel导出XLS和XLSX的区别"><a href="#关于Excel导出XLS和XLSX的区别" class="headerlink" title="关于Excel导出XLS和XLSX的区别"></a>关于Excel导出XLS和XLSX的区别</h4><figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">1. 导出时间xls比xlsx块2-3倍</span><br><span class="line">2. 导出大小xls是xlsx的2-3倍或者更多</span><br><span class="line">3. 导出需要综合网速和本地速度做考虑^~^</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h4 id="几个工程的说明"><a href="#几个工程的说明" class="headerlink" title="几个工程的说明"></a>几个工程的说明</h4><figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">1.easypoi 父包--作用大家都懂得</span><br><span class="line">2.easypoi-annotation 基础注解包,作用与实体对象上,拆分后方便maven多工程的依赖管理</span><br><span class="line">3.easypoi-base 导入导出的工具包,可以完成Excel导出,导入,Word的导出,Excel的导出功能</span><br><span class="line">4.easypoi-web  耦合了spring-mvc 基于AbstractView,极大的简化spring-mvc下的导出功能</span><br><span class="line">5.sax 导入使用xercesImpl这个包(这个包可能造成奇怪的问题哈),word导出使用poi-scratchpad,都作为可选包了</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h5 id="maven"><a href="#maven" class="headerlink" title="maven"></a>maven</h5><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>cn.afterturn<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>easypoi-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.2.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>cn.afterturn<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>easypoi-base<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.2.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>cn.afterturn<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>easypoi-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.2.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>cn.afterturn<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>easypoi-annotation<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.2.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<hr>
-<h5 id="pom说明"><a href="#pom说明" class="headerlink" title="pom说明"></a>pom说明</h5><p>word和sax读取的时候才使用，就不是必须的了，请手动引用；JSR303的校验也是可选的；pdf的jar也是可选的。</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- sax 读取时候用到的 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>xerces<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>xercesImpl<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;xerces.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optional</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.poi<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>poi-scratchpad<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;poi.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optional</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- Word 需要使用 --&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.poi<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>ooxml-schemas<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optional</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 校验,下面两个实现 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.hibernate<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>hibernate-validator<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.1.3.Final<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optional</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.bval<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>org.apache.bval.bundle<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.1.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- PDF --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.itextpdf<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>itextpdf<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.5.6<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optional</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.itextpdf<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>itext-asian<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.2.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optional</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<hr>
-]]></content>
-      <categories>
-        <category>java</category>
-      </categories>
-      <tags>
         <tag>excel</tag>
       </tags>
   </entry>
@@ -894,6 +857,43 @@
       </tags>
   </entry>
   <entry>
+    <title>easypoi</title>
+    <url>/2020/06/30/easypoi/</url>
+    <content><![CDATA[<h3 id="EasyPoi-Excel和Word简易工具类"><a href="#EasyPoi-Excel和Word简易工具类" class="headerlink" title="EasyPoi Excel和Word简易工具类"></a>EasyPoi Excel和Word简易工具类</h3><p>主打功能： 让一个没接触过POI的人员，可以方便的写出Excel导出，Excel模板导出，Excel导入，word模板导出，通过简单的注解和模板语言（熟悉的表达式语法），完成以前复杂的写法。</p>
+<p><a href="https://opensource.afterturn.cn/">官网</a> <a href="https://github.com/jueyue/easypoi/blob/master/README.md">英文介绍</a></p>
+<h5 id="开发指南"><a href="#开发指南" class="headerlink" title="开发指南"></a>开发指南</h5><p><strong><a href="http://opensource.afterturn.cn/doc/easypoi.html">https://opensource.afterturn.cn/doc/easypoi.html</a></strong></p>
+<h5 id="版本介绍"><a href="#版本介绍" class="headerlink" title="版本介绍"></a>版本介绍</h5><p><a href="https://gitee.com/lemur/easypoi/blob/master/history.md">history.md</a></p>
+<h5 id="基础示例"><a href="#基础示例" class="headerlink" title="基础示例"></a>基础示例</h5><p><a href="https://gitee.com/lemur/easypoi/blob/master/basedemo.md">basedemo.md</a></p>
+<p><a href="http://git.oschina.net/lemur/easypoi-test">测试项目</a>: <a href="http://git.oschina.net/lemur/easypoi-test">http://git.oschina.net/lemur/easypoi-test</a></p>
+<hr>
+<h4 id="EasyPoi的主要特点"><a href="#EasyPoi的主要特点" class="headerlink" title="EasyPoi的主要特点"></a>EasyPoi的主要特点</h4><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">1.设计精巧,使用简单</span><br><span class="line">2.接口丰富,扩展简单</span><br><span class="line">3.默认值多,write less do more</span><br><span class="line">4.AbstractView 支持,web导出可以简单明了</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="什么场景该用哪个方法"><a href="#什么场景该用哪个方法" class="headerlink" title="什么场景该用哪个方法"></a>什么场景该用哪个方法</h4><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">- 导出</span><br><span class="line">    1.正规excel导出 (格式简单,数据量可以,5W以内吧)</span><br><span class="line">        注解方式:  ExcelExportUtil.exportExcel(ExportParams entity, Class&lt;?&gt; pojoClass,Collection&lt;?&gt; dataSet) </span><br><span class="line">    2.不定多少列,但是格式依然简单数据库不大</span><br><span class="line">        自定义方式: ExcelExportUtil.exportExcel(ExportParams entity, List&lt;ExcelExportEntity&gt; entityList,Collection&lt;?&gt; dataSet)</span><br><span class="line">    3.数据量大超过5W,还在100W以内</span><br><span class="line">        注解方式 ExcelExportUtil.exportBigExcel(ExportParams entity, Class&lt;?&gt; pojoClass,IExcelExportServer server, Object queryParams)</span><br><span class="line">        自定义方式: ExcelExportUtil.exportBigExcel(ExportParams entity, List&lt;ExcelExportEntity&gt; excelParams,IExcelExportServer server, Object queryParams)</span><br><span class="line">    4.样式复杂,数据量尽量别大</span><br><span class="line">        模板导出 ExcelExportUtil.exportExcel(TemplateExportParams params, Map&lt;String, Object&gt; map)</span><br><span class="line">    5.一次导出多个风格不一致的sheet</span><br><span class="line">        模板导出 ExcelExportUtil.exportExcel(Map&lt;Integer, Map&lt;String, Object&gt;&gt; map,TemplateExportParams params) </span><br><span class="line">    6.一个模板但是要导出非常多份</span><br><span class="line">        模板导出 ExcelExportUtil.exportExcelClone(Map&lt;Integer, List&lt;Map&lt;String, Object&gt;&gt;&gt; map,TemplateExportParams params)</span><br><span class="line">    7.模板无法满足你的自定义,试试html</span><br><span class="line">        自己构造html,然后我给你转成excel  ExcelXorHtmlUtil.htmlToExcel(String html, ExcelType type)</span><br><span class="line">    8.数据量过百万级了.放弃excel吧,csv导出</span><br><span class="line">        注解方式: CsvExportUtil.exportCsv(CsvExportParams params, Class&lt;?&gt; pojoClass, OutputStream outputStream)</span><br><span class="line">        自定义方式: CsvExportUtil.exportCsv(CsvExportParams params, List&lt;ExcelExportEntity&gt; entityList, OutputStream outputStream)</span><br><span class="line">    9.word导出</span><br><span class="line">        模板导出: WordExportUtil.exportWord07(String url, Map&lt;String, Object&gt; map)</span><br><span class="line">    10.PDF导出</span><br><span class="line">        模板导出: TODO </span><br><span class="line">- 导入 </span><br><span class="line">    如果想提高性能 ImportParams 的concurrentTask 可以帮助并发导入,仅单行,最小1000</span><br><span class="line">    excel有单个的那种特殊读取,readSingleCell 参数可以支持</span><br><span class="line">    1. 不需要检验,数据量不大(5W以内)</span><br><span class="line">        注解或者MAP: ExcelImportUtil.importExcel(File file, Class&lt;?&gt; pojoClass, ImportParams params)</span><br><span class="line">    2. 需要导入,数据量不大</span><br><span class="line">        注解或者MAP: ExcelImportUtil.importExcelMore(InputStream inputstream, Class&lt;?&gt; pojoClass, ImportParams params)</span><br><span class="line">    3. 数据量大了,或者你有特别多的导入操作,内存比较少,仅支持单行</span><br><span class="line">       SAX方式  ExcelImportUtil.importExcelBySax(InputStream inputstream, Class&lt;?&gt; pojoClass, ImportParams params, IReadHandler handler)</span><br><span class="line">    4. 数据量超过EXCEL限制,CSV读取</span><br><span class="line">        小数据量: CsvImportUtil.importCsv(InputStream inputstream, Class&lt;?&gt; pojoClass,CsvImportParams params)</span><br><span class="line">        大数据量: CsvImportUtil.importCsv(InputStream inputstream, Class&lt;?&gt; pojoClass,CsvImportParams params, IReadHandler readHandler)</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="关于Excel导出XLS和XLSX的区别"><a href="#关于Excel导出XLS和XLSX的区别" class="headerlink" title="关于Excel导出XLS和XLSX的区别"></a>关于Excel导出XLS和XLSX的区别</h4><figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">1. 导出时间xls比xlsx块2-3倍</span><br><span class="line">2. 导出大小xls是xlsx的2-3倍或者更多</span><br><span class="line">3. 导出需要综合网速和本地速度做考虑^~^</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="几个工程的说明"><a href="#几个工程的说明" class="headerlink" title="几个工程的说明"></a>几个工程的说明</h4><figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">1.easypoi 父包--作用大家都懂得</span><br><span class="line">2.easypoi-annotation 基础注解包,作用与实体对象上,拆分后方便maven多工程的依赖管理</span><br><span class="line">3.easypoi-base 导入导出的工具包,可以完成Excel导出,导入,Word的导出,Excel的导出功能</span><br><span class="line">4.easypoi-web  耦合了spring-mvc 基于AbstractView,极大的简化spring-mvc下的导出功能</span><br><span class="line">5.sax 导入使用xercesImpl这个包(这个包可能造成奇怪的问题哈),word导出使用poi-scratchpad,都作为可选包了</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h5 id="maven"><a href="#maven" class="headerlink" title="maven"></a>maven</h5><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>cn.afterturn<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>easypoi-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.2.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>cn.afterturn<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>easypoi-base<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.2.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>cn.afterturn<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>easypoi-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.2.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>cn.afterturn<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>easypoi-annotation<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.2.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h5 id="pom说明"><a href="#pom说明" class="headerlink" title="pom说明"></a>pom说明</h5><p>word和sax读取的时候才使用，就不是必须的了，请手动引用；JSR303的校验也是可选的；pdf的jar也是可选的。</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- sax 读取时候用到的 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>xerces<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>xercesImpl<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;xerces.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optional</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.poi<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>poi-scratchpad<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;poi.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optional</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- Word 需要使用 --&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.poi<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>ooxml-schemas<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optional</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 校验,下面两个实现 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.hibernate<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>hibernate-validator<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.1.3.Final<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optional</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.bval<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>org.apache.bval.bundle<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.1.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- PDF --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.itextpdf<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>itextpdf<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.5.6<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optional</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.itextpdf<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>itext-asian<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.2.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optional</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>excel</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>easypoi开发指南</title>
     <url>/2020/07/01/easypoi%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97/</url>
     <content><![CDATA[<h3 id="Excel注解版"><a href="#Excel注解版" class="headerlink" title="Excel注解版"></a>Excel注解版</h3><h4 id="Excel导入导出"><a href="#Excel导入导出" class="headerlink" title="Excel导入导出"></a>Excel导入导出</h4><p>支持三种方式的处理（其中模板和html目前只支持导出）</p>
@@ -916,7 +916,7 @@
 <li><h5 id="Excel导入介绍"><a href="#Excel导入介绍" class="headerlink" title="Excel导入介绍"></a>Excel导入介绍</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        ImportParams params = <span class="keyword">new</span> ImportParams();</span><br><span class="line">        params.setTitleRows(<span class="number">1</span>);</span><br><span class="line">        params.setHeadRows(<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">long</span> start = <span class="keyword">new</span> Date().getTime();</span><br><span class="line">        List&lt;MsgClient&gt; list = ExcelImportUtil.importExcel(</span><br><span class="line">           <span class="keyword">new</span> File(PoiPublicUtil.getWebRootPath(<span class="string">&quot;import/ExcelExportMsgClient.xlsx&quot;</span>)),</span><br><span class="line">            MsgClient.class, params);</span><br><span class="line">        System.out.println(<span class="keyword">new</span> Date().getTime() - start);</span><br><span class="line">        System.out.println(list.size());</span><br><span class="line">        System.out.println(ReflectionToStringBuilder.toString(list.get(<span class="number">0</span>)));</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
 <p>ImportParams参数介绍：</p>
-<p><img src="http://localhost:4000/2020/07/01/easypoi%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97/ImportPrams%E5%8F%82%E6%95%B0%E4%BB%8B%E7%BB%8D.png"></p>
+<p><img src="http://wrr123.github.io/2020/07/01/easypoi%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97/ImportPrams%E5%8F%82%E6%95%B0%E4%BB%8B%E7%BB%8D.png"></p>
 </li>
 <li><h5 id="Excel导入小功能"><a href="#Excel导入小功能" class="headerlink" title="Excel导入小功能"></a>Excel导入小功能</h5><ol>
 <li><p>读取指定的sheet</p>
@@ -968,25 +968,6 @@
     <content><![CDATA[]]></content>
   </entry>
   <entry>
-    <title>el-upload详解</title>
-    <url>/2020/09/02/el-upload%E8%AF%A6%E8%A7%A3/</url>
-    <content><![CDATA[<h4 id="上传多个文件"><a href="#上传多个文件" class="headerlink" title="上传多个文件"></a>上传多个文件</h4><p>el-upload 在一次请求中上传多个文件时，上传组件是每个文件发一次上传请求。<br><br>http-request 属性可以覆盖默认的上传行为，自定义上传的实现</p>
-<h5 id="FormData-对象使用"><a href="#FormData-对象使用" class="headerlink" title="FormData 对象使用"></a>FormData 对象使用</h5><p>常见的方法函数<br><img src="http://localhost:4000/2020/09/02/el-upload%E8%AF%A6%E8%A7%A3/001.png"></p>
-<ul>
-<li><code>append</code> 添加参数</li>
-<li><code>get</code> 获取对应 key 的第一个参数</li>
-<li><code>getAll</code> 获取对应 key 的所有参数<a id="more"></a>
-
-</li>
-</ul>
-<h5 id="Axios-传递-FormData-类型的参数"><a href="#Axios-传递-FormData-类型的参数" class="headerlink" title="Axios 传递 FormData 类型的参数"></a>Axios 传递 FormData 类型的参数</h5><p>前端请求方法中，请求头中添加设置<br><code>Content-Type: multipart/form-data</code><br><strong>注意：不要序列化 FormData，post请求需要序列化（通常为 qs.stringify()），但是 poost 请求传 FormData 不需要</strong></p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> axois <span class="keyword">from</span> <span class="string">&#x27;axios&#x27;</span></span><br><span class="line"><span class="keyword">var</span> formData = <span class="keyword">new</span> FormData()</span><br><span class="line">axois.post(url, formData, &#123; <span class="attr">headers</span>: &#123; <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;multipart/form-data&#x27;</span> &#125;&#125;).then(...)</span><br></pre></td></tr></table></figure>
-]]></content>
-      <tags>
-        <tag>vuejs</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>faq-css</title>
     <url>/2020/07/20/faq-css/</url>
     <content><![CDATA[<h4 id="css伪类？"><a href="#css伪类？" class="headerlink" title="css伪类？"></a>css伪类？</h4><p>css伪类是用来添加选择器的一些特殊效果。</p>
@@ -994,7 +975,7 @@
 <p><code>selector:pseudo-class &#123;property: value;&#125;</code></p>
 <p>CSS类也可以使用伪类：</p>
 <p><code>selector.class:pseudo-class &#123;property: value;&#125;</code></p>
-<p><img src="http://localhost:4000/2020/07/20/faq-css/001.png"></p>
+<p><img src="http://wrr123.github.io/2020/07/20/faq-css/001.png"></p>
 <p>所有的伪类/元素：</p>
 <table>
 <thead>
@@ -1236,6 +1217,25 @@
       </tags>
   </entry>
   <entry>
+    <title>el-upload详解</title>
+    <url>/2020/09/02/el-upload%E8%AF%A6%E8%A7%A3/</url>
+    <content><![CDATA[<h4 id="上传多个文件"><a href="#上传多个文件" class="headerlink" title="上传多个文件"></a>上传多个文件</h4><p>el-upload 在一次请求中上传多个文件时，上传组件是每个文件发一次上传请求。<br><br>http-request 属性可以覆盖默认的上传行为，自定义上传的实现</p>
+<h5 id="FormData-对象使用"><a href="#FormData-对象使用" class="headerlink" title="FormData 对象使用"></a>FormData 对象使用</h5><p>常见的方法函数<br><img src="http://wrr123.github.io/2020/09/02/el-upload%E8%AF%A6%E8%A7%A3/001.png"></p>
+<ul>
+<li><code>append</code> 添加参数</li>
+<li><code>get</code> 获取对应 key 的第一个参数</li>
+<li><code>getAll</code> 获取对应 key 的所有参数<a id="more"></a>
+
+</li>
+</ul>
+<h5 id="Axios-传递-FormData-类型的参数"><a href="#Axios-传递-FormData-类型的参数" class="headerlink" title="Axios 传递 FormData 类型的参数"></a>Axios 传递 FormData 类型的参数</h5><p>前端请求方法中，请求头中添加设置<br><code>Content-Type: multipart/form-data</code><br><strong>注意：不要序列化 FormData，post请求需要序列化（通常为 qs.stringify()），但是 poost 请求传 FormData 不需要</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> axois <span class="keyword">from</span> <span class="string">&#x27;axios&#x27;</span></span><br><span class="line"><span class="keyword">var</span> formData = <span class="keyword">new</span> FormData()</span><br><span class="line">axois.post(url, formData, &#123; <span class="attr">headers</span>: &#123; <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;multipart/form-data&#x27;</span> &#125;&#125;).then(...)</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>vuejs</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>faq-elementUI</title>
     <url>/2020/08/28/faq-elementUI/</url>
     <content><![CDATA[<h4 id="默认样式有时修改不成功的问题"><a href="#默认样式有时修改不成功的问题" class="headerlink" title="默认样式有时修改不成功的问题"></a>默认样式有时修改不成功的问题</h4><blockquote>
@@ -1262,7 +1262,7 @@
     <content><![CDATA[<h4 id="解决git中文路径显示unicode代码的问题"><a href="#解决git中文路径显示unicode代码的问题" class="headerlink" title="解决git中文路径显示unicode代码的问题"></a>解决git中文路径显示unicode代码的问题</h4><p><code>git config --global core.quotepath false</code></p>
 <p>添加上述配置，git就不会对路径进行转换，会显示完整的中文路径名称。</p>
 <h4 id="remote-HTTP-Basic-Access-denied"><a href="#remote-HTTP-Basic-Access-denied" class="headerlink" title="remote: HTTP Basic: Access denied"></a>remote: HTTP Basic: Access denied</h4><p>问题描述：</p>
-<p><img src="http://localhost:4000/2020/07/07/faq-git/001.png"></p>
+<p><img src="http://wrr123.github.io/2020/07/07/faq-git/001.png"></p>
 <p>解决方案：</p>
 <p>进入本地仓库目录下，执行如下命令：</p>
 <p><code>git config --system --unset credential.helper</code></p>
@@ -1329,7 +1329,7 @@
     <content><![CDATA[<h4 id="colmodal中的属性shrinkToFit"><a href="#colmodal中的属性shrinkToFit" class="headerlink" title="colmodal中的属性shrinkToFit"></a>colmodal中的属性<code>shrinkToFit</code></h4><p>默认值为true。</p>
 <p>如果<code>shrinkToFit</code>设置为了true，且设置了width值，那么每列的宽度会根据width成比例缩放；</p>
 <p>如果<code>shrinkToFit</code>设置为了false，且也设置了width值，那么每列的宽度不会成比例缩放，而是保持原有的设置，并且grid将会有水平的滚动条。</p>
-<p><img src="http://localhost:4000/2020/07/22/faq-jqGrid/001.png"></p>
+<p><img src="http://wrr123.github.io/2020/07/22/faq-jqGrid/001.png"></p>
 ]]></content>
       <categories>
         <category>faq</category>
@@ -1402,10 +1402,10 @@
     <content><![CDATA[<h4 id="ORA-01861-文字与格式字符串不匹配"><a href="#ORA-01861-文字与格式字符串不匹配" class="headerlink" title="ORA-01861: 文字与格式字符串不匹配"></a>ORA-01861: 文字与格式字符串不匹配</h4><p>原因：数据库中字段定义的为date类型，而在java中定义的为string字符串类型</p>
 <p>解决：将java中的字段类型改为<code>java.util.Date</code>类型</p>
 <h4 id="将多行数据的同一个字段合并到一列"><a href="#将多行数据的同一个字段合并到一列" class="headerlink" title="将多行数据的同一个字段合并到一列"></a>将多行数据的同一个字段合并到一列</h4><h5 id="listagg"><a href="#listagg" class="headerlink" title="listagg()"></a>listagg()</h5><p>例子：</p>
-<p><img src="http://localhost:4000/2020/07/01/faq-oracle/22.png"></p>
-<p><img src="http://localhost:4000/2020/07/01/faq-oracle/33.png"></p>
+<p><img src="http://wrr123.github.io/2020/07/01/faq-oracle/22.png"></p>
+<p><img src="http://wrr123.github.io/2020/07/01/faq-oracle/33.png"></p>
 <p>注意点：</p>
-<p><img src="http://localhost:4000/2020/07/01/faq-oracle/11.png"></p>
+<p><img src="http://wrr123.github.io/2020/07/01/faq-oracle/11.png"></p>
 <h5 id="wm-concat"><a href="#wm-concat" class="headerlink" title="wm_concat()"></a>wm_concat()</h5><p>wm_concat()默认以逗号<code>,</code>来分割字段；</p>
 <h4 id="oracle-判断除数不为-0-的方法"><a href="#oracle-判断除数不为-0-的方法" class="headerlink" title="oracle 判断除数不为 0 的方法"></a>oracle 判断除数不为 0 的方法</h4><p><code>decode(column_name, 0, 0, column_name_1 / column_name)</code></p>
 ]]></content>
@@ -1460,7 +1460,7 @@
 
 <h5 id="使用-require-的方式导入"><a href="#使用-require-的方式导入" class="headerlink" title="使用 require 的方式导入"></a>使用 require 的方式导入</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 在 data 中定义</span><br><span class="line">avatar: require(&#39;@&#x2F;assets&#x2F;logo.png&#39;)</span><br></pre></td></tr></table></figure>
 
-<p><img src="http://localhost:4000/2020/07/06/faq-vuejs/001.png"></p>
+<p><img src="http://wrr123.github.io/2020/07/06/faq-vuejs/001.png"></p>
 <h5 id="资源路径处理"><a href="#资源路径处理" class="headerlink" title="资源路径处理"></a>资源路径处理</h5><p>默认情况下，<code>vue-loader</code> 使用 css-loader 和 Vue 模板编译器自动处理样式和模板文件。在编译过程中，所有的资源路径例如 <code>&lt;img src=&quot;...&quot;&gt;</code> 、<code>background: url(...) 和 @import</code> <strong>会作为模块依赖 。</strong></p>
 <p>一个栗子：url(./image.png) 会被转换为 require(‘./image.png’)，而</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;../image.png&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -1506,8 +1506,8 @@
 
 <p><strong>和在html标签中使用是一样的</strong></p>
 <p><strong>在html界面中引入的javascript文件中是不行的，必须在html本页面上内联的javascript语句中执行</strong></p>
-<p><img src="http://localhost:4000/2020/07/02/freemarker%E4%B9%8Bhtml%E9%A1%B5%E9%9D%A2%E4%BC%A0%E5%8F%82/22.png"></p>
-<p><img src="http://localhost:4000/2020/07/02/freemarker%E4%B9%8Bhtml%E9%A1%B5%E9%9D%A2%E4%BC%A0%E5%8F%82/11.png"></p>
+<p><img src="http://wrr123.github.io/2020/07/02/freemarker%E4%B9%8Bhtml%E9%A1%B5%E9%9D%A2%E4%BC%A0%E5%8F%82/22.png"></p>
+<p><img src="http://wrr123.github.io/2020/07/02/freemarker%E4%B9%8Bhtml%E9%A1%B5%E9%9D%A2%E4%BC%A0%E5%8F%82/11.png"></p>
 <p>若在上面的<code>initStockDetails.js</code>文件中，使用freemarker的语法是不生效的。</p>
 ]]></content>
       <categories>
@@ -2010,7 +2010,7 @@
   <entry>
     <title>hexo配置next主题的博客</title>
     <url>/2020/07/31/hexo%E9%85%8D%E7%BD%AEnext%E4%B8%BB%E9%A2%98%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<h4 id="文章目录的描点不能进行跳转"><a href="#文章目录的描点不能进行跳转" class="headerlink" title="文章目录的描点不能进行跳转"></a>文章目录的描点不能进行跳转</h4><p><img src="http://localhost:4000/2020/07/31/hexo%E9%85%8D%E7%BD%AEnext%E4%B8%BB%E9%A2%98%E7%9A%84%E5%8D%9A%E5%AE%A2/001.png" alt="问题描述"></p>
+    <content><![CDATA[<h4 id="文章目录的描点不能进行跳转"><a href="#文章目录的描点不能进行跳转" class="headerlink" title="文章目录的描点不能进行跳转"></a>文章目录的描点不能进行跳转</h4><p><img src="http://wrr123.github.io/2020/07/31/hexo%E9%85%8D%E7%BD%AEnext%E4%B8%BB%E9%A2%98%E7%9A%84%E5%8D%9A%E5%AE%A2/001.png" alt="问题描述"></p>
 <h5 id="可能的原因-一-："><a href="#可能的原因-一-：" class="headerlink" title="可能的原因(一)："></a>可能的原因(一)：</h5><p>hexo博客的锚点处的<code>href</code>属性，其中文是ASCII码格式的，不是纯粹的中文显示，可能引起锚点定位失败。::smile_cat:</p>
 ]]></content>
       <tags>
@@ -2319,49 +2319,6 @@
       </tags>
   </entry>
   <entry>
-    <title>java关键字用法</title>
-    <url>/2020/10/12/java%E5%85%B3%E9%94%AE%E5%AD%97%E7%94%A8%E6%B3%95/</url>
-    <content><![CDATA[<h4 id="this-关键字"><a href="#this-关键字" class="headerlink" title="this 关键字"></a>this 关键字</h4><h5 id="构造方法中的-this-关键字"><a href="#构造方法中的-this-关键字" class="headerlink" title="构造方法中的 this 关键字"></a>构造方法中的 this 关键字</h5><p>构造方法是一个类的对象在通过 new 关键字创建时自动调用的，在程序中不能像调用其他方法一样通过方法名（也就是类名）来调用。但如果一个类有多个构造方法，可以在一个构造方法中通过 <code>this(...params)</code> 来调用其他的构造方法。</p>
-<p>使用 this 在调用其他构造方法存在如下的几个约束：</p>
-<ol>
-<li>只能在构造方法中通过 this 来调用其他构造方法，在普通方法中不行。</li>
-<li>不能使用 this 递归调用构造方法，即不能在一个构造方法中直接或间接调用其本身。</li>
-<li>通过 this 调用其他构造方法必须放在构造方法的第一行执行。由于 super 调用父类的构造方法也必须放在构造方法的第一行执行，因此，this 和 super 不能出现在同一个构造方法中。</li>
-<li>在构造方法中也可以使用 this 关键字来访问本类中的成员变量和成员函数。其用法和非构造方法中的 this 关键字相同。</li>
-</ol>
-<a id="more"></a>
-
-<h5 id="非构造方法中的-this-关键字"><a href="#非构造方法中的-this-关键字" class="headerlink" title="非构造方法中的 this 关键字"></a>非构造方法中的 this 关键字</h5><p>可以通过 this 关键字来调用类中的成员变量和成员方法（函数）。</p>
-<h5 id="继承关系下的-this-关键字"><a href="#继承关系下的-this-关键字" class="headerlink" title="继承关系下的 this 关键字"></a>继承关系下的 this 关键字</h5><p>在继承关系下，父类中的 this 关键字并不总是表示父类中的变量和方法。</p>
-<p>this 关键字的 4 中用法如下：</p>
-<ol>
-<li>this(params…) 访问其他的构造方法</li>
-<li>this.xxx 访问类中的成员变量xxx</li>
-<li>this.yyy(params…) 访问类中的成员方法yyy</li>
-<li>this 当前类对象的引用</li>
-</ol>
-<blockquote>
-<p>对第一种，无论子类是否有相同参数的构造方法，this(paras…);访问的始终是父类中的构造方法。<br>对第二种，无论子类是否有覆盖了该成员变量，this.xxx;访问的始终是父类中的成员变量。<br>对第三种，如果子类重写了该成员方法，则this.yyy(paras…);访问的是子类的成员方法，如果子类没有重写该成员方法，则this.yyy(paras…);访问的是父类的成员方法。<br>对第四种，this始终代表的是子类的对象。</p>
-</blockquote>
-<h5 id="super-和-this-的异同"><a href="#super-和-this-的异同" class="headerlink" title="super 和 this 的异同"></a>super 和 this 的异同</h5><blockquote>
-<p>super在一个类中用来引用其父类的成员，它是在子类中访问父类成员的一个桥梁，并不是任何一个对象的引用，而this则表示当前类对象的引用。在代码中Object o = super;是错误的，Object o = this;则是允许的。<br>super关键字的作用在于当子类中覆盖了父类的某个成员变量，或者重写了父类的某个成员方法时还能够访问到父类的成员变量和成员方法。如果子类中没有重写父类的成员变量和成员方法，则子类会继承父类的所有非private的成员变量和成员方法。这时在子类中无论通过this来访问成员和通过super来访问成员，结果都是一样的</p>
-</blockquote>
-]]></content>
-      <tags>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>java分布式系统</title>
-    <url>/2020/09/13/java%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/</url>
-    <content><![CDATA[<h4 id="什么叫分布式系统"><a href="#什么叫分布式系统" class="headerlink" title="什么叫分布式系统"></a>什么叫分布式系统</h4><p>分布式系统是一组通过网络进行通信、为了完成共同的任务而协调工作的计算机节点组成的系统。</p>
-<p>分布式系统的出现是为了用廉价的、普通的机器完成单个计算机无法完成的计算、存储任务。其目的是 <strong>利用更多的机器，处理更多的数据。</strong></p>
-<a id="more"></a>]]></content>
-      <tags>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>java位运算</title>
     <url>/2020/08/25/java%E4%BD%8D%E8%BF%90%E7%AE%97/</url>
     <content><![CDATA[<h4 id="二进制"><a href="#二进制" class="headerlink" title="二进制"></a>二进制</h4><p>位：二进制位，简称 “位” 。是二进制计数系统中表示小于 2 的整数的符号，一般用 0 或者 1 表示，是具有相等概率的两种状态中的一种。二进制位的位数可表示一个机器字的字长，一个二进制位包含的信息量称为一比特（bit）。</p>
@@ -2454,10 +2411,73 @@
       </tags>
   </entry>
   <entry>
+    <title>java关键字用法</title>
+    <url>/2020/10/12/java%E5%85%B3%E9%94%AE%E5%AD%97%E7%94%A8%E6%B3%95/</url>
+    <content><![CDATA[<h4 id="this-关键字"><a href="#this-关键字" class="headerlink" title="this 关键字"></a>this 关键字</h4><h5 id="构造方法中的-this-关键字"><a href="#构造方法中的-this-关键字" class="headerlink" title="构造方法中的 this 关键字"></a>构造方法中的 this 关键字</h5><p>构造方法是一个类的对象在通过 new 关键字创建时自动调用的，在程序中不能像调用其他方法一样通过方法名（也就是类名）来调用。但如果一个类有多个构造方法，可以在一个构造方法中通过 <code>this(...params)</code> 来调用其他的构造方法。</p>
+<p>使用 this 在调用其他构造方法存在如下的几个约束：</p>
+<ol>
+<li>只能在构造方法中通过 this 来调用其他构造方法，在普通方法中不行。</li>
+<li>不能使用 this 递归调用构造方法，即不能在一个构造方法中直接或间接调用其本身。</li>
+<li>通过 this 调用其他构造方法必须放在构造方法的第一行执行。由于 super 调用父类的构造方法也必须放在构造方法的第一行执行，因此，this 和 super 不能出现在同一个构造方法中。</li>
+<li>在构造方法中也可以使用 this 关键字来访问本类中的成员变量和成员函数。其用法和非构造方法中的 this 关键字相同。</li>
+</ol>
+<a id="more"></a>
+
+<h5 id="非构造方法中的-this-关键字"><a href="#非构造方法中的-this-关键字" class="headerlink" title="非构造方法中的 this 关键字"></a>非构造方法中的 this 关键字</h5><p>可以通过 this 关键字来调用类中的成员变量和成员方法（函数）。</p>
+<h5 id="继承关系下的-this-关键字"><a href="#继承关系下的-this-关键字" class="headerlink" title="继承关系下的 this 关键字"></a>继承关系下的 this 关键字</h5><p>在继承关系下，父类中的 this 关键字并不总是表示父类中的变量和方法。</p>
+<p>this 关键字的 4 中用法如下：</p>
+<ol>
+<li>this(params…) 访问其他的构造方法</li>
+<li>this.xxx 访问类中的成员变量xxx</li>
+<li>this.yyy(params…) 访问类中的成员方法yyy</li>
+<li>this 当前类对象的引用</li>
+</ol>
+<blockquote>
+<p>对第一种，无论子类是否有相同参数的构造方法，this(paras…);访问的始终是父类中的构造方法。<br>对第二种，无论子类是否有覆盖了该成员变量，this.xxx;访问的始终是父类中的成员变量。<br>对第三种，如果子类重写了该成员方法，则this.yyy(paras…);访问的是子类的成员方法，如果子类没有重写该成员方法，则this.yyy(paras…);访问的是父类的成员方法。<br>对第四种，this始终代表的是子类的对象。</p>
+</blockquote>
+<h5 id="super-和-this-的异同"><a href="#super-和-this-的异同" class="headerlink" title="super 和 this 的异同"></a>super 和 this 的异同</h5><blockquote>
+<p>super在一个类中用来引用其父类的成员，它是在子类中访问父类成员的一个桥梁，并不是任何一个对象的引用，而this则表示当前类对象的引用。在代码中Object o = super;是错误的，Object o = this;则是允许的。<br>super关键字的作用在于当子类中覆盖了父类的某个成员变量，或者重写了父类的某个成员方法时还能够访问到父类的成员变量和成员方法。如果子类中没有重写父类的成员变量和成员方法，则子类会继承父类的所有非private的成员变量和成员方法。这时在子类中无论通过this来访问成员和通过super来访问成员，结果都是一样的</p>
+</blockquote>
+]]></content>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>java内存区域</title>
     <url>/2020/09/30/java%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F/</url>
     <content><![CDATA[<h4 id="概览图"><a href="#概览图" class="headerlink" title="概览图"></a>概览图</h4><p>java内存区域分布图</p>
-<p><img src="http://localhost:4000/2020/09/30/java%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F/java%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F.png"></p>
+<p><img src="http://wrr123.github.io/2020/09/30/java%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F/java%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F.png"></p>
+<a id="more"></a>]]></content>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>java分布式系统</title>
+    <url>/2020/09/13/java%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/</url>
+    <content><![CDATA[<h4 id="什么叫分布式系统"><a href="#什么叫分布式系统" class="headerlink" title="什么叫分布式系统"></a>什么叫分布式系统</h4><p>分布式系统是一组通过网络进行通信、为了完成共同的任务而协调工作的计算机节点组成的系统。</p>
+<p>分布式系统的出现是为了用廉价的、普通的机器完成单个计算机无法完成的计算、存储任务。其目的是 <strong>利用更多的机器，处理更多的数据。</strong></p>
+<a id="more"></a>]]></content>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>java初始化二维数组</title>
+    <url>/2020/08/11/java%E5%88%9D%E5%A7%8B%E5%8C%96%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84/</url>
+    <content><![CDATA[<h4 id="定义二维数组"><a href="#定义二维数组" class="headerlink" title="定义二维数组"></a>定义二维数组</h4><ul>
+<li><p>先 new 对象，然后再初始化每个元素</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">nt[][] a = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">3</span>][<span class="number">5</span>]; </span><br><span class="line"></span><br><span class="line">a[<span class="number">0</span>][<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">a[<span class="number">0</span>][<span class="number">1</span>]=<span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">a[<span class="number">0</span>][<span class="number">2</span>]=<span class="number">3</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>直接赋初值来创建对象</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span>[][] b = &#123;&#123;<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>&#125;, &#123;<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>&#125;, &#123;<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>&#125; &#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>new 完对象直接初始化</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span>[][] a = <span class="keyword">new</span> <span class="keyword">int</span>[][] &#123;&#123;<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>&#125;, &#123;<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>&#125;, &#123;<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>&#125; &#125;;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
 <a id="more"></a>]]></content>
       <tags>
         <tag>java</tag>
@@ -2607,11 +2627,11 @@
 <p>组合：组合取出元素的顺序是不考虑的。</p>
 <p><strong>因组合是不考虑顺序的，故组合的个数比排列的个数要少。</strong></p>
 <p>计算公式：</p>
-<p><img src="http://localhost:4000/2020/10/21/java%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88%E7%AE%97%E6%B3%95/002.png"></p>
+<p><img src="http://wrr123.github.io/2020/10/21/java%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88%E7%AE%97%E6%B3%95/002.png"></p>
 <a id="more"></a>
 
 <h4 id="经典的案例：从-n-个数中取出-m-个数的组合"><a href="#经典的案例：从-n-个数中取出-m-个数的组合" class="headerlink" title="经典的案例：从 n 个数中取出 m 个数的组合"></a>经典的案例：从 n 个数中取出 m 个数的组合</h4><p>实现方法一</p>
-<p><img src="http://localhost:4000/2020/10/21/java%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88%E7%AE%97%E6%B3%95/001.png"></p>
+<p><img src="http://wrr123.github.io/2020/10/21/java%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88%E7%AE%97%E6%B3%95/001.png"></p>
 ]]></content>
       <tags>
         <tag>java</tag>
@@ -2635,26 +2655,6 @@
 </ul>
 <p><strong>ArrayList 使用一个内置数组来存储元素，起始容量是 10， 当数组需要扩容时，扩容公式为 <code>(old * 3) / 2 + 1</code>，也就是说每次容量会增加 50%。这意味着如果包含大量元素，将会浪费很大的空间。这种浪费是由 ArrayList 本身决定的。</strong></p>
 ]]></content>
-      <tags>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>java初始化二维数组</title>
-    <url>/2020/08/11/java%E5%88%9D%E5%A7%8B%E5%8C%96%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84/</url>
-    <content><![CDATA[<h4 id="定义二维数组"><a href="#定义二维数组" class="headerlink" title="定义二维数组"></a>定义二维数组</h4><ul>
-<li><p>先 new 对象，然后再初始化每个元素</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">nt[][] a = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">3</span>][<span class="number">5</span>]; </span><br><span class="line"></span><br><span class="line">a[<span class="number">0</span>][<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">a[<span class="number">0</span>][<span class="number">1</span>]=<span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">a[<span class="number">0</span>][<span class="number">2</span>]=<span class="number">3</span>;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>直接赋初值来创建对象</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span>[][] b = &#123;&#123;<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>&#125;, &#123;<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>&#125;, &#123;<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>&#125; &#125;;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>new 完对象直接初始化</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span>[][] a = <span class="keyword">new</span> <span class="keyword">int</span>[][] &#123;&#123;<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>&#125;, &#123;<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>&#125;, &#123;<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>&#125; &#125;;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<a id="more"></a>]]></content>
       <tags>
         <tag>java</tag>
       </tags>
@@ -2708,6 +2708,23 @@
       </tags>
   </entry>
   <entry>
+    <title>java深度优先搜索</title>
+    <url>/2020/08/11/java%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/</url>
+    <content><![CDATA[<h4 id="深度优先搜索"><a href="#深度优先搜索" class="headerlink" title="深度优先搜索"></a>深度优先搜索</h4><h5 id="英文缩写"><a href="#英文缩写" class="headerlink" title="英文缩写"></a>英文缩写</h5><p>DFS(Depth First Search)</p>
+<h5 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h5><p>所谓深度优先搜索( <strong>亦称为回溯法</strong> )，是从图的一个顶点出发，每次遍历当前访问顶点的临界点，一直到访问的顶点没有未被访问的临界点为止。然后采用依次回退的方式，查看来的路上每一个顶点是否有其他未被访问的临界点。访问完成后，判断图中的顶点是否已经全部完成遍历，如果没有，以未访问的顶点为起始点，重复上述的过程。</p>
+<p><strong>深度优先搜索是一个不断回溯的过程。</strong></p>
+<a id="more"></a>
+
+<h4 id="广度优先搜索"><a href="#广度优先搜索" class="headerlink" title="广度优先搜索"></a>广度优先搜索</h4><h5 id="英文缩写-1"><a href="#英文缩写-1" class="headerlink" title="英文缩写"></a>英文缩写</h5><p>BFS(Breadth First Search)</p>
+<p>亦称为 “宽度优先搜索”，“横向优先搜索”</p>
+<h5 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h5><p>其类似于树的层次遍历。从图中的某一顶点出发，遍历每个顶点时，依次遍历其所有的邻接点，然后从这些邻接点出发，同样依次访问它们的邻接点。按照此过程，直到图中所有被访问过的顶点的邻接点都被访问到。</p>
+<p>最后还需要做的操作就是查看图中是否存在尚未被访问的顶点，若有，则以该顶点为起始点，重复上述的过程。</p>
+]]></content>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>java科学计数法</title>
     <url>/2020/08/22/java%E7%A7%91%E5%AD%A6%E8%AE%A1%E6%95%B0%E6%B3%95/</url>
     <content><![CDATA[<h4 id="什么叫-Java-的科学计数法"><a href="#什么叫-Java-的科学计数法" class="headerlink" title="什么叫 Java 的科学计数法"></a>什么叫 Java 的科学计数法</h4><h5 id="1-有效数字"><a href="#1-有效数字" class="headerlink" title="1. 有效数字"></a>1. 有效数字</h5><p>在一个近似数中，从左边第一个不是 0 的数字起，到精确到的位数止，这中间的所有数字都叫做这个近似数的有效数字。</p>
@@ -2723,6 +2740,19 @@
 <li>BigDecimal</li>
 </ol>
 ]]></content>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>java类图</title>
+    <url>/2020/09/16/java%E7%B1%BB%E5%9B%BE/</url>
+    <content><![CDATA[<h4 id="IDEA-开发工具中，java-类图"><a href="#IDEA-开发工具中，java-类图" class="headerlink" title="IDEA 开发工具中，java 类图"></a>IDEA 开发工具中，java 类图</h4><h5 id="一些线条解释"><a href="#一些线条解释" class="headerlink" title="一些线条解释"></a>一些线条解释</h5><ul>
+<li>单箭头蓝色实线 <strong>类继承类</strong></li>
+<li>单箭头绿色实线 <strong>接口继承接口</strong></li>
+<li>单箭头绿色虚线 <strong>类实现接口</strong></li>
+</ul>
+<h5 id="延伸-1：Set-里面的-key-值不能重复，为什么？"><a href="#延伸-1：Set-里面的-key-值不能重复，为什么？" class="headerlink" title="延伸-1：Set 里面的 key 值不能重复，为什么？"></a>延伸-1：Set 里面的 key 值不能重复，为什么？</h5>]]></content>
       <tags>
         <tag>java</tag>
       </tags>
@@ -2744,7 +2774,7 @@
 <h4 id="设计模式的三个分类"><a href="#设计模式的三个分类" class="headerlink" title="设计模式的三个分类"></a>设计模式的三个分类</h4><p>创建型模式：对象实例化的模式，创新型模式用于解耦对象的实例化过程</p>
 <p>结构性模式：把类或对象结合在一起形成一个更大的结构</p>
 <p>行为型模式：类和对象如何交互，及划分责任和算法。</p>
-<p><img src="http://localhost:4000/2020/09/21/java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/001.png"></p>
+<p><img src="http://wrr123.github.io/2020/09/21/java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/001.png"></p>
 <h4 id="各分类模式中的关键点"><a href="#各分类模式中的关键点" class="headerlink" title="各分类模式中的关键点"></a>各分类模式中的关键点</h4><ol>
 <li>创新型模式</li>
 </ol>
@@ -2803,23 +2833,6 @@
 <p>同时，由于重定向方式产生了一个新的请求，所以经过一次重定向后，request 内的对象将无法使用。</p>
 <p>转发只转发项目内部的 Web 网页，重定向 <strong>可以将页面跳转到项目外的web界面。</strong></p>
 <p>转发方法的调用者和被调用者之间共享相同的 request 对象和 response 对象，它们属于同一个访问请求和响应过程；而重定向方法调用者与被调用者使用各自的 request 对象和 response 对象，它们属于两个独立的访问请求和响应过程。</p>
-]]></content>
-      <tags>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>java深度优先搜索</title>
-    <url>/2020/08/11/java%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/</url>
-    <content><![CDATA[<h4 id="深度优先搜索"><a href="#深度优先搜索" class="headerlink" title="深度优先搜索"></a>深度优先搜索</h4><h5 id="英文缩写"><a href="#英文缩写" class="headerlink" title="英文缩写"></a>英文缩写</h5><p>DFS(Depth First Search)</p>
-<h5 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h5><p>所谓深度优先搜索( <strong>亦称为回溯法</strong> )，是从图的一个顶点出发，每次遍历当前访问顶点的临界点，一直到访问的顶点没有未被访问的临界点为止。然后采用依次回退的方式，查看来的路上每一个顶点是否有其他未被访问的临界点。访问完成后，判断图中的顶点是否已经全部完成遍历，如果没有，以未访问的顶点为起始点，重复上述的过程。</p>
-<p><strong>深度优先搜索是一个不断回溯的过程。</strong></p>
-<a id="more"></a>
-
-<h4 id="广度优先搜索"><a href="#广度优先搜索" class="headerlink" title="广度优先搜索"></a>广度优先搜索</h4><h5 id="英文缩写-1"><a href="#英文缩写-1" class="headerlink" title="英文缩写"></a>英文缩写</h5><p>BFS(Breadth First Search)</p>
-<p>亦称为 “宽度优先搜索”，“横向优先搜索”</p>
-<h5 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h5><p>其类似于树的层次遍历。从图中的某一顶点出发，遍历每个顶点时，依次遍历其所有的邻接点，然后从这些邻接点出发，同样依次访问它们的邻接点。按照此过程，直到图中所有被访问过的顶点的邻接点都被访问到。</p>
-<p>最后还需要做的操作就是查看图中是否存在尚未被访问的顶点，若有，则以该顶点为起始点，重复上述的过程。</p>
 ]]></content>
       <tags>
         <tag>java</tag>
@@ -3079,27 +3092,14 @@
       </tags>
   </entry>
   <entry>
-    <title>java类图</title>
-    <url>/2020/09/16/java%E7%B1%BB%E5%9B%BE/</url>
-    <content><![CDATA[<h4 id="IDEA-开发工具中，java-类图"><a href="#IDEA-开发工具中，java-类图" class="headerlink" title="IDEA 开发工具中，java 类图"></a>IDEA 开发工具中，java 类图</h4><h5 id="一些线条解释"><a href="#一些线条解释" class="headerlink" title="一些线条解释"></a>一些线条解释</h5><ul>
-<li>单箭头蓝色实线 <strong>类继承类</strong></li>
-<li>单箭头绿色实线 <strong>接口继承接口</strong></li>
-<li>单箭头绿色虚线 <strong>类实现接口</strong></li>
-</ul>
-<h5 id="延伸-1：Set-里面的-key-值不能重复，为什么？"><a href="#延伸-1：Set-里面的-key-值不能重复，为什么？" class="headerlink" title="延伸-1：Set 里面的 key 值不能重复，为什么？"></a>延伸-1：Set 里面的 key 值不能重复，为什么？</h5>]]></content>
-      <tags>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>js中数组常用方法总结</title>
     <url>/2020/07/07/js%E4%B8%AD%E6%95%B0%E7%BB%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/</url>
-    <content><![CDATA[<h4 id="掘金文档参考"><a href="#掘金文档参考" class="headerlink" title="掘金文档参考"></a><a href="https://juejin.im/post/5aab704ef265da239a5f8f52">掘金文档参考</a></h4><h4 id="map"><a href="#map" class="headerlink" title="map()"></a>map()</h4><p><img src="http://localhost:4000/2020/07/07/js%E4%B8%AD%E6%95%B0%E7%BB%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/22.png"></p>
-<h4 id="every"><a href="#every" class="headerlink" title="every()"></a>every()</h4><p><img src="http://localhost:4000/2020/07/07/js%E4%B8%AD%E6%95%B0%E7%BB%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/11.png"></p>
-<h4 id="some"><a href="#some" class="headerlink" title="some()"></a>some()</h4><p><img src="http://localhost:4000/2020/07/07/js%E4%B8%AD%E6%95%B0%E7%BB%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/33.png"></p>
-<h4 id="filter"><a href="#filter" class="headerlink" title="filter()"></a>filter()</h4><p><img src="http://localhost:4000/2020/07/07/js%E4%B8%AD%E6%95%B0%E7%BB%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/44.png"></p>
-<h4 id="sort"><a href="#sort" class="headerlink" title="sort()"></a>sort()</h4><p><img src="http://localhost:4000/2020/07/07/js%E4%B8%AD%E6%95%B0%E7%BB%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/55.png"></p>
-<h4 id="forEach"><a href="#forEach" class="headerlink" title="forEach()"></a>forEach()</h4><p><img src="http://localhost:4000/2020/07/07/js%E4%B8%AD%E6%95%B0%E7%BB%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/66.png"></p>
+    <content><![CDATA[<h4 id="掘金文档参考"><a href="#掘金文档参考" class="headerlink" title="掘金文档参考"></a><a href="https://juejin.im/post/5aab704ef265da239a5f8f52">掘金文档参考</a></h4><h4 id="map"><a href="#map" class="headerlink" title="map()"></a>map()</h4><p><img src="http://wrr123.github.io/2020/07/07/js%E4%B8%AD%E6%95%B0%E7%BB%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/22.png"></p>
+<h4 id="every"><a href="#every" class="headerlink" title="every()"></a>every()</h4><p><img src="http://wrr123.github.io/2020/07/07/js%E4%B8%AD%E6%95%B0%E7%BB%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/11.png"></p>
+<h4 id="some"><a href="#some" class="headerlink" title="some()"></a>some()</h4><p><img src="http://wrr123.github.io/2020/07/07/js%E4%B8%AD%E6%95%B0%E7%BB%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/33.png"></p>
+<h4 id="filter"><a href="#filter" class="headerlink" title="filter()"></a>filter()</h4><p><img src="http://wrr123.github.io/2020/07/07/js%E4%B8%AD%E6%95%B0%E7%BB%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/44.png"></p>
+<h4 id="sort"><a href="#sort" class="headerlink" title="sort()"></a>sort()</h4><p><img src="http://wrr123.github.io/2020/07/07/js%E4%B8%AD%E6%95%B0%E7%BB%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/55.png"></p>
+<h4 id="forEach"><a href="#forEach" class="headerlink" title="forEach()"></a>forEach()</h4><p><img src="http://wrr123.github.io/2020/07/07/js%E4%B8%AD%E6%95%B0%E7%BB%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/66.png"></p>
 <h4 id="concat"><a href="#concat" class="headerlink" title="concat()"></a>concat()</h4><p>concat() 方法用于连接两个或者多个数组。</p>
 <p>该方法不会改变现有的数组，而仅仅会返回被连接数组的一个副本。</p>
 ]]></content>
@@ -3377,7 +3377,7 @@
 <blockquote>
 <p>在访达中连按所需的字体，然后在打开的字体预览窗口中点按“安装字体”。在 Mac 验证该字体并打开“<a href="https://support.apple.com/zh-cn/guide/font-book/welcome">字体册</a>”应用后，该字体即安装完毕并可供使用。</p>
 </blockquote>
-<p><img src="http://localhost:4000/2020/08/16/mac%E4%B8%8A%E6%9F%A5%E7%9C%8B%E5%92%8C%E5%AE%89%E8%A3%85%E5%AD%97%E4%BD%93/001.png"></p>
+<p><img src="http://wrr123.github.io/2020/08/16/mac%E4%B8%8A%E6%9F%A5%E7%9C%8B%E5%92%8C%E5%AE%89%E8%A3%85%E5%AD%97%E4%BD%93/001.png"></p>
 <p><strong>使用 brew 安装</strong></p>
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">brew tap caskroom/fonts</span><br><span class="line">brew cask install font-hack-nerd-font</span><br><span class="line">// font-hack-nerd-font 为想要安装的字体名称</span><br></pre></td></tr></table></figure>
 
@@ -3394,7 +3394,7 @@
     <title>mac下常用的命令行工具</title>
     <url>/2020/10/10/mac%E4%B8%8B%E5%B8%B8%E7%94%A8%E7%9A%84%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7/</url>
     <content><![CDATA[<h4 id="命令行模式下格式化-json-格式的字符串"><a href="#命令行模式下格式化-json-格式的字符串" class="headerlink" title="命令行模式下格式化 json 格式的字符串"></a>命令行模式下格式化 json 格式的字符串</h4><p><code>jq</code></p>
-<p><img src="http://localhost:4000/2020/10/10/mac%E4%B8%8B%E5%B8%B8%E7%94%A8%E7%9A%84%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7/jq.png"></p>
+<p><img src="http://wrr123.github.io/2020/10/10/mac%E4%B8%8B%E5%B8%B8%E7%94%A8%E7%9A%84%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7/jq.png"></p>
 ]]></content>
       <tags>
         <tag>mac</tag>
@@ -3455,7 +3455,7 @@
   <entry>
     <title>maven基础</title>
     <url>/2020/08/11/maven%E5%9F%BA%E7%A1%80/</url>
-    <content><![CDATA[<h4 id="新建一个简单的maven项目"><a href="#新建一个简单的maven项目" class="headerlink" title="新建一个简单的maven项目"></a>新建一个简单的maven项目</h4><h5 id="选择-archetype"><a href="#选择-archetype" class="headerlink" title="选择 archetype"></a>选择 <code>archetype</code></h5><p><img src="http://localhost:4000/2020/08/11/maven%E5%9F%BA%E7%A1%80/001.png"></p>
+    <content><![CDATA[<h4 id="新建一个简单的maven项目"><a href="#新建一个简单的maven项目" class="headerlink" title="新建一个简单的maven项目"></a>新建一个简单的maven项目</h4><h5 id="选择-archetype"><a href="#选择-archetype" class="headerlink" title="选择 archetype"></a>选择 <code>archetype</code></h5><p><img src="http://wrr123.github.io/2020/08/11/maven%E5%9F%BA%E7%A1%80/001.png"></p>
 <a id="more"></a>]]></content>
       <tags>
         <tag>maven</tag>
@@ -3484,9 +3484,9 @@
 <a id="more"></a>
 
 <h4 id="全局配置主键生成策略"><a href="#全局配置主键生成策略" class="headerlink" title="全局配置主键生成策略"></a>全局配置主键生成策略</h4><p>mybatis-plus 可以配置全局的主键生成策略：</p>
-<p><img src="http://localhost:4000/2020/08/12/mybatis-plus%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/001.png"></p>
+<p><img src="http://wrr123.github.io/2020/08/12/mybatis-plus%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/001.png"></p>
 <p>也可以通过 bean 的属性加注解的方式设置，主键上使用 <code>@TableId</code> 注解，注解的 type 属性有 6 种选值，对应 6 种主键生成策略。</p>
-<p><img src="http://localhost:4000/2020/08/12/mybatis-plus%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/002.png"></p>
+<p><img src="http://wrr123.github.io/2020/08/12/mybatis-plus%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/002.png"></p>
 <p>还可以在数据库中设置该表字段的生成策略，mybatis-plus 默认使用全局唯一的数字类型。</p>
 <p><strong>三种设置的优先级： 注解 &gt; 全局 &gt; 默认</strong></p>
 <h5 id="IdType"><a href="#IdType" class="headerlink" title="IdType"></a>IdType</h5><table>
@@ -3526,17 +3526,39 @@
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> class <span class="title">Configuration</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> OracleKeyGenerate <span class="title">oracleKetGenerate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> OracleKetGenerate();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>在配置文件 application.yml 中配置策略</p>
-<p><img src="http://localhost:4000/2020/08/12/mybatis-plus%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/003.png"></p>
+<p><img src="http://wrr123.github.io/2020/08/12/mybatis-plus%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/003.png"></p>
 </li>
 <li><p>在实体类中添加注解</p>
 <p>序列注解 <code>@KeySequence</code></p>
 <p>id注解 <code>@TableId</code></p>
-<p><img src="http://localhost:4000/2020/08/12/mybatis-plus%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/004.png"></p>
+<p><img src="http://wrr123.github.io/2020/08/12/mybatis-plus%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/004.png"></p>
 </li>
 </ol>
 ]]></content>
       <tags>
         <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>mybatis分页插件</title>
+    <url>/2020/10/22/mybatis%E5%88%86%E9%A1%B5%E6%8F%92%E4%BB%B6/</url>
+    <content><![CDATA[<h4 id="Mybatis通用分页插件-PageHelper"><a href="#Mybatis通用分页插件-PageHelper" class="headerlink" title="Mybatis通用分页插件 PageHelper"></a>Mybatis通用分页插件 PageHelper</h4><h5 id="简述-mybatis-中-PageHelper-的使用"><a href="#简述-mybatis-中-PageHelper-的使用" class="headerlink" title="简述 mybatis 中 PageHelper 的使用"></a>简述 mybatis 中 PageHelper 的使用</h5><ol>
+<li><p>需要引入 PageHelper 的 jar 包</p>
+ <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.github.pagehelper<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>pagehelper<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.1.4<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在 mybatis 的全局配置文件 SqlMapConfig.xml 中配置该插件</p>
+ <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">configuration</span></span></span><br><span class="line"><span class="meta">        <span class="meta-keyword">PUBLIC</span> <span class="meta-string">&quot;-//mybatis.org//DTD Config 3.0//EN&quot;</span></span></span><br><span class="line"><span class="meta">        <span class="meta-string">&quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 配置分页插件 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span> <span class="attr">interceptor</span>=<span class="string">&quot;com.github.pagehelper.PageHelper&quot;</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- 设置数据库类型 Oracle,Mysql,MariaDB,SQLite,Hsqldb,PostgreSQL六种数据库--&gt;</span>        </span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;dialect&quot;</span> <span class="attr">value</span>=<span class="string">&quot;mysql&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在执行 sql 前，添加插件完成分页功能</p>
+ <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">public class TestPageHelper &#123;</span><br><span class="line"></span><br><span class="line">    @Test</span><br><span class="line">    public void testPageHelper() &#123;</span><br><span class="line">        // 创建一个spring容器</span><br><span class="line">        ApplicationContext context = new ClassPathXmlApplicationContext(&quot;classpath:spring/applicationContext-*&quot;);</span><br><span class="line">        // 从spring容器中获取mapper代理对象</span><br><span class="line">        TbItemMapper mapper = context.getBean(TbItemMapper.class);</span><br><span class="line">        // 执行查询并分页,TbItemExample是逆向工程自动生成的，用来进行条件查询，这里不设置则表示无条件</span><br><span class="line">        TbItemExample example = new TbItemExample();</span><br><span class="line">        //分页处理，显示第一页的10条数据</span><br><span class="line">        PageHelper.startPage(1, 10);</span><br><span class="line">        List<span class="tag">&lt;<span class="name">TbItem</span>&gt;</span> list = mapper.selectByExample(example);//查询</span><br><span class="line">        // 取商品列表</span><br><span class="line">        for(TbItem item : list) &#123;</span><br><span class="line">            System.out.println(item.getTitle());</span><br><span class="line">        &#125;</span><br><span class="line">        // 取分页信息</span><br><span class="line">        PageInfo<span class="tag">&lt;<span class="name">TbItem</span>&gt;</span> pageInfo = new PageInfo<span class="tag">&lt;<span class="name">TbItem</span>&gt;</span>(list);</span><br><span class="line">        long total = pageInfo.getTotal(); //获取总记录数</span><br><span class="line">        System.out.println(&quot;共有商品信息：&quot; + total);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+]]></content>
+      <tags>
+        <tag>mybatis</tag>
       </tags>
   </entry>
   <entry>
@@ -3581,28 +3603,6 @@
 ]]></content>
       <tags>
         <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>mybatis分页插件</title>
-    <url>/2020/10/22/mybatis%E5%88%86%E9%A1%B5%E6%8F%92%E4%BB%B6/</url>
-    <content><![CDATA[<h4 id="Mybatis通用分页插件-PageHelper"><a href="#Mybatis通用分页插件-PageHelper" class="headerlink" title="Mybatis通用分页插件 PageHelper"></a>Mybatis通用分页插件 PageHelper</h4><h5 id="简述-mybatis-中-PageHelper-的使用"><a href="#简述-mybatis-中-PageHelper-的使用" class="headerlink" title="简述 mybatis 中 PageHelper 的使用"></a>简述 mybatis 中 PageHelper 的使用</h5><ol>
-<li><p>需要引入 PageHelper 的 jar 包</p>
- <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.github.pagehelper<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>pagehelper<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.1.4<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在 mybatis 的全局配置文件 SqlMapConfig.xml 中配置该插件</p>
- <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">configuration</span></span></span><br><span class="line"><span class="meta">        <span class="meta-keyword">PUBLIC</span> <span class="meta-string">&quot;-//mybatis.org//DTD Config 3.0//EN&quot;</span></span></span><br><span class="line"><span class="meta">        <span class="meta-string">&quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 配置分页插件 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span> <span class="attr">interceptor</span>=<span class="string">&quot;com.github.pagehelper.PageHelper&quot;</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- 设置数据库类型 Oracle,Mysql,MariaDB,SQLite,Hsqldb,PostgreSQL六种数据库--&gt;</span>        </span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;dialect&quot;</span> <span class="attr">value</span>=<span class="string">&quot;mysql&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在执行 sql 前，添加插件完成分页功能</p>
- <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">public class TestPageHelper &#123;</span><br><span class="line"></span><br><span class="line">    @Test</span><br><span class="line">    public void testPageHelper() &#123;</span><br><span class="line">        // 创建一个spring容器</span><br><span class="line">        ApplicationContext context = new ClassPathXmlApplicationContext(&quot;classpath:spring/applicationContext-*&quot;);</span><br><span class="line">        // 从spring容器中获取mapper代理对象</span><br><span class="line">        TbItemMapper mapper = context.getBean(TbItemMapper.class);</span><br><span class="line">        // 执行查询并分页,TbItemExample是逆向工程自动生成的，用来进行条件查询，这里不设置则表示无条件</span><br><span class="line">        TbItemExample example = new TbItemExample();</span><br><span class="line">        //分页处理，显示第一页的10条数据</span><br><span class="line">        PageHelper.startPage(1, 10);</span><br><span class="line">        List<span class="tag">&lt;<span class="name">TbItem</span>&gt;</span> list = mapper.selectByExample(example);//查询</span><br><span class="line">        // 取商品列表</span><br><span class="line">        for(TbItem item : list) &#123;</span><br><span class="line">            System.out.println(item.getTitle());</span><br><span class="line">        &#125;</span><br><span class="line">        // 取分页信息</span><br><span class="line">        PageInfo<span class="tag">&lt;<span class="name">TbItem</span>&gt;</span> pageInfo = new PageInfo<span class="tag">&lt;<span class="name">TbItem</span>&gt;</span>(list);</span><br><span class="line">        long total = pageInfo.getTotal(); //获取总记录数</span><br><span class="line">        System.out.println(&quot;共有商品信息：&quot; + total);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
-]]></content>
-      <tags>
-        <tag>mybatis</tag>
       </tags>
   </entry>
   <entry>
@@ -3748,7 +3748,7 @@
 <p>window下检查nginx服务是否启动</p>
 <blockquote>
 <p><code>tasklist /fi &quot;imagename eq nginx.exe&quot;</code>,在cmd窗口输入前面的命令，若如下图所示，表示已经启动了。</p>
-<p><img src="http://localhost:4000/2020/07/13/nginx%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/22.png"></p>
+<p><img src="http://wrr123.github.io/2020/07/13/nginx%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/22.png"></p>
 </blockquote>
 <h4 id="nginx常用命令"><a href="#nginx常用命令" class="headerlink" title="nginx常用命令"></a>nginx常用命令</h4><blockquote>
 <p>验证配置是否正确: nginx -t</p>
@@ -3761,7 +3761,7 @@
 <h4 id="nginx反向代理的作用"><a href="#nginx反向代理的作用" class="headerlink" title="nginx反向代理的作用"></a>nginx反向代理的作用</h4><blockquote>
 <p>项目部署在多个tomcat上，即使其中一个tomcat不能访问了也能访问其他的tomcat服务，</p>
 </blockquote>
-<p><img src="http://localhost:4000/2020/07/13/nginx%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/11.png"></p>
+<p><img src="http://wrr123.github.io/2020/07/13/nginx%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/11.png"></p>
 <h4 id="nginx配置并部署-案例1"><a href="#nginx配置并部署-案例1" class="headerlink" title="nginx配置并部署(案例1)"></a>nginx配置并部署(案例1)</h4><blockquote>
 <p>配置两个Tomcat服务指向 localhost:8070 和 localhost:8071他们的权重都是5（权重越大就越容易被访问）</p>
 </blockquote>
@@ -3780,9 +3780,45 @@
       </tags>
   </entry>
   <entry>
+    <title>notebook-ideas</title>
+    <url>/2020/08/16/notebook-IDEs/</url>
+    <content><![CDATA[<h1 id="Mon-Oct-28-15-09-06-CST-2019"><a href="#Mon-Oct-28-15-09-06-CST-2019" class="headerlink" title="Mon Oct 28 15:09:06 CST 2019"></a>Mon Oct 28 15:09:06 CST 2019</h1><h2 id="idea-编译项目时，出现错误非法字符-65279"><a href="#idea-编译项目时，出现错误非法字符-65279" class="headerlink" title="idea 编译项目时，出现错误非法字符 \65279?"></a>idea 编译项目时，出现错误<code>非法字符 \65279</code>?</h2><ul>
+<li>IDEA导入项目出现\65279非法字符</li>
+<li>这个问题也是由于带BOM的UTF-8格式引起的，至少我遇到都是这样，一般在linux上和macos上导入项目会发生，可能是由于在windows上用一些软件编辑过文件导致的。解决办法也很简单，下面就说一下解决办法。</li>
+<li>比如说我将一个项目导入到idea发现报错了，可以使用命令行，首先进入src目录的同级目录：</li>
+<li>输入：vi</li>
+<li>输入：:args ./src/** 这里的**表示循环src下的所有文件夹</li>
+<li>输入：:ar 这一步可选，目的是查看当前添加了哪些目标文件</li>
+<li>输入：:argdo set nobomb | update! 这句意思是对args列表中的文件分别执行 set nobomb 然后强制保存</li>
+<li>以上就是步骤，这样就可以了。</li>
+</ul>
+<h1 id="Thu-Oct-31-10-11-40-CST-2019"><a href="#Thu-Oct-31-10-11-40-CST-2019" class="headerlink" title="Thu Oct 31 10:11:40 CST 2019"></a>Thu Oct 31 10:11:40 CST 2019</h1><h2 id="idea2019-2版本激活报错error-1653219"><a href="#idea2019-2版本激活报错error-1653219" class="headerlink" title="idea2019-2版本激活报错error 1653219?"></a>idea2019-2版本激活报错<code>error 1653219</code>?</h2><ol>
+<li>说法1：注释掉<code>/etc/hosts</code>文件里的<code>0.0.0.0 account.jetbrains.com</code>等信息,并添加<code>0.0.0.0 https://account.jetbrains.com:443</code>到hosts文件。</li>
+</ol>
+<h1 id="Thu-Nov-7-23-17-14-CST-2019"><a href="#Thu-Nov-7-23-17-14-CST-2019" class="headerlink" title="Thu Nov  7 23:17:14 CST 2019"></a>Thu Nov  7 23:17:14 CST 2019</h1><h2 id="常用的一些插件推荐"><a href="#常用的一些插件推荐" class="headerlink" title="常用的一些插件推荐"></a>常用的一些插件推荐</h2><ul>
+<li>FindBugs</li>
+<li>maven helper</li>
+<li>Rainbow brackets</li>
+<li>Key Promoter X</li>
+<li>GsonFormat</li>
+<li>RestfulToolkit</li>
+<li>Free Mybatis</li>
+</ul>
+<h1 id="Tue-Nov-12-13-30-31-CST-2019"><a href="#Tue-Nov-12-13-30-31-CST-2019" class="headerlink" title="Tue Nov 12 13:30:31 CST 2019"></a>Tue Nov 12 13:30:31 CST 2019</h1><h2 id="解决idea自动重置LanguageLevel和JavaCompiler版本的问题？"><a href="#解决idea自动重置LanguageLevel和JavaCompiler版本的问题？" class="headerlink" title="解决idea自动重置LanguageLevel和JavaCompiler版本的问题？"></a>解决idea自动重置LanguageLevel和JavaCompiler版本的问题？</h2><ul>
+<li>产生的原因：修改pom文件后，maven会自动修改编译器版本到maven的默认编译版本</li>
+<li>解决办法：修改pom文件，增加如下一段：<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-compiler-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.5.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">source</span>&gt;</span>1.8<span class="tag">&lt;/<span class="name">source</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">target</span>&gt;</span>1.8<span class="tag">&lt;/<span class="name">target</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>notebook</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>node和node-sass的版本兼容问题</title>
     <url>/2020/07/31/node%E5%92%8Cnode-sass%E7%9A%84%E7%89%88%E6%9C%AC%E5%85%BC%E5%AE%B9%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<h4 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h4><p><img src="http://localhost:4000/2020/07/31/node%E5%92%8Cnode-sass%E7%9A%84%E7%89%88%E6%9C%AC%E5%85%BC%E5%AE%B9%E9%97%AE%E9%A2%98/001.png" alt="npm编译出错日志"></p>
+    <content><![CDATA[<h4 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h4><p><img src="http://wrr123.github.io/2020/07/31/node%E5%92%8Cnode-sass%E7%9A%84%E7%89%88%E6%9C%AC%E5%85%BC%E5%AE%B9%E9%97%AE%E9%A2%98/001.png" alt="npm编译出错日志"></p>
 <h5 id="node-sass和node版本的对应关系"><a href="#node-sass和node版本的对应关系" class="headerlink" title="node-sass和node版本的对应关系"></a>node-sass和node版本的对应关系</h5><p>Supported Node.js versions vary by release, please consult the <a href="https://github.com/sass/node-sass/releases">releases page</a>. Below is a quick guide for minimun support:</p>
 <table>
 <thead>
@@ -3829,42 +3865,6 @@
       </tags>
   </entry>
   <entry>
-    <title>notebook-ideas</title>
-    <url>/2020/08/16/notebook-IDEs/</url>
-    <content><![CDATA[<h1 id="Mon-Oct-28-15-09-06-CST-2019"><a href="#Mon-Oct-28-15-09-06-CST-2019" class="headerlink" title="Mon Oct 28 15:09:06 CST 2019"></a>Mon Oct 28 15:09:06 CST 2019</h1><h2 id="idea-编译项目时，出现错误非法字符-65279"><a href="#idea-编译项目时，出现错误非法字符-65279" class="headerlink" title="idea 编译项目时，出现错误非法字符 \65279?"></a>idea 编译项目时，出现错误<code>非法字符 \65279</code>?</h2><ul>
-<li>IDEA导入项目出现\65279非法字符</li>
-<li>这个问题也是由于带BOM的UTF-8格式引起的，至少我遇到都是这样，一般在linux上和macos上导入项目会发生，可能是由于在windows上用一些软件编辑过文件导致的。解决办法也很简单，下面就说一下解决办法。</li>
-<li>比如说我将一个项目导入到idea发现报错了，可以使用命令行，首先进入src目录的同级目录：</li>
-<li>输入：vi</li>
-<li>输入：:args ./src/** 这里的**表示循环src下的所有文件夹</li>
-<li>输入：:ar 这一步可选，目的是查看当前添加了哪些目标文件</li>
-<li>输入：:argdo set nobomb | update! 这句意思是对args列表中的文件分别执行 set nobomb 然后强制保存</li>
-<li>以上就是步骤，这样就可以了。</li>
-</ul>
-<h1 id="Thu-Oct-31-10-11-40-CST-2019"><a href="#Thu-Oct-31-10-11-40-CST-2019" class="headerlink" title="Thu Oct 31 10:11:40 CST 2019"></a>Thu Oct 31 10:11:40 CST 2019</h1><h2 id="idea2019-2版本激活报错error-1653219"><a href="#idea2019-2版本激活报错error-1653219" class="headerlink" title="idea2019-2版本激活报错error 1653219?"></a>idea2019-2版本激活报错<code>error 1653219</code>?</h2><ol>
-<li>说法1：注释掉<code>/etc/hosts</code>文件里的<code>0.0.0.0 account.jetbrains.com</code>等信息,并添加<code>0.0.0.0 https://account.jetbrains.com:443</code>到hosts文件。</li>
-</ol>
-<h1 id="Thu-Nov-7-23-17-14-CST-2019"><a href="#Thu-Nov-7-23-17-14-CST-2019" class="headerlink" title="Thu Nov  7 23:17:14 CST 2019"></a>Thu Nov  7 23:17:14 CST 2019</h1><h2 id="常用的一些插件推荐"><a href="#常用的一些插件推荐" class="headerlink" title="常用的一些插件推荐"></a>常用的一些插件推荐</h2><ul>
-<li>FindBugs</li>
-<li>maven helper</li>
-<li>Rainbow brackets</li>
-<li>Key Promoter X</li>
-<li>GsonFormat</li>
-<li>RestfulToolkit</li>
-<li>Free Mybatis</li>
-</ul>
-<h1 id="Tue-Nov-12-13-30-31-CST-2019"><a href="#Tue-Nov-12-13-30-31-CST-2019" class="headerlink" title="Tue Nov 12 13:30:31 CST 2019"></a>Tue Nov 12 13:30:31 CST 2019</h1><h2 id="解决idea自动重置LanguageLevel和JavaCompiler版本的问题？"><a href="#解决idea自动重置LanguageLevel和JavaCompiler版本的问题？" class="headerlink" title="解决idea自动重置LanguageLevel和JavaCompiler版本的问题？"></a>解决idea自动重置LanguageLevel和JavaCompiler版本的问题？</h2><ul>
-<li>产生的原因：修改pom文件后，maven会自动修改编译器版本到maven的默认编译版本</li>
-<li>解决办法：修改pom文件，增加如下一段：<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-compiler-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.5.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">source</span>&gt;</span>1.8<span class="tag">&lt;/<span class="name">source</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">target</span>&gt;</span>1.8<span class="tag">&lt;/<span class="name">target</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>notebook</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>notebook-bootstrap</title>
     <url>/2020/08/16/notebook-bootstrap/</url>
     <content><![CDATA[<h3 id="2020-03-25-09-45-49-星期三"><a href="#2020-03-25-09-45-49-星期三" class="headerlink" title="2020-03-25 09:45:49 星期三"></a>2020-03-25 09:45:49 星期三</h3><h3 id="form表单的基本样式"><a href="#form表单的基本样式" class="headerlink" title="form表单的基本样式"></a>form表单的基本样式</h3><h3 id="栅格系统"><a href="#栅格系统" class="headerlink" title="栅格系统"></a>栅格系统</h3><h5 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h5><ul>
@@ -3896,6 +3896,18 @@
       </tags>
   </entry>
   <entry>
+    <title>notebook-demandAnalysis</title>
+    <url>/2020/08/16/notebook-demandAnalysis/</url>
+    <content><![CDATA[<h1 id="2020年-1月-2日-星期四-19时12分10秒-CST"><a href="#2020年-1月-2日-星期四-19时12分10秒-CST" class="headerlink" title="2020年 1月 2日 星期四 19时12分10秒 CST"></a>2020年 1月 2日 星期四 19时12分10秒 CST</h1><h2 id="通用的socket客户端服务"><a href="#通用的socket客户端服务" class="headerlink" title="通用的socket客户端服务"></a>通用的socket客户端服务</h2><ul>
+<li>数据结构设计<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">entity</span><br><span class="line">    请求报文</span><br><span class="line">      属性--需要的一些字段</span><br><span class="line">    返回报文</span><br><span class="line">dao</span><br><span class="line">service(interface)</span><br><span class="line">    人行客户端</span><br><span class="line">        全局变量</span><br><span class="line">        method</span><br><span class="line">            1. send message</span><br><span class="line">            2. receive message</span><br><span class="line">  impl</span><br><span class="line">controller</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>notebook</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>notebook-docker</title>
     <url>/2020/08/16/notebook-docker/</url>
     <content><![CDATA[<h1 id="Thu-Nov-7-12-35-57-CST-2019"><a href="#Thu-Nov-7-12-35-57-CST-2019" class="headerlink" title="Thu Nov  7 12:35:57 CST 2019"></a>Thu Nov  7 12:35:57 CST 2019</h1><h2 id="将本地的文件复制到docker容器中"><a href="#将本地的文件复制到docker容器中" class="headerlink" title="将本地的文件复制到docker容器中"></a>将本地的文件复制到docker容器中</h2><ol>
@@ -3908,18 +3920,6 @@
 </ol>
 <ul>
 <li><code>docker cp 容器名:容器文件路径 本地路径</code></li>
-</ul>
-]]></content>
-      <tags>
-        <tag>notebook</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>notebook-demandAnalysis</title>
-    <url>/2020/08/16/notebook-demandAnalysis/</url>
-    <content><![CDATA[<h1 id="2020年-1月-2日-星期四-19时12分10秒-CST"><a href="#2020年-1月-2日-星期四-19时12分10秒-CST" class="headerlink" title="2020年 1月 2日 星期四 19时12分10秒 CST"></a>2020年 1月 2日 星期四 19时12分10秒 CST</h1><h2 id="通用的socket客户端服务"><a href="#通用的socket客户端服务" class="headerlink" title="通用的socket客户端服务"></a>通用的socket客户端服务</h2><ul>
-<li>数据结构设计<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">entity</span><br><span class="line">    请求报文</span><br><span class="line">      属性--需要的一些字段</span><br><span class="line">    返回报文</span><br><span class="line">dao</span><br><span class="line">service(interface)</span><br><span class="line">    人行客户端</span><br><span class="line">        全局变量</span><br><span class="line">        method</span><br><span class="line">            1. send message</span><br><span class="line">            2. receive message</span><br><span class="line">  impl</span><br><span class="line">controller</span><br></pre></td></tr></table></figure>
-</li>
 </ul>
 ]]></content>
       <tags>
@@ -5187,7 +5187,7 @@
 
 <h4 id="一些功能点"><a href="#一些功能点" class="headerlink" title="一些功能点"></a>一些功能点</h4><h5 id="关系图查看"><a href="#关系图查看" class="headerlink" title="关系图查看"></a>关系图查看</h5><p>如何画出两张表或多张表之间的关系？</p>
 <p>直接点击字段前后的圆点来连接两张表之间的两个字段。</p>
-<h5 id="属性查看和修改"><a href="#属性查看和修改" class="headerlink" title="属性查看和修改"></a>属性查看和修改</h5><h5 id="给每张表添加默认字段信息"><a href="#给每张表添加默认字段信息" class="headerlink" title="给每张表添加默认字段信息"></a>给每张表添加默认字段信息</h5><p><img src="http://localhost:4000/2020/10/09/pdman%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/%E8%AE%BE%E7%BD%AE%E9%BB%98%E8%AE%A4%E5%AD%97%E6%AE%B5.png"></p>
+<h5 id="属性查看和修改"><a href="#属性查看和修改" class="headerlink" title="属性查看和修改"></a>属性查看和修改</h5><h5 id="给每张表添加默认字段信息"><a href="#给每张表添加默认字段信息" class="headerlink" title="给每张表添加默认字段信息"></a>给每张表添加默认字段信息</h5><p><img src="http://wrr123.github.io/2020/10/09/pdman%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/%E8%AE%BE%E7%BD%AE%E9%BB%98%E8%AE%A4%E5%AD%97%E6%AE%B5.png"></p>
 ]]></content>
       <tags>
         <tag>数据库工具</tag>
@@ -5316,13 +5316,13 @@
 </ol>
 </li>
 <li><p>负责向客户端（浏览器）发送响应头的相关方法</p>
-<p><img src="http://localhost:4000/2020/07/03/response%E5%93%8D%E5%BA%94%E5%AF%B9%E8%B1%A1%E8%AF%A6%E8%A7%A3/11.png"></p>
+<p><img src="http://wrr123.github.io/2020/07/03/response%E5%93%8D%E5%BA%94%E5%AF%B9%E8%B1%A1%E8%AF%A6%E8%A7%A3/11.png"></p>
 </li>
 <li><p>负责向客户端（浏览器）发送响应状态码的相关方法</p>
-<p><img src="http://localhost:4000/2020/07/03/response%E5%93%8D%E5%BA%94%E5%AF%B9%E8%B1%A1%E8%AF%A6%E8%A7%A3/22.png"></p>
+<p><img src="http://wrr123.github.io/2020/07/03/response%E5%93%8D%E5%BA%94%E5%AF%B9%E8%B1%A1%E8%AF%A6%E8%A7%A3/22.png"></p>
 </li>
 <li><p>响应状态码的常量</p>
-<p><img src="http://localhost:4000/2020/07/03/response%E5%93%8D%E5%BA%94%E5%AF%B9%E8%B1%A1%E8%AF%A6%E8%A7%A3/33.png"></p>
+<p><img src="http://wrr123.github.io/2020/07/03/response%E5%93%8D%E5%BA%94%E5%AF%B9%E8%B1%A1%E8%AF%A6%E8%A7%A3/33.png"></p>
 </li>
 </ol>
 <h4 id="对象常见应用"><a href="#对象常见应用" class="headerlink" title="对象常见应用"></a>对象常见应用</h4><ol>
@@ -5627,7 +5627,7 @@
 <a id="more"></a>
 <p>具体的实现：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> io.swagger.annotations.ApiOperation;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.servlet.config.annotation.WebMvcConfigurer;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.builders.ApiInfoBuilder;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.builders.PathSelectors;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.builders.RequestHandlerSelectors;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.service.ApiInfo;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.service.ApiKey;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.spi.DocumentationType;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.spring.web.plugins.Docket;</span><br><span class="line"><span class="keyword">import</span> springfox.documentation.swagger2.annotations.EnableSwagger2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> com.google.common.collect.Lists.newArrayList;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SwaggerConfig</span> <span class="keyword">implements</span> <span class="title">WebMvcConfigurer</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Docket <span class="title">createRestApi</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Docket(DocumentationType.SWAGGER_2)</span><br><span class="line">               .apiInfo(apiInfo()) </span><br><span class="line">               .select() </span><br><span class="line">               .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class)) </span><br><span class="line">               .paths(PathSelectors.any()) </span><br><span class="line">               .build() </span><br><span class="line">               <span class="comment">// 关键在于添加此处 </span></span><br><span class="line">               .securitySchemes(security());</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** </span></span><br><span class="line"><span class="comment">        主要添加这个方法</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> List&lt;ApiKey&gt; <span class="title">security</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> newArrayList(</span><br><span class="line">            <span class="keyword">new</span> ApiKey(<span class="string">&quot;token&quot;</span>, <span class="string">&quot;token&quot;</span>, <span class="string">&quot;header&quot;</span>)</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>实现的效果图<br><img src="http://localhost:4000/2020/09/02/swagger%E4%B8%8Etoken%E9%AA%8C%E8%AF%81/001.png"></p>
+<p>实现的效果图<br><img src="http://wrr123.github.io/2020/09/02/swagger%E4%B8%8Etoken%E9%AA%8C%E8%AF%81/001.png"></p>
 ]]></content>
       <tags>
         <tag>java</tag>
@@ -5680,7 +5680,7 @@
 <h6 id="访问验证"><a href="#访问验证" class="headerlink" title="访问验证"></a>访问验证</h6><blockquote>
 <p>其实就只需要添加一下依赖就可以了，我们重新启动一下项目，然后在浏览器中访问 <code>http://localhost:8080/swagger-ui.html</code> 就可以看到如下的效果了:</p>
 </blockquote>
-<p><img src="http://localhost:4000/2020/08/03/swagger%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/001.png"></p>
+<p><img src="http://wrr123.github.io/2020/08/03/swagger%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/001.png"></p>
 <h4 id="高级配置"><a href="#高级配置" class="headerlink" title="高级配置"></a>高级配置</h4><h5 id="文档相关描述配置"><a href="#文档相关描述配置" class="headerlink" title="文档相关描述配置"></a>文档相关描述配置</h5><ol>
 <li><p>通过在控制器类上增加<code>@Api</code>注解，可以给控制器增加描述和标签信息。</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Api(tags = &quot;用户相关接口&quot;, description = &quot;提供用户相关的 Rest API&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserController</span></span></span><br></pre></td></tr></table></figure>
@@ -5699,7 +5699,7 @@
 </li>
 </ol>
 <p>补全信息后的swagger文档界面</p>
-<p><img src="http://localhost:4000/2020/08/03/swagger%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/002.png"></p>
+<p><img src="http://wrr123.github.io/2020/08/03/swagger%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/002.png"></p>
 <h4 id="接口过滤"><a href="#接口过滤" class="headerlink" title="接口过滤"></a>接口过滤</h4><blockquote>
 <p>有些时候我们并不是希望所有的 Rest API 都呈现在文档上，这种情况下 Swagger2 提供给我们了两种方式配置，一种是基于 <code>@ApiIgnore</code> 注解，另一种是在 Docket 上增加筛选。</p>
 </blockquote>
@@ -5857,7 +5857,7 @@
 <td align="left">该字段允许的值，当我们 API 的某个参数为枚举类型时，使用这个属性就可以清楚地告诉 API 使用者该参数所能允许传入的值。</td>
 </tr>
 </tbody></table>
-<h4 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h4><h5 id="Required-String-parameter-39-xxxx-39-is-not-present？"><a href="#Required-String-parameter-39-xxxx-39-is-not-present？" class="headerlink" title="Required String parameter &#39;xxxx&#39; is not present？"></a><code>Required String parameter &#39;xxxx&#39; is not present</code>？</h5><p><img src="http://localhost:4000/2020/08/03/swagger%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/003.png"></p>
+<h4 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h4><h5 id="Required-String-parameter-39-xxxx-39-is-not-present？"><a href="#Required-String-parameter-39-xxxx-39-is-not-present？" class="headerlink" title="Required String parameter &#39;xxxx&#39; is not present？"></a><code>Required String parameter &#39;xxxx&#39; is not present</code>？</h5><p><img src="http://wrr123.github.io/2020/08/03/swagger%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/003.png"></p>
 ]]></content>
       <tags>
         <tag>java</tag>
@@ -5905,7 +5905,7 @@
   <entry>
     <title>the-silver-search</title>
     <url>/2020/08/11/the-silver-search/</url>
-    <content><![CDATA[<h4 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h4><p><img src="http://localhost:4000/2020/08/11/the-silver-search/001.png"></p>
+    <content><![CDATA[<h4 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h4><p><img src="http://wrr123.github.io/2020/08/11/the-silver-search/001.png"></p>
 <p>关于文本搜索，最常见的用法是：</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ag &quot;search string&quot;</span><br></pre></td></tr></table></figure>
 
@@ -6172,7 +6172,7 @@
   <entry>
     <title>vsCode</title>
     <url>/2020/08/20/vsCode/</url>
-    <content><![CDATA[<h4 id="设置缩进-2-个空格"><a href="#设置缩进-2-个空格" class="headerlink" title="设置缩进 2 个空格"></a>设置缩进 2 个空格</h4><p><img src="http://localhost:4000/2020/08/20/vsCode/001.png"></p>
+    <content><![CDATA[<h4 id="设置缩进-2-个空格"><a href="#设置缩进-2-个空格" class="headerlink" title="设置缩进 2 个空格"></a>设置缩进 2 个空格</h4><p><img src="http://wrr123.github.io/2020/08/20/vsCode/001.png"></p>
 <p><strong>设置完成不会立刻生效，可以 ctrl + shift + p，然后输入 reload window，回车，重启一下就生效了。</strong></p>
 <a id="more"></a>]]></content>
       <tags>
@@ -6440,7 +6440,7 @@
   <entry>
     <title>vue生命周期钩子</title>
     <url>/2020/09/08/vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E9%92%A9%E5%AD%90/</url>
-    <content><![CDATA[<h4 id="生命周期图示"><a href="#生命周期图示" class="headerlink" title="生命周期图示"></a>生命周期图示</h4><p><img src="http://localhost:4000/2020/09/08/vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E9%92%A9%E5%AD%90/lifecycle.png"></p>
+    <content><![CDATA[<h4 id="生命周期图示"><a href="#生命周期图示" class="headerlink" title="生命周期图示"></a>生命周期图示</h4><p><img src="http://wrr123.github.io/2020/09/08/vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E9%92%A9%E5%AD%90/lifecycle.png"></p>
 <a id="more"></a>
 
 <h4 id="实例的生命周期钩子"><a href="#实例的生命周期钩子" class="headerlink" title="实例的生命周期钩子"></a>实例的生命周期钩子</h4><p>每个 Vue 实例在被创建时都要经过一系列的初始化过程 – 例如，需要设置数据监听、编译模板、将实例挂载到 DOM 并在数据变化时更新 DOM 等。同时在这个过程中也会运行一些叫做 <strong>生命周期钩子</strong> 的函数,这给了用户在不同阶段添加自己代码的机会。</p>
@@ -6625,7 +6625,7 @@
     <title>webpack入门指南</title>
     <url>/2020/08/24/webpack%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/</url>
     <content><![CDATA[<h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><p>webpack 是一个前端资源加载/打包工具。它将根据模块的依赖关系进行静态分析，然后将这些模块按照指定的规则生成对应的静态资源。</p>
-<p><img src="http://localhost:4000/2020/08/24/webpack%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/001.png"></p>
+<p><img src="http://wrr123.github.io/2020/08/24/webpack%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/001.png"></p>
 <a id="more"></a>
 
 <h4 id="使用-webpack-打包后的-vue-项目如何运行"><a href="#使用-webpack-打包后的-vue-项目如何运行" class="headerlink" title="使用 webpack 打包后的 vue 项目如何运行"></a>使用 webpack 打包后的 vue 项目如何运行</h4><p>可以部署到 express 服务器上运行。</p>
@@ -6640,7 +6640,7 @@
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> expressName</span><br><span class="line">npm install <span class="comment"># 或者 cnpm install</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>此时生成的项目目录是这样的：</p>
-<p><img src="http://localhost:4000/2020/08/24/webpack%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/002.png"></p>
+<p><img src="http://wrr123.github.io/2020/08/24/webpack%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/002.png"></p>
 </li>
 <li><p>将 dist 文件夹下的所有文件复制到 express 项目的 public 文件夹下面，然后运行 <code>npm start</code> 来启动 express 项目。</p>
 </li>
@@ -7184,11 +7184,11 @@ window.location本身也是一个对象。
     <title>程序员之项目管理</title>
     <url>/2020/09/30/%E7%A8%8B%E5%BA%8F%E5%91%98%E4%B9%8B%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/</url>
     <content><![CDATA[<h4 id="知识树"><a href="#知识树" class="headerlink" title="知识树"></a>知识树</h4><p>技术管理岗位，需要软件开发的专业知识体系图</p>
-<p><img src="http://localhost:4000/2020/09/30/%E7%A8%8B%E5%BA%8F%E5%91%98%E4%B9%8B%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/%E6%8A%80%E6%9C%AF%E7%AE%A1%E7%90%86%E7%9F%A5%E8%AF%86%E6%A0%91.png"></p>
+<p><img src="http://wrr123.github.io/2020/09/30/%E7%A8%8B%E5%BA%8F%E5%91%98%E4%B9%8B%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/%E6%8A%80%E6%9C%AF%E7%AE%A1%E7%90%86%E7%9F%A5%E8%AF%86%E6%A0%91.png"></p>
 <a id="more"></a>
 
 <p>项目流程分析图</p>
-<p><img src="http://localhost:4000/2020/09/30/%E7%A8%8B%E5%BA%8F%E5%91%98%E4%B9%8B%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/%E9%A1%B9%E7%9B%AE%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B.png"></p>
+<p><img src="http://wrr123.github.io/2020/09/30/%E7%A8%8B%E5%BA%8F%E5%91%98%E4%B9%8B%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/%E9%A1%B9%E7%9B%AE%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B.png"></p>
 <h4 id="项目管理"><a href="#项目管理" class="headerlink" title="项目管理"></a>项目管理</h4><p>项目管理能力修炼的 6 个阶段：</p>
 <ol>
 <li>学习项目管理知识体系</li>
@@ -7927,10 +7927,10 @@ window.location本身也是一个对象。
 <h4 id="Loading加载"><a href="#Loading加载" class="headerlink" title="Loading加载"></a>Loading加载</h4><p>加载数据时显示功效</p>
 <h5 id="加载方式"><a href="#加载方式" class="headerlink" title="加载方式"></a>加载方式</h5><ul>
 <li><p>指令加载</p>
-<p><img src="http://localhost:4000/2020/07/01/element-ui%E5%B8%B8%E7%94%A8%E7%BB%84%E4%BB%B6%E8%AF%A6%E8%A7%A3/11.png"></p>
+<p><img src="http://wrr123.github.io/2020/07/01/element-ui%E5%B8%B8%E7%94%A8%E7%BB%84%E4%BB%B6%E8%AF%A6%E8%A7%A3/11.png"></p>
 </li>
 <li><p>服务加载</p>
-<p><img src="http://localhost:4000/2020/07/01/element-ui%E5%B8%B8%E7%94%A8%E7%BB%84%E4%BB%B6%E8%AF%A6%E8%A7%A3/22.png"></p>
+<p><img src="http://wrr123.github.io/2020/07/01/element-ui%E5%B8%B8%E7%94%A8%E7%BB%84%E4%BB%B6%E8%AF%A6%E8%A7%A3/22.png"></p>
 </li>
 </ul>
 <h4 id="Switch-开关"><a href="#Switch-开关" class="headerlink" title="Switch 开关"></a>Switch 开关</h4><h5 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h5><p>绑定 <code>v-model</code> 到一个 <code>Boolean</code> 类型的变量。可以使用 <code>active-color</code> 属性与 <code>inactive-color</code> 属性来设置开关的背景颜色。</p>
@@ -8090,7 +8090,7 @@ window.location本身也是一个对象。
 <p>一个栗子：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;el-tabs type&#x3D;&quot;border-card&quot;&gt;</span><br><span class="line">  &lt;el-tab-pane&gt;</span><br><span class="line">    &lt;span slot&#x3D;&quot;label&quot;&gt;&lt;i class&#x3D;&quot;el-icon-date&quot;&gt;&lt;&#x2F;i&gt; 我的行程&lt;&#x2F;span&gt;</span><br><span class="line">    我的行程</span><br><span class="line">  &lt;&#x2F;el-tab-pane&gt;</span><br><span class="line">  &lt;el-tab-pane label&#x3D;&quot;消息中心&quot;&gt;消息中心&lt;&#x2F;el-tab-pane&gt;</span><br><span class="line">  &lt;el-tab-pane label&#x3D;&quot;角色管理&quot;&gt;角色管理&lt;&#x2F;el-tab-pane&gt;</span><br><span class="line">  &lt;el-tab-pane label&#x3D;&quot;定时任务补偿&quot;&gt;定时任务补偿&lt;&#x2F;el-tab-pane&gt;</span><br><span class="line">&lt;&#x2F;el-tabs&gt;</span><br></pre></td></tr></table></figure>
 
-<p><img src="http://localhost:4000/2020/07/01/element-ui%E5%B8%B8%E7%94%A8%E7%BB%84%E4%BB%B6%E8%AF%A6%E8%A7%A3/001.png"></p>
+<p><img src="http://wrr123.github.io/2020/07/01/element-ui%E5%B8%B8%E7%94%A8%E7%BB%84%E4%BB%B6%E8%AF%A6%E8%A7%A3/001.png"></p>
 <h5 id="动态增减标签页"><a href="#动态增减标签页" class="headerlink" title="动态增减标签页"></a>动态增减标签页</h5><p>增减标签页按钮只能在选项卡样式的标签下使用</p>
 <p>一个栗子：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;el-tabs v-model&#x3D;&quot;editableTabsValue&quot; type&#x3D;&quot;card&quot; editable @edit&#x3D;&quot;handleTabsEdit&quot;&gt;</span><br><span class="line">  &lt;el-tab-pane</span><br><span class="line">    :key&#x3D;&quot;item.name&quot;</span><br><span class="line">    v-for&#x3D;&quot;(item, index) in editableTabs&quot;</span><br><span class="line">    :label&#x3D;&quot;item.title&quot;</span><br><span class="line">    :name&#x3D;&quot;item.name&quot;</span><br><span class="line">  &gt;</span><br><span class="line">    &#123;&#123;item.content&#125;&#125;</span><br><span class="line">  &lt;&#x2F;el-tab-pane&gt;</span><br><span class="line">&lt;&#x2F;el-tabs&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">  export default &#123;</span><br><span class="line">    data() &#123;</span><br><span class="line">      return &#123;</span><br><span class="line">        editableTabsValue: &#39;2&#39;,</span><br><span class="line">        editableTabs: [&#123;</span><br><span class="line">          title: &#39;Tab 1&#39;,</span><br><span class="line">          name: &#39;1&#39;,</span><br><span class="line">          content: &#39;Tab 1 content&#39;</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">          title: &#39;Tab 2&#39;,</span><br><span class="line">          name: &#39;2&#39;,</span><br><span class="line">          content: &#39;Tab 2 content&#39;</span><br><span class="line">        &#125;],</span><br><span class="line">        tabIndex: 2</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">      handleTabsEdit(targetName, action) &#123;</span><br><span class="line">        if (action &#x3D;&#x3D;&#x3D; &#39;add&#39;) &#123;</span><br><span class="line">          let newTabName &#x3D; ++this.tabIndex + &#39;&#39;;</span><br><span class="line">          this.editableTabs.push(&#123;</span><br><span class="line">            title: &#39;New Tab&#39;,</span><br><span class="line">            name: newTabName,</span><br><span class="line">            content: &#39;New Tab content&#39;</span><br><span class="line">          &#125;);</span><br><span class="line">          this.editableTabsValue &#x3D; newTabName;</span><br><span class="line">        &#125;</span><br><span class="line">        if (action &#x3D;&#x3D;&#x3D; &#39;remove&#39;) &#123;</span><br><span class="line">          let tabs &#x3D; this.editableTabs;</span><br><span class="line">          let activeName &#x3D; this.editableTabsValue;</span><br><span class="line">          if (activeName &#x3D;&#x3D;&#x3D; targetName) &#123;</span><br><span class="line">            tabs.forEach((tab, index) &#x3D;&gt; &#123;</span><br><span class="line">              if (tab.name &#x3D;&#x3D;&#x3D; targetName) &#123;</span><br><span class="line">                let nextTab &#x3D; tabs[index + 1] || tabs[index - 1];</span><br><span class="line">                if (nextTab) &#123;</span><br><span class="line">                  activeName &#x3D; nextTab.name;</span><br><span class="line">                &#125;</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">          &#125;</span><br><span class="line">          </span><br><span class="line">          this.editableTabsValue &#x3D; activeName;</span><br><span class="line">          this.editableTabs &#x3D; tabs.filter(tab &#x3D;&gt; tab.name !&#x3D;&#x3D; targetName);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>

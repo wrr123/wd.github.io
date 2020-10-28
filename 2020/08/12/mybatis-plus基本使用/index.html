@@ -29,16 +29,16 @@
 <meta property="og:site_name" content="一缕烟气">
 <meta property="og:description" content="忽略映射字段某些属性不是数据库的表字段，但是又是必须使用的 1@TableField(exist &#x3D; false)  @TableField(exist &#x3D; true) 表示该属性为数据库字段。 1234@TableName &#x2F;&#x2F; 数据库表相关@TableId &#x2F;&#x2F; 表主键标识@TableField &#x2F;&#x2F; 表字段标识@TableLogic &#x2F;&#x2F; 表字段逻辑处理注解(逻辑删除)">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://localhost:4000/2020/08/12/mybatis-plus%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/001.png">
-<meta property="og:image" content="http://localhost:4000/2020/08/12/mybatis-plus%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/002.png">
-<meta property="og:image" content="http://localhost:4000/2020/08/12/mybatis-plus%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/003.png">
-<meta property="og:image" content="http://localhost:4000/2020/08/12/mybatis-plus%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/004.png">
+<meta property="og:image" content="http://wrr123.github.io/2020/08/12/mybatis-plus%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/001.png">
+<meta property="og:image" content="http://wrr123.github.io/2020/08/12/mybatis-plus%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/002.png">
+<meta property="og:image" content="http://wrr123.github.io/2020/08/12/mybatis-plus%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/003.png">
+<meta property="og:image" content="http://wrr123.github.io/2020/08/12/mybatis-plus%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/004.png">
 <meta property="article:published_time" content="2020-08-12T07:36:59.000Z">
 <meta property="article:modified_time" content="2020-08-28T16:06:18.514Z">
 <meta property="article:author" content="田园隐士">
 <meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://localhost:4000/2020/08/12/mybatis-plus%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/001.png">
+<meta name="twitter:image" content="http://wrr123.github.io/2020/08/12/mybatis-plus%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/001.png">
 
 <link rel="canonical" href="https://wrr123.github.io/2020/08/12/mybatis-plus%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/">
 
@@ -276,9 +276,9 @@
 <a id="more"></a>
 
 <h4 id="全局配置主键生成策略"><a href="#全局配置主键生成策略" class="headerlink" title="全局配置主键生成策略"></a>全局配置主键生成策略</h4><p>mybatis-plus 可以配置全局的主键生成策略：</p>
-<p><img src="http://localhost:4000/2020/08/12/mybatis-plus%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/001.png"></p>
+<p><img src="http://wrr123.github.io/2020/08/12/mybatis-plus%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/001.png"></p>
 <p>也可以通过 bean 的属性加注解的方式设置，主键上使用 <code>@TableId</code> 注解，注解的 type 属性有 6 种选值，对应 6 种主键生成策略。</p>
-<p><img src="http://localhost:4000/2020/08/12/mybatis-plus%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/002.png"></p>
+<p><img src="http://wrr123.github.io/2020/08/12/mybatis-plus%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/002.png"></p>
 <p>还可以在数据库中设置该表字段的生成策略，mybatis-plus 默认使用全局唯一的数字类型。</p>
 <p><strong>三种设置的优先级： 注解 &gt; 全局 &gt; 默认</strong></p>
 <h5 id="IdType"><a href="#IdType" class="headerlink" title="IdType"></a>IdType</h5><table>
@@ -318,12 +318,12 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> class <span class="title">Configuration</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> OracleKeyGenerate <span class="title">oracleKetGenerate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> OracleKetGenerate();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>在配置文件 application.yml 中配置策略</p>
-<p><img src="http://localhost:4000/2020/08/12/mybatis-plus%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/003.png"></p>
+<p><img src="http://wrr123.github.io/2020/08/12/mybatis-plus%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/003.png"></p>
 </li>
 <li><p>在实体类中添加注解</p>
 <p>序列注解 <code>@KeySequence</code></p>
 <p>id注解 <code>@TableId</code></p>
-<p><img src="http://localhost:4000/2020/08/12/mybatis-plus%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/004.png"></p>
+<p><img src="http://wrr123.github.io/2020/08/12/mybatis-plus%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/004.png"></p>
 </li>
 </ol>
 
