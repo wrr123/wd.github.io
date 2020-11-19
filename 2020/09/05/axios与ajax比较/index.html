@@ -22,15 +22,15 @@
     var CONFIG = {"hostname":"wrr123.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="什么叫 axios">
+  <meta name="description" content="什么叫 axiosAxios 是一个基于 promise 的 HTTP库，可以用在浏览器和 node.js 中。 特性 从浏览器中创建 XMLHttpRequests 从 node.js 创建 http 请求 支持 Promise API 拦截请求和响应 转换请求数据和响应数据 取消请求 自动转换 JSON 数据 客户端支持防御 XSRF">
 <meta property="og:type" content="article">
 <meta property="og:title" content="axios与ajax比较">
 <meta property="og:url" content="https://wrr123.github.io/2020/09/05/axios%E4%B8%8Eajax%E6%AF%94%E8%BE%83/index.html">
 <meta property="og:site_name" content="一缕烟气">
-<meta property="og:description" content="什么叫 axios">
+<meta property="og:description" content="什么叫 axiosAxios 是一个基于 promise 的 HTTP库，可以用在浏览器和 node.js 中。 特性 从浏览器中创建 XMLHttpRequests 从 node.js 创建 http 请求 支持 Promise API 拦截请求和响应 转换请求数据和响应数据 取消请求 自动转换 JSON 数据 客户端支持防御 XSRF">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-09-05T02:21:36.000Z">
-<meta property="article:modified_time" content="2020-09-05T02:24:51.955Z">
+<meta property="article:modified_time" content="2020-11-11T05:50:15.489Z">
 <meta property="article:author" content="田园隐士">
 <meta property="article:tag" content="vuejs">
 <meta property="article:tag" content="nodejs">
@@ -220,10 +220,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-09-05 10:21:36 / 修改时间：10:24:51" itemprop="dateCreated datePublished" datetime="2020-09-05T10:21:36+08:00">2020-09-05</time>
+              <time title="创建时间：2020-09-05 10:21:36" itemprop="dateCreated datePublished" datetime="2020-09-05T10:21:36+08:00">2020-09-05</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-11-11 13:50:15" itemprop="dateModified" datetime="2020-11-11T13:50:15+08:00">2020-11-11</time>
+              </span>
 
           
             <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
@@ -238,7 +244,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>8</span>
+              <span>144</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -257,7 +263,20 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h4 id="什么叫-axios"><a href="#什么叫-axios" class="headerlink" title="什么叫 axios"></a>什么叫 axios</h4>
+        <h4 id="什么叫-axios"><a href="#什么叫-axios" class="headerlink" title="什么叫 axios"></a>什么叫 axios</h4><p>Axios 是一个基于 promise 的 HTTP库，可以用在浏览器和 node.js 中。</p>
+<h5 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h5><ul>
+<li>从浏览器中创建 <code>XMLHttpRequests</code></li>
+<li>从 node.js 创建 http 请求</li>
+<li>支持 Promise API</li>
+<li>拦截请求和响应</li>
+<li>转换请求数据和响应数据</li>
+<li>取消请求</li>
+<li>自动转换 JSON 数据</li>
+<li>客户端支持防御 XSRF</li>
+</ul>
+<a id="more"></a>
+
+
     </div>
 
     
@@ -341,7 +360,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E5%8F%AB-axios"><span class="nav-number">1.</span> <span class="nav-text">什么叫 axios</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E5%8F%AB-axios"><span class="nav-number">1.</span> <span class="nav-text">什么叫 axios</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%89%B9%E6%80%A7"><span class="nav-number">1.1.</span> <span class="nav-text">特性</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -357,7 +376,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">167</span>
+          <span class="site-state-item-count">173</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -370,7 +389,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">48</span>
+        <span class="site-state-item-count">49</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -406,12 +425,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">305k</span>
+    <span title="站点总字数">313k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:37</span>
+    <span title="站点阅读时长">4:44</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>

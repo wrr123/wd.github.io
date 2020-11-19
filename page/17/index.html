@@ -193,6 +193,1395 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2020/07/02/vue%E4%BD%9C%E7%94%A8%E5%9F%9F%E6%8F%92%E6%A7%BD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="田园隐士">
+      <meta itemprop="description" content="talk is cheap, show me the code">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一缕烟气">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/02/vue%E4%BD%9C%E7%94%A8%E5%9F%9F%E6%8F%92%E6%A7%BD/" class="post-title-link" itemprop="url">vue插槽作用域</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-07-02 11:32:13" itemprop="dateCreated datePublished" datetime="2020-07-02T11:32:13+08:00">2020-07-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-09 11:36:56" itemprop="dateModified" datetime="2020-09-09T11:36:56+08:00">2020-09-09</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>4.5k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>4 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>定义：是vuejs中一个很有用的特性，可以显著的提高组件的通用性和可复用性。</p>
+<h4 id="组件和插槽比较"><a href="#组件和插槽比较" class="headerlink" title="组件和插槽比较"></a>组件和插槽比较</h4><p>父组件通过<code>prop</code>向子组件传递数据，通过插槽向子组件传递内容。</p>
+<p>共同点：都是从上(父)往下(子)传递数据</p>
+<p>区别：Prop传递的是组件的属性，而插槽传递的是<code>VNode</code>节点。</p>
+<p><strong>作用域插槽：是从下(子)往上(父)传递数据，官方描述<code>可从子组件获取数据</code></strong></p>
+<h4 id="什么是插槽"><a href="#什么是插槽" class="headerlink" title="什么是插槽"></a>什么是插槽</h4><p>在组件中，使用<code>&lt;slot&gt;&lt;/slot&gt;</code>定义一个插槽，那么该组件在其他组件(父组件)中使用时，父组件的该组件 <strong>中间的内容</strong> 会被替换掉插槽所在位置。</p>
+<h5 id="编译作用域"><a href="#编译作用域" class="headerlink" title="编译作用域"></a>编译作用域</h5><blockquote>
+<p>父级模板中的所有内容都是在父级作用域中编译的；子模版里的所有内容都是在子作用域中编译的。</p>
+</blockquote>
+<h5 id="后备内容"><a href="#后备内容" class="headerlink" title="后备内容"></a>后备内容</h5><p>指给插槽设置具体的后备（默认的）内容是很有用的</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 定义一个含插槽的组件SubmitButton --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">slot</span>&gt;</span>submit<span class="tag">&lt;/<span class="name">slot</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 父组件定义为这样(1) --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">submit-button</span>&gt;</span><span class="tag">&lt;/<span class="name">submit-button</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 被渲染为（1） --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span>&gt;</span></span><br><span class="line">  Submit</span><br><span class="line"><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 父组件定义为这样(2) --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">submit-button</span>&gt;</span>Save<span class="tag">&lt;/<span class="name">submit-button</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 被渲染为（2） --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span>&gt;</span></span><br><span class="line">  Save    </span><br><span class="line"><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="具名插槽"><a href="#具名插槽" class="headerlink" title="具名插槽"></a>具名插槽</h5><p>给<code>&lt;slot&gt;</code>指定一个特殊的属性： <code>name</code>;</p>
+<p>其中不带name属性的<code>&lt;slot&gt;</code>会带一个隐式的名字<code>default</code>。</p>
+<p>在向具名插槽提供内容的时候，我们可以在一个<code>&lt;template&gt;</code>元素上使用<code>v-slot</code>指令，并以<code>v-slot</code>的参数的形式提供其名称</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">base-layout</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">template</span> <span class="attr">v-slot:header</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Here might be a page title<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>A paragraph for the main content.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>And another one.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">template</span> <span class="attr">v-slot:footer</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>Here&#x27;s some contact info<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">base-layout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>现在<code>&lt;template&gt;</code>元素中的内容会被传入相应的插槽中。</p>
+<p>任何没有被带有<code>v-slot</code>的<code>&lt;template&gt;</code>元素包裹的内容都会被视为默认插槽的内容。</p>
+<p>当然，你也可以指定默认插槽的名称。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">base-layout</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">template</span> <span class="attr">v-slot:header</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Here might be a page title<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">template</span> <span class="attr">v-slot:default</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>A paragraph for the main content.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>And another one.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">template</span> <span class="attr">v-slot:footer</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>Here&#x27;s some contact info<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">base-layout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="作用域插槽"><a href="#作用域插槽" class="headerlink" title="作用域插槽"></a>作用域插槽</h5><p>有时让插槽内容能够访问子组件才有的数据是很有用的。</p>
+<p>为了让子组件的某个数据如<code>user</code>在父级的插槽内容中可用，我们可以将<code>user</code>作为<code>&lt;slot&gt;</code>元素的一个attribute绑定上去：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">slot</span> <span class="attr">v-bind:user</span>=<span class="string">&quot;user&quot;</span>&gt;</span></span><br><span class="line">    &#123;&#123; user.lastName &#125;&#125;</span><br><span class="line">  <span class="tag">&lt;/<span class="name">slot</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>绑定在<code>&lt;slot&gt;</code>元素上的attribute被称为 <strong>插槽prop</strong>。</p>
+<p>现在在父级作用域中，我们可以使用带值的<code>v-slot</code>来定义我们提供的<strong>插槽prop</strong>的名字：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">current-user</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">template</span> <span class="attr">v-slot:default</span>=<span class="string">&quot;slotProps&quot;</span>&gt;</span></span><br><span class="line">    &#123;&#123; slotProps.user.firstName &#125;&#125;</span><br><span class="line">  <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">current-user</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>在上述的例子中，将包含插槽prop的对象命名为<code>slotProps</code>,实际上，你可以使用任意你喜欢的名字。</p>
+<h5 id="独占默认插槽的缩写写法"><a href="#独占默认插槽的缩写写法" class="headerlink" title="独占默认插槽的缩写写法"></a>独占默认插槽的缩写写法</h5><p>可以将v-slot直接使用在组件上</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">current-user</span> <span class="attr">v-slot:default</span>=<span class="string">&quot;slotProps&quot;</span>&gt;</span></span><br><span class="line">  &#123;&#123; slotProps.user.firstName &#125;&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">current-user</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>可以使用不带参数的v-slot来假定为默认插槽</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">current-user</span> <span class="attr">v-slot</span>=<span class="string">&quot;slotProps&quot;</span>&gt;</span></span><br><span class="line">  &#123;&#123; slotProps.user.firstName &#125;&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">current-user</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>注意: 默认插槽的缩写写法不能和具名插槽混用，因为他会导致作用域不明</strong></p>
+<p><strong>因此，只要出现多个插槽，请始终为所有的插槽使用完整的基于<code>&lt;template&gt;</code>的语法</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">current-user</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">template</span> <span class="attr">v-slot:default</span>=<span class="string">&quot;slotProps&quot;</span>&gt;</span></span><br><span class="line">    &#123;&#123; slotProps.user.firstName &#125;&#125;</span><br><span class="line">  <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">template</span> <span class="attr">v-slot:other</span>=<span class="string">&quot;otherSlotProps&quot;</span>&gt;</span></span><br><span class="line">    ...</span><br><span class="line">  <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">current-user</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="解构插槽Prop"><a href="#解构插槽Prop" class="headerlink" title="解构插槽Prop"></a>解构插槽Prop</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">current-user</span> <span class="attr">v-slot</span>=<span class="string">&quot;&#123; user &#125;&quot;</span>&gt;</span></span><br><span class="line">  &#123;&#123; user.firstName &#125;&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">current-user</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>也可以将user重命名为person</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">current-user</span> <span class="attr">v-slot</span>=<span class="string">&quot;&#123; user: person &#125;&quot;</span>&gt;</span></span><br><span class="line">  &#123;&#123; person.firstName &#125;&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">current-user</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>甚至可以定义后备内容，用于插槽prop是<code>undefined</code>的情形</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">current-user</span> <span class="attr">v-slot</span>=<span class="string">&quot;&#123; user = &#123; firstName: &#x27;Guest&#x27; &#125; &#125;&quot;</span>&gt;</span></span><br><span class="line">  &#123;&#123; user.firstName &#125;&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">current-user</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="具名插槽的缩写"><a href="#具名插槽的缩写" class="headerlink" title="具名插槽的缩写"></a>具名插槽的缩写</h5><p>和<code>v-bind</code>、<code>v-on</code>一样，<code>v-slot</code>也有缩写。</p>
+<p>可以把参数之前的内容(<code>v-slot:</code>)替换为字符<code>#</code>。</p>
+<p>如<code>v-slot:header</code>可以被重写为<code>#header</code>。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">base-layout</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">template</span> #<span class="attr">header</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Here might be a page title<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>A paragraph for the main content.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>And another one.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">template</span> #<span class="attr">footer</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>Here&#x27;s some contact info<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">base-layout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>然而，和其他的指令一样，该缩写只有在其存在参数的时候才有效。</strong></p>
+<p>所以下面的语法是无效的</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 这样会触发一个警告 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">current-user</span> #=<span class="string">&quot;&#123; user &#125;&quot;</span>&gt;</span></span><br><span class="line">  &#123;&#123; user.firstName &#125;&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">current-user</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>如果你希望使用缩写的话，那么你必须以明确的插槽名来取而代之</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">current-user</span> #<span class="attr">default</span>=<span class="string">&quot;&#123; user &#125;&quot;</span>&gt;</span></span><br><span class="line">  &#123;&#123; user.firstName &#125;&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">current-user</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="作用域插槽的一些理解"><a href="#作用域插槽的一些理解" class="headerlink" title="作用域插槽的一些理解"></a>作用域插槽的一些理解</h5><p>作用域插槽可以在父组件中访问子组件中的数据。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 子组件</span><br><span class="line">...</span><br><span class="line">child</span><br><span class="line">&#x2F;&#x2F; 在子组件上，给 slot 绑定一个属性，我们叫做 ‘插槽prop’</span><br><span class="line">&lt;slot :user&#x3D;&quot;&quot; &gt;&lt;&#x2F;slot&gt;</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 父组件</span><br><span class="line">...</span><br><span class="line">&#x2F;&#x2F; vue 2.6 之前</span><br><span class="line">&lt;child slot-scope&#x3D;&quot;scope&quot;&gt;&#123;&#123;scope.user&#125;&#125;&lt;&#x2F;child&gt;</span><br><span class="line">&#x2F;&#x2F; vue 2.6 之后</span><br><span class="line">&lt;child v-slot:default&#x3D;&quot;scope&quot;&gt;&#123;&#123;scope.user&#125;&#125;&lt;&#x2F;child&gt;</span><br><span class="line">&#x2F;&#x2F; 或者</span><br><span class="line">&lt;child v-slot&#x3D;&quot;scope&quot;&gt;&#123;&#123;scope.user&#125;&#125;&lt;&#x2F;child&gt;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2020/07/02/vue%E6%8F%92%E6%A7%BD%E4%BD%9C%E7%94%A8%E5%9F%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="田园隐士">
+      <meta itemprop="description" content="talk is cheap, show me the code">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一缕烟气">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/02/vue%E6%8F%92%E6%A7%BD%E4%BD%9C%E7%94%A8%E5%9F%9F/" class="post-title-link" itemprop="url">vue插槽作用域</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-07-02 11:32:13" itemprop="dateCreated datePublished" datetime="2020-07-02T11:32:13+08:00">2020-07-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-08-11 21:41:09" itemprop="dateModified" datetime="2020-08-11T21:41:09+08:00">2020-08-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>38</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>定义：是vuejs中一个很有用的特性，可以显著的提高组件的通用性和可复用性。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2020/07/01/faq-oracle/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="田园隐士">
+      <meta itemprop="description" content="talk is cheap, show me the code">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一缕烟气">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/01/faq-oracle/" class="post-title-link" itemprop="url">faq-oracle</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-07-01 15:11:18" itemprop="dateCreated datePublished" datetime="2020-07-01T15:11:18+08:00">2020-07-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-10-26 10:24:58" itemprop="dateModified" datetime="2020-10-26T10:24:58+08:00">2020-10-26</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/FAQ/" itemprop="url" rel="index"><span itemprop="name">FAQ</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>226</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="ORA-01861-文字与格式字符串不匹配"><a href="#ORA-01861-文字与格式字符串不匹配" class="headerlink" title="ORA-01861: 文字与格式字符串不匹配"></a>ORA-01861: 文字与格式字符串不匹配</h4><p>原因：数据库中字段定义的为date类型，而在java中定义的为string字符串类型</p>
+<p>解决：将java中的字段类型改为<code>java.util.Date</code>类型</p>
+<h4 id="将多行数据的同一个字段合并到一列"><a href="#将多行数据的同一个字段合并到一列" class="headerlink" title="将多行数据的同一个字段合并到一列"></a>将多行数据的同一个字段合并到一列</h4><h5 id="listagg"><a href="#listagg" class="headerlink" title="listagg()"></a>listagg()</h5><p>例子：</p>
+<p><img src="http://wrr123.github.io/2020/07/01/faq-oracle/22.png"></p>
+<p><img src="http://wrr123.github.io/2020/07/01/faq-oracle/33.png"></p>
+<p>注意点：</p>
+<p><img src="http://wrr123.github.io/2020/07/01/faq-oracle/11.png"></p>
+<h5 id="wm-concat"><a href="#wm-concat" class="headerlink" title="wm_concat()"></a>wm_concat()</h5><p>wm_concat()默认以逗号<code>,</code>来分割字段；</p>
+<h4 id="oracle-判断除数不为-0-的方法"><a href="#oracle-判断除数不为-0-的方法" class="headerlink" title="oracle 判断除数不为 0 的方法"></a>oracle 判断除数不为 0 的方法</h4><p><code>decode(column_name, 0, 0, column_name_1 / column_name)</code></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2020/07/01/faq-java/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="田园隐士">
+      <meta itemprop="description" content="talk is cheap, show me the code">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一缕烟气">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/01/faq-java/" class="post-title-link" itemprop="url">faq-java</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-07-01 15:04:20" itemprop="dateCreated datePublished" datetime="2020-07-01T15:04:20+08:00">2020-07-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-11-17 16:30:20" itemprop="dateModified" datetime="2020-11-17T16:30:20+08:00">2020-11-17</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/FAQ/" itemprop="url" rel="index"><span itemprop="name">FAQ</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3.5k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="jdk1-8如何解析和格式化日期"><a href="#jdk1-8如何解析和格式化日期" class="headerlink" title="jdk1.8如何解析和格式化日期"></a>jdk1.8如何解析和格式化日期</h4><h5 id="解析日期和时间"><a href="#解析日期和时间" class="headerlink" title="解析日期和时间"></a>解析日期和时间</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String str = <span class="string">&quot;1986-04-08 12:30&quot;</span>;</span><br><span class="line">DateTimeFormatter formatter = DateTimeFormatter.ofPattern(<span class="string">&quot;yyyy-MM-dd HH:mm&quot;</span>);</span><br><span class="line">LocalDateTime dateTime = LocalDateTime.parse(str, formatter);</span><br></pre></td></tr></table></figure>
+
+<h5 id="格式化日期和时间"><a href="#格式化日期和时间" class="headerlink" title="格式化日期和时间"></a>格式化日期和时间</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">DateTimeFormatter formatter = DateTimeFormatter.ofPattern(<span class="string">&quot;yyyy-MM-dd HH:mm&quot;</span>);</span><br><span class="line">LocalDateTime dateTime = LocalDateTime.of(<span class="number">1986</span>, Month.APRIL, <span class="number">8</span>, <span class="number">12</span>, <span class="number">30</span>);</span><br><span class="line">String formattedDateTime = dateTime.format(formatter); <span class="comment">// &quot;1986-04-08 12:30&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="Java8中Date与LocalDateTime、LocalDate、LocalTime之间的互转"><a href="#Java8中Date与LocalDateTime、LocalDate、LocalTime之间的互转" class="headerlink" title="Java8中Date与LocalDateTime、LocalDate、LocalTime之间的互转"></a>Java8中Date与LocalDateTime、LocalDate、LocalTime之间的互转</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 01. java.util.Date --&gt; java.time.LocalDateTime</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">UDateToLocalDateTime</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    java.util.Date date = <span class="keyword">new</span> java.util.Date();</span><br><span class="line">    Instant instant = date.toInstant();</span><br><span class="line">    ZoneId zone = ZoneId.systemDefault();</span><br><span class="line">    LocalDateTime localDateTime = LocalDateTime.ofInstant(instant, zone);</span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line"><span class="comment">// 02. java.util.Date --&gt; java.time.LocalDate</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">UDateToLocalDate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    java.util.Date date = <span class="keyword">new</span> java.util.Date();</span><br><span class="line">    Instant instant = date.toInstant();</span><br><span class="line">    ZoneId zone = ZoneId.systemDefault();</span><br><span class="line">    LocalDateTime localDateTime = LocalDateTime.ofInstant(instant, zone);</span><br><span class="line">    LocalDate localDate = localDateTime.toLocalDate();</span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line"><span class="comment">// 03. java.util.Date --&gt; java.time.LocalTime</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">UDateToLocalTime</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    java.util.Date date = <span class="keyword">new</span> java.util.Date();</span><br><span class="line">    Instant instant = date.toInstant();</span><br><span class="line">    ZoneId zone = ZoneId.systemDefault();</span><br><span class="line">    LocalDateTime localDateTime = LocalDateTime.ofInstant(instant, zone);</span><br><span class="line">    LocalTime localTime = localDateTime.toLocalTime();</span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="comment">// 04. java.time.LocalDateTime --&gt; java.util.Date</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">LocalDateTimeToUdate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    LocalDateTime localDateTime = LocalDateTime.now();</span><br><span class="line">    ZoneId zone = ZoneId.systemDefault();</span><br><span class="line">    Instant instant = localDateTime.atZone(zone).toInstant();</span><br><span class="line">    java.util.Date date = Date.from(instant);</span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="comment">// 05. java.time.LocalDate --&gt; java.util.Date</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">LocalDateToUdate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    LocalDate localDate = LocalDate.now();</span><br><span class="line">    ZoneId zone = ZoneId.systemDefault();</span><br><span class="line">    Instant instant = localDate.atStartOfDay().atZone(zone).toInstant();</span><br><span class="line">    java.util.Date date = Date.from(instant);</span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line"><span class="comment">// 06. java.time.LocalTime --&gt; java.util.Date</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">LocalTimeToUdate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    LocalTime localTime = LocalTime.now();</span><br><span class="line">    LocalDate localDate = LocalDate.now();</span><br><span class="line">    LocalDateTime localDateTime = LocalDateTime.of(localDate, localTime);</span><br><span class="line">    ZoneId zone = ZoneId.systemDefault();</span><br><span class="line">    Instant instant = localDateTime.atZone(zone).toInstant();</span><br><span class="line">    java.util.Date date = Date.from(instant);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="http错误代码"><a href="#http错误代码" class="headerlink" title="http错误代码"></a>http错误代码</h4><ol>
+<li><h5 id="400"><a href="#400" class="headerlink" title="400"></a>400</h5><p>请求无效（bad request），出现这个请求报错说明请求没有进入到后台服务中</p>
+<p>原因：</p>
+<ul>
+<li>前端提交数据的字段名称或者字段类型和后台的实体类不一致，导致无法封装。</li>
+<li>前端提交到后台的数据应该是json字符串类型，而前端没有将对象转化为字符串类型。</li>
+</ul>
+<p>解决方案：</p>
+<ul>
+<li>对照字段名称、类型，保证一致性</li>
+<li>使用<code>JSON.stringify(param)</code>将前端传递的对象转化为字符串。</li>
+</ul>
+</li>
+</ol>
+<h4 id="EasyPOI导出excel文件时，若不想导出表头，怎么设置？"><a href="#EasyPOI导出excel文件时，若不想导出表头，怎么设置？" class="headerlink" title="EasyPOI导出excel文件时，若不想导出表头，怎么设置？"></a>EasyPOI导出excel文件时，若不想导出表头，怎么设置？</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ExportParams exportParams = <span class="keyword">new</span> ExportParams(<span class="string">&quot;支付宝账单&quot;</span>, <span class="string">&quot;支付宝账单&quot;</span>);</span><br><span class="line">List&lt;KnsAliBillVo&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">workbook = ExcelExportUtil.exportExcel(exportParams, KnsAliBillVo.class, list);</span><br><span class="line"><span class="comment">// 如果不想导出表头那一行，可以设置表头字符串参数为null即可。</span></span><br><span class="line">ExportParams exportParams = <span class="keyword">new</span> ExportParams(<span class="keyword">null</span> , <span class="string">&quot;支付宝账单&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="java在同一行代码定义多个变量"><a href="#java在同一行代码定义多个变量" class="headerlink" title="java在同一行代码定义多个变量"></a>java在同一行代码定义多个变量</h4><p>一个栗子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 同一行定义多个同类型的变量</span></span><br><span class="line">String a = <span class="string">&quot;Hello&quot;</span>, c = <span class="string">&quot;hello&quot;</span>;</span><br><span class="line"><span class="keyword">int</span> x = <span class="number">5</span>, y = <span class="number">5</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="i-和-i-的区别"><a href="#i-和-i-的区别" class="headerlink" title="++i 和 i++ 的区别"></a>++i 和 i++ 的区别</h4><p>i++ 和 ++i 都是自增运算符，<code>i++</code> 有时被称作 <strong>后加运算符</strong> ，<code>++i</code> 被称作 <strong>前加运算符 。</strong></p>
+<ul>
+<li><code>i++</code> 是先赋值，再运算(自增长 1)</li>
+<li><code>++i</code> 是先运算(自增长 1)，再赋值</li>
+</ul>
+<h5 id="讨论-i-与-i-的效率"><a href="#讨论-i-与-i-的效率" class="headerlink" title="讨论 i++ 与 ++i 的效率"></a>讨论 i++ 与 ++i 的效率</h5><blockquote>
+<p>理论上，经过编译器优化后 i++ 与 ++i 的效率几乎一样，实际测试，++i 效率高于 i++。</p>
+</blockquote>
+<h4 id="spring中的注解-Component-Repository-Service-Controller-等标注的默认-Bean-名称"><a href="#spring中的注解-Component-Repository-Service-Controller-等标注的默认-Bean-名称" class="headerlink" title="spring中的注解 @Component, @Repository, @Service, @Controller 等标注的默认 Bean 名称"></a>spring中的注解 <code>@Component, @Repository, @Service, @Controller</code> 等标注的默认 Bean 名称</h4><p><strong>都是小写开头的类名</strong></p>
+<h4 id="报错信息java-lang-NoSuchMethodError-org-json-JSONObject-put-String-Collection"><a href="#报错信息java-lang-NoSuchMethodError-org-json-JSONObject-put-String-Collection" class="headerlink" title="报错信息java.lang.NoSuchMethodError:org.json.JSONObject.put(String, Collection)"></a>报错信息<code>java.lang.NoSuchMethodError:org.json.JSONObject.put(String, Collection)</code></h4><p>经检查，引入的包中是存在这个方法的，但是依然报错，</p>
+<p>可能原因：包依赖冲突的问题，需要检查<code>org.json</code>包是否引入了多次。</p>
+<h4 id="springboot项目-Value取不到值的一些情况"><a href="#springboot项目-Value取不到值的一些情况" class="headerlink" title="springboot项目@Value取不到值的一些情况"></a>springboot项目<code>@Value</code>取不到值的一些情况</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Value(&quot;$&#123;tag&#125;&quot;)</span></span><br><span class="line"><span class="keyword">private</span> String tagValue;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>使用 <code>static</code> 或者 <code>final</code> 修改了 <code>tagValue</code></p>
+</li>
+<li><p>类上没有加上<code>@Component</code> 或者 <code>@Service</code>注解等</p>
+</li>
+<li><p>类被 <code>new</code> 新建了实例，而没有使用 <code>@Autowired</code>注解</p>
+<p>  若不想使用 <code>@Autowired</code>自动装配，可以使用 <code>ApplicationContext</code>类来获取”bean”</p>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2020/07/01/element-ui%E5%B8%B8%E7%94%A8%E7%BB%84%E4%BB%B6%E8%AF%A6%E8%A7%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="田园隐士">
+      <meta itemprop="description" content="talk is cheap, show me the code">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一缕烟气">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/01/element-ui%E5%B8%B8%E7%94%A8%E7%BB%84%E4%BB%B6%E8%AF%A6%E8%A7%A3/" class="post-title-link" itemprop="url">element-ui常用组件详解</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-07-01 10:06:14" itemprop="dateCreated datePublished" datetime="2020-07-01T10:06:14+08:00">2020-07-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-09 09:15:20" itemprop="dateModified" datetime="2020-09-09T09:15:20+08:00">2020-09-09</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>17k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>16 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="文件上传-uplaod"><a href="#文件上传-uplaod" class="headerlink" title="文件上传 uplaod"></a>文件上传 uplaod</h4><h5 id="Attribute"><a href="#Attribute" class="headerlink" title="Attribute"></a>Attribute</h5><table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="center">说明</th>
+<th>类型</th>
+<th align="center">可选值</th>
+<th align="center">默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">action</td>
+<td align="center">必选参数，上传的地址</td>
+<td>string</td>
+<td align="center">-</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="left">headers</td>
+<td align="center">设置上传的请求头部</td>
+<td>object</td>
+<td align="center">-</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="left">multiple</td>
+<td align="center">是否支持多选文件</td>
+<td>Boolean</td>
+<td align="center">-</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="left">data</td>
+<td align="center">上传时附带的额外参数</td>
+<td>object</td>
+<td align="center">-</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="left">name</td>
+<td align="center">上传的文件字段名</td>
+<td>string</td>
+<td align="center">-</td>
+<td align="center">file</td>
+</tr>
+<tr>
+<td align="left">with-credentials</td>
+<td align="center">支持发送cookie凭证信息</td>
+<td>boolean</td>
+<td align="center">-</td>
+<td align="center">false</td>
+</tr>
+<tr>
+<td align="left">show-file-list</td>
+<td align="center">是否显示已上传文件列表</td>
+<td>boolean</td>
+<td align="center">-</td>
+<td align="center">true</td>
+</tr>
+<tr>
+<td align="left">drag</td>
+<td align="center">是否启用拖拽上传</td>
+<td>boolean</td>
+<td align="center">-</td>
+<td align="center">false</td>
+</tr>
+<tr>
+<td align="left">accept</td>
+<td align="center">接受上传的文件类型（thumbnail-mode模式下此参数无效）</td>
+<td>string</td>
+<td align="center">-</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="left">on-preview</td>
+<td align="center">点击文件列表中已上传文件时的钩子</td>
+<td>function(file)</td>
+<td align="center">-</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="left">on-remove</td>
+<td align="center">文件列表移除文件时的钩子</td>
+<td>function(file, fileList)</td>
+<td align="center">-</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="left">on-success</td>
+<td align="center">文件上传成功时的钩子</td>
+<td>function(response, file, fileList)</td>
+<td align="center">-</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="left">on-error</td>
+<td align="center">文件上传失败时的钩子</td>
+<td>function(err, file, fileList)</td>
+<td align="center">-</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="left">on-progress</td>
+<td align="center">文件上传时的钩子</td>
+<td>function(event, file, fileList)</td>
+<td align="center">-</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="left">before-upload</td>
+<td align="center">文件上传之前的钩子，参数为上传的文件，若返回false或者返回Promise且被reject，则停止上传</td>
+<td>function(file)</td>
+<td align="center">-</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="left">before-remove</td>
+<td align="center">文件删除之前的钩子，参数为上传的文件和文件列表，若返回false或者返回Promise且被reject，则停止删除</td>
+<td>function(file, fileList)</td>
+<td align="center">-</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="left">list-type</td>
+<td align="center">文件列表的类型</td>
+<td>string</td>
+<td align="center">text/picture/picture-card</td>
+<td align="center">text</td>
+</tr>
+<tr>
+<td align="left">auto-upload</td>
+<td align="center">是否在选取文件之后立即进行上传</td>
+<td>boolean</td>
+<td align="center">-</td>
+<td align="center">true</td>
+</tr>
+<tr>
+<td align="left">file-list</td>
+<td align="center">上传的文件列表</td>
+<td>array</td>
+<td align="center">-</td>
+<td align="center">[]</td>
+</tr>
+<tr>
+<td align="left">http-request</td>
+<td align="center">覆盖默认的上传行为，可以自定义上传的实现</td>
+<td>function</td>
+<td align="center">-</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="left">disabled</td>
+<td align="center">是否禁用</td>
+<td>boolean</td>
+<td align="center">-</td>
+<td align="center">false</td>
+</tr>
+<tr>
+<td align="left">limit</td>
+<td align="center">最大允许上传的个数</td>
+<td>number</td>
+<td align="center">-</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="left">on-exceed</td>
+<td align="center">文件超出个数限制时的钩子</td>
+<td>function(file, fileList)</td>
+<td align="center">-</td>
+<td align="center">-</td>
+</tr>
+</tbody></table>
+<h5 id="Slot"><a href="#Slot" class="headerlink" title="Slot"></a>Slot</h5><table>
+<thead>
+<tr>
+<th>name</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>trigger</td>
+<td>触发文件选择框的内容</td>
+</tr>
+<tr>
+<td>tip</td>
+<td>提示说明文字</td>
+</tr>
+</tbody></table>
+<h5 id="Methods"><a href="#Methods" class="headerlink" title="Methods"></a>Methods</h5><table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>说明</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>clearFiles</td>
+<td>清空已上传的文件列表(该方法不支持在before-uplaod中调用)</td>
+<td>-</td>
+</tr>
+<tr>
+<td>abort</td>
+<td>取消上传请求</td>
+<td>（file: fileList中的file对象）</td>
+</tr>
+<tr>
+<td>submit</td>
+<td>手动上传文件列表</td>
+<td>-</td>
+</tr>
+</tbody></table>
+<h4 id="Message-消息提示"><a href="#Message-消息提示" class="headerlink" title="Message 消息提示"></a>Message 消息提示</h4><p>常用于主动操作后的反馈提示。与Notification的区别是后者更多用于系统级通知的被动提醒。</p>
+<h5 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h5><p>从顶部出现，3秒后自动消失</p>
+<p><code>this.$message(&#39;这是一个消息提示&#39;)</code></p>
+<hr>
+<h4 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h4><h5 id="基础用法"><a href="#基础用法" class="headerlink" title="基础用法"></a>基础用法</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">el-divider</span>&gt;</span><span class="tag">&lt;/<span class="name">el-divider</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="设置文案"><a href="#设置文案" class="headerlink" title="设置文案"></a>设置文案</h5><p>可以在分割线上自定义文案内容。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>头上一片晴天，心中一个想念<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-divider</span> <span class="attr">content-position</span>=<span class="string">&quot;left&quot;</span>&gt;</span>少年包青天<span class="tag">&lt;/<span class="name">el-divider</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>饿了别叫妈, 叫饿了么<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-divider</span>&gt;</span><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;el-icon-mobile-phone&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span><span class="tag">&lt;/<span class="name">el-divider</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>为了无法计算的价值<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-divider</span> <span class="attr">content-position</span>=<span class="string">&quot;right&quot;</span>&gt;</span>阿里云<span class="tag">&lt;/<span class="name">el-divider</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="垂直分割"><a href="#垂直分割" class="headerlink" title="垂直分割"></a>垂直分割</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>雨纷纷<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-divider</span> <span class="attr">direction</span>=<span class="string">&quot;vertical&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">el-divider</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>旧故里<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-divider</span> <span class="attr">direction</span>=<span class="string">&quot;vertical&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">el-divider</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>草木深<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="divider-attributes"><a href="#divider-attributes" class="headerlink" title="divider attributes"></a>divider attributes</h4><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+<th>类型</th>
+<th>可选值</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>direction</td>
+<td>设置分割线方向</td>
+<td>string</td>
+<td>horizontal、vertical</td>
+<td>horizontal</td>
+</tr>
+<tr>
+<td>content-position</td>
+<td>设置分割线文案的位置</td>
+<td>string</td>
+<td>left/right/center</td>
+<td>center</td>
+</tr>
+</tbody></table>
+<hr>
+<h4 id="Form表单"><a href="#Form表单" class="headerlink" title="Form表单"></a>Form表单</h4><h5 id="典型表单"><a href="#典型表单" class="headerlink" title="典型表单"></a>典型表单</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-form ref&#x3D;&quot;form&quot; :model&#x3D;&quot;form&quot; label-width&#x3D;&quot;80px&quot;&gt;</span><br><span class="line">  &lt;el-form-item label&#x3D;&quot;活动名称&quot;&gt;</span><br><span class="line">    &lt;el-input v-model&#x3D;&quot;form.name&quot;&gt;&lt;&#x2F;el-input&gt;</span><br><span class="line">  &lt;&#x2F;el-form-item&gt;</span><br><span class="line">  &lt;el-form-item label&#x3D;&quot;活动区域&quot;&gt;</span><br><span class="line">    &lt;el-select v-model&#x3D;&quot;form.region&quot; placeholder&#x3D;&quot;请选择活动区域&quot;&gt;</span><br><span class="line">      &lt;el-option label&#x3D;&quot;区域一&quot; value&#x3D;&quot;shanghai&quot;&gt;&lt;&#x2F;el-option&gt;</span><br><span class="line">      &lt;el-option label&#x3D;&quot;区域二&quot; value&#x3D;&quot;beijing&quot;&gt;&lt;&#x2F;el-option&gt;</span><br><span class="line">    &lt;&#x2F;el-select&gt;</span><br><span class="line">  &lt;&#x2F;el-form-item&gt;</span><br><span class="line">  &lt;el-form-item label&#x3D;&quot;活动时间&quot;&gt;</span><br><span class="line">    &lt;el-col :span&#x3D;&quot;11&quot;&gt;</span><br><span class="line">      &lt;el-date-picker type&#x3D;&quot;date&quot; placeholder&#x3D;&quot;选择日期&quot; v-model&#x3D;&quot;form.date1&quot; style&#x3D;&quot;width: 100%;&quot;&gt;&lt;&#x2F;el-date-picker&gt;</span><br><span class="line">    &lt;&#x2F;el-col&gt;</span><br><span class="line">    &lt;el-col class&#x3D;&quot;line&quot; :span&#x3D;&quot;2&quot;&gt;-&lt;&#x2F;el-col&gt;</span><br><span class="line">    &lt;el-col :span&#x3D;&quot;11&quot;&gt;</span><br><span class="line">      &lt;el-time-picker placeholder&#x3D;&quot;选择时间&quot; v-model&#x3D;&quot;form.date2&quot; style&#x3D;&quot;width: 100%;&quot;&gt;&lt;&#x2F;el-time-picker&gt;</span><br><span class="line">    &lt;&#x2F;el-col&gt;</span><br><span class="line">  &lt;&#x2F;el-form-item&gt;</span><br><span class="line">  &lt;el-form-item label&#x3D;&quot;即时配送&quot;&gt;</span><br><span class="line">    &lt;el-switch v-model&#x3D;&quot;form.delivery&quot;&gt;&lt;&#x2F;el-switch&gt;</span><br><span class="line">  &lt;&#x2F;el-form-item&gt;</span><br><span class="line">  &lt;el-form-item label&#x3D;&quot;活动性质&quot;&gt;</span><br><span class="line">    &lt;el-checkbox-group v-model&#x3D;&quot;form.type&quot;&gt;</span><br><span class="line">      &lt;el-checkbox label&#x3D;&quot;美食&#x2F;餐厅线上活动&quot; name&#x3D;&quot;type&quot;&gt;&lt;&#x2F;el-checkbox&gt;</span><br><span class="line">      &lt;el-checkbox label&#x3D;&quot;地推活动&quot; name&#x3D;&quot;type&quot;&gt;&lt;&#x2F;el-checkbox&gt;</span><br><span class="line">      &lt;el-checkbox label&#x3D;&quot;线下主题活动&quot; name&#x3D;&quot;type&quot;&gt;&lt;&#x2F;el-checkbox&gt;</span><br><span class="line">      &lt;el-checkbox label&#x3D;&quot;单纯品牌曝光&quot; name&#x3D;&quot;type&quot;&gt;&lt;&#x2F;el-checkbox&gt;</span><br><span class="line">    &lt;&#x2F;el-checkbox-group&gt;</span><br><span class="line">  &lt;&#x2F;el-form-item&gt;</span><br><span class="line">  &lt;el-form-item label&#x3D;&quot;特殊资源&quot;&gt;</span><br><span class="line">    &lt;el-radio-group v-model&#x3D;&quot;form.resource&quot;&gt;</span><br><span class="line">      &lt;el-radio label&#x3D;&quot;线上品牌商赞助&quot;&gt;&lt;&#x2F;el-radio&gt;</span><br><span class="line">      &lt;el-radio label&#x3D;&quot;线下场地免费&quot;&gt;&lt;&#x2F;el-radio&gt;</span><br><span class="line">    &lt;&#x2F;el-radio-group&gt;</span><br><span class="line">  &lt;&#x2F;el-form-item&gt;</span><br><span class="line">  &lt;el-form-item label&#x3D;&quot;活动形式&quot;&gt;</span><br><span class="line">    &lt;el-input type&#x3D;&quot;textarea&quot; v-model&#x3D;&quot;form.desc&quot;&gt;&lt;&#x2F;el-input&gt;</span><br><span class="line">  &lt;&#x2F;el-form-item&gt;</span><br><span class="line">  &lt;el-form-item&gt;</span><br><span class="line">    &lt;el-button type&#x3D;&quot;primary&quot; @click&#x3D;&quot;onSubmit&quot;&gt;立即创建&lt;&#x2F;el-button&gt;</span><br><span class="line">    &lt;el-button&gt;取消&lt;&#x2F;el-button&gt;</span><br><span class="line">  &lt;&#x2F;el-form-item&gt;</span><br><span class="line">&lt;&#x2F;el-form&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">  export default &#123;</span><br><span class="line">    data() &#123;</span><br><span class="line">      return &#123;</span><br><span class="line">        form: &#123;</span><br><span class="line">          name: &#39;&#39;,</span><br><span class="line">          region: &#39;&#39;,</span><br><span class="line">          date1: &#39;&#39;,</span><br><span class="line">          date2: &#39;&#39;,</span><br><span class="line">          delivery: false,</span><br><span class="line">          type: [],</span><br><span class="line">          resource: &#39;&#39;,</span><br><span class="line">          desc: &#39;&#39;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">      onSubmit() &#123;</span><br><span class="line">        console.log(&#39;submit!&#39;);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="DatePicker-时间选择器"><a href="#DatePicker-时间选择器" class="headerlink" title="DatePicker 时间选择器"></a>DatePicker 时间选择器</h4><p>用于选择或输入日期</p>
+<h5 id="日期格式"><a href="#日期格式" class="headerlink" title="日期格式"></a>日期格式</h5><p>使用<code>format</code>属性指定输入框的格式；使用<code>value-format</code>指定绑定值的格式。</p>
+<p><strong>请区分大小写</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">格式</th>
+<th align="left">含义</th>
+<th align="left">备注</th>
+<th align="left">举例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>yyyy</code></td>
+<td align="left">年</td>
+<td align="left"></td>
+<td align="left">2017</td>
+</tr>
+<tr>
+<td align="left"><code>M</code></td>
+<td align="left">月</td>
+<td align="left">不补0</td>
+<td align="left">1</td>
+</tr>
+<tr>
+<td align="left"><code>MM</code></td>
+<td align="left">月</td>
+<td align="left"></td>
+<td align="left">01</td>
+</tr>
+<tr>
+<td align="left"><code>W</code></td>
+<td align="left">周</td>
+<td align="left">仅周选择器的 <code>format</code> 可用；不补0</td>
+<td align="left">1</td>
+</tr>
+<tr>
+<td align="left"><code>WW</code></td>
+<td align="left">周</td>
+<td align="left">仅周选择器的 <code>format</code> 可用</td>
+<td align="left">01</td>
+</tr>
+<tr>
+<td align="left"><code>d</code></td>
+<td align="left">日</td>
+<td align="left">不补0</td>
+<td align="left">2</td>
+</tr>
+<tr>
+<td align="left"><code>dd</code></td>
+<td align="left">日</td>
+<td align="left"></td>
+<td align="left">02</td>
+</tr>
+<tr>
+<td align="left"><code>H</code></td>
+<td align="left">小时</td>
+<td align="left">24小时制；不补0</td>
+<td align="left">3</td>
+</tr>
+<tr>
+<td align="left"><code>HH</code></td>
+<td align="left">小时</td>
+<td align="left">24小时制</td>
+<td align="left">03</td>
+</tr>
+<tr>
+<td align="left"><code>h</code></td>
+<td align="left">小时</td>
+<td align="left">12小时制，须和 <code>A</code> 或 <code>a</code> 使用；不补0</td>
+<td align="left">3</td>
+</tr>
+<tr>
+<td align="left"><code>hh</code></td>
+<td align="left">小时</td>
+<td align="left">12小时制，须和 <code>A</code> 或 <code>a</code> 使用</td>
+<td align="left">03</td>
+</tr>
+<tr>
+<td align="left"><code>m</code></td>
+<td align="left">分钟</td>
+<td align="left">不补0</td>
+<td align="left">4</td>
+</tr>
+<tr>
+<td align="left"><code>mm</code></td>
+<td align="left">分钟</td>
+<td align="left"></td>
+<td align="left">04</td>
+</tr>
+<tr>
+<td align="left"><code>s</code></td>
+<td align="left">秒</td>
+<td align="left">不补0</td>
+<td align="left">5</td>
+</tr>
+<tr>
+<td align="left"><code>ss</code></td>
+<td align="left">秒</td>
+<td align="left"></td>
+<td align="left">05</td>
+</tr>
+<tr>
+<td align="left"><code>A</code></td>
+<td align="left">AM/PM</td>
+<td align="left">仅 <code>format</code> 可用，大写</td>
+<td align="left">AM</td>
+</tr>
+<tr>
+<td align="left"><code>a</code></td>
+<td align="left">am/pm</td>
+<td align="left">仅 <code>format</code> 可用，小写</td>
+<td align="left">am</td>
+</tr>
+<tr>
+<td align="left"><code>timestamp</code></td>
+<td align="left">JS时间戳</td>
+<td align="left">仅 <code>value-format</code> 可用；组件绑定值为<code>number</code>类型</td>
+<td align="left">1483326245000</td>
+</tr>
+<tr>
+<td align="left"><code>[MM]</code></td>
+<td align="left">不需要格式化字符</td>
+<td align="left">使用方括号标识不需要格式化的字符 (如 [A] [MM])</td>
+<td align="left">MM</td>
+</tr>
+</tbody></table>
+<h4 id="Loading加载"><a href="#Loading加载" class="headerlink" title="Loading加载"></a>Loading加载</h4><p>加载数据时显示功效</p>
+<h5 id="加载方式"><a href="#加载方式" class="headerlink" title="加载方式"></a>加载方式</h5><ul>
+<li><p>指令加载</p>
+<p><img src="http://wrr123.github.io/2020/07/01/element-ui%E5%B8%B8%E7%94%A8%E7%BB%84%E4%BB%B6%E8%AF%A6%E8%A7%A3/11.png"></p>
+</li>
+<li><p>服务加载</p>
+<p><img src="http://wrr123.github.io/2020/07/01/element-ui%E5%B8%B8%E7%94%A8%E7%BB%84%E4%BB%B6%E8%AF%A6%E8%A7%A3/22.png"></p>
+</li>
+</ul>
+<h4 id="Switch-开关"><a href="#Switch-开关" class="headerlink" title="Switch 开关"></a>Switch 开关</h4><h5 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h5><p>绑定 <code>v-model</code> 到一个 <code>Boolean</code> 类型的变量。可以使用 <code>active-color</code> 属性与 <code>inactive-color</code> 属性来设置开关的背景颜色。</p>
+<p>一个栗子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-switch</span><br><span class="line">  v-model&#x3D;&quot;value2&quot;</span><br><span class="line">  active-color&#x3D;&quot;#13ce66&quot;</span><br><span class="line">  inactive-color&#x3D;&quot;#ff4949&quot;         </span><br><span class="line">  &gt;</span><br><span class="line">&lt;&#x2F;el-switch&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">  export default &#123;</span><br><span class="line">      data () &#123;</span><br><span class="line">          return &#123;</span><br><span class="line">              value1: true,</span><br><span class="line">              value2: true</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+<h5 id="文字描述"><a href="#文字描述" class="headerlink" title="文字描述"></a>文字描述</h5><p>使用 <code>active-text</code> 属性与 <code>inactive-text</code> 属性来设置开关的文字描述。</p>
+<p>一个栗子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-switch</span><br><span class="line">  v-model&#x3D;&quot;value3&quot;</span><br><span class="line">  active-text&#x3D;&quot;按月付费&quot;</span><br><span class="line">  inactive-text&#x3D;&quot;按年付费&quot;&gt;</span><br><span class="line">&lt;&#x2F;el-switch&gt;</span><br><span class="line">&lt;el-switch</span><br><span class="line">  style&#x3D;&quot;display: block&quot;</span><br><span class="line">  v-model&#x3D;&quot;value4&quot;</span><br><span class="line">  active-color&#x3D;&quot;#13ce66&quot;</span><br><span class="line">  inactive-color&#x3D;&quot;#ff4949&quot;</span><br><span class="line">  active-text&#x3D;&quot;按月付费&quot;</span><br><span class="line">  inactive-text&#x3D;&quot;按年付费&quot;&gt;</span><br><span class="line">&lt;&#x2F;el-switch&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">  export default &#123;</span><br><span class="line">    data() &#123;</span><br><span class="line">      return &#123;</span><br><span class="line">        value3: true,</span><br><span class="line">        value4: true</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+<h5 id="扩展的-value-类型"><a href="#扩展的-value-类型" class="headerlink" title="扩展的 value 类型"></a>扩展的 value 类型</h5><p>设置 <code>active-value</code> 与 <code>inactive-value</code> 属性，接受 <code>Boolean</code>, <code>String</code> 或 <code>Number</code> 类型的值。</p>
+<p>一个栗子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-tooltip :content&#x3D;&quot;&#39;Switch value: &#39; + value5&quot; placement&#x3D;&quot;top&quot;&gt;</span><br><span class="line">  &lt;el-switch</span><br><span class="line">    v-model&#x3D;&quot;value5&quot;</span><br><span class="line">    active-color&#x3D;&quot;#13ce66&quot;</span><br><span class="line">    inactive-color&#x3D;&quot;#ff4949&quot;</span><br><span class="line">    active-value&#x3D;&quot;100&quot;</span><br><span class="line">    inactive-value&#x3D;&quot;0&quot;&gt;</span><br><span class="line">  &lt;&#x2F;el-switch&gt;</span><br><span class="line">&lt;&#x2F;el-tooltip&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">  export default &#123;</span><br><span class="line">    data() &#123;</span><br><span class="line">      return &#123;</span><br><span class="line">        value5: &#39;100&#39;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+<h5 id="禁用状态"><a href="#禁用状态" class="headerlink" title="禁用状态"></a>禁用状态</h5><p>设置 <code>disabled</code> 属性，接受一个 <code>Boolean</code> ,设置 <code>true</code> 即可禁用。</p>
+<p>一个栗子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-switch</span><br><span class="line">  v-model&#x3D;&quot;value6&quot;</span><br><span class="line">  disabled&gt;</span><br><span class="line">&lt;&#x2F;el-switch&gt;</span><br><span class="line">&lt;el-switch</span><br><span class="line">  v-model&#x3D;&quot;value7&quot;</span><br><span class="line">  disabled&gt;</span><br><span class="line">&lt;&#x2F;el-switch&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">  export default &#123;</span><br><span class="line">    data() &#123;</span><br><span class="line">      return &#123;</span><br><span class="line">        value6: true,</span><br><span class="line">        value7: false</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+<h5 id="Attributes"><a href="#Attributes" class="headerlink" title="Attributes"></a>Attributes</h5><table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="left">说明</th>
+<th align="left">类型</th>
+<th align="left">可选值</th>
+<th align="left">默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">disabled</td>
+<td align="left">是否禁用</td>
+<td align="left">boolean</td>
+<td align="left">—</td>
+<td align="left">false</td>
+</tr>
+<tr>
+<td align="left">width</td>
+<td align="left">switch 的宽度（像素）</td>
+<td align="left">number</td>
+<td align="left">—</td>
+<td align="left">40</td>
+</tr>
+<tr>
+<td align="left">active-icon-class</td>
+<td align="left">switch 打开时所显示图标的类名，设置此项会忽略 <code>active-text</code></td>
+<td align="left">string</td>
+<td align="left">—</td>
+<td align="left">—</td>
+</tr>
+<tr>
+<td align="left">inactive-icon-class</td>
+<td align="left">switch 关闭时所显示图标的类名，设置此项会忽略 <code>inactive-text</code></td>
+<td align="left">string</td>
+<td align="left">—</td>
+<td align="left">—</td>
+</tr>
+<tr>
+<td align="left">active-text</td>
+<td align="left">switch 打开时的文字描述</td>
+<td align="left">string</td>
+<td align="left">—</td>
+<td align="left">—</td>
+</tr>
+<tr>
+<td align="left">inactive-text</td>
+<td align="left">switch 关闭时的文字描述</td>
+<td align="left">string</td>
+<td align="left">—</td>
+<td align="left">—</td>
+</tr>
+<tr>
+<td align="left">active-value</td>
+<td align="left">switch 打开时的值</td>
+<td align="left">boolean / string / number</td>
+<td align="left">—</td>
+<td align="left">true</td>
+</tr>
+<tr>
+<td align="left">inactive-value</td>
+<td align="left">switch 关闭时的值</td>
+<td align="left">boolean / string / number</td>
+<td align="left">—</td>
+<td align="left">false</td>
+</tr>
+<tr>
+<td align="left">active-color</td>
+<td align="left">switch 打开时的背景色</td>
+<td align="left">string</td>
+<td align="left">—</td>
+<td align="left">#409EFF</td>
+</tr>
+<tr>
+<td align="left">inactive-color</td>
+<td align="left">switch 关闭时的背景色</td>
+<td align="left">string</td>
+<td align="left">—</td>
+<td align="left">#C0CCDA</td>
+</tr>
+<tr>
+<td align="left">name</td>
+<td align="left">switch 对应的 name 属性</td>
+<td align="left">string</td>
+<td align="left">—</td>
+<td align="left">—</td>
+</tr>
+</tbody></table>
+<h5 id="Events"><a href="#Events" class="headerlink" title="Events"></a>Events</h5><table>
+<thead>
+<tr>
+<th align="left">事件名称</th>
+<th align="left">说明</th>
+<th align="left">回调参数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">change</td>
+<td align="left">switch 状态发生变化时的回调函数</td>
+<td align="left">新状态的值</td>
+</tr>
+</tbody></table>
+<h5 id="Methods-1"><a href="#Methods-1" class="headerlink" title="Methods"></a>Methods</h5><table>
+<thead>
+<tr>
+<th align="left">方法名</th>
+<th align="left">说明</th>
+<th align="left">参数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">focus</td>
+<td align="left">使 Switch 获取焦点</td>
+<td align="left">-</td>
+</tr>
+</tbody></table>
+<h4 id="Tabs-标签页"><a href="#Tabs-标签页" class="headerlink" title="Tabs 标签页"></a>Tabs 标签页</h4><p>分割内容上有关联但属于不同类别的数据集合。</p>
+<h5 id="基础用法-1"><a href="#基础用法-1" class="headerlink" title="基础用法"></a>基础用法</h5><p>基础的、简洁的标签页。</p>
+<p>一个栗子</p>
+<p><strong>Tabs 组件提供了选项卡功能，默认选中第一个标签页，你也可以通过 <code>value</code> 属性来指定当前选中的标签页。</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;el-tabs v-model&#x3D;&quot;activeName&quot; @tab-click&#x3D;&quot;handleClick&quot;&gt;</span><br><span class="line">    &lt;el-tab-pane label&#x3D;&quot;用户管理&quot; name&#x3D;&quot;first&quot;&gt;用户管理&lt;&#x2F;el-tab-pane&gt;</span><br><span class="line">    &lt;el-tab-pane label&#x3D;&quot;配置管理&quot; name&#x3D;&quot;second&quot;&gt;配置管理&lt;&#x2F;el-tab-pane&gt;</span><br><span class="line">    &lt;el-tab-pane label&#x3D;&quot;角色管理&quot; name&#x3D;&quot;third&quot;&gt;角色管理&lt;&#x2F;el-tab-pane&gt;</span><br><span class="line">    &lt;el-tab-pane label&#x3D;&quot;定时任务补偿&quot; name&#x3D;&quot;fourth&quot;&gt;定时任务补偿&lt;&#x2F;el-tab-pane&gt;</span><br><span class="line">  &lt;&#x2F;el-tabs&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">  export default &#123;</span><br><span class="line">    data() &#123;</span><br><span class="line">      return &#123;</span><br><span class="line">        activeName: &#39;second&#39;</span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">      handleClick(tab, event) &#123;</span><br><span class="line">        console.log(tab, event);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+<h5 id="选项卡样式"><a href="#选项卡样式" class="headerlink" title="选项卡样式"></a>选项卡样式</h5><p>选项卡样式的标签页</p>
+<p><strong>只需要设置 <code>type</code> 属性为 <code>card</code> 就可以使选项卡改变为标签风格。</strong></p>
+<p>一个栗子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;el-tabs v-model&#x3D;&quot;activeName2&quot; type&#x3D;&quot;card&quot; @tab-click&#x3D;&quot;handleClick&quot;&gt;</span><br><span class="line">    &lt;el-tab-pane label&#x3D;&quot;用户管理&quot; name&#x3D;&quot;first&quot;&gt;用户管理&lt;&#x2F;el-tab-pane&gt;</span><br><span class="line">    &lt;el-tab-pane label&#x3D;&quot;配置管理&quot; name&#x3D;&quot;second&quot;&gt;配置管理&lt;&#x2F;el-tab-pane&gt;</span><br><span class="line">    &lt;el-tab-pane label&#x3D;&quot;角色管理&quot; name&#x3D;&quot;third&quot;&gt;角色管理&lt;&#x2F;el-tab-pane&gt;</span><br><span class="line">    &lt;el-tab-pane label&#x3D;&quot;定时任务补偿&quot; name&#x3D;&quot;fourth&quot;&gt;定时任务补偿&lt;&#x2F;el-tab-pane&gt;</span><br><span class="line">  &lt;&#x2F;el-tabs&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">  export default &#123;</span><br><span class="line">    data() &#123;</span><br><span class="line">      return &#123;</span><br><span class="line">        activeName2: &#39;first&#39;</span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">      handleClick(tab, event) &#123;</span><br><span class="line">        console.log(tab, event);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+<h5 id="卡片化"><a href="#卡片化" class="headerlink" title="卡片化"></a>卡片化</h5><p>卡片化的标签。</p>
+<p><strong>将 <code>type</code> 设置为 <code>border-card</code> 。</strong></p>
+<p>一个栗子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-tabs type&#x3D;&quot;border-card&quot;&gt;</span><br><span class="line">  &lt;el-tab-pane label&#x3D;&quot;用户管理&quot;&gt;用户管理&lt;&#x2F;el-tab-pane&gt;</span><br><span class="line">  &lt;el-tab-pane label&#x3D;&quot;配置管理&quot;&gt;配置管理&lt;&#x2F;el-tab-pane&gt;</span><br><span class="line">  &lt;el-tab-pane label&#x3D;&quot;角色管理&quot;&gt;角色管理&lt;&#x2F;el-tab-pane&gt;</span><br><span class="line">  &lt;el-tab-pane label&#x3D;&quot;定时任务补偿&quot;&gt;定时任务补偿&lt;&#x2F;el-tab-pane&gt;</span><br><span class="line">&lt;&#x2F;el-tabs&gt;</span><br></pre></td></tr></table></figure>
+
+<h5 id="位置"><a href="#位置" class="headerlink" title="位置"></a>位置</h5><p>可以通过 <code>top-position</code> 设置标签的位置。</p>
+<p><strong>标签一共有四个方向的设置 <code>tabPosition=&quot;left|right|top|bottom&quot;</code></strong></p>
+<p>一个栗子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;el-radio-group v-model&#x3D;&quot;tabPosition&quot; style&#x3D;&quot;margin-bottom: 30px;&quot;&gt;</span><br><span class="line">    &lt;el-radio-button label&#x3D;&quot;top&quot;&gt;top&lt;&#x2F;el-radio-button&gt;</span><br><span class="line">    &lt;el-radio-button label&#x3D;&quot;right&quot;&gt;right&lt;&#x2F;el-radio-button&gt;</span><br><span class="line">    &lt;el-radio-button label&#x3D;&quot;bottom&quot;&gt;bottom&lt;&#x2F;el-radio-button&gt;</span><br><span class="line">    &lt;el-radio-button label&#x3D;&quot;left&quot;&gt;left&lt;&#x2F;el-radio-button&gt;</span><br><span class="line">  &lt;&#x2F;el-radio-group&gt;</span><br><span class="line"></span><br><span class="line">  &lt;el-tabs :tab-position&#x3D;&quot;tabPosition&quot; style&#x3D;&quot;height: 200px;&quot;&gt;</span><br><span class="line">    &lt;el-tab-pane label&#x3D;&quot;用户管理&quot;&gt;用户管理&lt;&#x2F;el-tab-pane&gt;</span><br><span class="line">    &lt;el-tab-pane label&#x3D;&quot;配置管理&quot;&gt;配置管理&lt;&#x2F;el-tab-pane&gt;</span><br><span class="line">    &lt;el-tab-pane label&#x3D;&quot;角色管理&quot;&gt;角色管理&lt;&#x2F;el-tab-pane&gt;</span><br><span class="line">    &lt;el-tab-pane label&#x3D;&quot;定时任务补偿&quot;&gt;定时任务补偿&lt;&#x2F;el-tab-pane&gt;</span><br><span class="line">  &lt;&#x2F;el-tabs&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">  export default &#123;</span><br><span class="line">    data() &#123;</span><br><span class="line">      return &#123;</span><br><span class="line">        tabPosition: &#39;top&#39;</span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+<h5 id="自定义标签页"><a href="#自定义标签页" class="headerlink" title="自定义标签页"></a>自定义标签页</h5><p>可以通过具名 <code>slot</code> 来实现自定义标签页的内容。</p>
+<p>一个栗子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-tabs type&#x3D;&quot;border-card&quot;&gt;</span><br><span class="line">  &lt;el-tab-pane&gt;</span><br><span class="line">    &lt;span slot&#x3D;&quot;label&quot;&gt;&lt;i class&#x3D;&quot;el-icon-date&quot;&gt;&lt;&#x2F;i&gt; 我的行程&lt;&#x2F;span&gt;</span><br><span class="line">    我的行程</span><br><span class="line">  &lt;&#x2F;el-tab-pane&gt;</span><br><span class="line">  &lt;el-tab-pane label&#x3D;&quot;消息中心&quot;&gt;消息中心&lt;&#x2F;el-tab-pane&gt;</span><br><span class="line">  &lt;el-tab-pane label&#x3D;&quot;角色管理&quot;&gt;角色管理&lt;&#x2F;el-tab-pane&gt;</span><br><span class="line">  &lt;el-tab-pane label&#x3D;&quot;定时任务补偿&quot;&gt;定时任务补偿&lt;&#x2F;el-tab-pane&gt;</span><br><span class="line">&lt;&#x2F;el-tabs&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://wrr123.github.io/2020/07/01/element-ui%E5%B8%B8%E7%94%A8%E7%BB%84%E4%BB%B6%E8%AF%A6%E8%A7%A3/001.png"></p>
+<h5 id="动态增减标签页"><a href="#动态增减标签页" class="headerlink" title="动态增减标签页"></a>动态增减标签页</h5><p>增减标签页按钮只能在选项卡样式的标签下使用</p>
+<p>一个栗子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-tabs v-model&#x3D;&quot;editableTabsValue&quot; type&#x3D;&quot;card&quot; editable @edit&#x3D;&quot;handleTabsEdit&quot;&gt;</span><br><span class="line">  &lt;el-tab-pane</span><br><span class="line">    :key&#x3D;&quot;item.name&quot;</span><br><span class="line">    v-for&#x3D;&quot;(item, index) in editableTabs&quot;</span><br><span class="line">    :label&#x3D;&quot;item.title&quot;</span><br><span class="line">    :name&#x3D;&quot;item.name&quot;</span><br><span class="line">  &gt;</span><br><span class="line">    &#123;&#123;item.content&#125;&#125;</span><br><span class="line">  &lt;&#x2F;el-tab-pane&gt;</span><br><span class="line">&lt;&#x2F;el-tabs&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">  export default &#123;</span><br><span class="line">    data() &#123;</span><br><span class="line">      return &#123;</span><br><span class="line">        editableTabsValue: &#39;2&#39;,</span><br><span class="line">        editableTabs: [&#123;</span><br><span class="line">          title: &#39;Tab 1&#39;,</span><br><span class="line">          name: &#39;1&#39;,</span><br><span class="line">          content: &#39;Tab 1 content&#39;</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">          title: &#39;Tab 2&#39;,</span><br><span class="line">          name: &#39;2&#39;,</span><br><span class="line">          content: &#39;Tab 2 content&#39;</span><br><span class="line">        &#125;],</span><br><span class="line">        tabIndex: 2</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">      handleTabsEdit(targetName, action) &#123;</span><br><span class="line">        if (action &#x3D;&#x3D;&#x3D; &#39;add&#39;) &#123;</span><br><span class="line">          let newTabName &#x3D; ++this.tabIndex + &#39;&#39;;</span><br><span class="line">          this.editableTabs.push(&#123;</span><br><span class="line">            title: &#39;New Tab&#39;,</span><br><span class="line">            name: newTabName,</span><br><span class="line">            content: &#39;New Tab content&#39;</span><br><span class="line">          &#125;);</span><br><span class="line">          this.editableTabsValue &#x3D; newTabName;</span><br><span class="line">        &#125;</span><br><span class="line">        if (action &#x3D;&#x3D;&#x3D; &#39;remove&#39;) &#123;</span><br><span class="line">          let tabs &#x3D; this.editableTabs;</span><br><span class="line">          let activeName &#x3D; this.editableTabsValue;</span><br><span class="line">          if (activeName &#x3D;&#x3D;&#x3D; targetName) &#123;</span><br><span class="line">            tabs.forEach((tab, index) &#x3D;&gt; &#123;</span><br><span class="line">              if (tab.name &#x3D;&#x3D;&#x3D; targetName) &#123;</span><br><span class="line">                let nextTab &#x3D; tabs[index + 1] || tabs[index - 1];</span><br><span class="line">                if (nextTab) &#123;</span><br><span class="line">                  activeName &#x3D; nextTab.name;</span><br><span class="line">                &#125;</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">          &#125;</span><br><span class="line">          </span><br><span class="line">          this.editableTabsValue &#x3D; activeName;</span><br><span class="line">          this.editableTabs &#x3D; tabs.filter(tab &#x3D;&gt; tab.name !&#x3D;&#x3D; targetName);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+<h5 id="自定义增加标签页触发器"><a href="#自定义增加标签页触发器" class="headerlink" title="自定义增加标签页触发器"></a>自定义增加标签页触发器</h5><p>一个栗子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">&lt;div style&#x3D;&quot;margin-bottom: 20px;&quot;&gt;</span><br><span class="line">  &lt;el-button</span><br><span class="line">    size&#x3D;&quot;small&quot;</span><br><span class="line">    @click&#x3D;&quot;addTab(editableTabsValue2)&quot;</span><br><span class="line">  &gt;</span><br><span class="line">    add tab</span><br><span class="line">  &lt;&#x2F;el-button&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br><span class="line">&lt;el-tabs v-model&#x3D;&quot;editableTabsValue2&quot; type&#x3D;&quot;card&quot; closable @tab-remove&#x3D;&quot;removeTab&quot;&gt;</span><br><span class="line">  &lt;el-tab-pane</span><br><span class="line">    v-for&#x3D;&quot;(item, index) in editableTabs2&quot;</span><br><span class="line">    :key&#x3D;&quot;item.name&quot;</span><br><span class="line">    :label&#x3D;&quot;item.title&quot;</span><br><span class="line">    :name&#x3D;&quot;item.name&quot;</span><br><span class="line">  &gt;</span><br><span class="line">    &#123;&#123;item.content&#125;&#125;</span><br><span class="line">  &lt;&#x2F;el-tab-pane&gt;</span><br><span class="line">&lt;&#x2F;el-tabs&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">  export default &#123;</span><br><span class="line">    data() &#123;</span><br><span class="line">      return &#123;</span><br><span class="line">        editableTabsValue2: &#39;2&#39;,</span><br><span class="line">        editableTabs2: [&#123;</span><br><span class="line">          title: &#39;Tab 1&#39;,</span><br><span class="line">          name: &#39;1&#39;,</span><br><span class="line">          content: &#39;Tab 1 content&#39;</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">          title: &#39;Tab 2&#39;,</span><br><span class="line">          name: &#39;2&#39;,</span><br><span class="line">          content: &#39;Tab 2 content&#39;</span><br><span class="line">        &#125;],</span><br><span class="line">        tabIndex: 2</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">      addTab(targetName) &#123;</span><br><span class="line">        let newTabName &#x3D; ++this.tabIndex + &#39;&#39;;</span><br><span class="line">        this.editableTabs2.push(&#123;</span><br><span class="line">          title: &#39;New Tab&#39;,</span><br><span class="line">          name: newTabName,</span><br><span class="line">          content: &#39;New Tab content&#39;</span><br><span class="line">        &#125;);</span><br><span class="line">        this.editableTabsValue2 &#x3D; newTabName;</span><br><span class="line">      &#125;,</span><br><span class="line">      removeTab(targetName) &#123;</span><br><span class="line">        let tabs &#x3D; this.editableTabs2;</span><br><span class="line">        let activeName &#x3D; this.editableTabsValue2;</span><br><span class="line">        if (activeName &#x3D;&#x3D;&#x3D; targetName) &#123;</span><br><span class="line">          tabs.forEach((tab, index) &#x3D;&gt; &#123;</span><br><span class="line">            if (tab.name &#x3D;&#x3D;&#x3D; targetName) &#123;</span><br><span class="line">              let nextTab &#x3D; tabs[index + 1] || tabs[index - 1];</span><br><span class="line">              if (nextTab) &#123;</span><br><span class="line">                activeName &#x3D; nextTab.name;</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        this.editableTabsValue2 &#x3D; activeName;</span><br><span class="line">        this.editableTabs2 &#x3D; tabs.filter(tab &#x3D;&gt; tab.name !&#x3D;&#x3D; targetName);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+<h5 id="Tabs-Attributes"><a href="#Tabs-Attributes" class="headerlink" title="Tabs Attributes"></a>Tabs Attributes</h5><table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="left">说明</th>
+<th align="left">类型</th>
+<th align="left">可选值</th>
+<th align="left">默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">type</td>
+<td align="left">风格类型</td>
+<td align="left">string</td>
+<td align="left">card/border-card</td>
+<td align="left">—</td>
+</tr>
+<tr>
+<td align="left">closable</td>
+<td align="left">标签是否可关闭</td>
+<td align="left">boolean</td>
+<td align="left">—</td>
+<td align="left">false</td>
+</tr>
+<tr>
+<td align="left">addable</td>
+<td align="left">标签是否可增加</td>
+<td align="left">boolean</td>
+<td align="left">—</td>
+<td align="left">false</td>
+</tr>
+<tr>
+<td align="left">editable</td>
+<td align="left">标签是否同时可增加和关闭</td>
+<td align="left">boolean</td>
+<td align="left">—</td>
+<td align="left">false</td>
+</tr>
+<tr>
+<td align="left">value</td>
+<td align="left">绑定值，选中选项卡的 name</td>
+<td align="left">string</td>
+<td align="left">—</td>
+<td align="left">第一个选项卡的 name</td>
+</tr>
+<tr>
+<td align="left">tab-position</td>
+<td align="left">选项卡所在位置</td>
+<td align="left">string</td>
+<td align="left">top/right/bottom/left</td>
+<td align="left">top</td>
+</tr>
+</tbody></table>
+<h5 id="Tabs-Events"><a href="#Tabs-Events" class="headerlink" title="Tabs Events"></a>Tabs Events</h5><table>
+<thead>
+<tr>
+<th align="left">事件名称</th>
+<th align="left">说明</th>
+<th align="left">回调参数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">tab-click</td>
+<td align="left">tab 被选中时触发</td>
+<td align="left">被选中的标签 tab 实例</td>
+</tr>
+<tr>
+<td align="left">tab-remove</td>
+<td align="left">点击 tab 移除按钮后触发</td>
+<td align="left">被删除的标签的 name</td>
+</tr>
+<tr>
+<td align="left">tab-add</td>
+<td align="left">点击 tabs 的新增按钮后触发</td>
+<td align="left">—</td>
+</tr>
+<tr>
+<td align="left">edit</td>
+<td align="left">点击 tabs 的新增按钮或 tab 被关闭后触发</td>
+<td align="left">(targetName, action)</td>
+</tr>
+</tbody></table>
+<h5 id="Tab-pane-Attribute"><a href="#Tab-pane-Attribute" class="headerlink" title="Tab-pane Attribute"></a>Tab-pane Attribute</h5><table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="left">说明</th>
+<th align="left">类型</th>
+<th align="left">可选值</th>
+<th align="left">默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">label</td>
+<td align="left">选项卡标题</td>
+<td align="left">string</td>
+<td align="left">—</td>
+<td align="left">—</td>
+</tr>
+<tr>
+<td align="left">disabled</td>
+<td align="left">是否禁用</td>
+<td align="left">boolean</td>
+<td align="left">—</td>
+<td align="left">false</td>
+</tr>
+<tr>
+<td align="left">name</td>
+<td align="left">与选项卡 activeName 对应的标识符，表示选项卡别名</td>
+<td align="left">string</td>
+<td align="left">—</td>
+<td align="left">该选项卡在选项卡列表中的顺序值，如第一个选项卡则为’1’</td>
+</tr>
+<tr>
+<td align="left">closable</td>
+<td align="left">标签是否可关闭</td>
+<td align="left">boolean</td>
+<td align="left">—</td>
+<td align="left">false</td>
+</tr>
+</tbody></table>
+<h4 id="el-input-输入框"><a href="#el-input-输入框" class="headerlink" title="el-input 输入框"></a>el-input 输入框</h4><p>通过鼠标或键盘输入字符</p>
+<h5 id="带-icon-的输入框"><a href="#带-icon-的输入框" class="headerlink" title="带 icon 的输入框"></a>带 icon 的输入框</h5><blockquote>
+<p><strong>可以通过 <code>prefix-icon</code> 和 <code>suffix-icon</code> 属性在 input 组件首部和尾部增加显示图标，也可以通过 slot 来放置图标。</strong></p>
+</blockquote>
+<h6 id="使用属性方式"><a href="#使用属性方式" class="headerlink" title="使用属性方式"></a>使用属性方式</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class&#x3D;&quot;demo-input-suffix&quot;&gt;</span><br><span class="line">  属性方式：</span><br><span class="line">  &lt;el-input</span><br><span class="line">    placeholder&#x3D;&quot;请选择日期&quot;</span><br><span class="line">    suffix-icon&#x3D;&quot;el-icon-date&quot;</span><br><span class="line">    v-model&#x3D;&quot;input1&quot;&gt;</span><br><span class="line">  &lt;&#x2F;el-input&gt;</span><br><span class="line">  &lt;el-input</span><br><span class="line">    placeholder&#x3D;&quot;请输入内容&quot;</span><br><span class="line">    prefix-icon&#x3D;&quot;el-icon-search&quot;</span><br><span class="line">    v-model&#x3D;&quot;input2&quot;&gt;</span><br><span class="line">  &lt;&#x2F;el-input&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+
+<h6 id="使用-slot-方式"><a href="#使用-slot-方式" class="headerlink" title="使用 slot 方式"></a>使用 slot 方式</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class&#x3D;&quot;demo-input-suffix&quot;&gt;</span><br><span class="line">  slot 方式：</span><br><span class="line">  &lt;el-input</span><br><span class="line">    placeholder&#x3D;&quot;请选择日期&quot;</span><br><span class="line">    v-model&#x3D;&quot;input3&quot;&gt;</span><br><span class="line">    &lt;i slot&#x3D;&quot;suffix&quot; class&#x3D;&quot;el-input__icon el-icon-date&quot;&gt;&lt;&#x2F;i&gt;</span><br><span class="line">  &lt;&#x2F;el-input&gt;</span><br><span class="line">  &lt;el-input</span><br><span class="line">    placeholder&#x3D;&quot;请输入内容&quot;</span><br><span class="line">    v-model&#x3D;&quot;input4&quot;&gt;</span><br><span class="line">    &lt;i slot&#x3D;&quot;prefix&quot; class&#x3D;&quot;el-input__icon el-icon-search&quot;&gt;&lt;&#x2F;i&gt;</span><br><span class="line">  &lt;&#x2F;el-input&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="layout-布局"><a href="#layout-布局" class="headerlink" title="layout 布局"></a>layout 布局</h4><p>通过 row 和 col 组件，并通过 col 组件的 <code>span</code> 属性，我们就可以自由的组合布局.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">el-row</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-col</span> <span class="attr">:span</span>=<span class="string">&quot;12&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">el-col</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-col</span> <span class="attr">:span</span>=<span class="string">&quot;12&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">el-col</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">el-row</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>常用的一些属性介绍：</p>
+<ul>
+<li><p>分栏间隔</p>
+<p>row 组件提供 <code>gutter</code> 属性来指定每一栏之间的间隔，默认间隔为 0 。</p>
+</li>
+<li><p>分栏偏移 支持偏移指定的栏数</p>
+<p>通过制定 col 组件的 <code>offset</code> 属性可以指定分栏偏离的栏数。</p>
+</li>
+<li><p>对齐方式 通过 <code>flex</code> 布局来对分栏进行灵活的对齐   </p>
+<p>将 <code>type</code> 属性赋值为 ‘flex’, 可以启用 flex 布局，并可通过 <code>justify</code> 属性来指定 ‘start, center, end, space-between, space-around’ 其中的值来定义子元素的排版方式。</p>
+</li>
+<li><p>响应式布局   </p>
+<p>参照了 Bootstrap 的响应式设计，预设了五个响应尺寸，<code>xs, sm, md, lg, 和 xl</code> 。</p>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2020/07/01/vuejs%E5%B8%B8%E7%94%A8api/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="田园隐士">
+      <meta itemprop="description" content="talk is cheap, show me the code">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一缕烟气">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/01/vuejs%E5%B8%B8%E7%94%A8api/" class="post-title-link" itemprop="url">vuejs常用api</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-07-01 09:28:54" itemprop="dateCreated datePublished" datetime="2020-07-01T09:28:54+08:00">2020-07-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-09 09:15:20" itemprop="dateModified" datetime="2020-09-09T09:15:20+08:00">2020-09-09</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>455</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="vm-nextTick-callback"><a href="#vm-nextTick-callback" class="headerlink" title="vm.$nextTick([callback])"></a>vm.$nextTick([callback])</h4><ul>
+<li><h5 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h5><ul>
+<li><code>&#123;Function&#125; [callback]</code></li>
+</ul>
+</li>
+<li><h5 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h5><p>将回调延迟到下次DOM更新循环之后执行。在修改数据之后立即使用它，然后等待DOM更新。它跟全局方法<code>Vue.nextTick</code>一样，不同的是回调的<code>this</code>自动绑定到调用它的实例上。</p>
+</li>
+<li><h5 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    methods: &#123;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">        example: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="comment">// 修改数据</span></span><br><span class="line">            <span class="built_in">this</span>.message = <span class="string">&#x27;changed&#x27;</span></span><br><span class="line">            <span class="comment">// DOM还没有更新</span></span><br><span class="line">            <span class="built_in">this</span>.$nextTick(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                <span class="comment">// DOM现在更新了</span></span><br><span class="line">                <span class="comment">// `this`绑定到当前实例</span></span><br><span class="line">                <span class="built_in">this</span>.doSomethingElse()</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h5 id="一点理解"><a href="#一点理解" class="headerlink" title="一点理解"></a>一点理解</h5><p><code>nextTick()</code> 函数是将回调函数延迟在下一次 dom 更新数据后调用；简单的理解就是： <em>当数据更新了，在 dom 中渲染后，自动执行该函数。</em></p>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2020/07/01/easypoi%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -641,362 +2030,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2020/06/30/data3c%E9%A1%B9%E7%9B%AE-2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="田园隐士">
-      <meta itemprop="description" content="talk is cheap, show me the code">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一缕烟气">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/06/30/data3c%E9%A1%B9%E7%9B%AE-2/" class="post-title-link" itemprop="url">data3c项目-2</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-06-30 11:01:03" itemprop="dateCreated datePublished" datetime="2020-06-30T11:01:03+08:00">2020-06-30</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-11 21:41:09" itemprop="dateModified" datetime="2020-08-11T21:41:09+08:00">2020-08-11</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/compony/" itemprop="url" rel="index"><span itemprop="name">compony</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>447</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h4><ol>
-<li><p>在lombok中, 注解@RequiredArgsConstructor的基本使用？</p>
-<img src="http://wrr123.github.io/2020/06/30/data3c%E9%A1%B9%E7%9B%AE-2/XxxConstructor注解.png" alt="注解">
-</li>
-<li><p>windows下，plsql的oracle数据库中文注释等显示乱码？</p>
-<p>一般只要设置环境变量<code>NLS_LANG = SIMPLIFIED CHINESE_CHINA.ZHS16GBK</code>即可。</p>
-</li>
-<li></li>
-</ol>
-<h4 id="data3c的项目分析"><a href="#data3c的项目分析" class="headerlink" title="data3c的项目分析"></a>data3c的项目分析</h4><h5 id="项目分类"><a href="#项目分类" class="headerlink" title="项目分类"></a>项目分类</h5><ul>
-<li>供应链<ul>
-<li>WEB界面</li>
-<li>上传模块</li>
-<li>提交计算模块</li>
-<li>Imformatic计算</li>
-</ul>
-</li>
-<li>月结<ul>
-<li>WEB界面</li>
-<li>提交计算模块</li>
-<li>Informatic计算</li>
-</ul>
-</li>
-<li>科诺斯<ul>
-<li>WEB界面</li>
-<li>上传模块</li>
-<li>提交计算模块</li>
-<li>Imformatic计算</li>
-</ul>
-</li>
-</ul>
-<h5 id="技术架构"><a href="#技术架构" class="headerlink" title="技术架构"></a>技术架构</h5><ul>
-<li>java<ul>
-<li>Fastjoin</li>
-<li>Liquibase</li>
-<li>Hutool</li>
-</ul>
-</li>
-<li>工具<ul>
-<li>Findbugs</li>
-</ul>
-</li>
-<li>数据存储<ul>
-<li>文件存储(file server)</li>
-</ul>
-</li>
-<li>应用服务器<ul>
-<li>Nginx</li>
-</ul>
-</li>
-</ul>
-<h5 id="逻辑架构"><a href="#逻辑架构" class="headerlink" title="逻辑架构"></a>逻辑架构</h5><p>web界面：用户数据上传下载、用户管理模块的界面展示</p>
-<p>App Server(data-input)：数据上传下载、用户管理模块的后台服务</p>
-<p>App Server(data-imformatica)：在Java中调用命令行，使用<code>imformatica sh</code>脚本，来触发imformatica计算</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2020/06/28/data3c%E9%A1%B9%E7%9B%AE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="田园隐士">
-      <meta itemprop="description" content="talk is cheap, show me the code">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一缕烟气">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/06/28/data3c%E9%A1%B9%E7%9B%AE/" class="post-title-link" itemprop="url">data3c项目</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-06-28 15:34:33" itemprop="dateCreated datePublished" datetime="2020-06-28T15:34:33+08:00">2020-06-28</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-11 21:41:09" itemprop="dateModified" datetime="2020-08-11T21:41:09+08:00">2020-08-11</time>
-              </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.4k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h5 id="npm镜像推荐和使用"><a href="#npm镜像推荐和使用" class="headerlink" title="npm镜像推荐和使用"></a>npm镜像推荐和使用</h5><p>镜像推荐<br>淘宝镜像： </p>
-<ul>
-<li>搜索地址 <a target="_blank" rel="noopener" href="http://npm.taobao.org/">http://npm.taobao.org/</a></li>
-<li>registry地址 <a target="_blank" rel="noopener" href="http://registry.npm.taobao.org/">http://registry.npm.taobao.org/</a></li>
-</ul>
-<p>使用:</p>
-<ul>
-<li>临时使用 <code>npm --registry https://registry.npm.taobao.org install express</code></li>
-<li>永久使用<figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">npm config set registry https://registry.npm.taobao.org</span><br><span class="line"></span><br><span class="line">// 配置后可通过下面方式来验证是否成功</span><br><span class="line">npm config get registry</span><br><span class="line">// 或</span><br><span class="line">npm info express</span><br></pre></td></tr></table></figure></li>
-<li>使用<code>cnpm</code>命令<figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install -g cnpm --registry=https://registry.npm.taobao.org</span><br><span class="line">// 使用</span><br><span class="line">cnpm install expresstall express</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h5 id="vue的计算属性和观察属性"><a href="#vue的计算属性和观察属性" class="headerlink" title="vue的计算属性和观察属性"></a>vue的计算属性和观察属性</h5><p>计算属性是自动监听依赖值的变化，从而动态返回内容；<br>监听是一个过程，在监听的值变化时，可以触发一个回调，并做一些事情。</p>
-<p>计算属性由两部分组成：get和set，分别用来获取计算属性和设置计算属性。<br>默认只有get，如果需要set，要自己添加。<br>set设置属性，并不是直接修改计算属性，而是修改它的依赖。</p>
-<p>计算属性和普通属性的区别？<br>可以像绑定普通属性一样在模板中绑定计算属性，<br>在定义上存在区别： 计算属性的属性值必须是一个函数。</p>
-<p>计算属性VS方法<br>computed是可以缓存的，methods不可以缓存<br><strong>只要相关的依赖没有改变，多次访问计算属性得到的值就是之前缓存的计算结果，不会多次执行</strong></p>
-<p>侦听属性（观察属性）<code>watch</code><br>watch中可以执行任何逻辑，如函数节流、Ajax异步获取数据、甚至操作DOM(<strong>不建议</strong>)</p>
-<h5 id="lombok"><a href="#lombok" class="headerlink" title="lombok"></a>lombok</h5><ul>
-<li>注解<code>@Cleanup</code><br>使用在局部变量上面。<br>在需要关闭流对象时，帮助你自动关闭。</li>
-</ul>
-<h5 id="java-try-with-resources-语法糖"><a href="#java-try-with-resources-语法糖" class="headerlink" title="java try-with-resources 语法糖"></a>java try-with-resources 语法糖</h5><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">try(声明并初始化需要关闭资源的变量，多个的话使用分号`;`分隔) &#123;</span><br><span class="line">&#125;catch(e) &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>java 获取项目中文件的输入流<br>获取到<code>this.getClass().getClassLoader().getResourceStream(&quot;文件的类路径&quot;);</code><br>or<br>使用springboot下的<code>ResourceUtils.getFile(&quot;classpath:类路径&quot;)</code></p>
-<p>java 文件下载到浏览器端<br>前端调用： <code>window.open(url)</code>, 使用ajax的话，下载不了。<br>后端下载： HttpServletResponse的输出流</p>
-<h5 id="springboot-多数据源实现"><a href="#springboot-多数据源实现" class="headerlink" title="springboot 多数据源实现"></a>springboot 多数据源实现</h5><p>在application.yml中添加其他数据源的配置信息，<br>在config中初始化每个数据源，</p>
-<h5 id="oracle-用户对表空间’XXXX’无权限"><a href="#oracle-用户对表空间’XXXX’无权限" class="headerlink" title="oracle,用户对表空间’XXXX’无权限"></a>oracle,用户对表空间’XXXX’无权限</h5><p>为用户授予resource权限，则不对用户的表空间进行限制<br><code>grant resource to username</code><br>授予用户表空间不受限制的权限<br><code>grant unlimited tablespace to username</code></p>
-<h5 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h5><ol>
-<li>Q1: 在springboot中，注解@RequestMapping的<strong>produces</strong>属性的含义?<br> 作用： 指定返回值的类型，不仅如此，也可以设定返回值的字符编码。<br> 与之相对应的一个属性为<em>consume</em>, 指定处理请求的提交内容的类型，如application/json,text/html.</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2020/06/22/layui%E5%92%8Celement-ui%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E5%8A%9F%E8%83%BD/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="田园隐士">
-      <meta itemprop="description" content="talk is cheap, show me the code">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一缕烟气">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/06/22/layui%E5%92%8Celement-ui%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E5%8A%9F%E8%83%BD/" class="post-title-link" itemprop="url">layui和element-ui文件上传功能</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-06-22 11:02:12" itemprop="dateCreated datePublished" datetime="2020-06-22T11:02:12+08:00">2020-06-22</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-11 21:41:09" itemprop="dateModified" datetime="2020-08-11T21:41:09+08:00">2020-08-11</time>
-              </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.9k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h5 id="layui文件上传"><a href="#layui文件上传" class="headerlink" title="layui文件上传"></a>layui文件上传</h5><p>使用layui的<code>upload</code>模块， <code>var upload = layui.upload</code><br>核心方法和基础参数选项</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">upload.render(&#123;</span><br><span class="line">    elem: <span class="string">&#x27;指向容器选择器，string/object,&#x27;</span>,</span><br><span class="line">    url: <span class="string">&#x27;服务器上传接口, string&#x27;</span>,</span><br><span class="line">    data: <span class="string">&#x27;请求上传接口的额外参数, object&#x27;</span>,</span><br><span class="line">    headers: <span class="string">&#x27;接口的请求头&#x27;</span>,</span><br><span class="line">    accept: <span class="string">&#x27;指定允许上传时校验的文件类型，string，可选值(images图片，file所有文件，video视频，audio音频，默认值为images)&#x27;</span>,</span><br><span class="line">    choose: <span class="string">&#x27;在文件被选择后触发，且该回调在before之前。一般用于非自动上传（即auto：false）的场景，如预览图片等&#x27;</span></span><br><span class="line">    <span class="comment">// ......</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<p><code>choose: function(obj)&#123;&#125;</code><br>将每次选择的文件追加到文件上传队列<br>obj.pushFile()<br>预览本地文件，如果是多文件的话，则会遍历<br>obj.preview((index, file, result) =&gt; {})<br>重命名文件名称<br>obj.resetFile(index, file, ‘123.png’)<br>对单个上传失败的文件进行重新上传<br>obj.upload(index, file)<br>删除列表中对应的文件，一般在某个事件中使用<br>delete files[index]</p>
-<p>css的样式分类</p>
-<ul>
-<li>外联<br>引入外部的css文件</li>
-<li>内联<br>在<code>&lt;head&gt;</code>标签下，添加<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
-<li>嵌入(内嵌)<br>直接在元素上添加属性style<br>三者间的区别：优先级不同<br>嵌入 &gt; 内联 &gt; 外联</li>
-</ul>
-<p>将方法绑定到<code>window</code>对象上之后，在<code>iframe</code>上可以访问到吗？<br>iframe中的window对象和原来的window对象不是同一个，<br>可在iframe中使用<code>window.parent</code>来访问原来的</p>
-<p>layui使用upload组件时，点击上传按钮，没有反应，控制台也没有报错？<br>使用<code>layui.use(&#39;upload&#39;, function() &#123;...&#125;)</code>可以成功。</p>
-<p>当span和img在一行时，如何进行垂直居中？<br>设置它们的style属性：<code>vertical-align: middle</code></p>
-<p>background-color覆盖的范围<br>只覆盖元素的content、border和padding，而margin不会显示该背景颜色。margin的颜色是由外层元素的背景颜色决定的。</p>
-<p>layui的form组件，select带搜索的选择框，可以支持中文搜索吗？</p>
-<p>layui的upload组件，在上传文件前，如何进行数据校验来终止文件上传？</p>
-<h5 id="element-ui文件上传"><a href="#element-ui文件上传" class="headerlink" title="element-ui文件上传"></a>element-ui文件上传</h5><p>组件<code>&lt;el-upload&gt;</code><br>属性参数：<br>on-success 文件上传成功时的钩子<br>before-upload 文件上传之前的钩子，参数上传的文件，若返回false或者返回promise且被reject，则停止上传。</p>
-<p>java java.nio.file.Files<br>使用<code>files</code>将复制文件</p>
-<p>git使用rebase合并其他分支内容</p>
-<ul>
-<li>切换到需要合并的分支上 <code>git checkout feature</code></li>
-<li>变基到你的主分支上 <code>git rebase master</code><br>或者将两个命令合并到一起 <code>git rebase master feature</code></li>
-</ul>
-<p>注解<code>@RequestBody</code>修饰的参数类型可以为map吗，为什么？<br>可以的，<code>@RequestBody</code>接受的参数是来自于requestBody中，即请求体。<br>一般用于处理 <strong>非content-type: application/x-www-form-urlencoded</strong>编码格式的数据，比如 <strong>application/json、application/xml等类型的数据</strong><br>而注解<code>@RequestParams</code>接受的参数是来自requestHeader中，即请求头<br>可以接受简单类型的参数，也可以接受对象类型。<br>它一般用来处理content-type为application/x-www-form-urlencoded编码的内容。ajax默认是这个编码。</p>
-<p>mybatis-plus自定义分页查询sql语句<br>在dao层重新定义一个方法(第一个参数必须是分页对象 <strong>Page</strong>, 第二个及其后面的参数可以是查询条件参数，返回值也必须是分页对象),<br>在xml文件中新建对应的sql语句,<br>在service层中传入响应的参数，实现该方法即可。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/16/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><span class="page-number current">17</span>
+    <a class="extend prev" rel="prev" href="/page/16/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><span class="page-number current">17</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/18/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1064,7 +2101,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">167</span>
+          <span class="site-state-item-count">173</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1077,7 +2114,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">48</span>
+        <span class="site-state-item-count">49</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1113,12 +2150,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">305k</span>
+    <span title="站点总字数">313k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:37</span>
+    <span title="站点阅读时长">4:44</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
