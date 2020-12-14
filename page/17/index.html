@@ -193,6 +193,512 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2020/07/03/git-reset%E5%92%8Crevert%E7%9A%84%E5%8C%BA%E5%88%AB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="田园隐士">
+      <meta itemprop="description" content="talk is cheap, show me the code">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一缕烟气">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/03/git-reset%E5%92%8Crevert%E7%9A%84%E5%8C%BA%E5%88%AB/" class="post-title-link" itemprop="url">git reset和revert的区别</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-07-03 13:27:23" itemprop="dateCreated datePublished" datetime="2020-07-03T13:27:23+08:00">2020-07-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-08-11 21:41:09" itemprop="dateModified" datetime="2020-08-11T21:41:09+08:00">2020-08-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index"><span itemprop="name">版本管理工具</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.6k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="git-reset"><a href="#git-reset" class="headerlink" title="git reset"></a>git reset</h4><h5 id="参数定义"><a href="#参数定义" class="headerlink" title="参数定义"></a>参数定义</h5><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">--soft 回退后a分支修改的代码被保留并标记为add的状态（git status 是绿色的状态）</span><br><span class="line">--mixed 重置索引，但不重置工作树，更改后的文件标记为未提交（add）的状态。默认操作。</span><br><span class="line">--hard 重置索引和工作树，并且a分支修改的所有文件和中间的提交，没提交的代码都被丢弃了。</span><br><span class="line">--merge 和--hard类似，只不过如果在执行reset命令之前你有改动一些文件并且未提交，merge会保留你的这些修改，hard则不会。【注：如果你的这些修改add过或commit过，merge和hard都将删除你的提交】</span><br><span class="line">--keep 和--hard类似，执行reset之前改动文件如果是a分支修改了的，会提示你修改了相同的文件，不能合并。如果不是a分支修改的文件，会移除缓存区。git status还是可以看到保持了这些修改。</span><br></pre></td></tr></table></figure>
+
+<h5 id="分析-hard和-soft的区别"><a href="#分析-hard和-soft的区别" class="headerlink" title="分析--hard和--soft的区别"></a>分析<code>--hard</code>和<code>--soft</code>的区别</h5><ul>
+<li><blockquote>
+<p>soft参数告诉Git重置HEAD到另外一个commit，但也到此为止。如果你指定–soft参数，Git将停止在那里而什么也不会根本变化。这意味着index,working copy都不会做任何变化，所有的在original HEAD和你重置到的那个commit之间的所有变更集都放在stage(index)区域中。</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>hard参数将会blow out everything.它将重置HEAD返回到另外一个commit(取决于~12的参数），重置index以便反映HEAD的变化，并且重置working copy也使得其完全匹配起来。这是一个比较危险的动作，具有破坏性，数据因此可能会丢失！如果真是发生了数据丢失又希望找回来，那么只有使用：[git reflog]命令了。你的所有本地修改将丢失。如果我们希望彻底丢掉本地修改但是又不希望更改branch所指向的commit，则执行git reset –hard = git reset –hard HEAD. i.e. don’t change the branch but get rid of all local changes.另外一个场景是简单地移动branch从一个到另一个commit而保持index/work区域同步。不过它将修改你的work tree。<br> 这是说hard操作就是以commit合集中的某一元素作为head 的落脚点，并且以它为蓝本，毁掉暂存区记录，本地库和远程库记录，包括源文件，只是为了这一蓝本服务，就好像议会制国家里，轮流执政，突然其中一个议员搞成了中央集权，所有的都向他同化了。</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>mixed是reset的默认参数，也就是当你不指定任何参数时的参数。它将重置HEAD到另外一个commit,并且重置index以便和HEAD相匹配，但是也到此为止。working copy不会被更改。所有该branch上从original HEAD（commit）到你重置到的那个commit之间的所有变更将作为local modifications保存在working area中，（被标示为local modification or untracked via git status)，但是并未staged的状态，你可以重新检视然后再做修改和commit。</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="git-revert"><a href="#git-revert" class="headerlink" title="git revert"></a>git revert</h4><h4 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h4><ol>
+<li><p>git revert是用一次新的commit来回滚之前的commit；</p>
+<p>git reset是直接删除指定的commit。</p>
+</li>
+<li><p>git reset是把<code>head</code>向后移动了一下，而git revert是<code>head</code>继续前进，只是新的commit的内容和要revert的内容正好相反，能够抵消要被revert的内容。</p>
+</li>
+<li><blockquote>
+<p>在回滚这一操作上看，效果差不多。但是在日后继续merge以前的老版本时有区别。因为git revert是用一次逆向的commit“中和”之前的提交，因此日后合并老的branch时，导致这部分改变不会再次出现，但是git reset是之间把某些commit在某个branch上删除，因而和老的branch再次merge时，这些被回滚的commit应该还会被引入。</p>
+</blockquote>
+</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2020/07/03/js%E4%B8%AD%E5%AF%B9url%E4%BC%A0%E5%8F%82%E5%8C%85%E5%90%AB%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6%E7%9A%84%E5%A4%84%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="田园隐士">
+      <meta itemprop="description" content="talk is cheap, show me the code">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一缕烟气">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/03/js%E4%B8%AD%E5%AF%B9url%E4%BC%A0%E5%8F%82%E5%8C%85%E5%90%AB%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6%E7%9A%84%E5%A4%84%E7%90%86/" class="post-title-link" itemprop="url">js中对url传参包含特殊字符的处理</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-07-03 12:38:36" itemprop="dateCreated datePublished" datetime="2020-07-03T12:38:36+08:00">2020-07-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-08-11 21:41:09" itemprop="dateModified" datetime="2020-08-11T21:41:09+08:00">2020-08-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>842</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="特殊字符的含义（十六进制）"><a href="#特殊字符的含义（十六进制）" class="headerlink" title="特殊字符的含义（十六进制）"></a>特殊字符的含义（十六进制）</h4><table>
+<thead>
+<tr>
+<th align="center">符号</th>
+<th align="center">解释</th>
+<th align="center">转义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">#</td>
+<td align="center">用来标定特定的文档位置</td>
+<td align="center">%23</td>
+</tr>
+<tr>
+<td align="center">%</td>
+<td align="center">对特殊字符进行编码</td>
+<td align="center">%25</td>
+</tr>
+<tr>
+<td align="center">&amp;</td>
+<td align="center">分割不同的变量值对</td>
+<td align="center">%26</td>
+</tr>
+<tr>
+<td align="center">+</td>
+<td align="center">在变量值中表示空格</td>
+<td align="center">%2B</td>
+</tr>
+<tr>
+<td align="center">/</td>
+<td align="center">表示目录路径</td>
+<td align="center">%2F</td>
+</tr>
+<tr>
+<td align="center">\</td>
+<td align="center">表示目录路径</td>
+<td align="center">%5C</td>
+</tr>
+<tr>
+<td align="center">=</td>
+<td align="center">用来连接键值对</td>
+<td align="center">%3D</td>
+</tr>
+<tr>
+<td align="center">?</td>
+<td align="center">表示查询字符串的开始</td>
+<td align="center">%3F</td>
+</tr>
+<tr>
+<td align="center">空格</td>
+<td align="center">空格</td>
+<td align="center">%20</td>
+</tr>
+<tr>
+<td align="center">.</td>
+<td align="center">句号</td>
+<td align="center">%2E</td>
+</tr>
+<tr>
+<td align="center">:</td>
+<td align="center">冒号</td>
+<td align="center">%3A</td>
+</tr>
+</tbody></table>
+<h4 id="js中替换变量使用方法"><a href="#js中替换变量使用方法" class="headerlink" title="js中替换变量使用方法"></a>js中替换变量使用方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str &#x3D; str.repalce(&#x2F;\#&#x2F;g, &#39;%23&#39;)</span><br></pre></td></tr></table></figure>
+
+<p><strong>上述的方法如果需要替换的特殊字符比较多的话，会非常麻烦</strong>，故为了解决，使用下面的两个方法</p>
+<h4 id="encodeURI"><a href="#encodeURI" class="headerlink" title="encodeURI()"></a>encodeURI()</h4><p>一般用于编码整个URI,因为URI中的合法字符都不会被编码转换。</p>
+<p>但是下面的一些特殊字符不会被编码：</p>
+<p><code>**! @ # $&amp; * ( ) = : / ; ? + &#39; **</code></p>
+<h4 id="encodeURIComponent"><a href="#encodeURIComponent" class="headerlink" title="encodeURIComponent()"></a>encodeURIComponent()</h4><p>把URI字符串采用UTF-8编码格式转化为escape格式的字符串。</p>
+<p><strong>一般对传递的参数进行转换。</strong></p>
+<h4 id="将url中的特殊字符转换成中文"><a href="#将url中的特殊字符转换成中文" class="headerlink" title="将url中的特殊字符转换成中文"></a>将url中的特殊字符转换成中文</h4><h5 id="函数decodeURI"><a href="#函数decodeURI" class="headerlink" title="函数decodeURI()"></a>函数decodeURI()</h5><p><code>decodeURI()</code> 函数能解码由<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/encodeURI"><code>encodeURI</code></a> 创建或其它流程得到的统一资源标识符（URI）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 一个例子</span></span><br><span class="line"><span class="keyword">const</span> uri = <span class="string">&#x27;https://mozilla.org/?x=шеллы&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> encoded = <span class="built_in">encodeURI</span>(uri);</span><br><span class="line"><span class="built_in">console</span>.log(encoded);</span><br><span class="line"><span class="comment">// expected output: &quot;https://mozilla.org/?x=%D1%88%D0%B5%D0%BB%D0%BB%D1%8B&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">decodeURI</span>(encoded));</span><br><span class="line">  <span class="comment">// expected output: &quot;https://mozilla.org/?x=шеллы&quot;</span></span><br><span class="line">&#125; <span class="keyword">catch</span> (e) &#123; <span class="comment">// catches a malformed URI</span></span><br><span class="line">  <span class="built_in">console</span>.error(e);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2020/07/03/response%E5%93%8D%E5%BA%94%E5%AF%B9%E8%B1%A1%E8%AF%A6%E8%A7%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="田园隐士">
+      <meta itemprop="description" content="talk is cheap, show me the code">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一缕烟气">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/03/response%E5%93%8D%E5%BA%94%E5%AF%B9%E8%B1%A1%E8%AF%A6%E8%A7%A3/" class="post-title-link" itemprop="url">response响应对象详解</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-07-03 10:18:30" itemprop="dateCreated datePublished" datetime="2020-07-03T10:18:30+08:00">2020-07-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-08-11 21:41:09" itemprop="dateModified" datetime="2020-08-11T21:41:09+08:00">2020-08-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>585</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="对象介绍"><a href="#对象介绍" class="headerlink" title="对象介绍"></a>对象介绍</h4><ol>
+<li><p>负责向客户端（浏览器）发送数据的相关方法</p>
+<ol>
+<li>getOutputStream()</li>
+<li>getWriter()</li>
+</ol>
+</li>
+<li><p>负责向客户端（浏览器）发送响应头的相关方法</p>
+<p><img src="http://wrr123.github.io/2020/07/03/response%E5%93%8D%E5%BA%94%E5%AF%B9%E8%B1%A1%E8%AF%A6%E8%A7%A3/11.png"></p>
+</li>
+<li><p>负责向客户端（浏览器）发送响应状态码的相关方法</p>
+<p><img src="http://wrr123.github.io/2020/07/03/response%E5%93%8D%E5%BA%94%E5%AF%B9%E8%B1%A1%E8%AF%A6%E8%A7%A3/22.png"></p>
+</li>
+<li><p>响应状态码的常量</p>
+<p><img src="http://wrr123.github.io/2020/07/03/response%E5%93%8D%E5%BA%94%E5%AF%B9%E8%B1%A1%E8%AF%A6%E8%A7%A3/33.png"></p>
+</li>
+</ol>
+<h4 id="对象常见应用"><a href="#对象常见应用" class="headerlink" title="对象常见应用"></a>对象常见应用</h4><ol>
+<li><h5 id="使用OutputStream流向客户端输出中文数据"><a href="#使用OutputStream流向客户端输出中文数据" class="headerlink" title="使用OutputStream流向客户端输出中文数据"></a>使用OutputStream流向客户端输出中文数据</h5></li>
+<li><h5 id="使用PrintWriter流向客户端输出中文数据"><a href="#使用PrintWriter流向客户端输出中文数据" class="headerlink" title="使用PrintWriter流向客户端输出中文数据"></a>使用PrintWriter流向客户端输出中文数据</h5></li>
+<li><h5 id="文件下载"><a href="#文件下载" class="headerlink" title="文件下载"></a>文件下载</h5><p>基本实现思路：</p>
+<ol>
+<li>获取要下载的文件的绝对路径</li>
+<li>获取要下载的文件名</li>
+<li>设置<code>content-disposition</code>响应头控制浏览器以下载的形式打开文件</li>
+<li>获取要下载的文件输入流</li>
+<li>创建数据缓冲区</li>
+<li>通过<code>response</code>对象获取<code>OutputStream</code>流</li>
+<li>将FileInputStream流写入到buffer缓冲区</li>
+<li>使用OutputStream将缓冲区的数据输出到客户端(浏览器)</li>
+</ol>
+<p><strong>在编写下载功能时，要使用OutputStream流，避免使用PrintWriter流，因为OutputStream流是字节流，可以处理任意类型的数据，而PrintWriter流是字符流，只能处理字符数据，如果用字符流处理字节流，会导致数据丢失。</strong></p>
+</li>
+</ol>
+<h4 id="主要功能介绍"><a href="#主要功能介绍" class="headerlink" title="主要功能介绍"></a>主要功能介绍</h4><ol>
+<li><p>设置响应头信息</p>
+<p><code>addHeader(“reFresh”, “5;URL=xxxx”);</code></p>
+</li>
+<li><p>发送状态码</p>
+<p><code>sendError(404);</code></p>
+</li>
+<li><p>设置响应正文</p>
+<p><code>getWriter().print(“fdsfdsa”);</code></p>
+</li>
+<li><p>重定向</p>
+<p><code>sendRedirect(“path”);</code></p>
+</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2020/07/02/freemarker%E4%B9%8Bhtml%E9%A1%B5%E9%9D%A2%E4%BC%A0%E5%8F%82/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="田园隐士">
+      <meta itemprop="description" content="talk is cheap, show me the code">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一缕烟气">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/02/freemarker%E4%B9%8Bhtml%E9%A1%B5%E9%9D%A2%E4%BC%A0%E5%8F%82/" class="post-title-link" itemprop="url">freemarker之html页面传参</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-07-02 16:31:17" itemprop="dateCreated datePublished" datetime="2020-07-02T16:31:17+08:00">2020-07-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-08-16 00:04:13" itemprop="dateModified" datetime="2020-08-16T00:04:13+08:00">2020-08-16</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>250</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h5 id="使用freemarker的基本语法"><a href="#使用freemarker的基本语法" class="headerlink" title="使用freemarker的基本语法"></a>使用freemarker的基本语法</h5><p><code>$&#123;变量名称&#125;</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fileId = <span class="string">&#x27;$&#123;fileId&#125;&#x27;</span></span><br><span class="line"><span class="keyword">var</span> fileId = <span class="string">&#x27;$&#123;fileId?js_string&#125;&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>和在html标签中使用是一样的</strong></p>
+<p><strong>在html界面中引入的javascript文件中是不行的，必须在html本页面上内联的javascript语句中执行</strong></p>
+<p><img src="http://wrr123.github.io/2020/07/02/freemarker%E4%B9%8Bhtml%E9%A1%B5%E9%9D%A2%E4%BC%A0%E5%8F%82/22.png"></p>
+<p><img src="http://wrr123.github.io/2020/07/02/freemarker%E4%B9%8Bhtml%E9%A1%B5%E9%9D%A2%E4%BC%A0%E5%8F%82/11.png"></p>
+<p>若在上面的<code>initStockDetails.js</code>文件中，使用freemarker的语法是不生效的。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2020/07/02/vue%E4%BD%9C%E7%94%A8%E5%9F%9F%E6%8F%92%E6%A7%BD/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -593,7 +1099,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-11-17 16:30:20" itemprop="dateModified" datetime="2020-11-17T16:30:20+08:00">2020-11-17</time>
+                <time title="修改时间：2020-11-24 09:54:14" itemprop="dateModified" datetime="2020-11-24T09:54:14+08:00">2020-11-24</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -611,7 +1117,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>3.5k</span>
+              <span>3.6k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -676,6 +1182,10 @@
 <li><p>类被 <code>new</code> 新建了实例，而没有使用 <code>@Autowired</code>注解</p>
 <p>  若不想使用 <code>@Autowired</code>自动装配，可以使用 <code>ApplicationContext</code>类来获取”bean”</p>
 </li>
+</ul>
+<h4 id="stream中方法peek和map方法之间的区别"><a href="#stream中方法peek和map方法之间的区别" class="headerlink" title="stream中方法peek和map方法之间的区别"></a>stream中方法<code>peek</code>和<code>map</code>方法之间的区别</h4><ul>
+<li>peek 可对元素的内部数据进行处理，返回的是原来的数据类型，不生成新的数据类型。</li>
+<li>map 重新返回一个新的数据类型。</li>
 </ul>
 
       
@@ -1578,458 +2088,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2020/07/01/easypoi%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="田园隐士">
-      <meta itemprop="description" content="talk is cheap, show me the code">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一缕烟气">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/07/01/easypoi%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97/" class="post-title-link" itemprop="url">easypoi开发指南</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-07-01 09:18:08" itemprop="dateCreated datePublished" datetime="2020-07-01T09:18:08+08:00">2020-07-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-11 21:41:09" itemprop="dateModified" datetime="2020-08-11T21:41:09+08:00">2020-08-11</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.2k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="Excel注解版"><a href="#Excel注解版" class="headerlink" title="Excel注解版"></a>Excel注解版</h3><h4 id="Excel导入导出"><a href="#Excel导入导出" class="headerlink" title="Excel导入导出"></a>Excel导入导出</h4><p>支持三种方式的处理（其中模板和html目前只支持导出）</p>
-<ul>
-<li>注解方式，注解变种方式</li>
-<li>模板方式</li>
-<li>Html方式</li>
-</ul>
-<h4 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h4><h5 id="注解分成5个类别："><a href="#注解分成5个类别：" class="headerlink" title="注解分成5个类别："></a>注解分成5个类别：</h5><ul>
-<li>@Excel 作用到field上面，是对excel一列的描述</li>
-<li>@ExcelCollection 表示一个集合，主要针对一对多的导出，比如一个老师对应多个科目，那么科目就可以用集合来表示</li>
-<li>@ExcelEntity 表示一个继续深入导出的实体，但他没有太多的意义，只是告诉系统这个对象里面同样有导出的字段</li>
-<li>@ExcelIgnore 和名字一样，表示这个字段被忽略，跳过这个导出</li>
-<li>@ExcelTarget 这个是作用于最外层的对象，描述这个对象的id，以便一个对象可以针对不同导出做出不同处理</li>
-</ul>
-<h4 id="注解导出，导入"><a href="#注解导出，导入" class="headerlink" title="注解导出，导入"></a>注解导出，导入</h4><ol>
-<li><h5 id="对象定义"><a href="#对象定义" class="headerlink" title="对象定义"></a>对象定义</h5></li>
-<li><h5 id="集合定义"><a href="#集合定义" class="headerlink" title="集合定义"></a>集合定义</h5></li>
-<li><h5 id="图片的导出"><a href="#图片的导出" class="headerlink" title="图片的导出"></a>图片的导出</h5></li>
-<li><h5 id="Excel导入介绍"><a href="#Excel导入介绍" class="headerlink" title="Excel导入介绍"></a>Excel导入介绍</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        ImportParams params = <span class="keyword">new</span> ImportParams();</span><br><span class="line">        params.setTitleRows(<span class="number">1</span>);</span><br><span class="line">        params.setHeadRows(<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">long</span> start = <span class="keyword">new</span> Date().getTime();</span><br><span class="line">        List&lt;MsgClient&gt; list = ExcelImportUtil.importExcel(</span><br><span class="line">           <span class="keyword">new</span> File(PoiPublicUtil.getWebRootPath(<span class="string">&quot;import/ExcelExportMsgClient.xlsx&quot;</span>)),</span><br><span class="line">            MsgClient.class, params);</span><br><span class="line">        System.out.println(<span class="keyword">new</span> Date().getTime() - start);</span><br><span class="line">        System.out.println(list.size());</span><br><span class="line">        System.out.println(ReflectionToStringBuilder.toString(list.get(<span class="number">0</span>)));</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p>ImportParams参数介绍：</p>
-<p><img src="http://wrr123.github.io/2020/07/01/easypoi%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97/ImportPrams%E5%8F%82%E6%95%B0%E4%BB%8B%E7%BB%8D.png"></p>
-</li>
-<li><h5 id="Excel导入小功能"><a href="#Excel导入小功能" class="headerlink" title="Excel导入小功能"></a>Excel导入小功能</h5><ol>
-<li><p>读取指定的sheet</p>
-<p>比如要读取上传的第二个sheet，那么需要把<code>startSheetIndex = 1</code>就可以了</p>
-</li>
-<li><p>读取几个sheet</p>
-<p>比如读取前2个sheet，那么<code>sheetNum = 2</code>就可以了</p>
-</li>
-<li><p>读取第2~5个sheet</p>
-<p>设置<code>startSheetNum = 1;sheetNum = 4</code>就可以了</p>
-</li>
-<li><p>读取全部的sheet</p>
-<p>sheetNum设置大点就可以了</p>
-</li>
-<li><p>保存excel</p>
-<p>设置<code>needVerify = true</code>,默认保存的路径为 <code>upload/excelUpload/Test/yyyyMMddHHmss_***** 保存名称上传时间_五位随机数</code></p>
-<p>如果自定义路径，修改下saveUrl就可以了，同时saveUrl也是图片上传时候保存的路径。</p>
-</li>
-<li><p>判断一个excel是不是合法的excel</p>
-<p>importFields设置下值，就是表示表头必须至少包含的字段，如果缺一个就是不合法的exel，不导入。</p>
-</li>
-</ol>
-</li>
-<li><h5 id="图片的导入"><a href="#图片的导入" class="headerlink" title="图片的导入"></a>图片的导入</h5></li>
-<li><h5 id="Excel多sheet导出"><a href="#Excel多sheet导出" class="headerlink" title="Excel多sheet导出"></a>Excel多sheet导出</h5></li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2020/06/30/%E9%A1%B9%E7%9B%AE%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7%E4%B9%8Bmaven/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="田园隐士">
-      <meta itemprop="description" content="talk is cheap, show me the code">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一缕烟气">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/06/30/%E9%A1%B9%E7%9B%AE%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7%E4%B9%8Bmaven/" class="post-title-link" itemprop="url">项目构建工具之maven</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-06-30 18:32:47" itemprop="dateCreated datePublished" datetime="2020-06-30T18:32:47+08:00">2020-06-30</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-11 21:41:09" itemprop="dateModified" datetime="2020-08-11T21:41:09+08:00">2020-08-11</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>701</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h5 id="阿里云maven仓库配置"><a href="#阿里云maven仓库配置" class="headerlink" title="阿里云maven仓库配置"></a>阿里云maven仓库配置</h5><ul>
-<li>修改用户目录下的或者maven软件根目录conf文件下的settings.xml文件, 添加以下内容</li>
-</ul>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mirrors</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mirror</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">id</span>&gt;</span>alimaven<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">name</span>&gt;</span>aliyun maven<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.aliyun.com/nexus/content/groups/public/<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>central<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span>        </span><br><span class="line">    <span class="tag">&lt;/<span class="name">mirror</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">mirrors</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>在项目的pom.xml文件中直接添加</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">repositories</span>&gt;</span>  </span><br><span class="line">        <span class="tag">&lt;<span class="name">repository</span>&gt;</span>  </span><br><span class="line">            <span class="tag">&lt;<span class="name">id</span>&gt;</span>alimaven<span class="tag">&lt;/<span class="name">id</span>&gt;</span>  </span><br><span class="line">            <span class="tag">&lt;<span class="name">name</span>&gt;</span>aliyun maven<span class="tag">&lt;/<span class="name">name</span>&gt;</span>  </span><br><span class="line">            <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.aliyun.com/nexus/content/groups/public/<span class="tag">&lt;/<span class="name">url</span>&gt;</span>  </span><br><span class="line">            <span class="tag">&lt;<span class="name">releases</span>&gt;</span>  </span><br><span class="line">                <span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span>  </span><br><span class="line">            <span class="tag">&lt;/<span class="name">releases</span>&gt;</span>  </span><br><span class="line">            <span class="tag">&lt;<span class="name">snapshots</span>&gt;</span>  </span><br><span class="line">                <span class="tag">&lt;<span class="name">enabled</span>&gt;</span>false<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span>  </span><br><span class="line">            <span class="tag">&lt;/<span class="name">snapshots</span>&gt;</span>  </span><br><span class="line">        <span class="tag">&lt;/<span class="name">repository</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">repositories</span>&gt;</span> </span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2020/06/30/easypoi/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="田园隐士">
-      <meta itemprop="description" content="talk is cheap, show me the code">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一缕烟气">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/06/30/easypoi/" class="post-title-link" itemprop="url">easypoi</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-06-30 18:30:46" itemprop="dateCreated datePublished" datetime="2020-06-30T18:30:46+08:00">2020-06-30</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-11 21:41:09" itemprop="dateModified" datetime="2020-08-11T21:41:09+08:00">2020-08-11</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>5.2k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>5 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="EasyPoi-Excel和Word简易工具类"><a href="#EasyPoi-Excel和Word简易工具类" class="headerlink" title="EasyPoi Excel和Word简易工具类"></a>EasyPoi Excel和Word简易工具类</h3><p>主打功能： 让一个没接触过POI的人员，可以方便的写出Excel导出，Excel模板导出，Excel导入，word模板导出，通过简单的注解和模板语言（熟悉的表达式语法），完成以前复杂的写法。</p>
-<p><a target="_blank" rel="noopener" href="https://opensource.afterturn.cn/">官网</a> <a target="_blank" rel="noopener" href="https://github.com/jueyue/easypoi/blob/master/README.md">英文介绍</a></p>
-<h5 id="开发指南"><a href="#开发指南" class="headerlink" title="开发指南"></a>开发指南</h5><p><strong><a target="_blank" rel="noopener" href="http://opensource.afterturn.cn/doc/easypoi.html">https://opensource.afterturn.cn/doc/easypoi.html</a></strong></p>
-<h5 id="版本介绍"><a href="#版本介绍" class="headerlink" title="版本介绍"></a>版本介绍</h5><p><a target="_blank" rel="noopener" href="https://gitee.com/lemur/easypoi/blob/master/history.md">history.md</a></p>
-<h5 id="基础示例"><a href="#基础示例" class="headerlink" title="基础示例"></a>基础示例</h5><p><a target="_blank" rel="noopener" href="https://gitee.com/lemur/easypoi/blob/master/basedemo.md">basedemo.md</a></p>
-<p><a target="_blank" rel="noopener" href="http://git.oschina.net/lemur/easypoi-test">测试项目</a>: <a target="_blank" rel="noopener" href="http://git.oschina.net/lemur/easypoi-test">http://git.oschina.net/lemur/easypoi-test</a></p>
-<hr>
-<h4 id="EasyPoi的主要特点"><a href="#EasyPoi的主要特点" class="headerlink" title="EasyPoi的主要特点"></a>EasyPoi的主要特点</h4><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1.设计精巧,使用简单</span><br><span class="line">2.接口丰富,扩展简单</span><br><span class="line">3.默认值多,write less do more</span><br><span class="line">4.AbstractView 支持,web导出可以简单明了</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h4 id="什么场景该用哪个方法"><a href="#什么场景该用哪个方法" class="headerlink" title="什么场景该用哪个方法"></a>什么场景该用哪个方法</h4><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">- 导出</span><br><span class="line">    1.正规excel导出 (格式简单,数据量可以,5W以内吧)</span><br><span class="line">        注解方式:  ExcelExportUtil.exportExcel(ExportParams entity, Class&lt;?&gt; pojoClass,Collection&lt;?&gt; dataSet) </span><br><span class="line">    2.不定多少列,但是格式依然简单数据库不大</span><br><span class="line">        自定义方式: ExcelExportUtil.exportExcel(ExportParams entity, List&lt;ExcelExportEntity&gt; entityList,Collection&lt;?&gt; dataSet)</span><br><span class="line">    3.数据量大超过5W,还在100W以内</span><br><span class="line">        注解方式 ExcelExportUtil.exportBigExcel(ExportParams entity, Class&lt;?&gt; pojoClass,IExcelExportServer server, Object queryParams)</span><br><span class="line">        自定义方式: ExcelExportUtil.exportBigExcel(ExportParams entity, List&lt;ExcelExportEntity&gt; excelParams,IExcelExportServer server, Object queryParams)</span><br><span class="line">    4.样式复杂,数据量尽量别大</span><br><span class="line">        模板导出 ExcelExportUtil.exportExcel(TemplateExportParams params, Map&lt;String, Object&gt; map)</span><br><span class="line">    5.一次导出多个风格不一致的sheet</span><br><span class="line">        模板导出 ExcelExportUtil.exportExcel(Map&lt;Integer, Map&lt;String, Object&gt;&gt; map,TemplateExportParams params) </span><br><span class="line">    6.一个模板但是要导出非常多份</span><br><span class="line">        模板导出 ExcelExportUtil.exportExcelClone(Map&lt;Integer, List&lt;Map&lt;String, Object&gt;&gt;&gt; map,TemplateExportParams params)</span><br><span class="line">    7.模板无法满足你的自定义,试试html</span><br><span class="line">        自己构造html,然后我给你转成excel  ExcelXorHtmlUtil.htmlToExcel(String html, ExcelType type)</span><br><span class="line">    8.数据量过百万级了.放弃excel吧,csv导出</span><br><span class="line">        注解方式: CsvExportUtil.exportCsv(CsvExportParams params, Class&lt;?&gt; pojoClass, OutputStream outputStream)</span><br><span class="line">        自定义方式: CsvExportUtil.exportCsv(CsvExportParams params, List&lt;ExcelExportEntity&gt; entityList, OutputStream outputStream)</span><br><span class="line">    9.word导出</span><br><span class="line">        模板导出: WordExportUtil.exportWord07(String url, Map&lt;String, Object&gt; map)</span><br><span class="line">    10.PDF导出</span><br><span class="line">        模板导出: TODO </span><br><span class="line">- 导入 </span><br><span class="line">    如果想提高性能 ImportParams 的concurrentTask 可以帮助并发导入,仅单行,最小1000</span><br><span class="line">    excel有单个的那种特殊读取,readSingleCell 参数可以支持</span><br><span class="line">    1. 不需要检验,数据量不大(5W以内)</span><br><span class="line">        注解或者MAP: ExcelImportUtil.importExcel(File file, Class&lt;?&gt; pojoClass, ImportParams params)</span><br><span class="line">    2. 需要导入,数据量不大</span><br><span class="line">        注解或者MAP: ExcelImportUtil.importExcelMore(InputStream inputstream, Class&lt;?&gt; pojoClass, ImportParams params)</span><br><span class="line">    3. 数据量大了,或者你有特别多的导入操作,内存比较少,仅支持单行</span><br><span class="line">       SAX方式  ExcelImportUtil.importExcelBySax(InputStream inputstream, Class&lt;?&gt; pojoClass, ImportParams params, IReadHandler handler)</span><br><span class="line">    4. 数据量超过EXCEL限制,CSV读取</span><br><span class="line">        小数据量: CsvImportUtil.importCsv(InputStream inputstream, Class&lt;?&gt; pojoClass,CsvImportParams params)</span><br><span class="line">        大数据量: CsvImportUtil.importCsv(InputStream inputstream, Class&lt;?&gt; pojoClass,CsvImportParams params, IReadHandler readHandler)</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h4 id="关于Excel导出XLS和XLSX的区别"><a href="#关于Excel导出XLS和XLSX的区别" class="headerlink" title="关于Excel导出XLS和XLSX的区别"></a>关于Excel导出XLS和XLSX的区别</h4><figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. 导出时间xls比xlsx块2-3倍</span><br><span class="line">2. 导出大小xls是xlsx的2-3倍或者更多</span><br><span class="line">3. 导出需要综合网速和本地速度做考虑^~^</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h4 id="几个工程的说明"><a href="#几个工程的说明" class="headerlink" title="几个工程的说明"></a>几个工程的说明</h4><figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1.easypoi 父包--作用大家都懂得</span><br><span class="line">2.easypoi-annotation 基础注解包,作用与实体对象上,拆分后方便maven多工程的依赖管理</span><br><span class="line">3.easypoi-base 导入导出的工具包,可以完成Excel导出,导入,Word的导出,Excel的导出功能</span><br><span class="line">4.easypoi-web  耦合了spring-mvc 基于AbstractView,极大的简化spring-mvc下的导出功能</span><br><span class="line">5.sax 导入使用xercesImpl这个包(这个包可能造成奇怪的问题哈),word导出使用poi-scratchpad,都作为可选包了</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h5 id="maven"><a href="#maven" class="headerlink" title="maven"></a>maven</h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>cn.afterturn<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>easypoi-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.2.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>cn.afterturn<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>easypoi-base<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.2.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>cn.afterturn<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>easypoi-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.2.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>cn.afterturn<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>easypoi-annotation<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.2.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<hr>
-<h5 id="pom说明"><a href="#pom说明" class="headerlink" title="pom说明"></a>pom说明</h5><p>word和sax读取的时候才使用，就不是必须的了，请手动引用；JSR303的校验也是可选的；pdf的jar也是可选的。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- sax 读取时候用到的 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>xerces<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>xercesImpl<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;xerces.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optional</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.poi<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>poi-scratchpad<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;poi.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optional</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- Word 需要使用 --&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.poi<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>ooxml-schemas<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optional</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 校验,下面两个实现 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.hibernate<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>hibernate-validator<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.1.3.Final<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optional</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.bval<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>org.apache.bval.bundle<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.1.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- PDF --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.itextpdf<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>itextpdf<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.5.6<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optional</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.itextpdf<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>itext-asian<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.2.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optional</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<hr>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2020/06/30/jqGrid%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="田园隐士">
-      <meta itemprop="description" content="talk is cheap, show me the code">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一缕烟气">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/06/30/jqGrid%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">jqGrid基本使用</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-06-30 16:52:21" itemprop="dateCreated datePublished" datetime="2020-06-30T16:52:21+08:00">2020-06-30</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-11 21:41:09" itemprop="dateModified" datetime="2020-08-11T21:41:09+08:00">2020-08-11</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>851</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="设置表头的文件居中显示？"><a href="#设置表头的文件居中显示？" class="headerlink" title="设置表头的文件居中显示？"></a>设置表头的文件居中显示？</h4><blockquote>
-<p>使用原始的css的方式，在页面上找需要居中的table下的th/td，设置css属性为text-align: center就可以了。</p>
-</blockquote>
-<h4 id="在列添加事件时，如何传递对象参数"><a href="#在列添加事件时，如何传递对象参数" class="headerlink" title="在列添加事件时，如何传递对象参数?"></a>在列添加事件时，如何传递对象参数?</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> user = &#123;<span class="attr">id</span>:<span class="number">1</span>, <span class="attr">name</span>:<span class="string">&#x27;zhangsan&#x27;</span>, <span class="attr">age</span>:<span class="number">25</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> ele = <span class="string">&#x27;&lt;a onclick=&quot;edit(&#x27;</span> + <span class="built_in">JSON</span>.stringify(user).replace(<span class="regexp">/&quot;/g</span>, <span class="string">&#x27;&amp;quot;&#x27;</span>) + <span class="string">&#x27;);&quot;&gt;修改&lt;/a&gt;&#x27;</span>;</span><br><span class="line"></span><br><span class="line">或者</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> ele = <span class="string">&#x27;&lt;a onclick=&quot;edit(\&#x27;&#x27;</span> + <span class="built_in">JSON</span>.stringify(user).replace(<span class="regexp">/&quot;/g</span>, <span class="string">&#x27;&amp;quot;&#x27;</span>) + <span class="string">&#x27;\&#x27;);&quot;&gt;修改&lt;/a&gt;&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 前者得到的是json对象，后者取到的是json字符串.</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="手动清除table中显示的数据"><a href="#手动清除table中显示的数据" class="headerlink" title="手动清除table中显示的数据"></a>手动清除table中显示的数据</h4><blockquote>
-<p>$(‘#gridTable’).jqGrid(‘clearGridData’);</p>
-</blockquote>
-<h4 id="获取行id"><a href="#获取行id" class="headerlink" title="获取行id"></a>获取行id</h4><blockquote>
-<p>获取单行id</p>
-<p>var id=$(‘#gridTable’).jqGrid(‘getGridParam’,’selrow’);</p>
-<p>获取多行id</p>
-<p>var ids=$(‘#gridTable’).jqGrid(‘getGridParam’,’selarrrow’);</p>
-</blockquote>
-<h4 id="获取每行的数据"><a href="#获取每行的数据" class="headerlink" title="获取每行的数据"></a>获取每行的数据</h4><blockquote>
-<p>var rowData = $(“#gridTable”).jqGrid(‘getRowData’,rowId);</p>
-</blockquote>
-<h4 id="显示或者隐藏表格底部的滚动条"><a href="#显示或者隐藏表格底部的滚动条" class="headerlink" title="显示或者隐藏表格底部的滚动条"></a>显示或者隐藏表格底部的滚动条</h4><blockquote>
-<p>​            $(“#jqGrid”).closest(“.ui-jqgrid-bdiv”).css({ “overflow-x” : <code>&quot;scroll&quot;</code> <code>&quot;hidden&quot;</code> });</p>
-</blockquote>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -2101,7 +2159,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">173</span>
+          <span class="site-state-item-count">177</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -2150,12 +2208,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">313k</span>
+    <span title="站点总字数">315k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:44</span>
+    <span title="站点阅读时长">4:46</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>

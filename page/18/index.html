@@ -193,6 +193,458 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2020/07/01/easypoi%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="田园隐士">
+      <meta itemprop="description" content="talk is cheap, show me the code">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一缕烟气">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/01/easypoi%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97/" class="post-title-link" itemprop="url">easypoi开发指南</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-07-01 09:18:08" itemprop="dateCreated datePublished" datetime="2020-07-01T09:18:08+08:00">2020-07-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-08-11 21:41:09" itemprop="dateModified" datetime="2020-08-11T21:41:09+08:00">2020-08-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="Excel注解版"><a href="#Excel注解版" class="headerlink" title="Excel注解版"></a>Excel注解版</h3><h4 id="Excel导入导出"><a href="#Excel导入导出" class="headerlink" title="Excel导入导出"></a>Excel导入导出</h4><p>支持三种方式的处理（其中模板和html目前只支持导出）</p>
+<ul>
+<li>注解方式，注解变种方式</li>
+<li>模板方式</li>
+<li>Html方式</li>
+</ul>
+<h4 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h4><h5 id="注解分成5个类别："><a href="#注解分成5个类别：" class="headerlink" title="注解分成5个类别："></a>注解分成5个类别：</h5><ul>
+<li>@Excel 作用到field上面，是对excel一列的描述</li>
+<li>@ExcelCollection 表示一个集合，主要针对一对多的导出，比如一个老师对应多个科目，那么科目就可以用集合来表示</li>
+<li>@ExcelEntity 表示一个继续深入导出的实体，但他没有太多的意义，只是告诉系统这个对象里面同样有导出的字段</li>
+<li>@ExcelIgnore 和名字一样，表示这个字段被忽略，跳过这个导出</li>
+<li>@ExcelTarget 这个是作用于最外层的对象，描述这个对象的id，以便一个对象可以针对不同导出做出不同处理</li>
+</ul>
+<h4 id="注解导出，导入"><a href="#注解导出，导入" class="headerlink" title="注解导出，导入"></a>注解导出，导入</h4><ol>
+<li><h5 id="对象定义"><a href="#对象定义" class="headerlink" title="对象定义"></a>对象定义</h5></li>
+<li><h5 id="集合定义"><a href="#集合定义" class="headerlink" title="集合定义"></a>集合定义</h5></li>
+<li><h5 id="图片的导出"><a href="#图片的导出" class="headerlink" title="图片的导出"></a>图片的导出</h5></li>
+<li><h5 id="Excel导入介绍"><a href="#Excel导入介绍" class="headerlink" title="Excel导入介绍"></a>Excel导入介绍</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        ImportParams params = <span class="keyword">new</span> ImportParams();</span><br><span class="line">        params.setTitleRows(<span class="number">1</span>);</span><br><span class="line">        params.setHeadRows(<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">long</span> start = <span class="keyword">new</span> Date().getTime();</span><br><span class="line">        List&lt;MsgClient&gt; list = ExcelImportUtil.importExcel(</span><br><span class="line">           <span class="keyword">new</span> File(PoiPublicUtil.getWebRootPath(<span class="string">&quot;import/ExcelExportMsgClient.xlsx&quot;</span>)),</span><br><span class="line">            MsgClient.class, params);</span><br><span class="line">        System.out.println(<span class="keyword">new</span> Date().getTime() - start);</span><br><span class="line">        System.out.println(list.size());</span><br><span class="line">        System.out.println(ReflectionToStringBuilder.toString(list.get(<span class="number">0</span>)));</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>ImportParams参数介绍：</p>
+<p><img src="http://wrr123.github.io/2020/07/01/easypoi%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97/ImportPrams%E5%8F%82%E6%95%B0%E4%BB%8B%E7%BB%8D.png"></p>
+</li>
+<li><h5 id="Excel导入小功能"><a href="#Excel导入小功能" class="headerlink" title="Excel导入小功能"></a>Excel导入小功能</h5><ol>
+<li><p>读取指定的sheet</p>
+<p>比如要读取上传的第二个sheet，那么需要把<code>startSheetIndex = 1</code>就可以了</p>
+</li>
+<li><p>读取几个sheet</p>
+<p>比如读取前2个sheet，那么<code>sheetNum = 2</code>就可以了</p>
+</li>
+<li><p>读取第2~5个sheet</p>
+<p>设置<code>startSheetNum = 1;sheetNum = 4</code>就可以了</p>
+</li>
+<li><p>读取全部的sheet</p>
+<p>sheetNum设置大点就可以了</p>
+</li>
+<li><p>保存excel</p>
+<p>设置<code>needVerify = true</code>,默认保存的路径为 <code>upload/excelUpload/Test/yyyyMMddHHmss_***** 保存名称上传时间_五位随机数</code></p>
+<p>如果自定义路径，修改下saveUrl就可以了，同时saveUrl也是图片上传时候保存的路径。</p>
+</li>
+<li><p>判断一个excel是不是合法的excel</p>
+<p>importFields设置下值，就是表示表头必须至少包含的字段，如果缺一个就是不合法的exel，不导入。</p>
+</li>
+</ol>
+</li>
+<li><h5 id="图片的导入"><a href="#图片的导入" class="headerlink" title="图片的导入"></a>图片的导入</h5></li>
+<li><h5 id="Excel多sheet导出"><a href="#Excel多sheet导出" class="headerlink" title="Excel多sheet导出"></a>Excel多sheet导出</h5></li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2020/06/30/%E9%A1%B9%E7%9B%AE%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7%E4%B9%8Bmaven/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="田园隐士">
+      <meta itemprop="description" content="talk is cheap, show me the code">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一缕烟气">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/06/30/%E9%A1%B9%E7%9B%AE%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7%E4%B9%8Bmaven/" class="post-title-link" itemprop="url">项目构建工具之maven</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-06-30 18:32:47" itemprop="dateCreated datePublished" datetime="2020-06-30T18:32:47+08:00">2020-06-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-08-11 21:41:09" itemprop="dateModified" datetime="2020-08-11T21:41:09+08:00">2020-08-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>701</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h5 id="阿里云maven仓库配置"><a href="#阿里云maven仓库配置" class="headerlink" title="阿里云maven仓库配置"></a>阿里云maven仓库配置</h5><ul>
+<li>修改用户目录下的或者maven软件根目录conf文件下的settings.xml文件, 添加以下内容</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mirrors</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mirror</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">id</span>&gt;</span>alimaven<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">name</span>&gt;</span>aliyun maven<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.aliyun.com/nexus/content/groups/public/<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>central<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span>        </span><br><span class="line">    <span class="tag">&lt;/<span class="name">mirror</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">mirrors</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>在项目的pom.xml文件中直接添加</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">repositories</span>&gt;</span>  </span><br><span class="line">        <span class="tag">&lt;<span class="name">repository</span>&gt;</span>  </span><br><span class="line">            <span class="tag">&lt;<span class="name">id</span>&gt;</span>alimaven<span class="tag">&lt;/<span class="name">id</span>&gt;</span>  </span><br><span class="line">            <span class="tag">&lt;<span class="name">name</span>&gt;</span>aliyun maven<span class="tag">&lt;/<span class="name">name</span>&gt;</span>  </span><br><span class="line">            <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.aliyun.com/nexus/content/groups/public/<span class="tag">&lt;/<span class="name">url</span>&gt;</span>  </span><br><span class="line">            <span class="tag">&lt;<span class="name">releases</span>&gt;</span>  </span><br><span class="line">                <span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span>  </span><br><span class="line">            <span class="tag">&lt;/<span class="name">releases</span>&gt;</span>  </span><br><span class="line">            <span class="tag">&lt;<span class="name">snapshots</span>&gt;</span>  </span><br><span class="line">                <span class="tag">&lt;<span class="name">enabled</span>&gt;</span>false<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span>  </span><br><span class="line">            <span class="tag">&lt;/<span class="name">snapshots</span>&gt;</span>  </span><br><span class="line">        <span class="tag">&lt;/<span class="name">repository</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">repositories</span>&gt;</span> </span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2020/06/30/easypoi/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="田园隐士">
+      <meta itemprop="description" content="talk is cheap, show me the code">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一缕烟气">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/06/30/easypoi/" class="post-title-link" itemprop="url">easypoi</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-06-30 18:30:46" itemprop="dateCreated datePublished" datetime="2020-06-30T18:30:46+08:00">2020-06-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-08-11 21:41:09" itemprop="dateModified" datetime="2020-08-11T21:41:09+08:00">2020-08-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>5.2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>5 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="EasyPoi-Excel和Word简易工具类"><a href="#EasyPoi-Excel和Word简易工具类" class="headerlink" title="EasyPoi Excel和Word简易工具类"></a>EasyPoi Excel和Word简易工具类</h3><p>主打功能： 让一个没接触过POI的人员，可以方便的写出Excel导出，Excel模板导出，Excel导入，word模板导出，通过简单的注解和模板语言（熟悉的表达式语法），完成以前复杂的写法。</p>
+<p><a target="_blank" rel="noopener" href="https://opensource.afterturn.cn/">官网</a> <a target="_blank" rel="noopener" href="https://github.com/jueyue/easypoi/blob/master/README.md">英文介绍</a></p>
+<h5 id="开发指南"><a href="#开发指南" class="headerlink" title="开发指南"></a>开发指南</h5><p><strong><a target="_blank" rel="noopener" href="http://opensource.afterturn.cn/doc/easypoi.html">https://opensource.afterturn.cn/doc/easypoi.html</a></strong></p>
+<h5 id="版本介绍"><a href="#版本介绍" class="headerlink" title="版本介绍"></a>版本介绍</h5><p><a target="_blank" rel="noopener" href="https://gitee.com/lemur/easypoi/blob/master/history.md">history.md</a></p>
+<h5 id="基础示例"><a href="#基础示例" class="headerlink" title="基础示例"></a>基础示例</h5><p><a target="_blank" rel="noopener" href="https://gitee.com/lemur/easypoi/blob/master/basedemo.md">basedemo.md</a></p>
+<p><a target="_blank" rel="noopener" href="http://git.oschina.net/lemur/easypoi-test">测试项目</a>: <a target="_blank" rel="noopener" href="http://git.oschina.net/lemur/easypoi-test">http://git.oschina.net/lemur/easypoi-test</a></p>
+<hr>
+<h4 id="EasyPoi的主要特点"><a href="#EasyPoi的主要特点" class="headerlink" title="EasyPoi的主要特点"></a>EasyPoi的主要特点</h4><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1.设计精巧,使用简单</span><br><span class="line">2.接口丰富,扩展简单</span><br><span class="line">3.默认值多,write less do more</span><br><span class="line">4.AbstractView 支持,web导出可以简单明了</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="什么场景该用哪个方法"><a href="#什么场景该用哪个方法" class="headerlink" title="什么场景该用哪个方法"></a>什么场景该用哪个方法</h4><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">- 导出</span><br><span class="line">    1.正规excel导出 (格式简单,数据量可以,5W以内吧)</span><br><span class="line">        注解方式:  ExcelExportUtil.exportExcel(ExportParams entity, Class&lt;?&gt; pojoClass,Collection&lt;?&gt; dataSet) </span><br><span class="line">    2.不定多少列,但是格式依然简单数据库不大</span><br><span class="line">        自定义方式: ExcelExportUtil.exportExcel(ExportParams entity, List&lt;ExcelExportEntity&gt; entityList,Collection&lt;?&gt; dataSet)</span><br><span class="line">    3.数据量大超过5W,还在100W以内</span><br><span class="line">        注解方式 ExcelExportUtil.exportBigExcel(ExportParams entity, Class&lt;?&gt; pojoClass,IExcelExportServer server, Object queryParams)</span><br><span class="line">        自定义方式: ExcelExportUtil.exportBigExcel(ExportParams entity, List&lt;ExcelExportEntity&gt; excelParams,IExcelExportServer server, Object queryParams)</span><br><span class="line">    4.样式复杂,数据量尽量别大</span><br><span class="line">        模板导出 ExcelExportUtil.exportExcel(TemplateExportParams params, Map&lt;String, Object&gt; map)</span><br><span class="line">    5.一次导出多个风格不一致的sheet</span><br><span class="line">        模板导出 ExcelExportUtil.exportExcel(Map&lt;Integer, Map&lt;String, Object&gt;&gt; map,TemplateExportParams params) </span><br><span class="line">    6.一个模板但是要导出非常多份</span><br><span class="line">        模板导出 ExcelExportUtil.exportExcelClone(Map&lt;Integer, List&lt;Map&lt;String, Object&gt;&gt;&gt; map,TemplateExportParams params)</span><br><span class="line">    7.模板无法满足你的自定义,试试html</span><br><span class="line">        自己构造html,然后我给你转成excel  ExcelXorHtmlUtil.htmlToExcel(String html, ExcelType type)</span><br><span class="line">    8.数据量过百万级了.放弃excel吧,csv导出</span><br><span class="line">        注解方式: CsvExportUtil.exportCsv(CsvExportParams params, Class&lt;?&gt; pojoClass, OutputStream outputStream)</span><br><span class="line">        自定义方式: CsvExportUtil.exportCsv(CsvExportParams params, List&lt;ExcelExportEntity&gt; entityList, OutputStream outputStream)</span><br><span class="line">    9.word导出</span><br><span class="line">        模板导出: WordExportUtil.exportWord07(String url, Map&lt;String, Object&gt; map)</span><br><span class="line">    10.PDF导出</span><br><span class="line">        模板导出: TODO </span><br><span class="line">- 导入 </span><br><span class="line">    如果想提高性能 ImportParams 的concurrentTask 可以帮助并发导入,仅单行,最小1000</span><br><span class="line">    excel有单个的那种特殊读取,readSingleCell 参数可以支持</span><br><span class="line">    1. 不需要检验,数据量不大(5W以内)</span><br><span class="line">        注解或者MAP: ExcelImportUtil.importExcel(File file, Class&lt;?&gt; pojoClass, ImportParams params)</span><br><span class="line">    2. 需要导入,数据量不大</span><br><span class="line">        注解或者MAP: ExcelImportUtil.importExcelMore(InputStream inputstream, Class&lt;?&gt; pojoClass, ImportParams params)</span><br><span class="line">    3. 数据量大了,或者你有特别多的导入操作,内存比较少,仅支持单行</span><br><span class="line">       SAX方式  ExcelImportUtil.importExcelBySax(InputStream inputstream, Class&lt;?&gt; pojoClass, ImportParams params, IReadHandler handler)</span><br><span class="line">    4. 数据量超过EXCEL限制,CSV读取</span><br><span class="line">        小数据量: CsvImportUtil.importCsv(InputStream inputstream, Class&lt;?&gt; pojoClass,CsvImportParams params)</span><br><span class="line">        大数据量: CsvImportUtil.importCsv(InputStream inputstream, Class&lt;?&gt; pojoClass,CsvImportParams params, IReadHandler readHandler)</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="关于Excel导出XLS和XLSX的区别"><a href="#关于Excel导出XLS和XLSX的区别" class="headerlink" title="关于Excel导出XLS和XLSX的区别"></a>关于Excel导出XLS和XLSX的区别</h4><figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. 导出时间xls比xlsx块2-3倍</span><br><span class="line">2. 导出大小xls是xlsx的2-3倍或者更多</span><br><span class="line">3. 导出需要综合网速和本地速度做考虑^~^</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="几个工程的说明"><a href="#几个工程的说明" class="headerlink" title="几个工程的说明"></a>几个工程的说明</h4><figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1.easypoi 父包--作用大家都懂得</span><br><span class="line">2.easypoi-annotation 基础注解包,作用与实体对象上,拆分后方便maven多工程的依赖管理</span><br><span class="line">3.easypoi-base 导入导出的工具包,可以完成Excel导出,导入,Word的导出,Excel的导出功能</span><br><span class="line">4.easypoi-web  耦合了spring-mvc 基于AbstractView,极大的简化spring-mvc下的导出功能</span><br><span class="line">5.sax 导入使用xercesImpl这个包(这个包可能造成奇怪的问题哈),word导出使用poi-scratchpad,都作为可选包了</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h5 id="maven"><a href="#maven" class="headerlink" title="maven"></a>maven</h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>cn.afterturn<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>easypoi-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.2.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>cn.afterturn<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>easypoi-base<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.2.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>cn.afterturn<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>easypoi-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.2.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>cn.afterturn<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>easypoi-annotation<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.2.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h5 id="pom说明"><a href="#pom说明" class="headerlink" title="pom说明"></a>pom说明</h5><p>word和sax读取的时候才使用，就不是必须的了，请手动引用；JSR303的校验也是可选的；pdf的jar也是可选的。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- sax 读取时候用到的 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>xerces<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>xercesImpl<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;xerces.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optional</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.poi<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>poi-scratchpad<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;poi.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optional</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- Word 需要使用 --&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.poi<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>ooxml-schemas<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optional</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 校验,下面两个实现 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.hibernate<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>hibernate-validator<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.1.3.Final<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optional</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.bval<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>org.apache.bval.bundle<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.1.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- PDF --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.itextpdf<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>itextpdf<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.5.6<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optional</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.itextpdf<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>itext-asian<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.2.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optional</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2020/06/30/jqGrid%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="田园隐士">
+      <meta itemprop="description" content="talk is cheap, show me the code">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一缕烟气">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/06/30/jqGrid%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">jqGrid基本使用</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-06-30 16:52:21" itemprop="dateCreated datePublished" datetime="2020-06-30T16:52:21+08:00">2020-06-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-08-11 21:41:09" itemprop="dateModified" datetime="2020-08-11T21:41:09+08:00">2020-08-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>851</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="设置表头的文件居中显示？"><a href="#设置表头的文件居中显示？" class="headerlink" title="设置表头的文件居中显示？"></a>设置表头的文件居中显示？</h4><blockquote>
+<p>使用原始的css的方式，在页面上找需要居中的table下的th/td，设置css属性为text-align: center就可以了。</p>
+</blockquote>
+<h4 id="在列添加事件时，如何传递对象参数"><a href="#在列添加事件时，如何传递对象参数" class="headerlink" title="在列添加事件时，如何传递对象参数?"></a>在列添加事件时，如何传递对象参数?</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> user = &#123;<span class="attr">id</span>:<span class="number">1</span>, <span class="attr">name</span>:<span class="string">&#x27;zhangsan&#x27;</span>, <span class="attr">age</span>:<span class="number">25</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> ele = <span class="string">&#x27;&lt;a onclick=&quot;edit(&#x27;</span> + <span class="built_in">JSON</span>.stringify(user).replace(<span class="regexp">/&quot;/g</span>, <span class="string">&#x27;&amp;quot;&#x27;</span>) + <span class="string">&#x27;);&quot;&gt;修改&lt;/a&gt;&#x27;</span>;</span><br><span class="line"></span><br><span class="line">或者</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> ele = <span class="string">&#x27;&lt;a onclick=&quot;edit(\&#x27;&#x27;</span> + <span class="built_in">JSON</span>.stringify(user).replace(<span class="regexp">/&quot;/g</span>, <span class="string">&#x27;&amp;quot;&#x27;</span>) + <span class="string">&#x27;\&#x27;);&quot;&gt;修改&lt;/a&gt;&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 前者得到的是json对象，后者取到的是json字符串.</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="手动清除table中显示的数据"><a href="#手动清除table中显示的数据" class="headerlink" title="手动清除table中显示的数据"></a>手动清除table中显示的数据</h4><blockquote>
+<p>$(‘#gridTable’).jqGrid(‘clearGridData’);</p>
+</blockquote>
+<h4 id="获取行id"><a href="#获取行id" class="headerlink" title="获取行id"></a>获取行id</h4><blockquote>
+<p>获取单行id</p>
+<p>var id=$(‘#gridTable’).jqGrid(‘getGridParam’,’selrow’);</p>
+<p>获取多行id</p>
+<p>var ids=$(‘#gridTable’).jqGrid(‘getGridParam’,’selarrrow’);</p>
+</blockquote>
+<h4 id="获取每行的数据"><a href="#获取每行的数据" class="headerlink" title="获取每行的数据"></a>获取每行的数据</h4><blockquote>
+<p>var rowData = $(“#gridTable”).jqGrid(‘getRowData’,rowId);</p>
+</blockquote>
+<h4 id="显示或者隐藏表格底部的滚动条"><a href="#显示或者隐藏表格底部的滚动条" class="headerlink" title="显示或者隐藏表格底部的滚动条"></a>显示或者隐藏表格底部的滚动条</h4><blockquote>
+<p>​            $(“#jqGrid”).closest(“.ui-jqgrid-bdiv”).css({ “overflow-x” : <code>&quot;scroll&quot;</code> <code>&quot;hidden&quot;</code> });</p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2020/06/30/data3c%E9%A1%B9%E7%9B%AE-2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -612,7 +1064,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">173</span>
+          <span class="site-state-item-count">177</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -661,12 +1113,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">313k</span>
+    <span title="站点总字数">315k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:44</span>
+    <span title="站点阅读时长">4:46</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>

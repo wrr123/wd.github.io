@@ -1,6 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>JavaScript</title>
+    <url>/2020/08/24/JavaScript/</url>
+    <content><![CDATA[<h4 id="JavaScript-严格模式"><a href="#JavaScript-严格模式" class="headerlink" title="JavaScript 严格模式"></a>JavaScript 严格模式</h4><p>JavaScript 严格模式（strict mode）即在严格的条件下运行。</p>
+<h5 id="使用-“use-strict”-指令"><a href="#使用-“use-strict”-指令" class="headerlink" title="使用 “use strict” 指令"></a>使用 “use strict” 指令</h5><p>“use strict” 指令在 JavaScript 1.8.5 （ECMAScript5）中新增。</p>
+<p>它不是一条语句，但是是一个字面量表达式，在 JavaScript 旧版本中会被忽略。</p>
+<p>“use strict” 的目的是指定代码在严格条件下执行。</p>
+<p>严格模式下你不能使用 <strong>未声明的变量 。</strong></p>
+<a id="more"></a>
+
+<h5 id="严格模式声明"><a href="#严格模式声明" class="headerlink" title="严格模式声明"></a>严格模式声明</h5><p>严格模式通过在脚本或函数的头部添加 <code>“use strict”；</code> 表达式来声明。</p>
+<h4 id="js-清除空格的几种类型"><a href="#js-清除空格的几种类型" class="headerlink" title="js 清除空格的几种类型"></a>js 清除空格的几种类型</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">str为要去除空格的字符串:</span><br><span class="line">去除所有空格:</span><br><span class="line">str = str.replace(<span class="regexp">/\s+/g</span>,<span class="string">&quot;&quot;</span>);</span><br><span class="line">去除两头空格:</span><br><span class="line">str = str.replace(<span class="regexp">/^\s+|\s+$/g</span>,<span class="string">&quot;&quot;</span>);</span><br><span class="line">去除左空格：</span><br><span class="line">str=str.replace( <span class="regexp">/^\s/</span>, <span class="string">&#x27;&#x27;</span>);</span><br><span class="line">去除右空格：</span><br><span class="line">str=str.replace(<span class="regexp">/(\s$)/g</span>, <span class="string">&quot;&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+]]></content>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>FAQ-JavaScript</title>
     <url>/2020/08/07/FAQ-JavaScript/</url>
     <content><![CDATA[<h4 id="数值0-0的布尔值是true-还是false？"><a href="#数值0-0的布尔值是true-还是false？" class="headerlink" title="数值0,-0的布尔值是true,还是false？"></a>数值<code>0,-0</code>的布尔值是true,还是false？</h4><p>几个栗子</p>
@@ -69,52 +115,6 @@
       <tags>
         <tag>js</tag>
         <tag>faq</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JavaScript</title>
-    <url>/2020/08/24/JavaScript/</url>
-    <content><![CDATA[<h4 id="JavaScript-严格模式"><a href="#JavaScript-严格模式" class="headerlink" title="JavaScript 严格模式"></a>JavaScript 严格模式</h4><p>JavaScript 严格模式（strict mode）即在严格的条件下运行。</p>
-<h5 id="使用-“use-strict”-指令"><a href="#使用-“use-strict”-指令" class="headerlink" title="使用 “use strict” 指令"></a>使用 “use strict” 指令</h5><p>“use strict” 指令在 JavaScript 1.8.5 （ECMAScript5）中新增。</p>
-<p>它不是一条语句，但是是一个字面量表达式，在 JavaScript 旧版本中会被忽略。</p>
-<p>“use strict” 的目的是指定代码在严格条件下执行。</p>
-<p>严格模式下你不能使用 <strong>未声明的变量 。</strong></p>
-<a id="more"></a>
-
-<h5 id="严格模式声明"><a href="#严格模式声明" class="headerlink" title="严格模式声明"></a>严格模式声明</h5><p>严格模式通过在脚本或函数的头部添加 <code>“use strict”；</code> 表达式来声明。</p>
-<h4 id="js-清除空格的几种类型"><a href="#js-清除空格的几种类型" class="headerlink" title="js 清除空格的几种类型"></a>js 清除空格的几种类型</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">str为要去除空格的字符串:</span><br><span class="line">去除所有空格:</span><br><span class="line">str = str.replace(<span class="regexp">/\s+/g</span>,<span class="string">&quot;&quot;</span>);</span><br><span class="line">去除两头空格:</span><br><span class="line">str = str.replace(<span class="regexp">/^\s+|\s+$/g</span>,<span class="string">&quot;&quot;</span>);</span><br><span class="line">去除左空格：</span><br><span class="line">str=str.replace( <span class="regexp">/^\s/</span>, <span class="string">&#x27;&#x27;</span>);</span><br><span class="line">去除右空格：</span><br><span class="line">str=str.replace(<span class="regexp">/(\s$)/g</span>, <span class="string">&quot;&quot;</span>);</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-]]></content>
-      <tags>
-        <tag>JavaScript</tag>
       </tags>
   </entry>
   <entry>
@@ -242,25 +242,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Vue父子组件传递数据</title>
-    <url>/2020/09/04/Vue%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E4%BC%A0%E9%80%92%E6%95%B0%E6%8D%AE/</url>
-    <content><![CDATA[<h4 id="prop-amp-event"><a href="#prop-amp-event" class="headerlink" title="prop &amp; event"></a>prop &amp; event</h4><p>父组件向子组件传递 props 数据，子组件通过触发事件向父组件回传数据</p>
-<p>一个栗子：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;子组件 </span><br><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div @click&#x3D;&quot;changeName(&#39;YYY&#39;)&quot;&gt;&#123;&#123;name&#125;&#125;&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default&#123;</span><br><span class="line">    props:[&#39;name&#39;],&#x2F;&#x2F;or props:&#123;name:&#123;type:String,default:&#39;&#39;&#125;&#125;</span><br><span class="line">    methods:&#123;</span><br><span class="line">        &#x2F;&#x2F;不能在子组件修改props数据，应触发事件让父组件处理</span><br><span class="line">        changeName(newName)&#123;</span><br><span class="line">            this.$emit(&#39;changeName&#39;,newName)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;父组件</span><br><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;child-comp :name&#x3D;&quot;name&quot; @changeName&#x3D;&quot;changeName&quot;&gt;&lt;&#x2F;child-comp&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    import childComp from &#39;path&#39;</span><br><span class="line">    export default&#123;</span><br><span class="line">        data()&#123;</span><br><span class="line">            return &#123;name:&#39;XXX&#39;&#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        components:&#123;</span><br><span class="line">            childComp</span><br><span class="line">        &#125;,</span><br><span class="line">        methods:&#123;</span><br><span class="line">            changeName(newName)&#123;</span><br><span class="line">                this.name &#x3D; newName;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;&#x2F;scritp&gt;</span><br></pre></td></tr></table></figure>
-<p>父组件通过 props 将数据传递给子组件，子组件则触发事件，由父组件监听，并做相应处理。</p>
-<a id="more"></a>
-
-<h4 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h4><p>ref 属性可定义在子组件或者原生 DOM 上，如果在子组件上，则指向子组件实例，如果在原生 DOM 上，则指向原生 DOM 元素。</p>
-<p>传递数据的思路：在父组件内通过 ref 获取子组件实例，然后调用子组件方法，并传递相关数据作为参数。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;子组件 </span><br><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div&gt;&#123;&#123;parentMsg&#125;&#125;&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default&#123;</span><br><span class="line">    data()&#123;</span><br><span class="line">        return &#123;</span><br><span class="line">            parentMsg:&#39;&#39;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    methods:&#123;</span><br><span class="line">        getMsg(msg)&#123;</span><br><span class="line">            this.parentMsg &#x3D; msg;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;父组件</span><br><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;child-comp ref&#x3D;&quot;child&quot;&gt;&lt;&#x2F;child-comp&gt;</span><br><span class="line">        &lt;button @click&#x3D;&quot;sendMsg&quot;&gt;SEND MESSAGE&lt;&#x2F;button&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    import childComp from &#39;path&#39;</span><br><span class="line">    export default&#123;</span><br><span class="line">        components:&#123;</span><br><span class="line">            childComp</span><br><span class="line">        &#125;,</span><br><span class="line">        methods:&#123;</span><br><span class="line">            sendMsg()&#123;</span><br><span class="line">                this.$refs.child.getMsg(&#39;Parent Message&#39;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;&#x2F;scritp&gt;</span><br></pre></td></tr></table></figure>
-
-
-]]></content>
-      <tags>
-        <tag>vuejs</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>StringBuffer-StringBuilder区别</title>
     <url>/2020/08/13/StringBuffer-StringBuilder%E5%8C%BA%E5%88%AB/</url>
     <content><![CDATA[<h4 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h4><p>StringBuffer 支持并发操作，是线程安全的，适合多线程使用。</p>
@@ -321,6 +302,25 @@
       </tags>
   </entry>
   <entry>
+    <title>Vue父子组件传递数据</title>
+    <url>/2020/09/04/Vue%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E4%BC%A0%E9%80%92%E6%95%B0%E6%8D%AE/</url>
+    <content><![CDATA[<h4 id="prop-amp-event"><a href="#prop-amp-event" class="headerlink" title="prop &amp; event"></a>prop &amp; event</h4><p>父组件向子组件传递 props 数据，子组件通过触发事件向父组件回传数据</p>
+<p>一个栗子：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;子组件 </span><br><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div @click&#x3D;&quot;changeName(&#39;YYY&#39;)&quot;&gt;&#123;&#123;name&#125;&#125;&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default&#123;</span><br><span class="line">    props:[&#39;name&#39;],&#x2F;&#x2F;or props:&#123;name:&#123;type:String,default:&#39;&#39;&#125;&#125;</span><br><span class="line">    methods:&#123;</span><br><span class="line">        &#x2F;&#x2F;不能在子组件修改props数据，应触发事件让父组件处理</span><br><span class="line">        changeName(newName)&#123;</span><br><span class="line">            this.$emit(&#39;changeName&#39;,newName)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;父组件</span><br><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;child-comp :name&#x3D;&quot;name&quot; @changeName&#x3D;&quot;changeName&quot;&gt;&lt;&#x2F;child-comp&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    import childComp from &#39;path&#39;</span><br><span class="line">    export default&#123;</span><br><span class="line">        data()&#123;</span><br><span class="line">            return &#123;name:&#39;XXX&#39;&#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        components:&#123;</span><br><span class="line">            childComp</span><br><span class="line">        &#125;,</span><br><span class="line">        methods:&#123;</span><br><span class="line">            changeName(newName)&#123;</span><br><span class="line">                this.name &#x3D; newName;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;&#x2F;scritp&gt;</span><br></pre></td></tr></table></figure>
+<p>父组件通过 props 将数据传递给子组件，子组件则触发事件，由父组件监听，并做相应处理。</p>
+<a id="more"></a>
+
+<h4 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h4><p>ref 属性可定义在子组件或者原生 DOM 上，如果在子组件上，则指向子组件实例，如果在原生 DOM 上，则指向原生 DOM 元素。</p>
+<p>传递数据的思路：在父组件内通过 ref 获取子组件实例，然后调用子组件方法，并传递相关数据作为参数。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;子组件 </span><br><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div&gt;&#123;&#123;parentMsg&#125;&#125;&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default&#123;</span><br><span class="line">    data()&#123;</span><br><span class="line">        return &#123;</span><br><span class="line">            parentMsg:&#39;&#39;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    methods:&#123;</span><br><span class="line">        getMsg(msg)&#123;</span><br><span class="line">            this.parentMsg &#x3D; msg;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;父组件</span><br><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;child-comp ref&#x3D;&quot;child&quot;&gt;&lt;&#x2F;child-comp&gt;</span><br><span class="line">        &lt;button @click&#x3D;&quot;sendMsg&quot;&gt;SEND MESSAGE&lt;&#x2F;button&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    import childComp from &#39;path&#39;</span><br><span class="line">    export default&#123;</span><br><span class="line">        components:&#123;</span><br><span class="line">            childComp</span><br><span class="line">        &#125;,</span><br><span class="line">        methods:&#123;</span><br><span class="line">            sendMsg()&#123;</span><br><span class="line">                this.$refs.child.getMsg(&#39;Parent Message&#39;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;&#x2F;scritp&gt;</span><br></pre></td></tr></table></figure>
+
+
+]]></content>
+      <tags>
+        <tag>vuejs</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ajax传递数组形式的参数</title>
     <url>/2020/07/07/ajax%E4%BC%A0%E9%80%92%E6%95%B0%E7%BB%84%E5%BD%A2%E5%BC%8F%E7%9A%84%E5%8F%82%E6%95%B0/</url>
     <content><![CDATA[<h4 id="两种方案"><a href="#两种方案" class="headerlink" title="两种方案"></a>两种方案</h4><h5 id="加入traditional防止深度序列化"><a href="#加入traditional防止深度序列化" class="headerlink" title="加入traditional防止深度序列化"></a>加入<code>traditional</code>防止深度序列化</h5><p>前端代码</p>
@@ -342,6 +342,28 @@
       </categories>
       <tags>
         <tag>javascript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>axios与ajax比较</title>
+    <url>/2020/09/05/axios%E4%B8%8Eajax%E6%AF%94%E8%BE%83/</url>
+    <content><![CDATA[<h4 id="什么叫-axios"><a href="#什么叫-axios" class="headerlink" title="什么叫 axios"></a>什么叫 axios</h4><p>Axios 是一个基于 promise 的 HTTP库，可以用在浏览器和 node.js 中。</p>
+<h5 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h5><ul>
+<li>从浏览器中创建 <code>XMLHttpRequests</code></li>
+<li>从 node.js 创建 http 请求</li>
+<li>支持 Promise API</li>
+<li>拦截请求和响应</li>
+<li>转换请求数据和响应数据</li>
+<li>取消请求</li>
+<li>自动转换 JSON 数据</li>
+<li>客户端支持防御 XSRF</li>
+</ul>
+<a id="more"></a>
+
+]]></content>
+      <tags>
+        <tag>vuejs</tag>
+        <tag>nodejs</tag>
       </tags>
   </entry>
   <entry>
@@ -469,28 +491,6 @@
       </tags>
   </entry>
   <entry>
-    <title>axios与ajax比较</title>
-    <url>/2020/09/05/axios%E4%B8%8Eajax%E6%AF%94%E8%BE%83/</url>
-    <content><![CDATA[<h4 id="什么叫-axios"><a href="#什么叫-axios" class="headerlink" title="什么叫 axios"></a>什么叫 axios</h4><p>Axios 是一个基于 promise 的 HTTP库，可以用在浏览器和 node.js 中。</p>
-<h5 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h5><ul>
-<li>从浏览器中创建 <code>XMLHttpRequests</code></li>
-<li>从 node.js 创建 http 请求</li>
-<li>支持 Promise API</li>
-<li>拦截请求和响应</li>
-<li>转换请求数据和响应数据</li>
-<li>取消请求</li>
-<li>自动转换 JSON 数据</li>
-<li>客户端支持防御 XSRF</li>
-</ul>
-<a id="more"></a>
-
-]]></content>
-      <tags>
-        <tag>vuejs</tag>
-        <tag>nodejs</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>chrome控制台的一些警告</title>
     <url>/2020/08/06/chrome%E6%8E%A7%E5%88%B6%E5%8F%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AD%A6%E5%91%8A/</url>
     <content><![CDATA[<h4 id="DevTools-failed-to-load-SourceMap-could-not-load-content-for-bootstrap-min-css-map-404-……"><a href="#DevTools-failed-to-load-SourceMap-could-not-load-content-for-bootstrap-min-css-map-404-……" class="headerlink" title="DevTools failed to load SourceMap: could not load content for bootstrap.min.css.map 404 ……"></a>DevTools failed to load SourceMap: could not load content for bootstrap.min.css.map 404 ……</h4><h5 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h5><ol>
@@ -506,6 +506,36 @@
 ]]></content>
       <tags>
         <tag>js</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>css四个定位之间的区别</title>
+    <url>/2020/09/15/css%E5%9B%9B%E4%B8%AA%E5%AE%9A%E4%BD%8D%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
+    <content><![CDATA[<h4 id="CSS-的四个定位"><a href="#CSS-的四个定位" class="headerlink" title="CSS 的四个定位"></a>CSS 的四个定位</h4><ul>
+<li><p>static</p>
+<p>  静态定位。没有定位，元素出现在正常的流中。(忽略 top、bottom、left、right 或者 z-index 声明)</p>
+</li>
+<li><p>relative</p>
+<p>  相对定位。</p>
+<p>  生成相对定位的元素，通过 top、bottom、left、right 的设置相对其 <strong>正常（原先本身）</strong> 位置进行定位。可通过 z-index 进行层次分级。</p>
+</li>
+<li><p>absolute</p>
+<p>  绝对定位。生成绝对定位的元素，相对于 static 定位以外的第一个 <strong>父元素</strong> 进行定位。</p>
+</li>
+<li><p>fixed</p>
+<p>  固定定位。生成绝对定位的元素，相对于 <strong>浏览器窗口</strong> 进行定位。</p>
+</li>
+</ul>
+<h4 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h4><ol>
+<li><p>relative</p>
+<p> 定位为 relative 的元素，脱离正常的文本流中，但其在 <strong>文本流中的位置依然存在。</strong></p>
+</li>
+</ol>
+<a id="more"></a>
+
+]]></content>
+      <tags>
+        <tag>css</tag>
       </tags>
   </entry>
   <entry>
@@ -711,36 +741,6 @@
 <p>命令空间上可以直接书写CSS简写属性，但是日常开发中不建议直接书写CSS简写属性，尽量保持CSS语法的一致性。</p>
 <figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.demo</span> &#123;</span><br><span class="line">  <span class="attribute">font</span>: <span class="number">20px</span>/<span class="number">24px</span> fantasy &#123;</span><br><span class="line">    weight: bold;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.demo</span> &#123;</span><br><span class="line">  <span class="attribute">font</span>: <span class="number">20px</span>/<span class="number">24px</span> fantasy;</span><br><span class="line">    <span class="attribute">font-weight</span>: bold;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </blockquote>
-]]></content>
-      <tags>
-        <tag>css</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>css四个定位之间的区别</title>
-    <url>/2020/09/15/css%E5%9B%9B%E4%B8%AA%E5%AE%9A%E4%BD%8D%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
-    <content><![CDATA[<h4 id="CSS-的四个定位"><a href="#CSS-的四个定位" class="headerlink" title="CSS 的四个定位"></a>CSS 的四个定位</h4><ul>
-<li><p>static</p>
-<p>  静态定位。没有定位，元素出现在正常的流中。(忽略 top、bottom、left、right 或者 z-index 声明)</p>
-</li>
-<li><p>relative</p>
-<p>  相对定位。</p>
-<p>  生成相对定位的元素，通过 top、bottom、left、right 的设置相对其 <strong>正常（原先本身）</strong> 位置进行定位。可通过 z-index 进行层次分级。</p>
-</li>
-<li><p>absolute</p>
-<p>  绝对定位。生成绝对定位的元素，相对于 static 定位以外的第一个 <strong>父元素</strong> 进行定位。</p>
-</li>
-<li><p>fixed</p>
-<p>  固定定位。生成绝对定位的元素，相对于 <strong>浏览器窗口</strong> 进行定位。</p>
-</li>
-</ul>
-<h4 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h4><ol>
-<li><p>relative</p>
-<p> 定位为 relative 的元素，脱离正常的文本流中，但其在 <strong>文本流中的位置依然存在。</strong></p>
-</li>
-</ol>
-<a id="more"></a>
-
 ]]></content>
       <tags>
         <tag>css</tag>
@@ -1249,6 +1249,27 @@
       </tags>
   </entry>
   <entry>
+    <title>faq-elementUI</title>
+    <url>/2020/08/28/faq-elementUI/</url>
+    <content><![CDATA[<h4 id="默认样式有时修改不成功的问题"><a href="#默认样式有时修改不成功的问题" class="headerlink" title="默认样式有时修改不成功的问题"></a>默认样式有时修改不成功的问题</h4><blockquote>
+<p>有的时候element提供的默认的样式不能满足项目的需要，就需要对标签的样式进行修改，但是发现修改的样式不起作用</p>
+</blockquote>
+<p>解决方案：<strong>去掉 scoped</strong>，但是此时样式会编程全局样式，需要慎重考虑。</p>
+<a id="more"></a>
+
+<p><strong>因为我们无法直接在带有 scoped 的组件中直接修改第三方 UI 库的样式，</strong> 我们除了去掉 scoped 这个方法之外，还可以使用 <strong>深度选择器。</strong></p>
+<p>对于 css</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &gt;&gt;&gt; <span class="selector-class">.hello</span> &#123;</span><br><span class="line">    // ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对于 sass/less,</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;style lang=&quot;scss&quot; scoped&gt;</span><br><span class="line"><span class="selector-class">.select</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">    /deep/ .el-input__inner &#123;</span><br><span class="line">        <span class="attribute">border</span>: <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="el-menu-在折叠状态时，鼠标在菜单上显示子菜单列表时，会出现有些菜单不够显示的问题。"><a href="#el-menu-在折叠状态时，鼠标在菜单上显示子菜单列表时，会出现有些菜单不够显示的问题。" class="headerlink" title="el-menu 在折叠状态时，鼠标在菜单上显示子菜单列表时，会出现有些菜单不够显示的问题。"></a><code>el-menu</code> 在折叠状态时，鼠标在菜单上显示子菜单列表时，会出现有些菜单不够显示的问题。</h4>]]></content>
+      <tags>
+        <tag>faq</tag>
+        <tag>element-ui</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>faq-git</title>
     <url>/2020/07/07/faq-git/</url>
     <content><![CDATA[<h4 id="解决git中文路径显示unicode代码的问题"><a href="#解决git中文路径显示unicode代码的问题" class="headerlink" title="解决git中文路径显示unicode代码的问题"></a>解决git中文路径显示unicode代码的问题</h4><p><code>git config --global core.quotepath false</code></p>
@@ -1268,27 +1289,6 @@
       </categories>
       <tags>
         <tag>git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>faq-elementUI</title>
-    <url>/2020/08/28/faq-elementUI/</url>
-    <content><![CDATA[<h4 id="默认样式有时修改不成功的问题"><a href="#默认样式有时修改不成功的问题" class="headerlink" title="默认样式有时修改不成功的问题"></a>默认样式有时修改不成功的问题</h4><blockquote>
-<p>有的时候element提供的默认的样式不能满足项目的需要，就需要对标签的样式进行修改，但是发现修改的样式不起作用</p>
-</blockquote>
-<p>解决方案：<strong>去掉 scoped</strong>，但是此时样式会编程全局样式，需要慎重考虑。</p>
-<a id="more"></a>
-
-<p><strong>因为我们无法直接在带有 scoped 的组件中直接修改第三方 UI 库的样式，</strong> 我们除了去掉 scoped 这个方法之外，还可以使用 <strong>深度选择器。</strong></p>
-<p>对于 css</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &gt;&gt;&gt; <span class="selector-class">.hello</span> &#123;</span><br><span class="line">    // ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>对于 sass/less,</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;style lang=&quot;scss&quot; scoped&gt;</span><br><span class="line"><span class="selector-class">.select</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">    /deep/ .el-input__inner &#123;</span><br><span class="line">        <span class="attribute">border</span>: <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
-
-<h4 id="el-menu-在折叠状态时，鼠标在菜单上显示子菜单列表时，会出现有些菜单不够显示的问题。"><a href="#el-menu-在折叠状态时，鼠标在菜单上显示子菜单列表时，会出现有些菜单不够显示的问题。" class="headerlink" title="el-menu 在折叠状态时，鼠标在菜单上显示子菜单列表时，会出现有些菜单不够显示的问题。"></a><code>el-menu</code> 在折叠状态时，鼠标在菜单上显示子菜单列表时，会出现有些菜单不够显示的问题。</h4>]]></content>
-      <tags>
-        <tag>faq</tag>
-        <tag>element-ui</tag>
       </tags>
   </entry>
   <entry>
@@ -1341,41 +1341,16 @@
 <p>  若不想使用 <code>@Autowired</code>自动装配，可以使用 <code>ApplicationContext</code>类来获取”bean”</p>
 </li>
 </ul>
+<h4 id="stream中方法peek和map方法之间的区别"><a href="#stream中方法peek和map方法之间的区别" class="headerlink" title="stream中方法peek和map方法之间的区别"></a>stream中方法<code>peek</code>和<code>map</code>方法之间的区别</h4><ul>
+<li>peek 可对元素的内部数据进行处理，返回的是原来的数据类型，不生成新的数据类型。</li>
+<li>map 重新返回一个新的数据类型。</li>
+</ul>
 ]]></content>
       <categories>
         <category>FAQ</category>
       </categories>
       <tags>
         <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>faq-maven</title>
-    <url>/2020/07/27/faq-maven/</url>
-    <content><![CDATA[<h4 id="maven打包-package-时，跳过单元测试？"><a href="#maven打包-package-时，跳过单元测试？" class="headerlink" title="maven打包(package)时，跳过单元测试？"></a>maven打包(package)时，跳过单元测试？</h4><ul>
-<li><p>使用<code>mvn package -Dmaven.test.skip=true</code></p>
-<p>不但跳过单元测试的运行，也跳过单元测试的编译。</p>
-</li>
-<li><p>使用<code>mvn package -DskipTests</code></p>
-<p>跳过单元测试的运行，但是会继续编译。</p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>faq</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>faq-linux</title>
-    <url>/2020/08/26/faq-linux/</url>
-    <content><![CDATA[<h4 id="export-在-shell-脚本中设置环境变量失效"><a href="#export-在-shell-脚本中设置环境变量失效" class="headerlink" title="export 在 shell 脚本中设置环境变量失效"></a>export 在 shell 脚本中设置环境变量失效</h4><p>shell 脚本中设定的路径和环境变量只对该 shell 和其子 shell 有效，对其 <strong>父 shell 和其他 shell 无效。</strong></p>
-<p>解决方法：</p>
-<p>执行下面的脚本</p>
-<p><code>source fileName.sh</code></p>
-<p><strong>source 使 shell 脚本里的设置对其它 shell 也有效。</strong></p>
-<a id="more"></a>]]></content>
-      <tags>
-        <tag>faq</tag>
       </tags>
   </entry>
   <entry>
@@ -1403,6 +1378,35 @@
       <tags>
         <tag>java</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>faq-linux</title>
+    <url>/2020/08/26/faq-linux/</url>
+    <content><![CDATA[<h4 id="export-在-shell-脚本中设置环境变量失效"><a href="#export-在-shell-脚本中设置环境变量失效" class="headerlink" title="export 在 shell 脚本中设置环境变量失效"></a>export 在 shell 脚本中设置环境变量失效</h4><p>shell 脚本中设定的路径和环境变量只对该 shell 和其子 shell 有效，对其 <strong>父 shell 和其他 shell 无效。</strong></p>
+<p>解决方法：</p>
+<p>执行下面的脚本</p>
+<p><code>source fileName.sh</code></p>
+<p><strong>source 使 shell 脚本里的设置对其它 shell 也有效。</strong></p>
+<a id="more"></a>]]></content>
+      <tags>
+        <tag>faq</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>faq-maven</title>
+    <url>/2020/07/27/faq-maven/</url>
+    <content><![CDATA[<h4 id="maven打包-package-时，跳过单元测试？"><a href="#maven打包-package-时，跳过单元测试？" class="headerlink" title="maven打包(package)时，跳过单元测试？"></a>maven打包(package)时，跳过单元测试？</h4><ul>
+<li><p>使用<code>mvn package -Dmaven.test.skip=true</code></p>
+<p>不但跳过单元测试的运行，也跳过单元测试的编译。</p>
+</li>
+<li><p>使用<code>mvn package -DskipTests</code></p>
+<p>跳过单元测试的运行，但是会继续编译。</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>faq</category>
+      </categories>
   </entry>
   <entry>
     <title>faq-mysql</title>
@@ -1670,28 +1674,6 @@
       </tags>
   </entry>
   <entry>
-    <title>git-cherry-pick的使用</title>
-    <url>/2020/11/10/git-cherry-pick%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><p><code>git cherry-pick</code>可以理解为”挑拣”提交，它会获取某一个分支的单笔提交，并作为一个新的提交引入到你的当前分支上。</p>
-<p>当我们需要在本地合入其他分支的提交时，如果我们不想对整个分支进行合并，而是只想将某一次提交合入到本地当前分支上，那么就要使用<code>git cherry-pick</code>了。</p>
-<h4 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h4><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">git cherry-pick [&lt;options&gt;] &lt;commit-ish&gt;...</span><br><span class="line"></span><br><span class="line">常用options:</span><br><span class="line">    --quit                退出当前的chery-pick序列</span><br><span class="line">    --continue            继续当前的chery-pick序列</span><br><span class="line">    --abort               取消当前的chery-pick序列，恢复当前分支</span><br><span class="line">    -n, --no-commit       不自动提交</span><br><span class="line">    -e, --edit            编辑提交信息</span><br></pre></td></tr></table></figure>
-
-<a id="more"></a>
-
-<h4 id="转移多个提交"><a href="#转移多个提交" class="headerlink" title="转移多个提交"></a>转移多个提交</h4><p><code>Cherry pick</code> 支持一次转移多个提交</p>
-<p><code>$ git cherry-pick &lt;HashA&gt; &lt;HashB&gt;</code></p>
-<p>如果想要转移一系列的连续提交，可以使用以下的简便语法：</p>
-<p><code>$ git cherry-pick A..B</code></p>
-<p><strong>注意使用上面的命令，提交A将不会包含在 Cherry pick 中。</strong>如果要包含提交A，可以使用下面的语法。</p>
-<p><code>$ git cherry-pick A^..B</code></p>
-<h4 id="配置项"><a href="#配置项" class="headerlink" title="配置项"></a>配置项</h4><p><img src="http://wrr123.github.io/2020/11/10/git-cherry-pick%E7%9A%84%E4%BD%BF%E7%94%A8/001.png"></p>
-<h4 id="代码冲突"><a href="#代码冲突" class="headerlink" title="代码冲突"></a>代码冲突</h4><p><img src="http://wrr123.github.io/2020/11/10/git-cherry-pick%E7%9A%84%E4%BD%BF%E7%94%A8/002.png"></p>
-]]></content>
-      <tags>
-        <tag>git</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>git-log的进阶使用</title>
     <url>/2020/08/07/git-log%E7%9A%84%E8%BF%9B%E9%98%B6%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<h5 id="查询某次提交是谁提交的"><a href="#查询某次提交是谁提交的" class="headerlink" title="查询某次提交是谁提交的"></a>查询某次提交是谁提交的</h5><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git log --author=作者名称</span><br></pre></td></tr></table></figure>
@@ -1791,62 +1773,25 @@
       </tags>
   </entry>
   <entry>
-    <title>git reset和revert的区别</title>
-    <url>/2020/07/03/git-reset%E5%92%8Crevert%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
-    <content><![CDATA[<h4 id="git-reset"><a href="#git-reset" class="headerlink" title="git reset"></a>git reset</h4><h5 id="参数定义"><a href="#参数定义" class="headerlink" title="参数定义"></a>参数定义</h5><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">--soft 回退后a分支修改的代码被保留并标记为add的状态（git status 是绿色的状态）</span><br><span class="line">--mixed 重置索引，但不重置工作树，更改后的文件标记为未提交（add）的状态。默认操作。</span><br><span class="line">--hard 重置索引和工作树，并且a分支修改的所有文件和中间的提交，没提交的代码都被丢弃了。</span><br><span class="line">--merge 和--hard类似，只不过如果在执行reset命令之前你有改动一些文件并且未提交，merge会保留你的这些修改，hard则不会。【注：如果你的这些修改add过或commit过，merge和hard都将删除你的提交】</span><br><span class="line">--keep 和--hard类似，执行reset之前改动文件如果是a分支修改了的，会提示你修改了相同的文件，不能合并。如果不是a分支修改的文件，会移除缓存区。git status还是可以看到保持了这些修改。</span><br></pre></td></tr></table></figure>
+    <title>git-cherry-pick的使用</title>
+    <url>/2020/11/10/git-cherry-pick%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><p><code>git cherry-pick</code>可以理解为”挑拣”提交，它会获取某一个分支的单笔提交，并作为一个新的提交引入到你的当前分支上。</p>
+<p>当我们需要在本地合入其他分支的提交时，如果我们不想对整个分支进行合并，而是只想将某一次提交合入到本地当前分支上，那么就要使用<code>git cherry-pick</code>了。</p>
+<h4 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h4><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">git cherry-pick [&lt;options&gt;] &lt;commit-ish&gt;...</span><br><span class="line"></span><br><span class="line">常用options:</span><br><span class="line">    --quit                退出当前的chery-pick序列</span><br><span class="line">    --continue            继续当前的chery-pick序列</span><br><span class="line">    --abort               取消当前的chery-pick序列，恢复当前分支</span><br><span class="line">    -n, --no-commit       不自动提交</span><br><span class="line">    -e, --edit            编辑提交信息</span><br></pre></td></tr></table></figure>
 
-<h5 id="分析-hard和-soft的区别"><a href="#分析-hard和-soft的区别" class="headerlink" title="分析--hard和--soft的区别"></a>分析<code>--hard</code>和<code>--soft</code>的区别</h5><ul>
-<li><blockquote>
-<p>soft参数告诉Git重置HEAD到另外一个commit，但也到此为止。如果你指定–soft参数，Git将停止在那里而什么也不会根本变化。这意味着index,working copy都不会做任何变化，所有的在original HEAD和你重置到的那个commit之间的所有变更集都放在stage(index)区域中。</p>
-</blockquote>
-</li>
-<li><blockquote>
-<p>hard参数将会blow out everything.它将重置HEAD返回到另外一个commit(取决于~12的参数），重置index以便反映HEAD的变化，并且重置working copy也使得其完全匹配起来。这是一个比较危险的动作，具有破坏性，数据因此可能会丢失！如果真是发生了数据丢失又希望找回来，那么只有使用：[git reflog]命令了。你的所有本地修改将丢失。如果我们希望彻底丢掉本地修改但是又不希望更改branch所指向的commit，则执行git reset –hard = git reset –hard HEAD. i.e. don’t change the branch but get rid of all local changes.另外一个场景是简单地移动branch从一个到另一个commit而保持index/work区域同步。不过它将修改你的work tree。<br> 这是说hard操作就是以commit合集中的某一元素作为head 的落脚点，并且以它为蓝本，毁掉暂存区记录，本地库和远程库记录，包括源文件，只是为了这一蓝本服务，就好像议会制国家里，轮流执政，突然其中一个议员搞成了中央集权，所有的都向他同化了。</p>
-</blockquote>
-</li>
-<li><blockquote>
-<p>mixed是reset的默认参数，也就是当你不指定任何参数时的参数。它将重置HEAD到另外一个commit,并且重置index以便和HEAD相匹配，但是也到此为止。working copy不会被更改。所有该branch上从original HEAD（commit）到你重置到的那个commit之间的所有变更将作为local modifications保存在working area中，（被标示为local modification or untracked via git status)，但是并未staged的状态，你可以重新检视然后再做修改和commit。</p>
-</blockquote>
-</li>
-</ul>
-<h4 id="git-revert"><a href="#git-revert" class="headerlink" title="git revert"></a>git revert</h4><h4 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h4><ol>
-<li><p>git revert是用一次新的commit来回滚之前的commit；</p>
-<p>git reset是直接删除指定的commit。</p>
-</li>
-<li><p>git reset是把<code>head</code>向后移动了一下，而git revert是<code>head</code>继续前进，只是新的commit的内容和要revert的内容正好相反，能够抵消要被revert的内容。</p>
-</li>
-<li><blockquote>
-<p>在回滚这一操作上看，效果差不多。但是在日后继续merge以前的老版本时有区别。因为git revert是用一次逆向的commit“中和”之前的提交，因此日后合并老的branch时，导致这部分改变不会再次出现，但是git reset是之间把某些commit在某个branch上删除，因而和老的branch再次merge时，这些被回滚的commit应该还会被引入。</p>
-</blockquote>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>版本管理工具</category>
-      </categories>
-      <tags>
-        <tag>git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>git常见命令的基本使用</title>
-    <url>/2020/08/05/git%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<h4 id="git-restore命令的使用"><a href="#git-restore命令的使用" class="headerlink" title="git-restore命令的使用"></a>git-restore命令的使用</h4><h5 id="一个例子"><a href="#一个例子" class="headerlink" title="一个例子"></a>一个例子</h5><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 1. take a file out of another commit</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 2. restore hello.c from the index</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git switch master</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git restore --<span class="built_in">source</span> master~2 Makefile  (1)</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> rm -f hello.c</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git restore hello.c                     (2)</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 
-<h5 id="git-restore-lt-file-gt-和git-restore-staged的区别"><a href="#git-restore-lt-file-gt-和git-restore-staged的区别" class="headerlink" title="git restore &lt;file&gt;和git restore --staged的区别"></a><code>git restore &lt;file&gt;</code>和<code>git restore --staged</code>的区别</h5><ul>
-<li><code>git store</code> 将不再暂存区的文件撤销更改</li>
-<li><code>git restore --staged</code> 将文件从暂存区撤出，<strong>但不会撤销文件的更改</strong></li>
-</ul>
-<h5 id="使用-source参数将文件恢复到和某一次的提交一样"><a href="#使用-source参数将文件恢复到和某一次的提交一样" class="headerlink" title="使用--source参数将文件恢复到和某一次的提交一样"></a>使用<code>--source</code>参数将文件恢复到和某一次的提交一样</h5><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 在工作副本和索引中的内容都与三次提交之前相同</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git restore --<span class="built_in">source</span> HEAD~3 --staged --worktree main.c</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="将文件还原到某个版本"><a href="#将文件还原到某个版本" class="headerlink" title="将文件还原到某个版本"></a>将文件还原到某个版本</h4><figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="code"><pre><span class="line"> 找到文件需要回滚到的版本号(如 cf7a7a38)</span><br><span class="line">git log package-lock.json</span><br><span class="line"><span class="meta">$</span><span class="bash"> git update-index --assume-unchanged fileName</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 利用 checkout 命令即可</span></span><br><span class="line">git checkout cf7a7a38 package-lock.json</span><br></pre></td></tr></table></figure>
-
-<h4 id="git-忽略已经提交过的文件"><a href="#git-忽略已经提交过的文件" class="headerlink" title="git 忽略已经提交过的文件"></a>git 忽略已经提交过的文件</h4><figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git update-index --assume-unchanged fileName</span></span><br></pre></td></tr></table></figure>
-
+<h4 id="转移多个提交"><a href="#转移多个提交" class="headerlink" title="转移多个提交"></a>转移多个提交</h4><p><code>Cherry pick</code> 支持一次转移多个提交</p>
+<p><code>$ git cherry-pick &lt;HashA&gt; &lt;HashB&gt;</code></p>
+<p>如果想要转移一系列的连续提交，可以使用以下的简便语法：</p>
+<p><code>$ git cherry-pick A..B</code></p>
+<p><strong>注意使用上面的命令，提交A将不会包含在 Cherry pick 中。</strong>如果要包含提交A，可以使用下面的语法。</p>
+<p><code>$ git cherry-pick A^..B</code></p>
+<h4 id="配置项"><a href="#配置项" class="headerlink" title="配置项"></a>配置项</h4><p><img src="http://wrr123.github.io/2020/11/10/git-cherry-pick%E7%9A%84%E4%BD%BF%E7%94%A8/001.png"></p>
+<h4 id="代码冲突"><a href="#代码冲突" class="headerlink" title="代码冲突"></a>代码冲突</h4><p><img src="http://wrr123.github.io/2020/11/10/git-cherry-pick%E7%9A%84%E4%BD%BF%E7%94%A8/002.png"></p>
 ]]></content>
       <tags>
         <tag>git</tag>
-        <tag>版本工具</tag>
       </tags>
   </entry>
   <entry>
@@ -1884,6 +1829,107 @@
 <blockquote>
 <p>删掉也是可以的：$ git remote set-head origin -d 这样就移除了 origin/HEAD -&gt; origin/master 这一行。</p>
 </blockquote>
+]]></content>
+      <categories>
+        <category>版本管理工具</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>git常见命令的基本使用</title>
+    <url>/2020/08/05/git%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<h4 id="git-restore命令的使用"><a href="#git-restore命令的使用" class="headerlink" title="git-restore命令的使用"></a>git-restore命令的使用</h4><h5 id="一个例子"><a href="#一个例子" class="headerlink" title="一个例子"></a>一个例子</h5><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 1. take a file out of another commit</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 2. restore hello.c from the index</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git switch master</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git restore --<span class="built_in">source</span> master~2 Makefile  (1)</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> rm -f hello.c</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git restore hello.c                     (2)</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="git-restore-lt-file-gt-和git-restore-staged的区别"><a href="#git-restore-lt-file-gt-和git-restore-staged的区别" class="headerlink" title="git restore &lt;file&gt;和git restore --staged的区别"></a><code>git restore &lt;file&gt;</code>和<code>git restore --staged</code>的区别</h5><ul>
+<li><code>git store</code> 将不再暂存区的文件撤销更改</li>
+<li><code>git restore --staged</code> 将文件从暂存区撤出，<strong>但不会撤销文件的更改</strong></li>
+</ul>
+<h5 id="使用-source参数将文件恢复到和某一次的提交一样"><a href="#使用-source参数将文件恢复到和某一次的提交一样" class="headerlink" title="使用--source参数将文件恢复到和某一次的提交一样"></a>使用<code>--source</code>参数将文件恢复到和某一次的提交一样</h5><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 在工作副本和索引中的内容都与三次提交之前相同</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git restore --<span class="built_in">source</span> HEAD~3 --staged --worktree main.c</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="将文件还原到某个版本"><a href="#将文件还原到某个版本" class="headerlink" title="将文件还原到某个版本"></a>将文件还原到某个版本</h4><figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="code"><pre><span class="line"> 找到文件需要回滚到的版本号(如 cf7a7a38)</span><br><span class="line">git log package-lock.json</span><br><span class="line"><span class="meta">$</span><span class="bash"> git update-index --assume-unchanged fileName</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 利用 checkout 命令即可</span></span><br><span class="line">git checkout cf7a7a38 package-lock.json</span><br></pre></td></tr></table></figure>
+
+<h4 id="git-忽略已经提交过的文件"><a href="#git-忽略已经提交过的文件" class="headerlink" title="git 忽略已经提交过的文件"></a>git 忽略已经提交过的文件</h4><figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git update-index --assume-unchanged fileName</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="git-tag-打标签"><a href="#git-tag-打标签" class="headerlink" title="git tag 打标签"></a>git tag 打标签</h4><h5 id="列出标签"><a href="#列出标签" class="headerlink" title="列出标签"></a>列出标签</h5><p><code>git tag &lt;-l&gt; &lt;--list&gt;</code></p>
+<blockquote>
+<p> <strong>注意：</strong>按照通配符列出标签需要 <code>-l</code> 或 <code>--list</code> 选项</p>
+</blockquote>
+<blockquote>
+<p>如果你只想要完整的标签列表，那么运行 <code>git tag</code> 就会默认假定你想要一个列表，它会直接给你列出来， 此时的 <code>-l</code> 或 <code>--list</code> 是可选的。</p>
+</blockquote>
+<blockquote>
+<p>然而，如果你提供了一个匹配标签名的通配模式，那么 <code>-l</code> 或 <code>--list</code> 就是强制使用的。</p>
+</blockquote>
+<h5 id="创建标签"><a href="#创建标签" class="headerlink" title="创建标签"></a>创建标签</h5><ol>
+<li><p>轻量标签</p>
+<p> 一个栗子：</p>
+ <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ git tag v1.4-lw</span><br><span class="line">$ git tag</span><br><span class="line">v0.1</span><br><span class="line">v1.3</span><br><span class="line">v1.4</span><br><span class="line">v1.4-lw</span><br><span class="line">v1.5</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>附注标签</p>
+<p> 一个栗子：</p>
+ <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ git tag -a v1.4 -m <span class="string">&quot;my version 1.4&quot;</span></span><br><span class="line">$ git tag</span><br><span class="line">v0.1</span><br><span class="line">v1.3</span><br><span class="line">v1.4</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h5 id="后期打标签"><a href="#后期打标签" class="headerlink" title="后期打标签"></a>后期打标签</h5><p><code>$ git tag -a v1.2 9fceb02</code></p>
+<h5 id="共享标签"><a href="#共享标签" class="headerlink" title="共享标签"></a>共享标签</h5><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ git push origin v1.5</span><br><span class="line">Counting objects: 14, <span class="keyword">done</span>.</span><br><span class="line">Delta compression using up to 8 threads.</span><br><span class="line">Compressing objects: 100% (12/12), <span class="keyword">done</span>.</span><br><span class="line">Writing objects: 100% (14/14), 2.05 KiB | 0 bytes/s, <span class="keyword">done</span>.</span><br><span class="line">Total 14 (delta 3), reused 0 (delta 0)</span><br><span class="line">To git@github.com:schacon/simplegit.git</span><br><span class="line"> * [new tag]         v1.5 -&gt; v1.5</span><br></pre></td></tr></table></figure>
+
+<p>若想要一次性推送多个标签，可以使用<code>--tags</code>选项</p>
+<p>一个栗子：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ git push origin --tags</span><br><span class="line">Counting objects: 1, <span class="keyword">done</span>.</span><br><span class="line">Writing objects: 100% (1/1), 160 bytes | 0 bytes/s, <span class="keyword">done</span>.</span><br><span class="line">Total 1 (delta 0), reused 0 (delta 0)</span><br><span class="line">To git@github.com:schacon/simplegit.git</span><br><span class="line"> * [new tag]         v1.4 -&gt; v1.4</span><br><span class="line"> * [new tag]         v1.4-lw -&gt; v1.4-lw</span><br></pre></td></tr></table></figure>
+
+<h5 id="删除标签"><a href="#删除标签" class="headerlink" title="删除标签"></a>删除标签</h5><p>删除本地仓库上的标签 git tag -d <tagname></tagname></p>
+<p>一个删除轻量标签的栗子：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ git tag -d v1.4-lw</span><br><span class="line">Deleted tag <span class="string">&#x27;v1.4-lw&#x27;</span> (was e7d5add)</span><br></pre></td></tr></table></figure>
+
+<p>删除远程仓库的标签</p>
+<p>第一种方法</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ git push origin :refs/tags/v1.4-lw</span><br><span class="line">To /git@github.com:schacon/simplegit.git</span><br><span class="line"> - [deleted]         v1.4-lw</span><br></pre></td></tr></table></figure>
+
+<p>第二种方法</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ git push origin --delete &lt;tagname&gt;</span><br></pre></td></tr></table></figure>
+
+<h5 id="检出标签"><a href="#检出标签" class="headerlink" title="检出标签"></a>检出标签</h5><p>一个栗子：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ git checkout -b version2 v2.0.0</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>git</tag>
+        <tag>版本工具</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>git reset和revert的区别</title>
+    <url>/2020/07/03/git-reset%E5%92%8Crevert%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
+    <content><![CDATA[<h4 id="git-reset"><a href="#git-reset" class="headerlink" title="git reset"></a>git reset</h4><h5 id="参数定义"><a href="#参数定义" class="headerlink" title="参数定义"></a>参数定义</h5><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">--soft 回退后a分支修改的代码被保留并标记为add的状态（git status 是绿色的状态）</span><br><span class="line">--mixed 重置索引，但不重置工作树，更改后的文件标记为未提交（add）的状态。默认操作。</span><br><span class="line">--hard 重置索引和工作树，并且a分支修改的所有文件和中间的提交，没提交的代码都被丢弃了。</span><br><span class="line">--merge 和--hard类似，只不过如果在执行reset命令之前你有改动一些文件并且未提交，merge会保留你的这些修改，hard则不会。【注：如果你的这些修改add过或commit过，merge和hard都将删除你的提交】</span><br><span class="line">--keep 和--hard类似，执行reset之前改动文件如果是a分支修改了的，会提示你修改了相同的文件，不能合并。如果不是a分支修改的文件，会移除缓存区。git status还是可以看到保持了这些修改。</span><br></pre></td></tr></table></figure>
+
+<h5 id="分析-hard和-soft的区别"><a href="#分析-hard和-soft的区别" class="headerlink" title="分析--hard和--soft的区别"></a>分析<code>--hard</code>和<code>--soft</code>的区别</h5><ul>
+<li><blockquote>
+<p>soft参数告诉Git重置HEAD到另外一个commit，但也到此为止。如果你指定–soft参数，Git将停止在那里而什么也不会根本变化。这意味着index,working copy都不会做任何变化，所有的在original HEAD和你重置到的那个commit之间的所有变更集都放在stage(index)区域中。</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>hard参数将会blow out everything.它将重置HEAD返回到另外一个commit(取决于~12的参数），重置index以便反映HEAD的变化，并且重置working copy也使得其完全匹配起来。这是一个比较危险的动作，具有破坏性，数据因此可能会丢失！如果真是发生了数据丢失又希望找回来，那么只有使用：[git reflog]命令了。你的所有本地修改将丢失。如果我们希望彻底丢掉本地修改但是又不希望更改branch所指向的commit，则执行git reset –hard = git reset –hard HEAD. i.e. don’t change the branch but get rid of all local changes.另外一个场景是简单地移动branch从一个到另一个commit而保持index/work区域同步。不过它将修改你的work tree。<br> 这是说hard操作就是以commit合集中的某一元素作为head 的落脚点，并且以它为蓝本，毁掉暂存区记录，本地库和远程库记录，包括源文件，只是为了这一蓝本服务，就好像议会制国家里，轮流执政，突然其中一个议员搞成了中央集权，所有的都向他同化了。</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>mixed是reset的默认参数，也就是当你不指定任何参数时的参数。它将重置HEAD到另外一个commit,并且重置index以便和HEAD相匹配，但是也到此为止。working copy不会被更改。所有该branch上从original HEAD（commit）到你重置到的那个commit之间的所有变更将作为local modifications保存在working area中，（被标示为local modification or untracked via git status)，但是并未staged的状态，你可以重新检视然后再做修改和commit。</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="git-revert"><a href="#git-revert" class="headerlink" title="git revert"></a>git revert</h4><h4 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h4><ol>
+<li><p>git revert是用一次新的commit来回滚之前的commit；</p>
+<p>git reset是直接删除指定的commit。</p>
+</li>
+<li><p>git reset是把<code>head</code>向后移动了一下，而git revert是<code>head</code>继续前进，只是新的commit的内容和要revert的内容正好相反，能够抵消要被revert的内容。</p>
+</li>
+<li><blockquote>
+<p>在回滚这一操作上看，效果差不多。但是在日后继续merge以前的老版本时有区别。因为git revert是用一次逆向的commit“中和”之前的提交，因此日后合并老的branch时，导致这部分改变不会再次出现，但是git reset是之间把某些commit在某个branch上删除，因而和老的branch再次merge时，这些被回滚的commit应该还会被引入。</p>
+</blockquote>
+</li>
+</ol>
 ]]></content>
       <categories>
         <category>版本管理工具</category>
@@ -2071,6 +2117,16 @@
       </tags>
   </entry>
   <entry>
+    <title>hexo配置next主题的博客</title>
+    <url>/2020/07/31/hexo%E9%85%8D%E7%BD%AEnext%E4%B8%BB%E9%A2%98%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<h4 id="文章目录的描点不能进行跳转"><a href="#文章目录的描点不能进行跳转" class="headerlink" title="文章目录的描点不能进行跳转"></a>文章目录的描点不能进行跳转</h4><p><img src="http://wrr123.github.io/2020/07/31/hexo%E9%85%8D%E7%BD%AEnext%E4%B8%BB%E9%A2%98%E7%9A%84%E5%8D%9A%E5%AE%A2/001.png" alt="问题描述"></p>
+<h5 id="可能的原因-一-："><a href="#可能的原因-一-：" class="headerlink" title="可能的原因(一)："></a>可能的原因(一)：</h5><p>hexo博客的锚点处的<code>href</code>属性，其中文是ASCII码格式的，不是纯粹的中文显示，可能引起锚点定位失败。::smile_cat:</p>
+]]></content>
+      <tags>
+        <tag>工具</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>gulp</title>
     <url>/2020/08/25/gulp/</url>
     <content><![CDATA[<h4 id="定义和特点"><a href="#定义和特点" class="headerlink" title="定义和特点"></a>定义和特点</h4><p><strong>Builds can be the most awful sinkhole for terms to waste their time with - gulp is a serious win for any project.</strong></p>
@@ -2111,16 +2167,6 @@
       <tags>
         <tag>JavaScript</tag>
         <tag>构建工具</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>hexo配置next主题的博客</title>
-    <url>/2020/07/31/hexo%E9%85%8D%E7%BD%AEnext%E4%B8%BB%E9%A2%98%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<h4 id="文章目录的描点不能进行跳转"><a href="#文章目录的描点不能进行跳转" class="headerlink" title="文章目录的描点不能进行跳转"></a>文章目录的描点不能进行跳转</h4><p><img src="http://wrr123.github.io/2020/07/31/hexo%E9%85%8D%E7%BD%AEnext%E4%B8%BB%E9%A2%98%E7%9A%84%E5%8D%9A%E5%AE%A2/001.png" alt="问题描述"></p>
-<h5 id="可能的原因-一-："><a href="#可能的原因-一-：" class="headerlink" title="可能的原因(一)："></a>可能的原因(一)：</h5><p>hexo博客的锚点处的<code>href</code>属性，其中文是ASCII码格式的，不是纯粹的中文显示，可能引起锚点定位失败。::smile_cat:</p>
-]]></content>
-      <tags>
-        <tag>工具</tag>
       </tags>
   </entry>
   <entry>
@@ -2208,6 +2254,21 @@
     <title>java-token</title>
     <url>/2020/08/31/java-token/</url>
     <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>java</title>
+    <url>/2020/11/30/java/</url>
+    <content><![CDATA[<h4 id="获取26个英文字母"><a href="#获取26个英文字母" class="headerlink" title="获取26个英文字母"></a>获取26个英文字母</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 输出26个英文字母</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; <span class="number">26</span>; i++) &#123;</span><br><span class="line">  <span class="keyword">char</span> c = (<span class="keyword">char</span>) (<span class="number">96</span> + i);</span><br><span class="line">  System.out.println(c);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="使用-PriorityQueue"><a href="#使用-PriorityQueue" class="headerlink" title="使用 PriorityQueue"></a>使用 PriorityQueue</h4><p>我们知道，<code>Queue</code> 是一个先进先出（FIFO）的队列。</p>
+<p><code>Queue</code> 会严格按照FIFO的原则取出队首元素。如果需要进行插队的话，那么使用 <code>Queue</code>的话就不合适了，需要使用优先队列 <code>PriorityQueue</code>。</p>
+<p><code>PriorityQueue</code> 和 <code>Queue</code> 的区别在与，它的出队顺序与元素的优先级有关，对 <code>PriorityQueue</code> 调用 <code>remove()</code> 或 <code>poll()</code> 方法，返回的总是优先级最高的元素。</p>
+<p>要使用 <code>PriorityQueue</code> ,我们就必须给每个元素定义”优先级”。</p>
+<p>放入到 <code>PriorityQueue</code> 的元素，必须实现 <code>Comparable</code> 接口，<code>PriorityQueue</code> 会根据元素的排序顺序决定出队的优先级。</p>
+]]></content>
+      <tags>
+        <tag>java</tag>
+      </tags>
   </entry>
   <entry>
     <title>java8新特性之流式数据处理</title>
@@ -2603,6 +2664,15 @@
       </tags>
   </entry>
   <entry>
+    <title>java多线程</title>
+    <url>/2020/11/26/java%E5%A4%9A%E7%BA%BF%E7%A8%8B/</url>
+    <content><![CDATA[<h4 id="多线程的基本概念"><a href="#多线程的基本概念" class="headerlink" title="多线程的基本概念"></a>多线程的基本概念</h4><p><img src="http://wrr123.github.io/2020/11/26/java%E5%A4%9A%E7%BA%BF%E7%A8%8B/1.png"></p>
+]]></content>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>java定时器Quartz-2.3</title>
     <url>/2020/08/21/java%E5%AE%9A%E6%97%B6%E5%99%A8Quartz-2-3/</url>
     <content><![CDATA[<h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>Quartz 是基于 Spring 框架之上的更加强大的定时器，它不仅可以实现其他定时器(如 Java 定时器，Soring 定时器)的功能，还实现了非常繁复的时间触发执行的任务， Quartz 有两种方式来调度定时任务，一是使用 Spring 提供的 MethodInvokingJobDetailFactoryBean 代理类，Quartz 通过该代理直接调度任务类的某个函数；二是任务类继承 QuartzJobBean 类或者实现 org.quatrz.Job 接口，Quartz 通过该父类或者接口进行调度。</p>
@@ -2773,7 +2843,42 @@
 <li>LinkedList 比 ArrayList 更占内存，因为 LinkedList 的节点除了存储数据，还存储了两个引用，一个指向前一个元素，另一个指向后一个元素。</li>
 </ul>
 <p><strong>ArrayList 使用一个内置数组来存储元素，起始容量是 10， 当数组需要扩容时，扩容公式为 <code>(old * 3) / 2 + 1</code>，也就是说每次容量会增加 50%。这意味着如果包含大量元素，将会浪费很大的空间。这种浪费是由 ArrayList 本身决定的。</strong></p>
+<h4 id="Java复制数组的几个方法"><a href="#Java复制数组的几个方法" class="headerlink" title="Java复制数组的几个方法"></a>Java复制数组的几个方法</h4><ul>
+<li><p>Arrays类的 <code>copy()</code> 方法</p>
+  <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Arrays.copyOf(dataType[] srcArray,<span class="keyword">int</span> length);</span><br></pre></td></tr></table></figure>
+
+<p>  其中，srcArray 表示要进行复制的数组，length 表示复制后的新数组的长度。</p>
+<p>  <strong>注意：目标数组如果已经存在，将会被重构。</strong></p>
+</li>
+<li><p>Arrays类的 <code>copyOfRange()</code>方法</p>
+  <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Arrays.copyOfRange(dataType[] srcArray,<span class="keyword">int</span> startIndex,<span class="keyword">int</span> endIndex)</span><br></pre></td></tr></table></figure>
+
+<p>  其中：</p>
+<blockquote>
+<ul>
+<li>srcArray 表示原数组。</li>
+<li>startIndex 表示开始复制的起始索引，目标数组中将包含起始索引对应的元素，另外，startIndex 必须在 0 到 srcArray.length 之间。</li>
+<li>endIndex 表示终止索引，目标数组中将不包含终止索引对应的元素，endIndex 必须大于等于 startIndex，可以大于 srcArray.length，如果大于 srcArray.length，则目标数组中使用默认值填充。</li>
+</ul>
+</blockquote>
+<p>  <strong>注意：目标数组如果已经存在，将会被重构。</strong></p>
+</li>
+<li><p>System类的 <code>arraycopy()</code> 方法</p>
+</li>
+<li><p>Object类的 <code>clone()</code> 方法</p>
+</li>
+</ul>
 ]]></content>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>java日志框架</title>
+    <url>/2020/10/23/java%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6/</url>
+    <content><![CDATA[<h4 id="java-日志框架的等级和优先级"><a href="#java-日志框架的等级和优先级" class="headerlink" title="java 日志框架的等级和优先级"></a>java 日志框架的等级和优先级</h4><p>log4j 定义了 8 个级别的 log ，优先级 <strong>从高到低</strong> 依次为：</p>
+<p><code>OFF &gt; FATAL &gt; ERROR &gt; WARN &gt; INFO &gt; DEBUG &gt; TRACE &gt; ALL</code> 。</p>
+<a id="more"></a>]]></content>
       <tags>
         <tag>java</tag>
       </tags>
@@ -2836,16 +2941,6 @@
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// [elordcn, omcat, etty, ndertow, esin]</span></span><br><span class="line"> servers.stream.collect(Collectors.mapping(s -&gt; s.substring(<span class="number">1</span>), Collectors.toList()));</span><br></pre></td></tr></table></figure>
 
 <h5 id="reducing"><a href="#reducing" class="headerlink" title="reducing"></a><code>reducing</code></h5>]]></content>
-      <tags>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>java日志框架</title>
-    <url>/2020/10/23/java%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6/</url>
-    <content><![CDATA[<h4 id="java-日志框架的等级和优先级"><a href="#java-日志框架的等级和优先级" class="headerlink" title="java 日志框架的等级和优先级"></a>java 日志框架的等级和优先级</h4><p>log4j 定义了 8 个级别的 log ，优先级 <strong>从高到低</strong> 依次为：</p>
-<p><code>OFF &gt; FATAL &gt; ERROR &gt; WARN &gt; INFO &gt; DEBUG &gt; TRACE &gt; ALL</code> 。</p>
-<a id="more"></a>]]></content>
       <tags>
         <tag>java</tag>
       </tags>
@@ -3094,6 +3189,16 @@
 ]]></content>
       <tags>
         <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>jenkins入门</title>
+    <url>/2020/11/26/jenkins%E5%85%A5%E9%97%A8/</url>
+    <content><![CDATA[<h4 id="jenkins部署实现原理"><a href="#jenkins部署实现原理" class="headerlink" title="jenkins部署实现原理"></a>jenkins部署实现原理</h4><p><img src="http://wrr123.github.io/2020/11/26/jenkins%E5%85%A5%E9%97%A8/%E6%95%B4%E4%BD%93%E6%B5%81%E7%A8%8B%E5%9B%BE.png"></p>
+]]></content>
+      <tags>
+        <tag>java</tag>
+        <tag>工具</tag>
       </tags>
   </entry>
   <entry>
@@ -3374,25 +3479,6 @@
       </tags>
   </entry>
   <entry>
-    <title>js正则的几个方法(一)</title>
-    <url>/2020/07/15/js%E6%AD%A3%E5%88%99%E7%9A%84%E5%87%A0%E4%B8%AA%E6%96%B9%E6%B3%95-%E4%B8%80/</url>
-    <content><![CDATA[<p><code>exec()</code>和<code>test()</code>方法的使用</p>
-<ul>
-<li><blockquote>
-<p>test() 方法用于检测一个字符串是否匹配某个模式. 返回true/false</p>
-</blockquote>
-</li>
-<li><blockquote>
-<p>exec() 方法用于检索字符串中的正则表达式的匹配。返回一个数组。</p>
-</blockquote>
-</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>js</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>layui和element-ui文件上传功能</title>
     <url>/2020/06/22/layui%E5%92%8Celement-ui%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E5%8A%9F%E8%83%BD/</url>
     <content><![CDATA[<h5 id="layui文件上传"><a href="#layui文件上传" class="headerlink" title="layui文件上传"></a>layui文件上传</h5><p>使用layui的<code>upload</code>模块， <code>var upload = layui.upload</code><br>核心方法和基础参数选项</p>
@@ -3423,6 +3509,25 @@
 ]]></content>
       <tags>
         <tag>前端</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>js正则的几个方法(一)</title>
+    <url>/2020/07/15/js%E6%AD%A3%E5%88%99%E7%9A%84%E5%87%A0%E4%B8%AA%E6%96%B9%E6%B3%95-%E4%B8%80/</url>
+    <content><![CDATA[<p><code>exec()</code>和<code>test()</code>方法的使用</p>
+<ul>
+<li><blockquote>
+<p>test() 方法用于检测一个字符串是否匹配某个模式. 返回true/false</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>exec() 方法用于检索字符串中的正则表达式的匹配。返回一个数组。</p>
+</blockquote>
+</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>js</tag>
       </tags>
   </entry>
   <entry>
@@ -3729,6 +3834,28 @@
       </tags>
   </entry>
   <entry>
+    <title>mybatis分页插件</title>
+    <url>/2020/10/22/mybatis%E5%88%86%E9%A1%B5%E6%8F%92%E4%BB%B6/</url>
+    <content><![CDATA[<h4 id="Mybatis通用分页插件-PageHelper"><a href="#Mybatis通用分页插件-PageHelper" class="headerlink" title="Mybatis通用分页插件 PageHelper"></a>Mybatis通用分页插件 PageHelper</h4><h5 id="简述-mybatis-中-PageHelper-的使用"><a href="#简述-mybatis-中-PageHelper-的使用" class="headerlink" title="简述 mybatis 中 PageHelper 的使用"></a>简述 mybatis 中 PageHelper 的使用</h5><ol>
+<li><p>需要引入 PageHelper 的 jar 包</p>
+ <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.github.pagehelper<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>pagehelper<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.1.4<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在 mybatis 的全局配置文件 SqlMapConfig.xml 中配置该插件</p>
+ <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">configuration</span></span></span><br><span class="line"><span class="meta">        <span class="meta-keyword">PUBLIC</span> <span class="meta-string">&quot;-//mybatis.org//DTD Config 3.0//EN&quot;</span></span></span><br><span class="line"><span class="meta">        <span class="meta-string">&quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 配置分页插件 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span> <span class="attr">interceptor</span>=<span class="string">&quot;com.github.pagehelper.PageHelper&quot;</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- 设置数据库类型 Oracle,Mysql,MariaDB,SQLite,Hsqldb,PostgreSQL六种数据库--&gt;</span>        </span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;dialect&quot;</span> <span class="attr">value</span>=<span class="string">&quot;mysql&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在执行 sql 前，添加插件完成分页功能</p>
+ <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">public class TestPageHelper &#123;</span><br><span class="line"></span><br><span class="line">    @Test</span><br><span class="line">    public void testPageHelper() &#123;</span><br><span class="line">        // 创建一个spring容器</span><br><span class="line">        ApplicationContext context = new ClassPathXmlApplicationContext(&quot;classpath:spring/applicationContext-*&quot;);</span><br><span class="line">        // 从spring容器中获取mapper代理对象</span><br><span class="line">        TbItemMapper mapper = context.getBean(TbItemMapper.class);</span><br><span class="line">        // 执行查询并分页,TbItemExample是逆向工程自动生成的，用来进行条件查询，这里不设置则表示无条件</span><br><span class="line">        TbItemExample example = new TbItemExample();</span><br><span class="line">        //分页处理，显示第一页的10条数据</span><br><span class="line">        PageHelper.startPage(1, 10);</span><br><span class="line">        List<span class="tag">&lt;<span class="name">TbItem</span>&gt;</span> list = mapper.selectByExample(example);//查询</span><br><span class="line">        // 取商品列表</span><br><span class="line">        for(TbItem item : list) &#123;</span><br><span class="line">            System.out.println(item.getTitle());</span><br><span class="line">        &#125;</span><br><span class="line">        // 取分页信息</span><br><span class="line">        PageInfo<span class="tag">&lt;<span class="name">TbItem</span>&gt;</span> pageInfo = new PageInfo<span class="tag">&lt;<span class="name">TbItem</span>&gt;</span>(list);</span><br><span class="line">        long total = pageInfo.getTotal(); //获取总记录数</span><br><span class="line">        System.out.println(&quot;共有商品信息：&quot; + total);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+]]></content>
+      <tags>
+        <tag>mybatis</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>mybatis入门使用</title>
     <url>/2020/09/21/mybatis%E5%85%A5%E9%97%A8%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<h4 id="Mybatis-中大于号、小于号的转义写法"><a href="#Mybatis-中大于号、小于号的转义写法" class="headerlink" title="Mybatis 中大于号、小于号的转义写法"></a>Mybatis 中大于号、小于号的转义写法</h4><h5 id="方案一"><a href="#方案一" class="headerlink" title="方案一"></a>方案一</h5><table>
@@ -3773,25 +3900,23 @@
       </tags>
   </entry>
   <entry>
-    <title>mybatis分页插件</title>
-    <url>/2020/10/22/mybatis%E5%88%86%E9%A1%B5%E6%8F%92%E4%BB%B6/</url>
-    <content><![CDATA[<h4 id="Mybatis通用分页插件-PageHelper"><a href="#Mybatis通用分页插件-PageHelper" class="headerlink" title="Mybatis通用分页插件 PageHelper"></a>Mybatis通用分页插件 PageHelper</h4><h5 id="简述-mybatis-中-PageHelper-的使用"><a href="#简述-mybatis-中-PageHelper-的使用" class="headerlink" title="简述 mybatis 中 PageHelper 的使用"></a>简述 mybatis 中 PageHelper 的使用</h5><ol>
-<li><p>需要引入 PageHelper 的 jar 包</p>
- <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.github.pagehelper<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>pagehelper<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.1.4<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在 mybatis 的全局配置文件 SqlMapConfig.xml 中配置该插件</p>
- <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">configuration</span></span></span><br><span class="line"><span class="meta">        <span class="meta-keyword">PUBLIC</span> <span class="meta-string">&quot;-//mybatis.org//DTD Config 3.0//EN&quot;</span></span></span><br><span class="line"><span class="meta">        <span class="meta-string">&quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 配置分页插件 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span> <span class="attr">interceptor</span>=<span class="string">&quot;com.github.pagehelper.PageHelper&quot;</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- 设置数据库类型 Oracle,Mysql,MariaDB,SQLite,Hsqldb,PostgreSQL六种数据库--&gt;</span>        </span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;dialect&quot;</span> <span class="attr">value</span>=<span class="string">&quot;mysql&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在执行 sql 前，添加插件完成分页功能</p>
- <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">public class TestPageHelper &#123;</span><br><span class="line"></span><br><span class="line">    @Test</span><br><span class="line">    public void testPageHelper() &#123;</span><br><span class="line">        // 创建一个spring容器</span><br><span class="line">        ApplicationContext context = new ClassPathXmlApplicationContext(&quot;classpath:spring/applicationContext-*&quot;);</span><br><span class="line">        // 从spring容器中获取mapper代理对象</span><br><span class="line">        TbItemMapper mapper = context.getBean(TbItemMapper.class);</span><br><span class="line">        // 执行查询并分页,TbItemExample是逆向工程自动生成的，用来进行条件查询，这里不设置则表示无条件</span><br><span class="line">        TbItemExample example = new TbItemExample();</span><br><span class="line">        //分页处理，显示第一页的10条数据</span><br><span class="line">        PageHelper.startPage(1, 10);</span><br><span class="line">        List<span class="tag">&lt;<span class="name">TbItem</span>&gt;</span> list = mapper.selectByExample(example);//查询</span><br><span class="line">        // 取商品列表</span><br><span class="line">        for(TbItem item : list) &#123;</span><br><span class="line">            System.out.println(item.getTitle());</span><br><span class="line">        &#125;</span><br><span class="line">        // 取分页信息</span><br><span class="line">        PageInfo<span class="tag">&lt;<span class="name">TbItem</span>&gt;</span> pageInfo = new PageInfo<span class="tag">&lt;<span class="name">TbItem</span>&gt;</span>(list);</span><br><span class="line">        long total = pageInfo.getTotal(); //获取总记录数</span><br><span class="line">        System.out.println(&quot;共有商品信息：&quot; + total);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
+    <title>nacos基础教程</title>
+    <url>/2020/07/21/nacos%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/</url>
+    <content><![CDATA[<h4 id="什么是Nacos"><a href="#什么是Nacos" class="headerlink" title="什么是Nacos"></a>什么是Nacos</h4><p>Nacos致力于帮助您发现、配置和管理微服务。</p>
+<p>Nacos提供了一组简单易用的特性集，帮助您快速实现动态服务发现、服务配置、服务元数据及流量管理。</p>
+<p>是Spring Cloud A中的服务注册发现组件，类似于Consul、Eureka，同时它又提供了分布式配置中心的功能，这点和Consul的config类似，支持热加载。</p>
+<h5 id="Nacos的关键特性包括："><a href="#Nacos的关键特性包括：" class="headerlink" title="Nacos的关键特性包括："></a>Nacos的关键特性包括：</h5><ul>
+<li>服务发现和服务健康监测</li>
+<li>动态配置服务，带管理界面，支持丰富的配置维度</li>
+<li>动态DNS服务</li>
+<li>服务及其元数据管理</li>
+</ul>
+<h4 id="使用Nacos服务注册和发现"><a href="#使用Nacos服务注册和发现" class="headerlink" title="使用Nacos服务注册和发现"></a>使用Nacos服务注册和发现</h4><p>服务注册和发现是微服务治理的根基，服务注册和发现组件是整个微服务系统的 <strong>灵魂</strong>，选择合适的服务注册和发现组件至关重要，目前主流的服务注册和发现组件有<code>Consul,Eureka,Etcd</code>等。</p>
+<p>随着Euraka的闭源，Spring Cloud netflix-oss组件大规模的进入到了维护期，不再提供新功能，spring cloud alibaba受到开源社区的大力拥护。</p>
 ]]></content>
       <tags>
-        <tag>mybatis</tag>
+        <tag>java</tag>
+        <tag>spring cloud</tag>
       </tags>
   </entry>
   <entry>
@@ -3904,26 +4029,6 @@
 ]]></content>
       <tags>
         <tag>mysql</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>nacos基础教程</title>
-    <url>/2020/07/21/nacos%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/</url>
-    <content><![CDATA[<h4 id="什么是Nacos"><a href="#什么是Nacos" class="headerlink" title="什么是Nacos"></a>什么是Nacos</h4><p>Nacos致力于帮助您发现、配置和管理微服务。</p>
-<p>Nacos提供了一组简单易用的特性集，帮助您快速实现动态服务发现、服务配置、服务元数据及流量管理。</p>
-<p>是Spring Cloud A中的服务注册发现组件，类似于Consul、Eureka，同时它又提供了分布式配置中心的功能，这点和Consul的config类似，支持热加载。</p>
-<h5 id="Nacos的关键特性包括："><a href="#Nacos的关键特性包括：" class="headerlink" title="Nacos的关键特性包括："></a>Nacos的关键特性包括：</h5><ul>
-<li>服务发现和服务健康监测</li>
-<li>动态配置服务，带管理界面，支持丰富的配置维度</li>
-<li>动态DNS服务</li>
-<li>服务及其元数据管理</li>
-</ul>
-<h4 id="使用Nacos服务注册和发现"><a href="#使用Nacos服务注册和发现" class="headerlink" title="使用Nacos服务注册和发现"></a>使用Nacos服务注册和发现</h4><p>服务注册和发现是微服务治理的根基，服务注册和发现组件是整个微服务系统的 <strong>灵魂</strong>，选择合适的服务注册和发现组件至关重要，目前主流的服务注册和发现组件有<code>Consul,Eureka,Etcd</code>等。</p>
-<p>随着Euraka的闭源，Spring Cloud netflix-oss组件大规模的进入到了维护期，不再提供新功能，spring cloud alibaba受到开源社区的大力拥护。</p>
-]]></content>
-      <tags>
-        <tag>java</tag>
-        <tag>spring cloud</tag>
       </tags>
   </entry>
   <entry>
@@ -4560,6 +4665,23 @@
       </tags>
   </entry>
   <entry>
+    <title>notebook-jqGrid</title>
+    <url>/2020/08/16/notebook-jqGrid/</url>
+    <content><![CDATA[<h1 id="Tue-Dec-24-16-38-48-CST-2019"><a href="#Tue-Dec-24-16-38-48-CST-2019" class="headerlink" title="Tue Dec 24 16:38:48 CST 2019"></a>Tue Dec 24 16:38:48 CST 2019</h1><h2 id="表格加载完成后，可对某些字段执行隐藏和可见操作"><a href="#表格加载完成后，可对某些字段执行隐藏和可见操作" class="headerlink" title="表格加载完成后，可对某些字段执行隐藏和可见操作?"></a>表格加载完成后，可对某些字段执行隐藏和可见操作?</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">在实际生产中，经常会遇到这样的情况，当jqgrid加载完成对应的数据列之后，点击某操作需要减少或增加一列。针对这种情况如何处理呢？</span><br><span class="line"></span><br><span class="line">这里提供一种方法，就是基于jqgrid提供的hideCol方法。具体使用方式：</span><br><span class="line"></span><br><span class="line">$(&quot;#jqGrid&quot;).jqGrid(&#39;hideCol&#39;, [&quot;column&quot;]).trigger(&quot;reloadGrid&quot;);</span><br><span class="line">通过上的方法即可将不需要显示的列进行隐藏操作。如果参数为一个列名则隐藏此列，如果给定的是数组则隐藏指定的所有列。格式： [“name1”,”name2”]</span><br><span class="line"></span><br><span class="line">对应的肯定有显示showCol方法了，具体使用方式与上面相同：</span><br><span class="line"></span><br><span class="line">$(&quot;#jqGrid&quot;).jqGrid(&#39;showCol&#39;, [&quot;column&quot;]).trigger(&quot;reloadGrid&quot;);</span><br><span class="line">显示列。column可以是数组[“name1”,”name2”],但是name1或者name2必须是colModel中的name。</span><br><span class="line"></span><br><span class="line">当然，上面只是通过隐藏和显示来达到动态修改列表的，如果需要动态新增内容可通过setColProp方法来操作。</span><br><span class="line"></span><br><span class="line">setColProp设置新的属性，对于动态改变列属性是非常有用的，但是有些属性的修改并不会起效。用法：</span><br><span class="line"></span><br><span class="line">$(&quot;#jqGrid&quot;).setColProp(&#39;colname&#39;,&#123;editoptions:&#123;value:“True:False”&#125;&#125;);</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2020-03-23-16-58-10-星期一"><a href="#2020-03-23-16-58-10-星期一" class="headerlink" title="2020-03-23 16:58:10 星期一"></a>2020-03-23 16:58:10 星期一</h3><h5 id="单元格自动换行"><a href="#单元格自动换行" class="headerlink" title="单元格自动换行"></a>单元格自动换行</h5><p>添加如下样式：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.ui-jqgrid</span> <span class="selector-tag">tr</span><span class="selector-class">.jqgrow</span> <span class="selector-tag">td</span> &#123;</span><br><span class="line"><span class="attribute">white-space</span>: normal <span class="meta">!important</span>;</span><br><span class="line"><span class="attribute">height</span>:auto;</span><br><span class="line"><span class="attribute">vertical-align</span>:text-top;</span><br><span class="line"><span class="attribute">padding-top</span>:<span class="number">2px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+]]></content>
+      <tags>
+        <tag>notebook</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>notebook-javaScript</title>
     <url>/2020/08/16/notebook-javaScript/</url>
     <content><![CDATA[<h2 id="在前端界面获取file元素的本地真实路径？"><a href="#在前端界面获取file元素的本地真实路径？" class="headerlink" title="在前端界面获取file元素的本地真实路径？"></a>在前端界面获取file元素的本地真实路径？</h2><ol>
@@ -4614,17 +4736,22 @@
       </tags>
   </entry>
   <entry>
-    <title>notebook-jqGrid</title>
-    <url>/2020/08/16/notebook-jqGrid/</url>
-    <content><![CDATA[<h1 id="Tue-Dec-24-16-38-48-CST-2019"><a href="#Tue-Dec-24-16-38-48-CST-2019" class="headerlink" title="Tue Dec 24 16:38:48 CST 2019"></a>Tue Dec 24 16:38:48 CST 2019</h1><h2 id="表格加载完成后，可对某些字段执行隐藏和可见操作"><a href="#表格加载完成后，可对某些字段执行隐藏和可见操作" class="headerlink" title="表格加载完成后，可对某些字段执行隐藏和可见操作?"></a>表格加载完成后，可对某些字段执行隐藏和可见操作?</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">在实际生产中，经常会遇到这样的情况，当jqgrid加载完成对应的数据列之后，点击某操作需要减少或增加一列。针对这种情况如何处理呢？</span><br><span class="line"></span><br><span class="line">这里提供一种方法，就是基于jqgrid提供的hideCol方法。具体使用方式：</span><br><span class="line"></span><br><span class="line">$(&quot;#jqGrid&quot;).jqGrid(&#39;hideCol&#39;, [&quot;column&quot;]).trigger(&quot;reloadGrid&quot;);</span><br><span class="line">通过上的方法即可将不需要显示的列进行隐藏操作。如果参数为一个列名则隐藏此列，如果给定的是数组则隐藏指定的所有列。格式： [“name1”,”name2”]</span><br><span class="line"></span><br><span class="line">对应的肯定有显示showCol方法了，具体使用方式与上面相同：</span><br><span class="line"></span><br><span class="line">$(&quot;#jqGrid&quot;).jqGrid(&#39;showCol&#39;, [&quot;column&quot;]).trigger(&quot;reloadGrid&quot;);</span><br><span class="line">显示列。column可以是数组[“name1”,”name2”],但是name1或者name2必须是colModel中的name。</span><br><span class="line"></span><br><span class="line">当然，上面只是通过隐藏和显示来达到动态修改列表的，如果需要动态新增内容可通过setColProp方法来操作。</span><br><span class="line"></span><br><span class="line">setColProp设置新的属性，对于动态改变列属性是非常有用的，但是有些属性的修改并不会起效。用法：</span><br><span class="line"></span><br><span class="line">$(&quot;#jqGrid&quot;).setColProp(&#39;colname&#39;,&#123;editoptions:&#123;value:“True:False”&#125;&#125;);</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="2020-03-23-16-58-10-星期一"><a href="#2020-03-23-16-58-10-星期一" class="headerlink" title="2020-03-23 16:58:10 星期一"></a>2020-03-23 16:58:10 星期一</h3><h5 id="单元格自动换行"><a href="#单元格自动换行" class="headerlink" title="单元格自动换行"></a>单元格自动换行</h5><p>添加如下样式：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.ui-jqgrid</span> <span class="selector-tag">tr</span><span class="selector-class">.jqgrow</span> <span class="selector-tag">td</span> &#123;</span><br><span class="line"><span class="attribute">white-space</span>: normal <span class="meta">!important</span>;</span><br><span class="line"><span class="attribute">height</span>:auto;</span><br><span class="line"><span class="attribute">vertical-align</span>:text-top;</span><br><span class="line"><span class="attribute">padding-top</span>:<span class="number">2px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
+    <title>notebook-linux</title>
+    <url>/2020/08/16/notebook-linux/</url>
+    <content><![CDATA[<h1 id="Tue-Oct-29-14-43-17-CST-2019"><a href="#Tue-Oct-29-14-43-17-CST-2019" class="headerlink" title="Tue Oct 29 14:43:17 CST 2019"></a>Tue Oct 29 14:43:17 CST 2019</h1><h2 id="rm-删除文件时，通配符的使用？"><a href="#rm-删除文件时，通配符的使用？" class="headerlink" title="rm 删除文件时，通配符的使用？"></a>rm 删除文件时，通配符的使用？</h2><ul>
+<li><code>*</code> 匹配任意多个字符</li>
+<li><code>?</code> 匹配任意单个字符</li>
+<li><code>[]</code> 匹配之间的任意一个字符</li>
+<li><code>^</code> 表示匹配结果取反的意思，注意这个通配符必须要在[]中使用</li>
+<li><code>&#123;&#125;</code> 表示符合括号内包含的多个文件, 如 <code>ls &#123;*.log,*.txt&#125; 查询‘.log’和“.txt”结尾的文件</code></li>
+</ul>
+<h2 id="rm删除多级目录下的文件？"><a href="#rm删除多级目录下的文件？" class="headerlink" title="rm删除多级目录下的文件？"></a><code>rm</code>删除多级目录下的文件？</h2><ul>
+<li><code>find . -name &quot;*.log&quot;|xargs rm -f</code></li>
+</ul>
+<h1 id="Wed-Nov-13-09-50-50-CST-2019"><a href="#Wed-Nov-13-09-50-50-CST-2019" class="headerlink" title="Wed Nov 13 09:50:50 CST 2019"></a>Wed Nov 13 09:50:50 CST 2019</h1><h2 id="如何写一个sh脚本，并可以向其中传递参数？"><a href="#如何写一个sh脚本，并可以向其中传递参数？" class="headerlink" title="如何写一个sh脚本，并可以向其中传递参数？"></a>如何写一个sh脚本，并可以向其中传递参数？</h2><h1 id="Fri-Dec-13-08-38-08-CST-2019"><a href="#Fri-Dec-13-08-38-08-CST-2019" class="headerlink" title="Fri Dec 13 08:38:08 CST 2019"></a>Fri Dec 13 08:38:08 CST 2019</h1><h2 id="查询使用端口的命令"><a href="#查询使用端口的命令" class="headerlink" title="查询使用端口的命令"></a>查询使用端口的命令</h2><p><code>netstat -anp|grep 8080</code></p>
+<h2 id="mac下查询某个端口是否被占用"><a href="#mac下查询某个端口是否被占用" class="headerlink" title="mac下查询某个端口是否被占用"></a>mac下查询某个端口是否被占用</h2><blockquote>
+<p>方法一：<br>//查看80口是否被占用<br>sudo lsof -i :80<br>方法二：<br>netstat -anp tcp | grep 80</p>
+</blockquote>
 ]]></content>
       <tags>
         <tag>notebook</tag>
@@ -4666,23 +4793,9 @@
       </tags>
   </entry>
   <entry>
-    <title>notebook-linux</title>
-    <url>/2020/08/16/notebook-linux/</url>
-    <content><![CDATA[<h1 id="Tue-Oct-29-14-43-17-CST-2019"><a href="#Tue-Oct-29-14-43-17-CST-2019" class="headerlink" title="Tue Oct 29 14:43:17 CST 2019"></a>Tue Oct 29 14:43:17 CST 2019</h1><h2 id="rm-删除文件时，通配符的使用？"><a href="#rm-删除文件时，通配符的使用？" class="headerlink" title="rm 删除文件时，通配符的使用？"></a>rm 删除文件时，通配符的使用？</h2><ul>
-<li><code>*</code> 匹配任意多个字符</li>
-<li><code>?</code> 匹配任意单个字符</li>
-<li><code>[]</code> 匹配之间的任意一个字符</li>
-<li><code>^</code> 表示匹配结果取反的意思，注意这个通配符必须要在[]中使用</li>
-<li><code>&#123;&#125;</code> 表示符合括号内包含的多个文件, 如 <code>ls &#123;*.log,*.txt&#125; 查询‘.log’和“.txt”结尾的文件</code></li>
-</ul>
-<h2 id="rm删除多级目录下的文件？"><a href="#rm删除多级目录下的文件？" class="headerlink" title="rm删除多级目录下的文件？"></a><code>rm</code>删除多级目录下的文件？</h2><ul>
-<li><code>find . -name &quot;*.log&quot;|xargs rm -f</code></li>
-</ul>
-<h1 id="Wed-Nov-13-09-50-50-CST-2019"><a href="#Wed-Nov-13-09-50-50-CST-2019" class="headerlink" title="Wed Nov 13 09:50:50 CST 2019"></a>Wed Nov 13 09:50:50 CST 2019</h1><h2 id="如何写一个sh脚本，并可以向其中传递参数？"><a href="#如何写一个sh脚本，并可以向其中传递参数？" class="headerlink" title="如何写一个sh脚本，并可以向其中传递参数？"></a>如何写一个sh脚本，并可以向其中传递参数？</h2><h1 id="Fri-Dec-13-08-38-08-CST-2019"><a href="#Fri-Dec-13-08-38-08-CST-2019" class="headerlink" title="Fri Dec 13 08:38:08 CST 2019"></a>Fri Dec 13 08:38:08 CST 2019</h1><h2 id="查询使用端口的命令"><a href="#查询使用端口的命令" class="headerlink" title="查询使用端口的命令"></a>查询使用端口的命令</h2><p><code>netstat -anp|grep 8080</code></p>
-<h2 id="mac下查询某个端口是否被占用"><a href="#mac下查询某个端口是否被占用" class="headerlink" title="mac下查询某个端口是否被占用"></a>mac下查询某个端口是否被占用</h2><blockquote>
-<p>方法一：<br>//查看80口是否被占用<br>sudo lsof -i :80<br>方法二：<br>netstat -anp tcp | grep 80</p>
-</blockquote>
-]]></content>
+    <title>notebook-plantUML</title>
+    <url>/2020/08/16/notebook-plantUML/</url>
+    <content><![CDATA[<h1 id="Thu-Nov-7-13-01-51-CST-2019"><a href="#Thu-Nov-7-13-01-51-CST-2019" class="headerlink" title="Thu Nov  7 13:01:51 CST 2019"></a>Thu Nov  7 13:01:51 CST 2019</h1><h2 id="活动图-activity"><a href="#活动图-activity" class="headerlink" title="活动图(activity)"></a>活动图(activity)</h2><h2 id="甘特图-gantt"><a href="#甘特图-gantt" class="headerlink" title="甘特图(gantt)"></a>甘特图(gantt)</h2><h2 id="思维导图-mindmap"><a href="#思维导图-mindmap" class="headerlink" title="思维导图(mindmap)"></a>思维导图(mindmap)</h2><h2 id="工作分解结构-work-breakdwork-structure"><a href="#工作分解结构-work-breakdwork-structure" class="headerlink" title="工作分解结构(work breakdwork structure)"></a>工作分解结构(work breakdwork structure)</h2>]]></content>
       <tags>
         <tag>notebook</tag>
       </tags>
@@ -4872,14 +4985,6 @@
       </tags>
   </entry>
   <entry>
-    <title>notebook-plantUML</title>
-    <url>/2020/08/16/notebook-plantUML/</url>
-    <content><![CDATA[<h1 id="Thu-Nov-7-13-01-51-CST-2019"><a href="#Thu-Nov-7-13-01-51-CST-2019" class="headerlink" title="Thu Nov  7 13:01:51 CST 2019"></a>Thu Nov  7 13:01:51 CST 2019</h1><h2 id="活动图-activity"><a href="#活动图-activity" class="headerlink" title="活动图(activity)"></a>活动图(activity)</h2><h2 id="甘特图-gantt"><a href="#甘特图-gantt" class="headerlink" title="甘特图(gantt)"></a>甘特图(gantt)</h2><h2 id="思维导图-mindmap"><a href="#思维导图-mindmap" class="headerlink" title="思维导图(mindmap)"></a>思维导图(mindmap)</h2><h2 id="工作分解结构-work-breakdwork-structure"><a href="#工作分解结构-work-breakdwork-structure" class="headerlink" title="工作分解结构(work breakdwork structure)"></a>工作分解结构(work breakdwork structure)</h2>]]></content>
-      <tags>
-        <tag>notebook</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>notebook-python3</title>
     <url>/2020/08/16/notebook-python3/</url>
     <content><![CDATA[<h1 id="2020年-1月27日-星期一-14时00分08秒-CST"><a href="#2020年-1月27日-星期一-14时00分08秒-CST" class="headerlink" title="2020年 1月27日 星期一 14时00分08秒 CST"></a>2020年 1月27日 星期一 14时00分08秒 CST</h1><ol>
@@ -5006,6 +5111,27 @@
 </ol>
 <p>返回结果集：为以上二种分组统计结果集的并集且未去掉重复数据。</p>
 </blockquote>
+]]></content>
+      <tags>
+        <tag>oracle</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>oracle存储过程</title>
+    <url>/2020/12/03/oracle%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/</url>
+    <content><![CDATA[<h4 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">create or replace produce 存储过程名</span><br><span class="line">is</span><br><span class="line">begin</span><br><span class="line">null;</span><br><span class="line">end;</span><br></pre></td></tr></table></figure>
+
+<h5 id="oracle中的三种循环结构"><a href="#oracle中的三种循环结构" class="headerlink" title="oracle中的三种循环结构"></a>oracle中的三种循环结构</h5><ol>
+<li><p>for循环</p>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">for 变量i in  下限..上限(条件判断语句)</span><br><span class="line">loop</span><br><span class="line">  执行语句</span><br><span class="line">end loop;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>while循环</p>
+<p> <img src="http://wrr123.github.io/2020/12/03/oracle%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/while%E5%BE%AA%E7%8E%AF.png"></p>
+</li>
+<li><p>do..while循环</p>
+<p> <img src="http://wrr123.github.io/2020/12/03/oracle%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/do-while%E5%BE%AA%E7%8E%AF.png"></p>
+</li>
+</ol>
 ]]></content>
       <tags>
         <tag>oracle</tag>
@@ -5448,6 +5574,53 @@
       </tags>
   </entry>
   <entry>
+    <title>quill富文本编辑器</title>
+    <url>/2020/08/14/quill%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8/</url>
+    <content><![CDATA[<h4 id="简单介绍"><a href="#简单介绍" class="headerlink" title="简单介绍"></a>简单介绍</h4><p>Quill 是一个很流行的富文本编辑器，</p>
+<p>github：<a href="https://github.com/quilljs/quill/">https://github.com/quilljs/quill/</a></p>
+<p>官网：<a href="https://quilljs.com/">官网</a></p>
+<h5 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h5><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;!-- Include stylesheet --&gt;</span><br><span class="line">&lt;link href=<span class="string">&quot;https://cdn.quilljs.com/1.3.6/quill.snow.css&quot;</span> rel=<span class="string">&quot;stylesheet&quot;</span>&gt;</span><br><span class="line"> </span><br><span class="line">&lt;!-- Create the editor container --&gt;</span><br><span class="line">&lt;div id=<span class="string">&quot;editor&quot;</span>&gt;</span><br><span class="line">  &lt;p&gt;Hello World!&lt;/p&gt;</span><br><span class="line">  &lt;p&gt;Some initial &lt;strong&gt;bold&lt;<span class="regexp">/strong&gt; text&lt;/</span>p&gt;</span><br><span class="line">  &lt;p&gt;<span class="xml"><span class="tag">&lt;<span class="name">br</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line">&lt;/div&gt;</span><br><span class="line"> </span><br><span class="line">&lt;!-- Include the Quill library --&gt;</span><br><span class="line">&lt;script src=<span class="string">&quot;https://cdn.quilljs.com/1.3.6/quill.js&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line"> </span><br><span class="line">&lt;!-- Initialize Quill editor --&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="keyword">var</span> quill = <span class="keyword">new</span> Quill(<span class="string">&#x27;#editor&#x27;</span>, &#123;</span><br><span class="line">    theme: <span class="string">&#x27;snow&#x27;</span></span><br><span class="line">  &#125;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<p>vue 中使用：</p>
+<p><code>npm install quill@1.3.6</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;div id&#x3D;&quot;editor&quot;&gt;</span><br><span class="line">      &lt;p&gt;Hello World!&lt;&#x2F;p&gt;</span><br><span class="line">      &lt;p&gt;Some initial &lt;strong&gt;bold&lt;&#x2F;strong&gt; text&lt;&#x2F;p&gt;</span><br><span class="line">      &lt;p&gt;&lt;br&gt;&lt;&#x2F;p&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"> </span><br><span class="line">&lt;script&gt;</span><br><span class="line">import Quill from &#39;quill&#39;</span><br><span class="line"> </span><br><span class="line">export default &#123;</span><br><span class="line">  name: &quot;QuillEditor&quot;,</span><br><span class="line">  mounted () &#123;</span><br><span class="line">    this.initQuill()</span><br><span class="line">  &#125;,</span><br><span class="line">  beforeDestroy () &#123;</span><br><span class="line">    this.quill &#x3D; null</span><br><span class="line">    delete this.quill</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    initQuill () &#123;</span><br><span class="line">      const quill &#x3D; new Quill(&#39;#editor&#39;, &#123;</span><br><span class="line">        theme: &#39;snow&#39;</span><br><span class="line">      &#125;)</span><br><span class="line">      this.quill &#x3D; quill</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>创建Quill实例需要两个参数，container与options</p>
+<h3 id="Container"><a href="#Container" class="headerlink" title="Container"></a>Container</h3><p>container可以是css选择器，也可以是DOM对象：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> editor = <span class="string">``</span><span class="keyword">new</span><span class="string">` `</span>Quill(<span class="string">``</span><span class="string">&#x27;#editor&#x27;</span><span class="string">``</span>)</span><br></pre></td></tr></table></figure>
+
+<p>或者</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> container = <span class="built_in">document</span>.getElementById(<span class="string">``</span><span class="string">&#x27;editor&#x27;</span><span class="string">``</span>);<span class="string">``</span><span class="keyword">const</span> editor = <span class="string">``</span><span class="keyword">new</span><span class="string">` `</span>Quill(container);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Options"><a href="#Options" class="headerlink" title="Options"></a>Options</h3><p>包括theme、formats、modules等</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> options = &#123;<span class="string">``</span> <span class="string">``</span>debug: <span class="string">``</span><span class="string">&#x27;info&#x27;</span><span class="string">``</span>,<span class="string">``</span> <span class="string">``</span>modules: &#123;<span class="string">``</span>  <span class="string">``</span>toolbar: <span class="string">``</span><span class="string">&#x27;#toolbar&#x27;</span><span class="string">``</span> <span class="string">``</span>&#125;,<span class="string">``</span> <span class="string">``</span>placeholder: <span class="string">``</span><span class="string">&#x27;Compose an epic...&#x27;</span><span class="string">``</span>,<span class="string">``</span> <span class="string">``</span>readOnly: <span class="string">``</span><span class="literal">true</span><span class="string">``</span>,<span class="string">``</span> <span class="string">``</span>theme: <span class="string">``</span><span class="string">&#x27;snow&#x27;</span><span class="string">``</span>&#125;;<span class="string">``</span><span class="keyword">const</span> editor = <span class="string">``</span><span class="keyword">new</span><span class="string">` `</span>Quill(<span class="string">``</span><span class="string">&#x27;#editor&#x27;</span><span class="string">``</span>, options);</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h5 id="获取与显示编辑内容"><a href="#获取与显示编辑内容" class="headerlink" title="获取与显示编辑内容"></a>获取与显示编辑内容</h5><p>富文本编辑器的主要作用是编辑文本、保存、显示等。</p>
+<p>获取编辑完成的内容：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> html = <span class="built_in">document</span>.querySelector(<span class="string">``</span><span class="string">&#x27;#editor&#x27;</span><span class="string">``</span>).children[<span class="number">0</span>].innerHTML<span class="string">``</span><span class="built_in">console</span>.log(html)</span><br></pre></td></tr></table></figure>
+
+<p>内容：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">Hello World!Some initial bold text </span><br></pre></td></tr></table></figure>
+
+<p>获取内容后置于编辑器中显示：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> html = <span class="built_in">document</span>.querySelector(<span class="string">``</span><span class="string">&#x27;#editor&#x27;</span><span class="string">``</span>).children[<span class="number">0</span>].innerHTML<span class="string">``</span><span class="built_in">this</span><span class="string">``</span>.quill.pasteHTML(<span class="string">``</span><span class="string">&#x27;add some title&#x27;</span><span class="string">` `</span>+ html)</span><br></pre></td></tr></table></figure>
+
+<h5 id="Toolbar"><a href="#Toolbar" class="headerlink" title="Toolbar"></a>Toolbar</h5><p>编辑器上方一栏可以设置文本格式部分，即为modules中的toolbar，可以使用默认值，也可以定制。</p>
+<p>使用数组：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> toolbarOptions = [<span class="string">``</span><span class="string">&#x27;bold&#x27;</span><span class="string">``</span>, <span class="string">``</span><span class="string">&#x27;italic&#x27;</span><span class="string">``</span>, <span class="string">``</span><span class="string">&#x27;underline&#x27;</span><span class="string">``</span>, <span class="string">``</span><span class="string">&#x27;strike&#x27;</span><span class="string">``</span>];<span class="string">` `</span><span class="keyword">const</span> quill = <span class="string">``</span><span class="keyword">new</span><span class="string">` `</span>Quill(<span class="string">``</span><span class="string">&#x27;#editor&#x27;</span><span class="string">``</span>, &#123;<span class="string">``</span> <span class="string">``</span>modules: &#123;<span class="string">``</span>  <span class="string">``</span>toolbar: toolbarOptions<span class="string">``</span> <span class="string">``</span>&#125;<span class="string">``</span>&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>也可以分组</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> toolbarOptions = [</span><br><span class="line">  [<span class="string">&#x27;bold&#x27;</span>, <span class="string">&#x27;italic&#x27;</span>, <span class="string">&#x27;underline&#x27;</span>, <span class="string">&#x27;strike&#x27;</span>],        <span class="comment">// toggled buttons</span></span><br><span class="line">  [<span class="string">&#x27;blockquote&#x27;</span>, <span class="string">&#x27;code-block&#x27;</span>],</span><br><span class="line"> </span><br><span class="line">  [&#123; <span class="string">&#x27;header&#x27;</span>: <span class="number">1</span> &#125;, &#123; <span class="string">&#x27;header&#x27;</span>: <span class="number">2</span> &#125;],               <span class="comment">// custom button values</span></span><br><span class="line">  [&#123; <span class="string">&#x27;list&#x27;</span>: <span class="string">&#x27;ordered&#x27;</span>&#125;, &#123; <span class="string">&#x27;list&#x27;</span>: <span class="string">&#x27;bullet&#x27;</span> &#125;],</span><br><span class="line">  [&#123; <span class="string">&#x27;script&#x27;</span>: <span class="string">&#x27;sub&#x27;</span>&#125;, &#123; <span class="string">&#x27;script&#x27;</span>: <span class="string">&#x27;super&#x27;</span> &#125;],      <span class="comment">// superscript/subscript</span></span><br><span class="line">  [&#123; <span class="string">&#x27;indent&#x27;</span>: <span class="string">&#x27;-1&#x27;</span>&#125;, &#123; <span class="string">&#x27;indent&#x27;</span>: <span class="string">&#x27;+1&#x27;</span> &#125;],          <span class="comment">// outdent/indent</span></span><br><span class="line">  [&#123; <span class="string">&#x27;direction&#x27;</span>: <span class="string">&#x27;rtl&#x27;</span> &#125;],                         <span class="comment">// text direction</span></span><br><span class="line"> </span><br><span class="line">  [&#123; <span class="string">&#x27;size&#x27;</span>: [<span class="string">&#x27;small&#x27;</span>, <span class="literal">false</span>, <span class="string">&#x27;large&#x27;</span>, <span class="string">&#x27;huge&#x27;</span>] &#125;],  <span class="comment">// custom dropdown</span></span><br><span class="line">  [&#123; <span class="string">&#x27;header&#x27;</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="literal">false</span>] &#125;],</span><br><span class="line"> </span><br><span class="line">  [&#123; <span class="string">&#x27;color&#x27;</span>: [] &#125;, &#123; <span class="string">&#x27;background&#x27;</span>: [] &#125;],          <span class="comment">// dropdown with defaults from theme</span></span><br><span class="line">  [&#123; <span class="string">&#x27;font&#x27;</span>: [] &#125;],</span><br><span class="line">  [&#123; <span class="string">&#x27;align&#x27;</span>: [] &#125;],</span><br><span class="line"> </span><br><span class="line">  [<span class="string">&#x27;clean&#x27;</span>]                                         <span class="comment">// remove formatting button</span></span><br><span class="line">];</span><br><span class="line"> </span><br><span class="line"><span class="keyword">const</span> quill = <span class="keyword">new</span> Quill(<span class="string">&#x27;#editor&#x27;</span>, &#123;</span><br><span class="line">  modules: &#123;</span><br><span class="line">    toolbar: toolbarOptions</span><br><span class="line">  &#125;,</span><br><span class="line">  theme: <span class="string">&#x27;snow&#x27;</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>js</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>python</title>
     <url>/2020/10/30/python/</url>
     <content><![CDATA[<h4 id="guide"><a href="#guide" class="headerlink" title="guide"></a>guide</h4><h4 id="语言进阶"><a href="#语言进阶" class="headerlink" title="语言进阶"></a>语言进阶</h4><h5 id="数据结构和算法"><a href="#数据结构和算法" class="headerlink" title="数据结构和算法"></a>数据结构和算法</h5><ul>
@@ -5528,56 +5701,9 @@
 <p>其中的context是一个表达式，返回的是一个对象，var用来保存context表达式返回的对象，可以有单个或者多个返回值。</p>
 </blockquote>
 <h5 id="面向对象相关知识"><a href="#面向对象相关知识" class="headerlink" title="面向对象相关知识"></a>面向对象相关知识</h5><p><img src="http://wrr123.github.io/2020/10/30/python/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86.png"></p>
-<h5 id="迭代器和生成器"><a href="#迭代器和生成器" class="headerlink" title="迭代器和生成器"></a>迭代器和生成器</h5><h5 id="并发编程"><a href="#并发编程" class="headerlink" title="并发编程"></a>并发编程</h5>]]></content>
+<h5 id="迭代器和生成器"><a href="#迭代器和生成器" class="headerlink" title="迭代器和生成器"></a>迭代器和生成器</h5><h5 id="并发编程"><a href="#并发编程" class="headerlink" title="并发编程"></a>并发编程</h5><h4 id="Web前端概述"><a href="#Web前端概述" class="headerlink" title="Web前端概述"></a>Web前端概述</h4>]]></content>
       <tags>
         <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>quill富文本编辑器</title>
-    <url>/2020/08/14/quill%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8/</url>
-    <content><![CDATA[<h4 id="简单介绍"><a href="#简单介绍" class="headerlink" title="简单介绍"></a>简单介绍</h4><p>Quill 是一个很流行的富文本编辑器，</p>
-<p>github：<a href="https://github.com/quilljs/quill/">https://github.com/quilljs/quill/</a></p>
-<p>官网：<a href="https://quilljs.com/">官网</a></p>
-<h5 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h5><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;!-- Include stylesheet --&gt;</span><br><span class="line">&lt;link href=<span class="string">&quot;https://cdn.quilljs.com/1.3.6/quill.snow.css&quot;</span> rel=<span class="string">&quot;stylesheet&quot;</span>&gt;</span><br><span class="line"> </span><br><span class="line">&lt;!-- Create the editor container --&gt;</span><br><span class="line">&lt;div id=<span class="string">&quot;editor&quot;</span>&gt;</span><br><span class="line">  &lt;p&gt;Hello World!&lt;/p&gt;</span><br><span class="line">  &lt;p&gt;Some initial &lt;strong&gt;bold&lt;<span class="regexp">/strong&gt; text&lt;/</span>p&gt;</span><br><span class="line">  &lt;p&gt;<span class="xml"><span class="tag">&lt;<span class="name">br</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line">&lt;/div&gt;</span><br><span class="line"> </span><br><span class="line">&lt;!-- Include the Quill library --&gt;</span><br><span class="line">&lt;script src=<span class="string">&quot;https://cdn.quilljs.com/1.3.6/quill.js&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line"> </span><br><span class="line">&lt;!-- Initialize Quill editor --&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="keyword">var</span> quill = <span class="keyword">new</span> Quill(<span class="string">&#x27;#editor&#x27;</span>, &#123;</span><br><span class="line">    theme: <span class="string">&#x27;snow&#x27;</span></span><br><span class="line">  &#125;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<a id="more"></a>
-
-<p>vue 中使用：</p>
-<p><code>npm install quill@1.3.6</code></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;div id&#x3D;&quot;editor&quot;&gt;</span><br><span class="line">      &lt;p&gt;Hello World!&lt;&#x2F;p&gt;</span><br><span class="line">      &lt;p&gt;Some initial &lt;strong&gt;bold&lt;&#x2F;strong&gt; text&lt;&#x2F;p&gt;</span><br><span class="line">      &lt;p&gt;&lt;br&gt;&lt;&#x2F;p&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"> </span><br><span class="line">&lt;script&gt;</span><br><span class="line">import Quill from &#39;quill&#39;</span><br><span class="line"> </span><br><span class="line">export default &#123;</span><br><span class="line">  name: &quot;QuillEditor&quot;,</span><br><span class="line">  mounted () &#123;</span><br><span class="line">    this.initQuill()</span><br><span class="line">  &#125;,</span><br><span class="line">  beforeDestroy () &#123;</span><br><span class="line">    this.quill &#x3D; null</span><br><span class="line">    delete this.quill</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    initQuill () &#123;</span><br><span class="line">      const quill &#x3D; new Quill(&#39;#editor&#39;, &#123;</span><br><span class="line">        theme: &#39;snow&#39;</span><br><span class="line">      &#125;)</span><br><span class="line">      this.quill &#x3D; quill</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>创建Quill实例需要两个参数，container与options</p>
-<h3 id="Container"><a href="#Container" class="headerlink" title="Container"></a>Container</h3><p>container可以是css选择器，也可以是DOM对象：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> editor = <span class="string">``</span><span class="keyword">new</span><span class="string">` `</span>Quill(<span class="string">``</span><span class="string">&#x27;#editor&#x27;</span><span class="string">``</span>)</span><br></pre></td></tr></table></figure>
-
-<p>或者</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> container = <span class="built_in">document</span>.getElementById(<span class="string">``</span><span class="string">&#x27;editor&#x27;</span><span class="string">``</span>);<span class="string">``</span><span class="keyword">const</span> editor = <span class="string">``</span><span class="keyword">new</span><span class="string">` `</span>Quill(container);</span><br></pre></td></tr></table></figure>
-
-<h3 id="Options"><a href="#Options" class="headerlink" title="Options"></a>Options</h3><p>包括theme、formats、modules等</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> options = &#123;<span class="string">``</span> <span class="string">``</span>debug: <span class="string">``</span><span class="string">&#x27;info&#x27;</span><span class="string">``</span>,<span class="string">``</span> <span class="string">``</span>modules: &#123;<span class="string">``</span>  <span class="string">``</span>toolbar: <span class="string">``</span><span class="string">&#x27;#toolbar&#x27;</span><span class="string">``</span> <span class="string">``</span>&#125;,<span class="string">``</span> <span class="string">``</span>placeholder: <span class="string">``</span><span class="string">&#x27;Compose an epic...&#x27;</span><span class="string">``</span>,<span class="string">``</span> <span class="string">``</span>readOnly: <span class="string">``</span><span class="literal">true</span><span class="string">``</span>,<span class="string">``</span> <span class="string">``</span>theme: <span class="string">``</span><span class="string">&#x27;snow&#x27;</span><span class="string">``</span>&#125;;<span class="string">``</span><span class="keyword">const</span> editor = <span class="string">``</span><span class="keyword">new</span><span class="string">` `</span>Quill(<span class="string">``</span><span class="string">&#x27;#editor&#x27;</span><span class="string">``</span>, options);</span><br></pre></td></tr></table></figure>
-</blockquote>
-<h5 id="获取与显示编辑内容"><a href="#获取与显示编辑内容" class="headerlink" title="获取与显示编辑内容"></a>获取与显示编辑内容</h5><p>富文本编辑器的主要作用是编辑文本、保存、显示等。</p>
-<p>获取编辑完成的内容：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> html = <span class="built_in">document</span>.querySelector(<span class="string">``</span><span class="string">&#x27;#editor&#x27;</span><span class="string">``</span>).children[<span class="number">0</span>].innerHTML<span class="string">``</span><span class="built_in">console</span>.log(html)</span><br></pre></td></tr></table></figure>
-
-<p>内容：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">Hello World!Some initial bold text </span><br></pre></td></tr></table></figure>
-
-<p>获取内容后置于编辑器中显示：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> html = <span class="built_in">document</span>.querySelector(<span class="string">``</span><span class="string">&#x27;#editor&#x27;</span><span class="string">``</span>).children[<span class="number">0</span>].innerHTML<span class="string">``</span><span class="built_in">this</span><span class="string">``</span>.quill.pasteHTML(<span class="string">``</span><span class="string">&#x27;add some title&#x27;</span><span class="string">` `</span>+ html)</span><br></pre></td></tr></table></figure>
-
-<h5 id="Toolbar"><a href="#Toolbar" class="headerlink" title="Toolbar"></a>Toolbar</h5><p>编辑器上方一栏可以设置文本格式部分，即为modules中的toolbar，可以使用默认值，也可以定制。</p>
-<p>使用数组：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> toolbarOptions = [<span class="string">``</span><span class="string">&#x27;bold&#x27;</span><span class="string">``</span>, <span class="string">``</span><span class="string">&#x27;italic&#x27;</span><span class="string">``</span>, <span class="string">``</span><span class="string">&#x27;underline&#x27;</span><span class="string">``</span>, <span class="string">``</span><span class="string">&#x27;strike&#x27;</span><span class="string">``</span>];<span class="string">` `</span><span class="keyword">const</span> quill = <span class="string">``</span><span class="keyword">new</span><span class="string">` `</span>Quill(<span class="string">``</span><span class="string">&#x27;#editor&#x27;</span><span class="string">``</span>, &#123;<span class="string">``</span> <span class="string">``</span>modules: &#123;<span class="string">``</span>  <span class="string">``</span>toolbar: toolbarOptions<span class="string">``</span> <span class="string">``</span>&#125;<span class="string">``</span>&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>也可以分组</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> toolbarOptions = [</span><br><span class="line">  [<span class="string">&#x27;bold&#x27;</span>, <span class="string">&#x27;italic&#x27;</span>, <span class="string">&#x27;underline&#x27;</span>, <span class="string">&#x27;strike&#x27;</span>],        <span class="comment">// toggled buttons</span></span><br><span class="line">  [<span class="string">&#x27;blockquote&#x27;</span>, <span class="string">&#x27;code-block&#x27;</span>],</span><br><span class="line"> </span><br><span class="line">  [&#123; <span class="string">&#x27;header&#x27;</span>: <span class="number">1</span> &#125;, &#123; <span class="string">&#x27;header&#x27;</span>: <span class="number">2</span> &#125;],               <span class="comment">// custom button values</span></span><br><span class="line">  [&#123; <span class="string">&#x27;list&#x27;</span>: <span class="string">&#x27;ordered&#x27;</span>&#125;, &#123; <span class="string">&#x27;list&#x27;</span>: <span class="string">&#x27;bullet&#x27;</span> &#125;],</span><br><span class="line">  [&#123; <span class="string">&#x27;script&#x27;</span>: <span class="string">&#x27;sub&#x27;</span>&#125;, &#123; <span class="string">&#x27;script&#x27;</span>: <span class="string">&#x27;super&#x27;</span> &#125;],      <span class="comment">// superscript/subscript</span></span><br><span class="line">  [&#123; <span class="string">&#x27;indent&#x27;</span>: <span class="string">&#x27;-1&#x27;</span>&#125;, &#123; <span class="string">&#x27;indent&#x27;</span>: <span class="string">&#x27;+1&#x27;</span> &#125;],          <span class="comment">// outdent/indent</span></span><br><span class="line">  [&#123; <span class="string">&#x27;direction&#x27;</span>: <span class="string">&#x27;rtl&#x27;</span> &#125;],                         <span class="comment">// text direction</span></span><br><span class="line"> </span><br><span class="line">  [&#123; <span class="string">&#x27;size&#x27;</span>: [<span class="string">&#x27;small&#x27;</span>, <span class="literal">false</span>, <span class="string">&#x27;large&#x27;</span>, <span class="string">&#x27;huge&#x27;</span>] &#125;],  <span class="comment">// custom dropdown</span></span><br><span class="line">  [&#123; <span class="string">&#x27;header&#x27;</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="literal">false</span>] &#125;],</span><br><span class="line"> </span><br><span class="line">  [&#123; <span class="string">&#x27;color&#x27;</span>: [] &#125;, &#123; <span class="string">&#x27;background&#x27;</span>: [] &#125;],          <span class="comment">// dropdown with defaults from theme</span></span><br><span class="line">  [&#123; <span class="string">&#x27;font&#x27;</span>: [] &#125;],</span><br><span class="line">  [&#123; <span class="string">&#x27;align&#x27;</span>: [] &#125;],</span><br><span class="line"> </span><br><span class="line">  [<span class="string">&#x27;clean&#x27;</span>]                                         <span class="comment">// remove formatting button</span></span><br><span class="line">];</span><br><span class="line"> </span><br><span class="line"><span class="keyword">const</span> quill = <span class="keyword">new</span> Quill(<span class="string">&#x27;#editor&#x27;</span>, &#123;</span><br><span class="line">  modules: &#123;</span><br><span class="line">    toolbar: toolbarOptions</span><br><span class="line">  &#125;,</span><br><span class="line">  theme: <span class="string">&#x27;snow&#x27;</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <tags>
-        <tag>js</tag>
       </tags>
   </entry>
   <entry>
@@ -5707,11 +5833,6 @@
         <tag>java</tag>
         <tag>安全框架</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>shiro权限控制</title>
-    <url>/2020/07/23/shiro%E6%9D%83%E9%99%90%E6%8E%A7%E5%88%B6/</url>
-    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>spring-boot连接sqlserver</title>
@@ -5865,6 +5986,11 @@
         <tag>java</tag>
         <tag>数据库</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>shiro权限控制</title>
+    <url>/2020/07/23/shiro%E6%9D%83%E9%99%90%E6%8E%A7%E5%88%B6/</url>
+    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>spring中@RequestBody和@ReuqestParam的区别</title>
@@ -6828,6 +6954,38 @@
       </tags>
   </entry>
   <entry>
+    <title>webpack入门指南</title>
+    <url>/2020/08/24/webpack%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/</url>
+    <content><![CDATA[<h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><p>webpack 是一个前端资源加载/打包工具。它将根据模块的依赖关系进行静态分析，然后将这些模块按照指定的规则生成对应的静态资源。</p>
+<p><img src="http://wrr123.github.io/2020/08/24/webpack%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/001.png"></p>
+<a id="more"></a>
+
+<h4 id="使用-webpack-打包后的-vue-项目如何运行"><a href="#使用-webpack-打包后的-vue-项目如何运行" class="headerlink" title="使用 webpack 打包后的 vue 项目如何运行"></a>使用 webpack 打包后的 vue 项目如何运行</h4><p>可以部署到 express 服务器上运行。</p>
+<ol>
+<li><p>安装 express-generator 生成器</p>
+<p><code>npm install express-generator -g // 也可使用cnpm比较快</code></p>
+</li>
+<li><p>创建一个 express 项目</p>
+<p><code>express expressName // expressName 为项目名</code></p>
+</li>
+<li><p>进入项目目录，安装相关项目依赖</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> expressName</span><br><span class="line">npm install <span class="comment"># 或者 cnpm install</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>此时生成的项目目录是这样的：</p>
+<p><img src="http://wrr123.github.io/2020/08/24/webpack%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/002.png"></p>
+</li>
+<li><p>将 dist 文件夹下的所有文件复制到 express 项目的 public 文件夹下面，然后运行 <code>npm start</code> 来启动 express 项目。</p>
+</li>
+<li><p>打开浏览器，输入 <code>localhost:3000</code> 就可以看到效果了。</p>
+</li>
+</ol>
+]]></content>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>打包工具</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>vue计算属性和侦听器</title>
     <url>/2020/08/10/vue%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7%E5%92%8C%E4%BE%A6%E5%90%AC%E5%99%A8/</url>
     <content><![CDATA[<h4 id="计算属性"><a href="#计算属性" class="headerlink" title="计算属性"></a>计算属性</h4><h5 id="模板内的表达式"><a href="#模板内的表达式" class="headerlink" title="模板内的表达式"></a>模板内的表达式</h5><p>模板内的表达式非常的便利，但是它设计的初衷是用于简单运算的。</p>
@@ -6894,38 +7052,6 @@
       <tags>
         <tag>js</tag>
         <tag>vuejs</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>webpack入门指南</title>
-    <url>/2020/08/24/webpack%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/</url>
-    <content><![CDATA[<h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><p>webpack 是一个前端资源加载/打包工具。它将根据模块的依赖关系进行静态分析，然后将这些模块按照指定的规则生成对应的静态资源。</p>
-<p><img src="http://wrr123.github.io/2020/08/24/webpack%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/001.png"></p>
-<a id="more"></a>
-
-<h4 id="使用-webpack-打包后的-vue-项目如何运行"><a href="#使用-webpack-打包后的-vue-项目如何运行" class="headerlink" title="使用 webpack 打包后的 vue 项目如何运行"></a>使用 webpack 打包后的 vue 项目如何运行</h4><p>可以部署到 express 服务器上运行。</p>
-<ol>
-<li><p>安装 express-generator 生成器</p>
-<p><code>npm install express-generator -g // 也可使用cnpm比较快</code></p>
-</li>
-<li><p>创建一个 express 项目</p>
-<p><code>express expressName // expressName 为项目名</code></p>
-</li>
-<li><p>进入项目目录，安装相关项目依赖</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> expressName</span><br><span class="line">npm install <span class="comment"># 或者 cnpm install</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>此时生成的项目目录是这样的：</p>
-<p><img src="http://wrr123.github.io/2020/08/24/webpack%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/002.png"></p>
-</li>
-<li><p>将 dist 文件夹下的所有文件复制到 express 项目的 public 文件夹下面，然后运行 <code>npm start</code> 来启动 express 项目。</p>
-</li>
-<li><p>打开浏览器，输入 <code>localhost:3000</code> 就可以看到效果了。</p>
-</li>
-</ol>
-]]></content>
-      <tags>
-        <tag>JavaScript</tag>
-        <tag>打包工具</tag>
       </tags>
   </entry>
   <entry>
@@ -7419,53 +7545,6 @@ window.location本身也是一个对象。
       </tags>
   </entry>
   <entry>
-    <title>每日清单</title>
-    <url>/2020/08/11/%E6%AF%8F%E6%97%A5%E6%B8%85%E5%8D%95/</url>
-    <content><![CDATA[<h5 id="2020-08-11"><a href="#2020-08-11" class="headerlink" title="2020-08-11"></a>2020-08-11</h5><ul>
-<li><input disabled type="checkbox"> </li>
-</ul>
-<a id="more"></a>
-
-<h5 id="2020-08-12"><a href="#2020-08-12" class="headerlink" title="2020-08-12"></a>2020-08-12</h5><ul>
-<li><input checked disabled type="checkbox"> 温州基地看板数据导入功能</li>
-</ul>
-<h5 id="2020-08-13"><a href="#2020-08-13" class="headerlink" title="2020-08-13"></a>2020-08-13</h5><ul>
-<li><input disabled type="checkbox"> </li>
-</ul>
-<h5 id="2020-08-14"><a href="#2020-08-14" class="headerlink" title="2020-08-14"></a>2020-08-14</h5><ul>
-<li><input checked disabled type="checkbox"> 公告管理，公告内容使用富文本编辑器，首页公告展示</li>
-</ul>
-<h5 id="2020-08-17"><a href="#2020-08-17" class="headerlink" title="2020-08-17"></a>2020-08-17</h5><ul>
-<li><input checked disabled type="checkbox"> 首页展示，可进行 tab 页切换</li>
-</ul>
-<h5 id="2020-08-19"><a href="#2020-08-19" class="headerlink" title="2020-08-19"></a>2020-08-19</h5><ul>
-<li><input disabled type="checkbox"> <del>主页界面，边框栏宽度和主显示区域的宽度大小可以手动拖拽</del></li>
-</ul>
-<h5 id="2020-08-20"><a href="#2020-08-20" class="headerlink" title="2020-08-20"></a>2020-08-20</h5><ul>
-<li><input checked disabled type="checkbox"> 前后端分离项目，登录界面迁移<ul>
-<li>yarn </li>
-<li>vue 中带范围的 style</li>
-<li>chrome 配置 vue-dev 开发工具</li>
-<li>css 背景图片实现渐变色</li>
-</ul>
-</li>
-<li><input checked disabled type="checkbox"> 前后端分离项目，首页界面迁移（部分）</li>
-</ul>
-<h5 id="2020-08-24"><a href="#2020-08-24" class="headerlink" title="2020-08-24"></a>2020-08-24</h5><ul>
-<li><input checked disabled type="checkbox"> 将 vue 项目，打包发布到 Nginx ，并测试成功。</li>
-</ul>
-<h5 id="2020-08-26"><a href="#2020-08-26" class="headerlink" title="2020-08-26"></a>2020-08-26</h5><ul>
-<li><input checked disabled type="checkbox"> vue 项目，主界面样式修改</li>
-</ul>
-<h5 id="2020-08-27"><a href="#2020-08-27" class="headerlink" title="2020-08-27"></a>2020-08-27</h5><ul>
-<li><input disabled type="checkbox"> vue项目，现存界面的 UI 优化</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>todo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>程序员之项目管理</title>
     <url>/2020/09/30/%E7%A8%8B%E5%BA%8F%E5%91%98%E4%B9%8B%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/</url>
     <content><![CDATA[<h4 id="知识树"><a href="#知识树" class="headerlink" title="知识树"></a>知识树</h4><p>技术管理岗位，需要软件开发的专业知识体系图</p>
@@ -7540,6 +7619,53 @@ window.location本身也是一个对象。
       </tags>
   </entry>
   <entry>
+    <title>每日清单</title>
+    <url>/2020/08/11/%E6%AF%8F%E6%97%A5%E6%B8%85%E5%8D%95/</url>
+    <content><![CDATA[<h5 id="2020-08-11"><a href="#2020-08-11" class="headerlink" title="2020-08-11"></a>2020-08-11</h5><ul>
+<li><input disabled type="checkbox"> </li>
+</ul>
+<a id="more"></a>
+
+<h5 id="2020-08-12"><a href="#2020-08-12" class="headerlink" title="2020-08-12"></a>2020-08-12</h5><ul>
+<li><input checked disabled type="checkbox"> 温州基地看板数据导入功能</li>
+</ul>
+<h5 id="2020-08-13"><a href="#2020-08-13" class="headerlink" title="2020-08-13"></a>2020-08-13</h5><ul>
+<li><input disabled type="checkbox"> </li>
+</ul>
+<h5 id="2020-08-14"><a href="#2020-08-14" class="headerlink" title="2020-08-14"></a>2020-08-14</h5><ul>
+<li><input checked disabled type="checkbox"> 公告管理，公告内容使用富文本编辑器，首页公告展示</li>
+</ul>
+<h5 id="2020-08-17"><a href="#2020-08-17" class="headerlink" title="2020-08-17"></a>2020-08-17</h5><ul>
+<li><input checked disabled type="checkbox"> 首页展示，可进行 tab 页切换</li>
+</ul>
+<h5 id="2020-08-19"><a href="#2020-08-19" class="headerlink" title="2020-08-19"></a>2020-08-19</h5><ul>
+<li><input disabled type="checkbox"> <del>主页界面，边框栏宽度和主显示区域的宽度大小可以手动拖拽</del></li>
+</ul>
+<h5 id="2020-08-20"><a href="#2020-08-20" class="headerlink" title="2020-08-20"></a>2020-08-20</h5><ul>
+<li><input checked disabled type="checkbox"> 前后端分离项目，登录界面迁移<ul>
+<li>yarn </li>
+<li>vue 中带范围的 style</li>
+<li>chrome 配置 vue-dev 开发工具</li>
+<li>css 背景图片实现渐变色</li>
+</ul>
+</li>
+<li><input checked disabled type="checkbox"> 前后端分离项目，首页界面迁移（部分）</li>
+</ul>
+<h5 id="2020-08-24"><a href="#2020-08-24" class="headerlink" title="2020-08-24"></a>2020-08-24</h5><ul>
+<li><input checked disabled type="checkbox"> 将 vue 项目，打包发布到 Nginx ，并测试成功。</li>
+</ul>
+<h5 id="2020-08-26"><a href="#2020-08-26" class="headerlink" title="2020-08-26"></a>2020-08-26</h5><ul>
+<li><input checked disabled type="checkbox"> vue 项目，主界面样式修改</li>
+</ul>
+<h5 id="2020-08-27"><a href="#2020-08-27" class="headerlink" title="2020-08-27"></a>2020-08-27</h5><ul>
+<li><input disabled type="checkbox"> vue项目，现存界面的 UI 优化</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>todo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>箭头函数</title>
     <url>/2020/09/03/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0/</url>
     <content><![CDATA[<h4 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">(param1, param2, …, paramN) =&gt; &#123; statements &#125; </span><br><span class="line">(param1, param2, …, paramN) =&gt; expression</span><br><span class="line"><span class="comment">//相当于：(param1, param2, …, paramN) =&gt;&#123; return expression; &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 当只有一个参数时，圆括号是可选的：</span></span><br><span class="line">(singleParam) =&gt; &#123; statements &#125;</span><br><span class="line">singleParam =&gt; &#123; statements &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 没有参数的函数应该写成一对圆括号。</span></span><br><span class="line">() =&gt; &#123; statements &#125;</span><br></pre></td></tr></table></figure>
@@ -7548,6 +7674,49 @@ window.location本身也是一个对象。
 <a id="more"></a>]]></content>
       <tags>
         <tag>javascript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>递归算法</title>
+    <url>/2020/08/17/%E9%80%92%E5%BD%92%E7%AE%97%E6%B3%95/</url>
+    <content><![CDATA[<h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><p>递归算法是一种直接或间接调用自身函数或方法的算法。</p>
+<p>Java 递归算法是基于 Java 语言实现的递归算法。</p>
+<p>递归算法的实质是把问题分解成规模缩小的同类问题的子问题，然后递归调用方法来表示问题的解。</p>
+<p>递归算法对解决一大类问题很有效，它可以使算法简洁和易于理解。</p>
+<blockquote>
+<p>递归算法，其实说白了，就是程序的自身调用。它表现在一段程序中往往会遇到调用自身的那样一种coding策略，这样我们就可以利用大道至简的思想，把一个大的复杂的问题层层转换为一个小的和原问题相似的问题来求解的这样一种策略。递归往往能给我们带来非常简洁非常直观的代码形势，从而使我们的编码大大简化，然而递归的思维确实很我们的常规思维相逆的，我们通常都是从上而下的思维问题， 而递归趋势从下往上的进行思维。这样我们就能看到我们会用很少的语句解决了非常大的问题，所以递归策略的最主要体现就是小的代码量解决了非常复杂的问题。</p>
+</blockquote>
+<a id="more"></a>
+
+<h5 id="递归算法解决问题的特点："><a href="#递归算法解决问题的特点：" class="headerlink" title="递归算法解决问题的特点："></a>递归算法解决问题的特点：</h5><ol>
+<li>递归就是方法里调用自身；</li>
+<li>在使用递归策略时，必须有一个明确的递归结束条件，称为递归出口；</li>
+<li>递归算法解题通常显得很简洁，但递归算法解题的运行效率极低。所以一般不提倡用递归算法来设计程序；</li>
+<li>在递归调用的过程中系统为每一层的返回点、局部量等开辟了栈来存储。递归次数过多容易造成栈溢出等；</li>
+</ol>
+<p><strong>在做递归算法的时候，一定要把握住出口，也就是做递归算法必须要有一个明确的递归结束条件，这一点是非常重要的。</strong></p>
+<h4 id="几个栗子"><a href="#几个栗子" class="headerlink" title="几个栗子"></a>几个栗子</h4><h5 id="①-斐波那契数列"><a href="#①-斐波那契数列" class="headerlink" title="① 斐波那契数列"></a>① 斐波那契数列</h5><p>一个栗子</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * ④ 由于斐波纳挈数列是以兔子的繁殖引入的，因此也叫“兔子数列”。它指的是这样一个数列：0,1,1,2,3,5,8,13......从这组数可以很明显看出这样一个规律：从第三个数开始，后边一个数一定是在其之前两个数的和。在数学上，斐波纳挈数列可以以这样的公式表示：F(0) = 0 F(1) = 1 F(n) = F(n-1) + F(n-2),(n&gt;=2)</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> num</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">long</span> <span class="title">fibo</span><span class="params">(<span class="keyword">long</span> num)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(num &lt;= <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> num;</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> fibo(num - <span class="number">1</span>) + fibo(num - <span class="number">2</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h5 id="②-n-的阶乘"><a href="#②-n-的阶乘" class="headerlink" title="② n 的阶乘"></a>② n 的阶乘</h5><p><strong>0 的阶乘是 1</strong></p>
+<p>一个栗子：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">factorialOfN</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="comment">/// 递归</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">        if(n == 0) &#123;</span></span><br><span class="line"><span class="comment">            return 1;</span></span><br><span class="line"><span class="comment">        &#125;else &#123;</span></span><br><span class="line"><span class="comment">            return n * factorialOfN(n - 1);</span></span><br><span class="line"><span class="comment">        &#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">        <span class="comment">// 非递归</span></span><br><span class="line">        <span class="keyword">if</span>(n == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> result = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(n &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            result *= n;</span><br><span class="line">            n--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h5 id="③-列出某个目录下的所有子目录和文件"><a href="#③-列出某个目录下的所有子目录和文件" class="headerlink" title="③ 列出某个目录下的所有子目录和文件"></a>③ 列出某个目录下的所有子目录和文件</h5><p>一个栗子：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> List&lt;String&gt; <span class="title">listAllFile</span><span class="params">(File file)</span> </span>&#123;</span><br><span class="line">    List&lt;String&gt; allFileList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    <span class="keyword">if</span>(file.isFile()) &#123;</span><br><span class="line">        allFileList.add(file.getParent() + <span class="string">&quot;[&quot;</span> + file.getName() + <span class="string">&quot;]&quot;</span>);</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        File[] childFiles = file.listFiles();</span><br><span class="line">        <span class="keyword">for</span> (File childFile : childFiles) &#123;</span><br><span class="line">            List&lt;String&gt; childFileList = listAllFile(childFile);</span><br><span class="line">            allFileList.addAll(childFileList);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> allFileList;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h5 id="④-汉诺塔问题"><a href="#④-汉诺塔问题" class="headerlink" title="④ 汉诺塔问题"></a>④ 汉诺塔问题</h5><blockquote>
+<p>有n个大小不等的盘子放在一个塔A上面，自底向上按照从小到大的顺序排列。要求将所有n个盘子搬到另一个塔C上面，可以借助一个塔B中转，但是要满足任何时刻大盘子不能放在小盘子上面。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">hanNuoTa</span><span class="params">(<span class="keyword">char</span> a, <span class="keyword">char</span> b, <span class="keyword">char</span> c, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> result = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span>(n == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> n1 = hanNuoTa(a, c, b, n - <span class="number">1</span>);</span><br><span class="line">    move(a, c);</span><br><span class="line">    result++;</span><br><span class="line">    <span class="keyword">int</span> n2 = hanNuoTa(b, a, c, n - <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">return</span> n1 + result + n2;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">move</span><span class="params">(<span class="keyword">char</span> a, <span class="keyword">char</span> b)</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;从&quot;</span> + a + <span class="string">&quot;移动到&quot;</span> + b);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="递归算法转换成非递归算法"><a href="#递归算法转换成非递归算法" class="headerlink" title="递归算法转换成非递归算法"></a>递归算法转换成非递归算法</h4><blockquote>
+<p> 递归算法实际上是一种分而治之的方法，它把复杂问题分解为简单问题来求解。对于某些复杂问题(例如hanio塔问题)，递归算法是一种自然且合乎逻辑的解决问题的方式，但是递归算法的执行效率通常比较差。因此，在求解某些问题时，常采用递归算法来分析问题，用非递归算法来求解问题；另外，有些程序设计语言不支持递归，这就需要把递归算法转换为非递归算法。将递归算法转换为非递归算法有两种方法，一种是直接求值，不需要回溯；另一种是不能直接求值，需要回溯。前者使用一些变量保存中间结果，称为直接转换法；后者使用栈保存中间结果，称为间接转换法</p>
+</blockquote>
+]]></content>
+      <tags>
+        <tag>java</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -7763,49 +7932,6 @@ window.location本身也是一个对象。
 ]]></content>
       <tags>
         <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>递归算法</title>
-    <url>/2020/08/17/%E9%80%92%E5%BD%92%E7%AE%97%E6%B3%95/</url>
-    <content><![CDATA[<h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><p>递归算法是一种直接或间接调用自身函数或方法的算法。</p>
-<p>Java 递归算法是基于 Java 语言实现的递归算法。</p>
-<p>递归算法的实质是把问题分解成规模缩小的同类问题的子问题，然后递归调用方法来表示问题的解。</p>
-<p>递归算法对解决一大类问题很有效，它可以使算法简洁和易于理解。</p>
-<blockquote>
-<p>递归算法，其实说白了，就是程序的自身调用。它表现在一段程序中往往会遇到调用自身的那样一种coding策略，这样我们就可以利用大道至简的思想，把一个大的复杂的问题层层转换为一个小的和原问题相似的问题来求解的这样一种策略。递归往往能给我们带来非常简洁非常直观的代码形势，从而使我们的编码大大简化，然而递归的思维确实很我们的常规思维相逆的，我们通常都是从上而下的思维问题， 而递归趋势从下往上的进行思维。这样我们就能看到我们会用很少的语句解决了非常大的问题，所以递归策略的最主要体现就是小的代码量解决了非常复杂的问题。</p>
-</blockquote>
-<a id="more"></a>
-
-<h5 id="递归算法解决问题的特点："><a href="#递归算法解决问题的特点：" class="headerlink" title="递归算法解决问题的特点："></a>递归算法解决问题的特点：</h5><ol>
-<li>递归就是方法里调用自身；</li>
-<li>在使用递归策略时，必须有一个明确的递归结束条件，称为递归出口；</li>
-<li>递归算法解题通常显得很简洁，但递归算法解题的运行效率极低。所以一般不提倡用递归算法来设计程序；</li>
-<li>在递归调用的过程中系统为每一层的返回点、局部量等开辟了栈来存储。递归次数过多容易造成栈溢出等；</li>
-</ol>
-<p><strong>在做递归算法的时候，一定要把握住出口，也就是做递归算法必须要有一个明确的递归结束条件，这一点是非常重要的。</strong></p>
-<h4 id="几个栗子"><a href="#几个栗子" class="headerlink" title="几个栗子"></a>几个栗子</h4><h5 id="①-斐波那契数列"><a href="#①-斐波那契数列" class="headerlink" title="① 斐波那契数列"></a>① 斐波那契数列</h5><p>一个栗子</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * ④ 由于斐波纳挈数列是以兔子的繁殖引入的，因此也叫“兔子数列”。它指的是这样一个数列：0,1,1,2,3,5,8,13......从这组数可以很明显看出这样一个规律：从第三个数开始，后边一个数一定是在其之前两个数的和。在数学上，斐波纳挈数列可以以这样的公式表示：F(0) = 0 F(1) = 1 F(n) = F(n-1) + F(n-2),(n&gt;=2)</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> num</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">long</span> <span class="title">fibo</span><span class="params">(<span class="keyword">long</span> num)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(num &lt;= <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> num;</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> fibo(num - <span class="number">1</span>) + fibo(num - <span class="number">2</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h5 id="②-n-的阶乘"><a href="#②-n-的阶乘" class="headerlink" title="② n 的阶乘"></a>② n 的阶乘</h5><p><strong>0 的阶乘是 1</strong></p>
-<p>一个栗子：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">factorialOfN</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="comment">/// 递归</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">        if(n == 0) &#123;</span></span><br><span class="line"><span class="comment">            return 1;</span></span><br><span class="line"><span class="comment">        &#125;else &#123;</span></span><br><span class="line"><span class="comment">            return n * factorialOfN(n - 1);</span></span><br><span class="line"><span class="comment">        &#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">        <span class="comment">// 非递归</span></span><br><span class="line">        <span class="keyword">if</span>(n == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> result = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(n &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            result *= n;</span><br><span class="line">            n--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h5 id="③-列出某个目录下的所有子目录和文件"><a href="#③-列出某个目录下的所有子目录和文件" class="headerlink" title="③ 列出某个目录下的所有子目录和文件"></a>③ 列出某个目录下的所有子目录和文件</h5><p>一个栗子：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> List&lt;String&gt; <span class="title">listAllFile</span><span class="params">(File file)</span> </span>&#123;</span><br><span class="line">    List&lt;String&gt; allFileList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    <span class="keyword">if</span>(file.isFile()) &#123;</span><br><span class="line">        allFileList.add(file.getParent() + <span class="string">&quot;[&quot;</span> + file.getName() + <span class="string">&quot;]&quot;</span>);</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        File[] childFiles = file.listFiles();</span><br><span class="line">        <span class="keyword">for</span> (File childFile : childFiles) &#123;</span><br><span class="line">            List&lt;String&gt; childFileList = listAllFile(childFile);</span><br><span class="line">            allFileList.addAll(childFileList);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> allFileList;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h5 id="④-汉诺塔问题"><a href="#④-汉诺塔问题" class="headerlink" title="④ 汉诺塔问题"></a>④ 汉诺塔问题</h5><blockquote>
-<p>有n个大小不等的盘子放在一个塔A上面，自底向上按照从小到大的顺序排列。要求将所有n个盘子搬到另一个塔C上面，可以借助一个塔B中转，但是要满足任何时刻大盘子不能放在小盘子上面。</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">hanNuoTa</span><span class="params">(<span class="keyword">char</span> a, <span class="keyword">char</span> b, <span class="keyword">char</span> c, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> result = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span>(n == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> n1 = hanNuoTa(a, c, b, n - <span class="number">1</span>);</span><br><span class="line">    move(a, c);</span><br><span class="line">    result++;</span><br><span class="line">    <span class="keyword">int</span> n2 = hanNuoTa(b, a, c, n - <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">return</span> n1 + result + n2;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">move</span><span class="params">(<span class="keyword">char</span> a, <span class="keyword">char</span> b)</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;从&quot;</span> + a + <span class="string">&quot;移动到&quot;</span> + b);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h4 id="递归算法转换成非递归算法"><a href="#递归算法转换成非递归算法" class="headerlink" title="递归算法转换成非递归算法"></a>递归算法转换成非递归算法</h4><blockquote>
-<p> 递归算法实际上是一种分而治之的方法，它把复杂问题分解为简单问题来求解。对于某些复杂问题(例如hanio塔问题)，递归算法是一种自然且合乎逻辑的解决问题的方式，但是递归算法的执行效率通常比较差。因此，在求解某些问题时，常采用递归算法来分析问题，用非递归算法来求解问题；另外，有些程序设计语言不支持递归，这就需要把递归算法转换为非递归算法。将递归算法转换为非递归算法有两种方法，一种是直接求值，不需要回溯；另一种是不能直接求值，需要回溯。前者使用一些变量保存中间结果，称为直接转换法；后者使用栈保存中间结果，称为间接转换法</p>
-</blockquote>
-]]></content>
-      <tags>
-        <tag>java</tag>
-        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
