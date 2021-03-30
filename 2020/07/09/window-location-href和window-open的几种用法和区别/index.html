@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.0.2">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/002.jpg">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/002.jpg">
@@ -79,6 +79,7 @@
   </style>
 </noscript>
 
+<link rel="alternate" href="/atom.xml" title="一缕烟气" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -252,14 +253,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>5.8k</span>
+              <span>2.3k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>5 分钟</span>
+              <span>2 分钟</span>
             </span>
 
         </div>
@@ -283,37 +284,26 @@
 <h4 id="Window-Location-Pathname"><a href="#Window-Location-Pathname" class="headerlink" title="Window Location Pathname"></a>Window Location Pathname</h4><p>该属性返回URL的路径名</p>
 <h4 id="Window-Location-Assign"><a href="#Window-Location-Assign" class="headerlink" title="Window Location Assign"></a>Window Location Assign</h4><p><code>location.assign()</code>该方法加载新的文档</p>
 <h4 id="location-href常见的几种形式"><a href="#location-href常见的几种形式" class="headerlink" title="location.href常见的几种形式"></a>location.href常见的几种形式</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">self.location.href;<span class="comment">//当前页面打开URL页面</span></span><br><span class="line"><span class="built_in">window</span>.location.href;<span class="comment">//当前页面打开URL页面</span></span><br><span class="line"><span class="built_in">this</span>.location.href;<span class="comment">//当前页面打开URL页面</span></span><br><span class="line">location.href;<span class="comment">// 当前页面打开URL页面</span></span><br><span class="line">parent.location.href;<span class="comment">//在父页面打开新页面</span></span><br><span class="line">top.location.href;<span class="comment">//在顶层页面打开新页面   </span></span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>注：①如果页面中自定义了frame，那么可将parent、self、top换为自定义frame的名称,效果是在frame窗口打开url地址。</p>
 <p>②此外，window.location.href=window.location.href;和window.location.Reload();都是刷新当前页面。区别在于是否有提交数据。当有提交数据时，window.location.Reload()会提示是否提交，window.location.href=window.location.href;则是向指定的url提交数据.</p>
 <p>③用window.open()打开新页面<br>但是用window.location.href＝”” 却是在原窗口打开的.<br>有时浏览器会一些安全设置window.open肯定被屏蔽。例如避免弹出广告窗口。</p>
 </blockquote>
 <h4 id="window-location-href和window-open-之间的区别"><a href="#window-location-href和window-open-之间的区别" class="headerlink" title="window.location.href和window.open()之间的区别"></a>window.location.href和window.open()之间的区别</h4><ol>
-<li><pre><code class="text">window.location是window对象的属性，而window.open是window对象的方法 
-  window.location是你对当前浏览器窗口的URL地址对象的参考！   
-  window.open是用来打开一个新窗口的函数！ 
-&lt;!--hexoPostRenderEscape:&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2. &amp;#96;&amp;#96;&amp;#96;text&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   window.open不一定是打开一个新窗口!!!!!!!!   &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     只要有窗口的名称和window.open中第二个参数中的一样就会将这个窗口替换，用这个特性的话可以在iframe和frame中来代替location.href。 &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   如&amp;lt;iframe name&amp;#x3D;&amp;quot;aa&amp;quot;&amp;gt;&amp;lt;&amp;#x2F;iframe&amp;gt;   &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     &amp;lt;input type&amp;#x3D;button   onclick&amp;#x3D;&amp;quot;window.open(&amp;#39;1.htm&amp;#39;,&amp;#39;aa&amp;#39;,&amp;#39;&amp;#39;)&amp;quot;&amp;gt;和   &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     &amp;lt;input type&amp;#x3D;button   &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      onclick&amp;#x3D;&amp;quot;self.frames[&amp;#39;aa&amp;#39;].location.href&amp;#x3D;&amp;#39;1.htm&amp;#39;&amp;quot;&amp;gt;的效果一样 &lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;:hexoPostRenderEscape--&gt;</code></pre>
+<li><p>```text<br>window.location是window对象的属性，而window.open是window对象的方法<br>  window.location是你对当前浏览器窗口的URL地址对象的参考！<br>  window.open是用来打开一个新窗口的函数！ </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">2. &#96;&#96;&#96;text</span><br><span class="line">   window.open不一定是打开一个新窗口!!!!!!!!   </span><br><span class="line">     只要有窗口的名称和window.open中第二个参数中的一样就会将这个窗口替换，用这个特性的话可以在iframe和frame中来代替location.href。 </span><br><span class="line">   如&lt;iframe name&#x3D;&quot;aa&quot;&gt;&lt;&#x2F;iframe&gt;   </span><br><span class="line">     &lt;input type&#x3D;button   onclick&#x3D;&quot;window.open(&#39;1.htm&#39;,&#39;aa&#39;,&#39;&#39;)&quot;&gt;和   </span><br><span class="line">     &lt;input type&#x3D;button   </span><br><span class="line">      onclick&#x3D;&quot;self.frames[&#39;aa&#39;].location.href&#x3D;&#39;1.htm&#39;&quot;&gt;的效果一样 </span><br></pre></td></tr></table></figure>
 </li>
-<li><pre><code class="text">在给按钮、表格、单元格、下拉列表和DIV等做链接时一般都要用Javascript来完成，和做普通链接一样，可能我们需要让链接页面在当前窗口打开，也可能需要在新窗口打开，这时我们就可以使用下面两项之一来完成： 
-    window.open 用来打开新窗口 
-    window.location 用来替换当前页，也就是重新定位当前页 
-    可以用以下来个实例来测试一下。 
-&lt;input type=&quot;button&quot; value=&quot;新窗口打开&quot; onclick=&quot;window.open(&#39;http://www.google.com&#39;)&quot;&gt; 
-&lt;input type=&quot;button&quot; value=&quot;当前页打开&quot; onclick=&quot;window.location=&#39;http://www.google.com/&#39;&quot;&gt; 
-&lt;!--hexoPostRenderEscape:&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4. &amp;#96;&amp;#96;&amp;#96;text&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   window.location或window.open如何指定target? &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   这是一个经常遇到的问题，特别是在用frame框架的时候 &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   解决办法: &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   window.location 改为 top.location　即可在顶部链接到指定页 &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   或 &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   window.open(&amp;quot;你的网址&amp;quot;,&amp;quot;_top&amp;quot;); &lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;:hexoPostRenderEscape--&gt;</code></pre>
-</li>
-<li><pre><code class="text">window.open 用来打开新窗口 
+<li><p>```text<br>在给按钮、表格、单元格、下拉列表和DIV等做链接时一般都要用Javascript来完成，和做普通链接一样，可能我们需要让链接页面在当前窗口打开，也可能需要在新窗口打开，这时我们就可以使用下面两项之一来完成： </p>
+<pre><code>window.open 用来打开新窗口 
 window.location 用来替换当前页，也就是重新定位当前页 
-
-用户不能改变document.location(因为这是当前显示文档的位置)。 
-window.location本身也是一个对象。 
-
-   但是,可以用window.location改变当前文档 (用其它文档取代当前文档),而document.location不是对象。 
-   服务器重定向后有可能使document.url变动,但window.location.href指的永远是访问该网页时用的URL. 
-   大多数情况下,document.location和location.href是相同的，但是，当存在服务器重定向时，document.location包含的是已经装载的URL，而location.href包含的则是原始请求的文档的URL.
-&lt;!--hexoPostRenderEscape:&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6. &amp;#96;&amp;#96;&amp;#96;text&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   window.open()是可以在一个网站上打开另外的一个网站的地址 &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   而window.location()是只能在一个网站中打开本网站的网页 &lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;:hexoPostRenderEscape--&gt;
-</code></pre>
+可以用以下来个实例来测试一下。 
+</code></pre><p><input type="button" value="新窗口打开" onclick="window.open('http://www.google.com')"><br><input type="button" value="当前页打开" onclick="window.location='http://www.google.com/'"> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">4. &#96;&#96;&#96;text</span><br><span class="line">   window.location或window.open如何指定target? </span><br><span class="line">   这是一个经常遇到的问题，特别是在用frame框架的时候 </span><br><span class="line">   解决办法: </span><br><span class="line">   window.location 改为 top.location　即可在顶部链接到指定页 </span><br><span class="line">   或 </span><br><span class="line">   window.open(&quot;你的网址&quot;,&quot;_top&quot;); </span><br></pre></td></tr></table></figure>
+</li>
+<li><p>```text<br>window.open 用来打开新窗口<br>window.location 用来替换当前页，也就是重新定位当前页 </p>
+<p>用户不能改变document.location(因为这是当前显示文档的位置)。<br>window.location本身也是一个对象。 </p>
+<p>   但是,可以用window.location改变当前文档 (用其它文档取代当前文档),而document.location不是对象。<br>   服务器重定向后有可能使document.url变动,但window.location.href指的永远是访问该网页时用的URL.<br>   大多数情况下,document.location和location.href是相同的，但是，当存在服务器重定向时，document.location包含的是已经装载的URL，而location.href包含的则是原始请求的文档的URL.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">6. &#96;&#96;&#96;text</span><br><span class="line">   window.open()是可以在一个网站上打开另外的一个网站的地址 </span><br><span class="line">   而window.location()是只能在一个网站中打开本网站的网页 </span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 
@@ -322,6 +312,25 @@ window.location本身也是一个对象。
     
     
     
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
 
       <footer class="post-footer">
           <div class="post-tags">
@@ -415,20 +424,20 @@ window.location本身也是一个对象。
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">177</span>
+          <span class="site-state-item-count">240</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">49</span>
+        <span class="site-state-item-count">60</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -455,7 +464,7 @@ window.location本身也是一个对象。
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -464,12 +473,12 @@ window.location本身也是一个对象。
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">315k</span>
+    <span title="站点总字数">441k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:46</span>
+    <span title="站点阅读时长">6:41</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
@@ -544,6 +553,8 @@ window.location本身也是一个对象。
 
 
 
+
+  
 
   
 

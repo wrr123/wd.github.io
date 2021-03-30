@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.0.2">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/002.jpg">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/002.jpg">
@@ -80,6 +80,7 @@
   </style>
 </noscript>
 
+<link rel="alternate" href="/atom.xml" title="一缕烟气" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -238,14 +239,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>30k</span>
+              <span>27k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>28 分钟</span>
+              <span>25 分钟</span>
             </span>
 
         </div>
@@ -263,8 +264,7 @@
 <li>ESLint 使用 AST 去分析代码中的模式。</li>
 <li>ESLint 是完全插件化的。每一个规则都是一个插件并且你可以在运行时添加更多的规则。</li>
 </ul>
-<a id="more"></a>
-
+<span id="more"></span>
 <h4 id="配置-ESLint"><a href="#配置-ESLint" class="headerlink" title="配置 ESLint"></a>配置 ESLint</h4><p>ESLint 被设计为完全可配置的，这意味着你可以关闭每一个规则而只运行基本语法验证，或混合和匹配 ESLint 默认绑定的规则和你的自定义规则，以让 ESLint 更适合你的项目。</p>
 <p>有两种主要的方式来配置 ESLint：</p>
 <ol>
@@ -289,8 +289,8 @@
 </li>
 <li><p><code>sourceType</code> - 设置为 <code>&quot;script&quot;</code> (默认) 或 <code>&quot;module&quot;</code>（如果你的代码是 ECMAScript 模块)。</p>
 </li>
-<li><pre><code class="plaintext">ecmaFeatures
-&lt;!--hexoPostRenderEscape:&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  \- 这是个对象，表示你想使用的额外的语言特性:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  - &amp;#96;globalReturn&amp;#96; - 允许在全局作用域下使用 &amp;#96;return&amp;#96; 语句&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  - &amp;#96;impliedStrict&amp;#96; - 启用全局 [strict mode](https:&amp;#x2F;&amp;#x2F;developer.mozilla.org&amp;#x2F;en-US&amp;#x2F;docs&amp;#x2F;Web&amp;#x2F;JavaScript&amp;#x2F;Reference&amp;#x2F;Strict_mode) (如果 &amp;#96;ecmaVersion&amp;#96; 是 5 或更高)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  - &amp;#96;jsx&amp;#96; - 启用 [JSX](http:&amp;#x2F;&amp;#x2F;facebook.github.io&amp;#x2F;jsx&amp;#x2F;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  - &amp;#96;experimentalObjectRestSpread&amp;#96; - 启用实验性的 [object rest&amp;#x2F;spread properties](https:&amp;#x2F;&amp;#x2F;github.com&amp;#x2F;sebmarkbage&amp;#x2F;ecmascript-rest-spread) 支持。(**重要：**这是一个实验性的功能,在未来可能会有明显改变。 建议你写的规则 **不要** 依赖该功能，除非当它发生改变时你愿意承担维护成本。)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;一个 &amp;#96;.eslintrc.json&amp;#96; 文件的栗子：&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#96;&amp;#96;&amp;#96;json&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &amp;quot;parserOptions&amp;quot;: &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       &amp;quot;ecmaVersion&amp;quot;: 6,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       &amp;quot;sourceType&amp;quot;: &amp;quot;module&amp;quot;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       &amp;quot;ecmaFeatures&amp;quot;: &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;           &amp;quot;jsx&amp;quot;: true&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &amp;quot;rules&amp;quot;: &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       &amp;quot;semi&amp;quot;: &amp;quot;error&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;:hexoPostRenderEscape--&gt;</code></pre>
+<li><p>```plaintext<br>ecmaFeatures</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">   </span><br><span class="line"></span><br><span class="line">  \- 这是个对象，表示你想使用的额外的语言特性:</span><br><span class="line"></span><br><span class="line">  - &#96;globalReturn&#96; - 允许在全局作用域下使用 &#96;return&#96; 语句</span><br><span class="line">  - &#96;impliedStrict&#96; - 启用全局 [strict mode](https:&#x2F;&#x2F;developer.mozilla.org&#x2F;en-US&#x2F;docs&#x2F;Web&#x2F;JavaScript&#x2F;Reference&#x2F;Strict_mode) (如果 &#96;ecmaVersion&#96; 是 5 或更高)</span><br><span class="line">  - &#96;jsx&#96; - 启用 [JSX](http:&#x2F;&#x2F;facebook.github.io&#x2F;jsx&#x2F;)</span><br><span class="line">  - &#96;experimentalObjectRestSpread&#96; - 启用实验性的 [object rest&#x2F;spread properties](https:&#x2F;&#x2F;github.com&#x2F;sebmarkbage&#x2F;ecmascript-rest-spread) 支持。(**重要：**这是一个实验性的功能,在未来可能会有明显改变。 建议你写的规则 **不要** 依赖该功能，除非当它发生改变时你愿意承担维护成本。)</span><br><span class="line"></span><br><span class="line">一个 &#96;.eslintrc.json&#96; 文件的栗子：</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;json</span><br><span class="line">&#123;</span><br><span class="line">   &quot;parserOptions&quot;: &#123;</span><br><span class="line">       &quot;ecmaVersion&quot;: 6,</span><br><span class="line">       &quot;sourceType&quot;: &quot;module&quot;,</span><br><span class="line">       &quot;ecmaFeatures&quot;: &#123;</span><br><span class="line">           &quot;jsx&quot;: true</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;,</span><br><span class="line">   &quot;rules&quot;: &#123;</span><br><span class="line">       &quot;semi&quot;: &quot;error&quot;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 </blockquote>
@@ -303,7 +303,6 @@
 <p>注意，即使满足这些兼容性要求，也不能保证一个外部解析器可以与 ESLint 正常配合工作，ESLint 也不会修复与其它解析器不兼容的相关 bug。</p>
 <p>为了表明使用该 npm 模块作为你的解析器，你需要在你的 <code>.eslintrc</code> 文件里指定 <code>parser</code> 选项。例如，下面的配置指定了 Esprima 作为解析器：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;parser&quot;: &quot;esprima&quot;,</span><br><span class="line">    &quot;rules&quot;: &#123;</span><br><span class="line">        &quot;semi&quot;: &quot;error&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>以下解析器与 ESLint 兼容：</p>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://www.npmjs.com/package/esprima">Esprima</a></li>
@@ -316,13 +315,10 @@
 <p>插件可以提供处理器。处理器可以从另一种文件中提取 JavaScript 代码，然后让 ESLint 检测 JavaScript 代码。或者处理器可以在预处理中转换 JavaScript 代码。</p>
 <p>若要在配置文件中指定处理器，请使用 <code>processor</code> 键，并使用由插件名和处理器名组成的串接字符串加上斜杠。例如，下面的选项启用插件 <code>a-plugin</code> 提供的处理器 <code>a-processor</code>：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;plugins&quot;: [&quot;a-plugin&quot;],</span><br><span class="line">    &quot;processor&quot;: &quot;a-plugin&#x2F;a-processor&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>要为特定类型的文件指定处理器，请使用 <code>overrides</code> 键和 <code>processor</code> 键的组合。例如，下面对 <code>*.md</code> 文件使用处理器 <code>a-plugin/markdown</code>。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;plugins&quot;: [&quot;a-plugin&quot;],</span><br><span class="line">    &quot;overrides&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;files&quot;: [&quot;*.md&quot;],</span><br><span class="line">            &quot;processor&quot;: &quot;a-plugin&#x2F;markdown&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>处理器可以生成命名的代码块，如 <code>0.js</code> 和 <code>1.js</code>。ESLint 将这样的命名代码块作为原始文件的子文件处理。你可以在配置的 <code>overrides</code> 部分为已命名的代码块指定附加配置。例如，下面的命令对以 <code>.js</code> 结尾的 markdown 文件中的已命名代码块禁用 <code>strict</code> 规则。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;plugins&quot;: [&quot;a-plugin&quot;],</span><br><span class="line">    &quot;overrides&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;files&quot;: [&quot;*.md&quot;],</span><br><span class="line">            &quot;processor&quot;: &quot;a-plugin&#x2F;markdown&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;files&quot;: [&quot;**&#x2F;*.md&#x2F;*.js&quot;],</span><br><span class="line">            &quot;rules&quot;: &#123;</span><br><span class="line">                &quot;strict&quot;: &quot;off&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>ESLint 检查指定代码块的文件扩展名，如果 <a target="_blank" rel="noopener" href="http://eslint.cn/docs/user-guide/command-line-interface#--ext"><code>--ext</code> CLI option</a> 不包含文件扩展名，则忽略这些扩展名。如果您想要删除除 <code>*.js</code> 之外的已命名代码块，请确保指定 <code>--ext</code> 选项。</p>
 </blockquote>
 <h5 id="Specifying-Environments"><a href="#Specifying-Environments" class="headerlink" title="Specifying Environments"></a>Specifying Environments</h5><blockquote>
@@ -358,23 +354,17 @@
 <p>可以在源文件里、在配置文件中或使用 <a target="_blank" rel="noopener" href="http://eslint.cn/docs/user-guide/command-line-interface">命令行</a> 的 <code>--env</code> 选项来指定环境。</p>
 <p>要在你的 JavaScript 文件中使用注释来指定环境，格式如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;* eslint-env node, mocha *&#x2F;</span><br></pre></td></tr></table></figure>
-
 <p>该设置启用了 Node.js 和 Mocha 环境。</p>
 <p>要在配置文件里指定环境，使用 <code>env</code> 关键字指定你想启用的环境，并设置它们为 <code>true</code>。例如，以下示例启用了 browser 和 Node.js 的环境：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;env&quot;: &#123;</span><br><span class="line">        &quot;browser&quot;: true,</span><br><span class="line">        &quot;node&quot;: true</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>或在 <code>package.json</code> 文件中：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;name&quot;: &quot;mypackage&quot;,</span><br><span class="line">    &quot;version&quot;: &quot;0.0.1&quot;,</span><br><span class="line">    &quot;eslintConfig&quot;: &#123;</span><br><span class="line">        &quot;env&quot;: &#123;</span><br><span class="line">            &quot;browser&quot;: true,</span><br><span class="line">            &quot;node&quot;: true</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>在 YAML 文件中：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">  env:</span><br><span class="line">    browser: true</span><br><span class="line">    node: true</span><br></pre></td></tr></table></figure>
-
 <p>如果你想在一个特定的插件中使用一种环境，确保提前在 <code>plugins</code> 数组里指定了插件名，然后在 env 配置中不带前缀的插件名后跟一个 <code>/</code> ，紧随着环境名。例如：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;plugins&quot;: [&quot;example&quot;],</span><br><span class="line">    &quot;env&quot;: &#123;</span><br><span class="line">        &quot;example&#x2F;custom&quot;: true</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>或在 <code>package.json</code> 文件中</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;name&quot;: &quot;mypackage&quot;,</span><br><span class="line">    &quot;version&quot;: &quot;0.0.1&quot;,</span><br><span class="line">    &quot;eslintConfig&quot;: &#123;</span><br><span class="line">        &quot;plugins&quot;: [&quot;example&quot;],</span><br><span class="line">        &quot;env&quot;: &#123;</span><br><span class="line">            &quot;example&#x2F;custom&quot;: true</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>在 YAML 文件中：</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line">  <span class="attr">plugins:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">example</span></span><br><span class="line">  <span class="attr">env:</span></span><br><span class="line">    <span class="attr">example/custom:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
 </blockquote>
@@ -382,20 +372,15 @@
 <p>当访问当前源文件内未定义的变量时，<a target="_blank" rel="noopener" href="http://eslint.cn/docs/rules/no-undef">no-undef</a> 规则将发出警告。如果你想在一个源文件里使用全局变量，推荐你在 ESLint 中定义这些全局变量，这样 ESLint 就不会发出警告了。你可以使用注释或在配置文件中定义全局变量。</p>
 <p>要在你的 JavaScript 文件中，用注释指定全局变量，格式如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;* global var1, var2 *&#x2F;</span><br></pre></td></tr></table></figure>
-
 <p>这定义了两个全局变量，<code>var1</code> 和 <code>var2</code>。如果你想选择性地指定这些全局变量可以被写入(而不是只被读取)，那么你可以用一个 <code>&quot;writable&quot;</code> 的标志来设置它们:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;* global var1:writable, var2:writable *&#x2F;</span><br></pre></td></tr></table></figure>
-
 <p>要在配置文件中配置全局变量，请将 <code>globals</code> 配置属性设置为一个对象，该对象包含以你希望使用的每个全局变量。对于每个全局变量键，将对应的值设置为 <code>&quot;writable&quot;</code> 以允许重写变量，或 <code>&quot;readonly&quot;</code> 不允许重写变量。例如：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;globals&quot;: &#123;</span><br><span class="line">        &quot;var1&quot;: &quot;writable&quot;,</span><br><span class="line">        &quot;var2&quot;: &quot;readonly&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>在 YAML 中：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">  globals:</span><br><span class="line">    var1: writable</span><br><span class="line">    var2: readonly</span><br></pre></td></tr></table></figure>
-
 <p>在这些例子中 <code>var1</code> 允许被重写，<code>var2</code> 不允许被重写。</p>
 <p>可以使用字符串 <code>&quot;off&quot;</code> 禁用全局变量。例如，在大多数 ES2015 全局变量可用但 <code>Promise</code> 不可用的环境中，你可以使用以下配置:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;env&quot;: &#123;</span><br><span class="line">        &quot;es6&quot;: true</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;globals&quot;: &#123;</span><br><span class="line">        &quot;Promise&quot;: &quot;off&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>由于历史原因，布尔值 <code>false</code> 和字符串值 <code>&quot;readable&quot;</code> 等价于 <code>&quot;readonly&quot;</code>。类似地，布尔值 <code>true</code> 和字符串值 <code>&quot;writeable&quot;</code> 等价于 <code>&quot;writable&quot;</code>。但是，不建议使用旧值。</p>
 <p><strong>注意：</strong>要启用<a target="_blank" rel="noopener" href="http://eslint.cn/docs/rules/no-global-assign">no-global-assign</a>规则来禁止对只读的全局变量进行修改。</p>
 </blockquote>
@@ -403,10 +388,8 @@
 <p>ESLint 支持使用第三方插件。在使用插件之前，你必须使用 npm 安装它。</p>
 <p>在配置文件里配置插件时，可以使用 <code>plugins</code> 关键字来存放插件名字的列表。插件名称可以省略 <code>eslint-plugin-</code> 前缀。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;plugins&quot;: [</span><br><span class="line">        &quot;plugin1&quot;,</span><br><span class="line">        &quot;eslint-plugin-plugin2&quot;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>在 YAML 中：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">  plugins:</span><br><span class="line">    - plugin1</span><br><span class="line">    - eslint-plugin-plugin2</span><br></pre></td></tr></table></figure>
-
 <p><strong>注意：</strong>插件是相对于 ESLint 进程的当前工作目录解析的。换句话说，ESLint 将加载与用户通过从项目 Node 交互解释器运行 <code>(&#39;eslint-plugin-pluginname&#39;)</code> 获得的相同的插件。</p>
 </blockquote>
 <h5 id="Configuring-Rules"><a href="#Configuring-Rules" class="headerlink" title="Configuring Rules"></a>Configuring Rules</h5><blockquote>
@@ -418,55 +401,39 @@
 </ul>
 <h3 id="Using-Configuration-Comments"><a href="#Using-Configuration-Comments" class="headerlink" title="Using Configuration Comments"></a>Using Configuration Comments</h3><p>为了在文件注释里配置规则，使用以下格式的注释：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;* eslint eqeqeq: &quot;off&quot;, curly: &quot;error&quot; *&#x2F;</span><br></pre></td></tr></table></figure>
-
 <p>在这个例子里，<a target="_blank" rel="noopener" href="http://eslint.cn/docs/rules/eqeqeq"><code>eqeqeq</code></a> 规则被关闭，<a target="_blank" rel="noopener" href="http://eslint.cn/docs/rules/curly"><code>curly</code></a> 规则被打开，定义为错误级别。你也可以使用对应的数字定义规则严重程度：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;* eslint eqeqeq: 0, curly: 2 *&#x2F;</span><br></pre></td></tr></table></figure>
-
 <p>这个例子和上个例子是一样的，只不过它是用的数字而不是字符串。<code>eqeqeq</code> 规则是关闭的，<code>curly</code> 规则被设置为错误级别。</p>
 <p>如果一个规则有额外的选项，你可以使用数组字面量指定它们，比如：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;* eslint quotes: [&quot;error&quot;, &quot;double&quot;], curly: 2 *&#x2F;</span><br></pre></td></tr></table></figure>
-
 <p>这条注释为规则 <a target="_blank" rel="noopener" href="http://eslint.cn/docs/rules/quotes"><code>quotes</code></a> 指定了 “double”选项。数组的第一项总是规则的严重程度（数字或字符串）。</p>
 <h3 id="Using-Configuration-Files"><a href="#Using-Configuration-Files" class="headerlink" title="Using Configuration Files"></a>Using Configuration Files</h3><p>还可以使用 <code>rules</code> 连同错误级别和任何你想使用的选项，在配置文件中进行规则配置。例如：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;rules&quot;: &#123;</span><br><span class="line">        &quot;eqeqeq&quot;: &quot;off&quot;,</span><br><span class="line">        &quot;curly&quot;: &quot;error&quot;,</span><br><span class="line">        &quot;quotes&quot;: [&quot;error&quot;, &quot;double&quot;]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>在 YAML 中：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">rules:</span><br><span class="line">  eqeqeq: off</span><br><span class="line">  curly: error</span><br><span class="line">  quotes:</span><br><span class="line">    - error</span><br><span class="line">    - double</span><br></pre></td></tr></table></figure>
-
 <p>配置定义在插件中的一个规则的时候，你必须使用 <code>插件名/规则ID</code> 的形式。比如：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;plugins&quot;: [</span><br><span class="line">        &quot;plugin1&quot;</span><br><span class="line">    ],</span><br><span class="line">    &quot;rules&quot;: &#123;</span><br><span class="line">        &quot;eqeqeq&quot;: &quot;off&quot;,</span><br><span class="line">        &quot;curly&quot;: &quot;error&quot;,</span><br><span class="line">        &quot;quotes&quot;: [&quot;error&quot;, &quot;double&quot;],</span><br><span class="line">        &quot;plugin1&#x2F;rule1&quot;: &quot;error&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>在 YAML 中：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">plugins:</span><br><span class="line">  - plugin1</span><br><span class="line">rules:</span><br><span class="line">  eqeqeq: 0</span><br><span class="line">  curly: error</span><br><span class="line">  quotes:</span><br><span class="line">    - error</span><br><span class="line">    - &quot;double&quot;</span><br><span class="line">  plugin1&#x2F;rule1: error</span><br></pre></td></tr></table></figure>
-
 <p>在这些配置文件中，规则 <code>plugin1/rule1</code> 表示来自插件 <code>plugin1</code> 的 <code>rule1</code> 规则。你也可以使用这种格式的注释配置，比如：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;* eslint &quot;plugin1&#x2F;rule1&quot;: &quot;error&quot; *&#x2F;</span><br></pre></td></tr></table></figure>
-
 <p><strong>注意：</strong>当指定来自插件的规则时，确保删除 <code>eslint-plugin-</code> 前缀。ESLint 在内部只使用没有前缀的名称去定位规则。</p>
 <h2 id="Disabling-Rules-with-Inline-Comments"><a href="#Disabling-Rules-with-Inline-Comments" class="headerlink" title="Disabling Rules with Inline Comments"></a>Disabling Rules with Inline Comments</h2><p>可以在你的文件中使用以下格式的块注释来临时禁止规则出现警告：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;* eslint-disable *&#x2F;</span><br><span class="line"></span><br><span class="line">alert(&#39;foo&#39;);</span><br><span class="line"></span><br><span class="line">&#x2F;* eslint-enable *&#x2F;</span><br></pre></td></tr></table></figure>
-
 <p>你也可以对指定的规则启用或禁用警告:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;* eslint-disable no-alert, no-console *&#x2F;</span><br><span class="line"></span><br><span class="line">alert(&#39;foo&#39;);</span><br><span class="line">console.log(&#39;bar&#39;);</span><br><span class="line"></span><br><span class="line">&#x2F;* eslint-enable no-alert, no-console *&#x2F;</span><br></pre></td></tr></table></figure>
-
 <p>如果在整个文件范围内禁止规则出现警告，将 <code>/* eslint-disable */</code> 块注释放在文件顶部：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;* eslint-disable *&#x2F;</span><br><span class="line"></span><br><span class="line">alert(&#39;foo&#39;);</span><br></pre></td></tr></table></figure>
-
 <p>你也可以对整个文件启用或禁用警告:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;* eslint-disable no-alert *&#x2F;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Disables no-alert for the rest of the file</span><br><span class="line">alert(&#39;foo&#39;);</span><br></pre></td></tr></table></figure>
-
 <p>可以在你的文件中使用以下格式的行注释或块注释在某一特定的行上禁用所有规则：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">alert(&#39;foo&#39;); &#x2F;&#x2F; eslint-disable-line</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; eslint-disable-next-line</span><br><span class="line">alert(&#39;foo&#39;);</span><br><span class="line"></span><br><span class="line">&#x2F;* eslint-disable-next-line *&#x2F;</span><br><span class="line">alert(&#39;foo&#39;);</span><br><span class="line"></span><br><span class="line">alert(&#39;foo&#39;); &#x2F;* eslint-disable-line *&#x2F;</span><br></pre></td></tr></table></figure>
-
 <p>在某一特定的行上禁用某个指定的规则：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">alert(&#39;foo&#39;); &#x2F;&#x2F; eslint-disable-line no-alert</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; eslint-disable-next-line no-alert</span><br><span class="line">alert(&#39;foo&#39;);</span><br><span class="line"></span><br><span class="line">alert(&#39;foo&#39;); &#x2F;* eslint-disable-line no-alert *&#x2F;</span><br><span class="line"></span><br><span class="line">&#x2F;* eslint-disable-next-line no-alert *&#x2F;</span><br><span class="line">alert(&#39;foo&#39;);</span><br></pre></td></tr></table></figure>
-
 <p>在某个特定的行上禁用多个规则：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">alert(&#39;foo&#39;); &#x2F;&#x2F; eslint-disable-line no-alert, quotes, semi</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; eslint-disable-next-line no-alert, quotes, semi</span><br><span class="line">alert(&#39;foo&#39;);</span><br><span class="line"></span><br><span class="line">alert(&#39;foo&#39;); &#x2F;* eslint-disable-line no-alert, quotes, semi *&#x2F;</span><br><span class="line"></span><br><span class="line">&#x2F;* eslint-disable-next-line no-alert, quotes, semi *&#x2F;</span><br><span class="line">alert(&#39;foo&#39;);</span><br></pre></td></tr></table></figure>
-
 <p>上面的所有方法同样适用于插件规则。例如，禁止 <code>eslint-plugin-example</code> 的 <code>rule-name</code> 规则，把插件名（<code>example</code>）和规则名（<code>rule-name</code>）结合为 <code>example/rule-name</code>：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">foo(); &#x2F;&#x2F; eslint-disable-line example&#x2F;rule-name</span><br><span class="line">foo(); &#x2F;* eslint-disable-line example&#x2F;rule-name *&#x2F;</span><br></pre></td></tr></table></figure>
-
 <p><strong>注意：</strong>为文件的某部分禁用警告的注释，告诉 ESLint 不要对禁用的代码报告规则的冲突。ESLint 仍解析整个文件，然而，禁用的代码仍需要是有效的 JavaScript 语法。</p>
 <h3 id="Disabling-Rules-Only-for-a-Group-of-Files"><a href="#Disabling-Rules-Only-for-a-Group-of-Files" class="headerlink" title="Disabling Rules Only for a Group of Files"></a>Disabling Rules Only for a Group of Files</h3><p>若要禁用一组文件的配置文件中的规则，请使用 <code>overrides</code> 和 <code>files</code>。例如:</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;rules&quot;: &#123;...&#125;,</span><br><span class="line">  &quot;overrides&quot;: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">&quot;files&quot;</span>: [<span class="string">&quot;*-test.js&quot;</span>,<span class="string">&quot;*.spec.js&quot;</span>],</span><br><span class="line">      <span class="attr">&quot;rules&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;no-unused-expressions&quot;</span>: <span class="string">&quot;off&quot;</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -480,55 +447,39 @@
 </ul>
 <h3 id="Using-Configuration-Comments-1"><a href="#Using-Configuration-Comments-1" class="headerlink" title="Using Configuration Comments"></a>Using Configuration Comments</h3><p>为了在文件注释里配置规则，使用以下格式的注释：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;* eslint eqeqeq: &quot;off&quot;, curly: &quot;error&quot; *&#x2F;</span><br></pre></td></tr></table></figure>
-
 <p>在这个例子里，<a target="_blank" rel="noopener" href="http://eslint.cn/docs/rules/eqeqeq"><code>eqeqeq</code></a> 规则被关闭，<a target="_blank" rel="noopener" href="http://eslint.cn/docs/rules/curly"><code>curly</code></a> 规则被打开，定义为错误级别。你也可以使用对应的数字定义规则严重程度：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;* eslint eqeqeq: 0, curly: 2 *&#x2F;</span><br></pre></td></tr></table></figure>
-
 <p>这个例子和上个例子是一样的，只不过它是用的数字而不是字符串。<code>eqeqeq</code> 规则是关闭的，<code>curly</code> 规则被设置为错误级别。</p>
 <p>如果一个规则有额外的选项，你可以使用数组字面量指定它们，比如：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;* eslint quotes: [&quot;error&quot;, &quot;double&quot;], curly: 2 *&#x2F;</span><br></pre></td></tr></table></figure>
-
 <p>这条注释为规则 <a target="_blank" rel="noopener" href="http://eslint.cn/docs/rules/quotes"><code>quotes</code></a> 指定了 “double”选项。数组的第一项总是规则的严重程度（数字或字符串）。</p>
 <h3 id="Using-Configuration-Files-1"><a href="#Using-Configuration-Files-1" class="headerlink" title="Using Configuration Files"></a>Using Configuration Files</h3><p>还可以使用 <code>rules</code> 连同错误级别和任何你想使用的选项，在配置文件中进行规则配置。例如：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;rules&quot;: &#123;</span><br><span class="line">        &quot;eqeqeq&quot;: &quot;off&quot;,</span><br><span class="line">        &quot;curly&quot;: &quot;error&quot;,</span><br><span class="line">        &quot;quotes&quot;: [&quot;error&quot;, &quot;double&quot;]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>在 YAML 中：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">rules:</span><br><span class="line">  eqeqeq: off</span><br><span class="line">  curly: error</span><br><span class="line">  quotes:</span><br><span class="line">    - error</span><br><span class="line">    - double</span><br></pre></td></tr></table></figure>
-
 <p>配置定义在插件中的一个规则的时候，你必须使用 <code>插件名/规则ID</code> 的形式。比如：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;plugins&quot;: [</span><br><span class="line">        &quot;plugin1&quot;</span><br><span class="line">    ],</span><br><span class="line">    &quot;rules&quot;: &#123;</span><br><span class="line">        &quot;eqeqeq&quot;: &quot;off&quot;,</span><br><span class="line">        &quot;curly&quot;: &quot;error&quot;,</span><br><span class="line">        &quot;quotes&quot;: [&quot;error&quot;, &quot;double&quot;],</span><br><span class="line">        &quot;plugin1&#x2F;rule1&quot;: &quot;error&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>在 YAML 中：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">plugins:</span><br><span class="line">  - plugin1</span><br><span class="line">rules:</span><br><span class="line">  eqeqeq: 0</span><br><span class="line">  curly: error</span><br><span class="line">  quotes:</span><br><span class="line">    - error</span><br><span class="line">    - &quot;double&quot;</span><br><span class="line">  plugin1&#x2F;rule1: error</span><br></pre></td></tr></table></figure>
-
 <p>在这些配置文件中，规则 <code>plugin1/rule1</code> 表示来自插件 <code>plugin1</code> 的 <code>rule1</code> 规则。你也可以使用这种格式的注释配置，比如：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;* eslint &quot;plugin1&#x2F;rule1&quot;: &quot;error&quot; *&#x2F;</span><br></pre></td></tr></table></figure>
-
 <p><strong>注意：</strong>当指定来自插件的规则时，确保删除 <code>eslint-plugin-</code> 前缀。ESLint 在内部只使用没有前缀的名称去定位规则。</p>
 <h2 id="Disabling-Rules-with-Inline-Comments-1"><a href="#Disabling-Rules-with-Inline-Comments-1" class="headerlink" title="Disabling Rules with Inline Comments"></a>Disabling Rules with Inline Comments</h2><p>可以在你的文件中使用以下格式的块注释来临时禁止规则出现警告：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;* eslint-disable *&#x2F;</span><br><span class="line"></span><br><span class="line">alert(&#39;foo&#39;);</span><br><span class="line"></span><br><span class="line">&#x2F;* eslint-enable *&#x2F;</span><br></pre></td></tr></table></figure>
-
 <p>你也可以对指定的规则启用或禁用警告:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;* eslint-disable no-alert, no-console *&#x2F;</span><br><span class="line"></span><br><span class="line">alert(&#39;foo&#39;);</span><br><span class="line">console.log(&#39;bar&#39;);</span><br><span class="line"></span><br><span class="line">&#x2F;* eslint-enable no-alert, no-console *&#x2F;</span><br></pre></td></tr></table></figure>
-
 <p>如果在整个文件范围内禁止规则出现警告，将 <code>/* eslint-disable */</code> 块注释放在文件顶部：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;* eslint-disable *&#x2F;</span><br><span class="line"></span><br><span class="line">alert(&#39;foo&#39;);</span><br></pre></td></tr></table></figure>
-
 <p>你也可以对整个文件启用或禁用警告:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;* eslint-disable no-alert *&#x2F;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Disables no-alert for the rest of the file</span><br><span class="line">alert(&#39;foo&#39;);</span><br></pre></td></tr></table></figure>
-
 <p>可以在你的文件中使用以下格式的行注释或块注释在某一特定的行上禁用所有规则：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">alert(&#39;foo&#39;); &#x2F;&#x2F; eslint-disable-line</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; eslint-disable-next-line</span><br><span class="line">alert(&#39;foo&#39;);</span><br><span class="line"></span><br><span class="line">&#x2F;* eslint-disable-next-line *&#x2F;</span><br><span class="line">alert(&#39;foo&#39;);</span><br><span class="line"></span><br><span class="line">alert(&#39;foo&#39;); &#x2F;* eslint-disable-line *&#x2F;</span><br></pre></td></tr></table></figure>
-
 <p>在某一特定的行上禁用某个指定的规则：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">alert(&#39;foo&#39;); &#x2F;&#x2F; eslint-disable-line no-alert</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; eslint-disable-next-line no-alert</span><br><span class="line">alert(&#39;foo&#39;);</span><br><span class="line"></span><br><span class="line">alert(&#39;foo&#39;); &#x2F;* eslint-disable-line no-alert *&#x2F;</span><br><span class="line"></span><br><span class="line">&#x2F;* eslint-disable-next-line no-alert *&#x2F;</span><br><span class="line">alert(&#39;foo&#39;);</span><br></pre></td></tr></table></figure>
-
 <p>在某个特定的行上禁用多个规则：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">alert(&#39;foo&#39;); &#x2F;&#x2F; eslint-disable-line no-alert, quotes, semi</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; eslint-disable-next-line no-alert, quotes, semi</span><br><span class="line">alert(&#39;foo&#39;);</span><br><span class="line"></span><br><span class="line">alert(&#39;foo&#39;); &#x2F;* eslint-disable-line no-alert, quotes, semi *&#x2F;</span><br><span class="line"></span><br><span class="line">&#x2F;* eslint-disable-next-line no-alert, quotes, semi *&#x2F;</span><br><span class="line">alert(&#39;foo&#39;);</span><br></pre></td></tr></table></figure>
-
 <p>上面的所有方法同样适用于插件规则。例如，禁止 <code>eslint-plugin-example</code> 的 <code>rule-name</code> 规则，把插件名（<code>example</code>）和规则名（<code>rule-name</code>）结合为 <code>example/rule-name</code>：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">foo(); &#x2F;&#x2F; eslint-disable-line example&#x2F;rule-name</span><br><span class="line">foo(); &#x2F;* eslint-disable-line example&#x2F;rule-name *&#x2F;</span><br></pre></td></tr></table></figure>
-
 <p><strong>注意：</strong>为文件的某部分禁用警告的注释，告诉 ESLint 不要对禁用的代码报告规则的冲突。ESLint 仍解析整个文件，然而，禁用的代码仍需要是有效的 JavaScript 语法。</p>
 <h3 id="Disabling-Rules-Only-for-a-Group-of-Files-1"><a href="#Disabling-Rules-Only-for-a-Group-of-Files-1" class="headerlink" title="Disabling Rules Only for a Group of Files"></a>Disabling Rules Only for a Group of Files</h3><p>若要禁用一组文件的配置文件中的规则，请使用 <code>overrides</code> 和 <code>files</code>。例如:</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;rules&quot;: &#123;...&#125;,</span><br><span class="line">  &quot;overrides&quot;: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">&quot;files&quot;</span>: [<span class="string">&quot;*-test.js&quot;</span>,<span class="string">&quot;*.spec.js&quot;</span>],</span><br><span class="line">      <span class="attr">&quot;rules&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;no-unused-expressions&quot;</span>: <span class="string">&quot;off&quot;</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -537,16 +488,12 @@
 <p>ESLint 支持在配置文件添加共享设置。你可以添加 <code>settings</code> 对象到配置文件，它将提供给每一个将被执行的规则。如果你想添加的自定义规则而且使它们可以访问到相同的信息，这将会很有用，并且很容易配置。</p>
 <p>在 JSON 中：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;settings&quot;: &#123;</span><br><span class="line">        &quot;sharedData&quot;: &quot;Hello&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>在 YAML 中：</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line">  <span class="attr">settings:</span></span><br><span class="line">    <span class="attr">sharedData:</span> <span class="string">&quot;Hello&quot;</span></span><br></pre></td></tr></table></figure>
-</blockquote>
-<blockquote>
 <h2 id="Using-Configuration-Files-2"><a href="#Using-Configuration-Files-2" class="headerlink" title="Using Configuration Files"></a>Using Configuration Files</h2><p>有两种方式使用配置文件。</p>
 <p>使用配置文件的第一种方式是通过 <code>.eslintrc.*</code> 和 <code>package.json</code> 文件。ESLint 将自动在要检测的文件目录里寻找它们，紧接着是父级目录，一直到文件系统的根目录（除非指定 <code>root: true</code>）。当你想对一个项目的不同部分的使用不同配置，或当你希望别人能够直接使用 ESLint，而无需记住要在配置文件中传递什么，这种方式就很有用。</p>
 <p>第二种方式是使用 <code>-c</code> 选项传递命令行将文件保持到你喜欢的地方。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eslint -c myconfig.json myfiletotest.js</span><br></pre></td></tr></table></figure>
-
 <p>如果你使用一个配置文件，想要 ESLint 忽略任何 <code>.eslintrc.*</code> 文件，请确保使用 <code>--no-eslintrc</code> 的同时，加上 <code>-c</code> 标记。</p>
 <p>每种情况，配置文件都会覆盖默认设置。</p>
 <h2 id="Configuration-File-Formats"><a href="#Configuration-File-Formats" class="headerlink" title="Configuration File Formats"></a>Configuration File Formats</h2><p>ESLint 支持几种格式的配置文件：</p>
@@ -568,22 +515,17 @@
 </ol>
 <h2 id="Configuration-Cascading-and-Hierarchy"><a href="#Configuration-Cascading-and-Hierarchy" class="headerlink" title="Configuration Cascading and Hierarchy"></a>Configuration Cascading and Hierarchy</h2><p>当使用 <code>.eslintrc.*</code> 和 <code>package.json</code>文件的配置时，你可以利用层叠配置。例如，假如你有以下结构：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">your-project</span><br><span class="line">├── .eslintrc</span><br><span class="line">├── lib</span><br><span class="line">│ └── source.js</span><br><span class="line">└─┬ tests</span><br><span class="line">  ├── .eslintrc</span><br><span class="line">  └── test.js</span><br></pre></td></tr></table></figure>
-
 <p>层叠配置使用离要检测的文件最近的 <code>.eslintrc</code>文件作为最高优先级，然后才是父目录里的配置文件，等等。当你在这个项目中允许 ESLint 时，<code>lib/</code> 下面的所有文件将使用项目根目录里的 <code>.eslintrc</code> 文件作为它的配置文件。当 ESLint 遍历到 <code>test/</code> 目录，<code>your-project/.eslintrc</code> 之外，它还会用到 <code>your-project/tests/.eslintrc</code>。所以 <code>your-project/tests/test.js</code> 是基于它的目录层次结构中的两个<code>.eslintrc</code> 文件的组合，并且离的最近的一个优先。通过这种方式，你可以有项目级 ESLint 设置，也有覆盖特定目录的 ESLint 设置。</p>
 <p>同样的，如果在根目录的 <code>package.json</code> 文件中有一个 <code>eslintConfig</code> 字段，其中的配置将使用于所有子目录，但是当 <code>tests</code> 目录下的 <code>.eslintrc</code> 文件中的规则与之发生冲突时，就会覆盖它。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">your-project</span><br><span class="line">├── package.json</span><br><span class="line">├── lib</span><br><span class="line">│ └── source.js</span><br><span class="line">└─┬ tests</span><br><span class="line">  ├── .eslintrc</span><br><span class="line">  └── test.js</span><br></pre></td></tr></table></figure>
-
 <p>如果同一目录下 <code>.eslintrc</code> 和 <code>package.json</code> 同时存在，<code>.eslintrc</code> 优先级高会被使用，<code>package.json</code> 文件将不会被使用。</p>
 <p><strong>注意：</strong>如果在你的主目录下有一个自定义的配置文件 (<code>~/.eslintrc</code>) ，如果没有其它配置文件时它才会被使用。因为个人配置将适用于用户目录下的所有目录和文件，包括第三方的代码，当 ESLint 运行时可能会导致问题。</p>
 <p>默认情况下，ESLint 会在所有父级目录里寻找配置文件，一直到根目录。如果你想要你所有项目都遵循一个特定的约定时，这将会很有用，但有时候会导致意想不到的结果。为了将 ESLint 限制到一个特定的项目，在你项目根目录下的 <code>package.json</code> 文件或者 <code>.eslintrc.*</code> 文件里的 <code>eslintConfig</code> 字段下设置 <code>&quot;root&quot;: true</code>。ESLint 一旦发现配置文件中有 <code>&quot;root&quot;: true</code>，它就会停止在父级目录中寻找。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;root&quot;: true</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>在 YAML 中：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">  root: true</span><br></pre></td></tr></table></figure>
-
 <p>例如，<code>projectA</code> 的 <code>lib/</code> 目录下的 <code>.eslintrc</code> 文件中设置了 <code>&quot;root&quot;: true</code>。这种情况下，当检测 <code>main.js</code> 时，<code>lib/</code> 下的配置将会被使用，<code>projectA/</code> 下的 <code>.eslintrc</code> 将不会被使用。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">home</span><br><span class="line">└── user</span><br><span class="line">    ├── .eslintrc &lt;- Always skipped if other configs present</span><br><span class="line">    └── projectA</span><br><span class="line">        ├── .eslintrc  &lt;- Not used</span><br><span class="line">        └── lib</span><br><span class="line">            ├── .eslintrc  &lt;- &#123; &quot;root&quot;: true &#125;</span><br><span class="line">            └── main.js</span><br></pre></td></tr></table></figure>
-
 <p>完整的配置层次结构，从最高优先级最低的优先级，如下:</p>
 <ol>
 <li>行内配置<ol>
@@ -635,13 +577,11 @@
 <p><code>eslint --init</code> 命令可以创建一个配置，这样你就可以继承推荐的规则。</p>
 <p>JavaScript 格式的一个配置文件的例子：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">module.exports &#x3D; &#123;</span><br><span class="line">    &quot;extends&quot;: &quot;eslint:recommended&quot;,</span><br><span class="line">    &quot;rules&quot;: &#123;</span><br><span class="line">        &#x2F;&#x2F; enable additional rules</span><br><span class="line">        &quot;indent&quot;: [&quot;error&quot;, 4],</span><br><span class="line">        &quot;linebreak-style&quot;: [&quot;error&quot;, &quot;unix&quot;],</span><br><span class="line">        &quot;quotes&quot;: [&quot;error&quot;, &quot;double&quot;],</span><br><span class="line">        &quot;semi&quot;: [&quot;error&quot;, &quot;always&quot;],</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; override default options for rules from base configurations</span><br><span class="line">        &quot;comma-dangle&quot;: [&quot;error&quot;, &quot;always&quot;],</span><br><span class="line">        &quot;no-cond-assign&quot;: [&quot;error&quot;, &quot;always&quot;],</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; disable rules from base configurations</span><br><span class="line">        &quot;no-console&quot;: &quot;off&quot;,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h3 id="Using-a-shareable-configuration-package"><a href="#Using-a-shareable-configuration-package" class="headerlink" title="Using a shareable configuration package"></a>Using a shareable configuration package</h3><p><a target="_blank" rel="noopener" href="http://eslint.cn/docs/developer-guide/shareable-configs">可共享的配置</a> 是一个 npm 包，它输出一个配置对象。要确保这个包安装在 ESLint 能请求到的目录下。</p>
 <p><code>extends</code> 属性值可以省略包名的前缀 <code>eslint-config-</code>。</p>
 <p><code>eslint --init</code> 命令可以创建一个配置，这样你就可以扩展一个流行的风格指南（比如，<code>eslint-config-standard</code>）。</p>
 <p>YAML 格式的一个配置文件的例子：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">extends: standard</span><br><span class="line">rules:</span><br><span class="line">  comma-dangle:</span><br><span class="line">    - error</span><br><span class="line">    - always</span><br><span class="line">  no-empty: warn</span><br></pre></td></tr></table></figure>
-
 <h3 id="Using-the-configuration-from-a-plugin"><a href="#Using-the-configuration-from-a-plugin" class="headerlink" title="Using the configuration from a plugin"></a>Using the configuration from a plugin</h3><p><a target="_blank" rel="noopener" href="http://eslint.cn/docs/developer-guide/working-with-plugins">插件</a> 是一个 npm 包，通常输出规则。一些插件也可以输出一个或多个命名的 <a target="_blank" rel="noopener" href="http://eslint.cn/docs/developer-guide/working-with-plugins#configs-in-plugins">配置</a>。要确保这个包安装在 ESLint 能请求到的目录下。</p>
 <p><code>plugins</code> <a target="_blank" rel="noopener" href="http://eslint.cn/docs/user-guide/configuring#configuring-plugins">属性值</a> 可以省略包名的前缀 <code>eslint-plugin-</code>。</p>
 <p><code>extends</code> 属性值可以由以下组成：</p>
@@ -653,12 +593,10 @@
 </ul>
 <p>JSON 格式的一个配置文件的例子：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;plugins&quot;: [</span><br><span class="line">        &quot;react&quot;</span><br><span class="line">    ],</span><br><span class="line">    &quot;extends&quot;: [</span><br><span class="line">        &quot;eslint:recommended&quot;,</span><br><span class="line">        &quot;plugin:react&#x2F;recommended&quot;</span><br><span class="line">    ],</span><br><span class="line">    &quot;rules&quot;: &#123;</span><br><span class="line">       &quot;no-set-state&quot;: &quot;off&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h3 id="Using-a-configuration-file"><a href="#Using-a-configuration-file" class="headerlink" title="Using a configuration file"></a>Using a configuration file</h3><p><code>extends</code> 属性值可以是到基本<a target="_blank" rel="noopener" href="http://eslint.cn/docs/user-guide/configuring#using-configuration-files">配置文件</a>的绝对路径，也可以是相对路径。ESLint 解析一个相对于使用它的配置文件的基本配置文件的相对路径。</p>
 <p>ESLint 解析基本配置文件的相对路径相对你你使用的配置文件，<strong>除非</strong>那个文件在你的主目录或非 ESLint 安装目录的父级目录。在这些情况下，ESLint 解析基本配合文件的相对路径相对于被检测的 <strong>项目</strong>目录（尤其是当前工作目录）。</p>
 <p>JSON 格式的一个配置文件的例子：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;extends&quot;: [</span><br><span class="line">        &quot;.&#x2F;node_modules&#x2F;coding-standard&#x2F;eslintDefaults.js&quot;,</span><br><span class="line">        &quot;.&#x2F;node_modules&#x2F;coding-standard&#x2F;.eslintrc-es6&quot;,</span><br><span class="line">        &quot;.&#x2F;node_modules&#x2F;coding-standard&#x2F;.eslintrc-jsx&quot;</span><br><span class="line">    ],</span><br><span class="line">    &quot;rules&quot;: &#123;</span><br><span class="line">        &quot;eqeqeq&quot;: &quot;warn&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h3 id="Using-quot-eslint-all-quot"><a href="#Using-quot-eslint-all-quot" class="headerlink" title="Using &quot;eslint:all&quot;"></a>Using <code>&quot;eslint:all&quot;</code></h3><p><code>extends</code> 属性值可以是 <code>&quot;eslint:all&quot;</code>，启用当前安装的 ESLint 中所有的核心规则。这些规则可以在 ESLint 的任何版本进行更改。</p>
 <p><strong>重要：</strong>这些配置 <strong>不推荐在产品中使用</strong>，因为它随着 ESLint 版本进行更改。使用的话，请自己承担风险。</p>
 <p>如果你配置 ESLint 升级时自动地启用新规则，当源码没有任何改变时，ESLint 可以报告新问题，因此任何 ESLint 的新的小版本好像有破坏性的更改。</p>
@@ -666,12 +604,11 @@
 <p>如果你的配置扩展了所有的核心规则：在你升级到一个新的大或小的 ESLint 版本，在你使用<a target="_blank" rel="noopener" href="http://eslint.cn/docs/user-guide/command-line-interface#fix">命令行</a>的 <code>--fix</code> 选项之前，检查一下报告的问题，这样你就知道一个新的可修复的规则将更改代码。</p>
 <p>JavaScript 格式的一个配置文件的例子：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">module.exports &#x3D; &#123;</span><br><span class="line">    &quot;extends&quot;: &quot;eslint:all&quot;,</span><br><span class="line">    &quot;rules&quot;: &#123;</span><br><span class="line">        &#x2F;&#x2F; override default options</span><br><span class="line">        &quot;comma-dangle&quot;: [&quot;error&quot;, &quot;always&quot;],</span><br><span class="line">        &quot;indent&quot;: [&quot;error&quot;, 2],</span><br><span class="line">        &quot;no-cond-assign&quot;: [&quot;error&quot;, &quot;always&quot;],</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; disable now, but enable in the future</span><br><span class="line">        &quot;one-var&quot;: &quot;off&quot;, &#x2F;&#x2F; [&quot;error&quot;, &quot;never&quot;]</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; disable</span><br><span class="line">        &quot;init-declarations&quot;: &quot;off&quot;,</span><br><span class="line">        &quot;no-console&quot;: &quot;off&quot;,</span><br><span class="line">        &quot;no-inline-comments&quot;: &quot;off&quot;,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h2 id="Configuration-Based-on-Glob-Patterns"><a href="#Configuration-Based-on-Glob-Patterns" class="headerlink" title="Configuration Based on Glob Patterns"></a>Configuration Based on Glob Patterns</h2><p><strong>v4.1.0+.</strong> 有时，你可能需要更精细的配置，比如，如果同一个目录下的文件需要有不同的配置。因此，你可以在配置中使用 <code>overrides</code> 键，它只适用于匹配特定的 glob 模式的文件，使用你在命令行上传递的格式 (e.g., <code>app/**/*.test.js</code>)。</p>
 <h3 id="How-it-works"><a href="#How-it-works" class="headerlink" title="How it works"></a>How it works</h3><ul>
 <li><p>Glob 模式覆盖只能在配置文件 (<code>.eslintrc.*</code> 或 <code>package.json</code>) 中进行配置。</p>
 </li>
-<li><p>模式应用于相对于配置文件的目录的文件路径。 比如，如果你的配置文件的路径为 <code>/Users/john/workspace/any-project/.eslintrc.js</code> 而你要检测的路径为 <code>/Users/john/workspace/any-project/lib/util.js</code>，那么你在 <code>.eslintrc.js</code> 中提供的模式是相对于 <code> lib/util.js</code> 来执行的.</p>
+<li><p>模式应用于相对于配置文件的目录的文件路径。 比如，如果你的配置文件的路径为 <code>/Users/john/workspace/any-project/.eslintrc.js</code> 而你要检测的路径为 <code>/Users/john/workspace/any-project/lib/util.js</code>，那么你在 <code>.eslintrc.js</code> 中提供的模式是相对于 <code>lib/util.js</code> 来执行的.</p>
 </li>
 <li><p>在相同的配置文件中，Glob 模式覆盖比其他常规配置具有更高的优先级。 同一个配置中的多个覆盖将按顺序被应用。也就是说，配置文件中的最后一个覆盖会有最高优先级。</p>
 </li>
@@ -679,9 +616,6 @@
 </li>
 </ul>
   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root</span><br></pre></td></tr></table></figure>
-
-
-
 <p>  之外的其他任何有效配置选项，</p>
 <ul>
 <li>一个 glob 特定的配置可以有 <code>extends</code> 设置，但是会忽略扩展配置中的 <code>root</code> 属性。</li>
@@ -694,18 +628,14 @@
 </li>
 </ul>
 <h3 id="Relative-glob-patterns"><a href="#Relative-glob-patterns" class="headerlink" title="Relative glob patterns"></a>Relative glob patterns</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">project-root</span><br><span class="line">├── app</span><br><span class="line">│   ├── lib</span><br><span class="line">│   │   ├── foo.js</span><br><span class="line">│   │   ├── fooSpec.js</span><br><span class="line">│   ├── components</span><br><span class="line">│   │   ├── bar.js</span><br><span class="line">│   │   ├── barSpec.js</span><br><span class="line">│   ├── .eslintrc.json</span><br><span class="line">├── server</span><br><span class="line">│   ├── server.js</span><br><span class="line">│   ├── serverSpec.js</span><br><span class="line">├── .eslintrc.json</span><br></pre></td></tr></table></figure>
-
 <p>在 <code>app/.eslintrc.json</code> 文件中的配置定义了 <code>**/*Spec.js</code> glob 模式。该模式相对于 <code>app/.eslintrc.json</code> 的基准目录。因此，该模式匹配 <code>app/lib/fooSpec.js</code> 和 <code>app/components/barSpec.js</code>，但 <strong>不匹配</strong> <code>server/serverSpec.js</code>。如果你在项目根目录的 <code>.eslintrc.json</code> 文件中定义相同的模式，它将匹配所有三个 <code>*Spec</code> 文件。</p>
 <h3 id="Example-configuration"><a href="#Example-configuration" class="headerlink" title="Example configuration"></a>Example configuration</h3><p>在你的 <code>.eslintrc.json</code> 文件中：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;rules&quot;: &#123;</span><br><span class="line">    &quot;quotes&quot;: [&quot;error&quot;, &quot;double&quot;]</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  &quot;overrides&quot;: [</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;files&quot;: [&quot;bin&#x2F;*.js&quot;, &quot;lib&#x2F;*.js&quot;],</span><br><span class="line">      &quot;excludedFiles&quot;: &quot;*.test.js&quot;,</span><br><span class="line">      &quot;rules&quot;: &#123;</span><br><span class="line">        &quot;quotes&quot;: [&quot;error&quot;, &quot;single&quot;]</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h2 id="Comments-in-Configuration-Files"><a href="#Comments-in-Configuration-Files" class="headerlink" title="Comments in Configuration Files"></a>Comments in Configuration Files</h2><p>JSON 和 YAML 配置文件格式都支持注释 ( <code>package.json</code> 文件不应该包括注释)。你可以在其他类型的文件中使用 JavaScript 风格的注释或使用 YAML 风格的注释，ESLint 会忽略它们。这允许你的配置更加人性化。例如：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;env&quot;: &#123;</span><br><span class="line">        &quot;browser&quot;: true</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;rules&quot;: &#123;</span><br><span class="line">        &#x2F;&#x2F; Override our default settings just for this directory</span><br><span class="line">        &quot;eqeqeq&quot;: &quot;warn&quot;,</span><br><span class="line">        &quot;strict&quot;: &quot;off&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h2 id="Specifying-File-extensions-to-Lint"><a href="#Specifying-File-extensions-to-Lint" class="headerlink" title="Specifying File extensions to Lint"></a>Specifying File extensions to Lint</h2><p>目前，告诉 ESLint 哪个文件扩展名要检测的唯一方法是使用 <a target="_blank" rel="noopener" href="http://eslint.cn/docs/user-guide/command-line-interface#ext"><code>--ext</code></a> 命令行选项指定一个逗号分隔的扩展名列表。注意，该标记只在与目录一起使用时有效，如果使用文件名或 glob 模式，它将会被忽略。</p>
 <h2 id="Ignoring-Files-and-Directories"><a href="#Ignoring-Files-and-Directories" class="headerlink" title="Ignoring Files and Directories"></a>Ignoring Files and Directories</h2><h3 id="eslintignore"><a href="#eslintignore" class="headerlink" title=".eslintignore"></a><code>.eslintignore</code></h3><p>你可以通过在项目根目录创建一个 <code>.eslintignore</code> 文件告诉 ESLint 去忽略特定的文件和目录。<code>.eslintignore</code> 文件是一个纯文本文件，其中的每一行都是一个 glob 模式表明哪些路径应该忽略检测。例如，以下将忽略所有的 JavaScript 文件：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">**&#x2F;*.js</span><br></pre></td></tr></table></figure>
-
 <p>当 ESLint 运行时，在确定哪些文件要检测之前，它会在当前工作目录中查找一个 <code>.eslintignore</code> 文件。如果发现了这个文件，当遍历目录时，将会应用这些偏好设置。一次只有一个 <code>.eslintignore</code> 文件会被使用，所以，不是当前工作目录下的 <code>.eslintignore</code> 文件将不会被用到。</p>
 <p>Globs 匹配使用 <a target="_blank" rel="noopener" href="https://github.com/kaelzhang/node-ignore">node-ignore</a>，所以大量可用的特性有：</p>
 <ul>
@@ -717,38 +647,31 @@
 </ul>
 <p>特别值得注意的是，就像 <code>.gitignore</code> 文件，所有用作 <code>.eslintignore</code> 和 <code>--ignore-pattern</code> 模式的路径必须使用前斜杠作为它们的路径分隔符。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># Valid</span><br><span class="line">&#x2F;root&#x2F;src&#x2F;*.js</span><br><span class="line"></span><br><span class="line"># Invalid</span><br><span class="line">\root\src\*.js</span><br></pre></td></tr></table></figure>
-
 <p>请参参阅 <code>.gitignore</code> 规范查看有关有效语法的更多示例。</p>
 <p>除了 <code>.eslintignore</code> 文件中的模式，ESLint总是忽略 <code>/node_modules/*</code> 和 <code>/bower_components/*</code> 中的文件。</p>
 <p>例如：把下面 <code>.eslintignore</code> 文件放到当前工作目录里，将忽略项目根目录下的 <code>node_modules</code>，<code>bower_components</code> 以及 <code>build/</code> 目录下除了 <code>build/index.js</code> 的所有文件。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># &#x2F;node_modules&#x2F;* and &#x2F;bower_components&#x2F;* in the project root are ignored by default</span><br><span class="line"></span><br><span class="line"># Ignore built files except build&#x2F;index.js</span><br><span class="line">build&#x2F;*</span><br><span class="line">!build&#x2F;index.js</span><br></pre></td></tr></table></figure>
-
 <p><strong>重要：</strong>注意代码库的 <code>node_modules</code> 目录，比如，一个 <code>packages</code> 目录，默认情况下不会被忽略，需要手动添加到 <code>.eslintignore</code>。</p>
 <h3 id="Using-an-Alternate-File"><a href="#Using-an-Alternate-File" class="headerlink" title="Using an Alternate File"></a>Using an Alternate File</h3><p>如果相比于当前工作目录下 <code>.eslintignore</code> 文件，你更想使用一个不同的文件，你可以在命令行使用 <code>--ignore-path</code> 选项指定它。例如，你可以使用 <code>.jshintignore</code> 文件，因为它有相同的格式：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eslint --ignore-path .jshintignore file.js</span><br></pre></td></tr></table></figure>
-
 <p>你也可以使用你的 <code>.gitignore</code> 文件：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eslint --ignore-path .gitignore file.js</span><br></pre></td></tr></table></figure>
-
 <p>任何文件只要满足标准忽略文件格式都可以用。记住，指定 <code>--ignore-path</code> 意味着任何现有的 <code>.eslintignore</code> 文件将不被使用。请注意，<code>.eslintignore</code> 中的匹配规则比 <code>.gitignore</code> 中的更严格。</p>
 <h3 id="Using-eslintIgnore-in-package-json"><a href="#Using-eslintIgnore-in-package-json" class="headerlink" title="Using eslintIgnore in package.json"></a>Using eslintIgnore in package.json</h3><p>如果没有发现 <code>.eslintignore</code> 文件，也没有指定替代文件，ESLint 将在 package.json 文件中查找 <code>eslintIgnore</code> 键，来检查要忽略的文件。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;name&quot;: &quot;mypackage&quot;,</span><br><span class="line">  &quot;version&quot;: &quot;0.0.1&quot;,</span><br><span class="line">  &quot;eslintConfig&quot;: &#123;</span><br><span class="line">      &quot;env&quot;: &#123;</span><br><span class="line">          &quot;browser&quot;: true,</span><br><span class="line">          &quot;node&quot;: true</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;eslintIgnore&quot;: [&quot;hello.js&quot;, &quot;world.js&quot;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h3 id="Ignored-File-Warnings"><a href="#Ignored-File-Warnings" class="headerlink" title="Ignored File Warnings"></a>Ignored File Warnings</h3><p>当你传递目录给 ESLint，文件和目录是默默被忽略的。如果你传递一个指定的文件给 ESLint，你会看到一个警告，表明该文件被跳过了。例如，假如你有一个像这样的 <code>.eslintignore</code>文件：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">foo.js</span><br></pre></td></tr></table></figure>
-
 <p>然后你执行：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eslint foo.js</span><br></pre></td></tr></table></figure>
-
 <p>你将会看到这个警告：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">foo.js</span><br><span class="line">  0:0  warning  File ignored because of your .eslintignore file. Use --no-ignore to override.</span><br><span class="line"></span><br><span class="line">✖ 1 problem (0 errors, 1 warning)</span><br></pre></td></tr></table></figure>
-
 <p>这种消息出现是因为 ESLint 不确定你是否想检测文件。正如这个消息表明的那样，你可以使用 <code>--no-ignore</code> 覆盖忽略的规则。</p>
 </blockquote>
 <h4 id="规则-Rules"><a href="#规则-Rules" class="headerlink" title="规则 Rules"></a>规则 Rules</h4><p>为了让你对规则有个更好的理解，ESLint 对其进行了分门别类。</p>
 <p>所有的规则默认都是禁用的。</p>
 <p>在 <strong>配置文件</strong> 中，使用 <code>&quot;extends&quot;: &quot;eslint:recommend&quot;</code> 来启用推荐的规则，报告一些常见的问题，在下文中这些推荐的规则都带有一个 ✔ 标记。</p>
 <h5 id="Possible-Errors"><a href="#Possible-Errors" class="headerlink" title="Possible Errors"></a>Possible Errors</h5><p>这些规则与 JavaScript 代码中可能的错误或逻辑错误有关：</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -758,7 +681,8 @@
 <th>说明</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>✔</td>
 <td></td>
 <td><a target="_blank" rel="noopener" href="http://eslint.cn/docs/rules/for-direction">for-direction</a></td>
@@ -974,13 +898,34 @@
 <td><a target="_blank" rel="noopener" href="http://eslint.cn/docs/rules/valid-typeof">valid-typeof</a></td>
 <td>强制 <code>typeof</code> 表达式与有效的字符串进行比较</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 
     </div>
 
     
     
     
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
 
       <footer class="post-footer">
           <div class="post-tags">
@@ -1075,20 +1020,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">177</span>
+          <span class="site-state-item-count">240</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">49</span>
+        <span class="site-state-item-count">60</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1115,7 +1060,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -1124,12 +1069,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">315k</span>
+    <span title="站点总字数">441k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:46</span>
+    <span title="站点阅读时长">6:41</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
@@ -1204,6 +1149,8 @@
 
 
 
+
+  
 
   
 

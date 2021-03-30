@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/002.jpg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/002.jpg">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-material.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"wrr123.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="StringlastIndexOf(int ch) : int注释：Return the index within this string of the last occurrence of the specified character. For values of ch in the range from 0 to 0xFFFF (inclusive), the index (in Unico">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java源码">
+<meta property="og:url" content="https://wrr123.github.io/2020/12/15/java%E6%BA%90%E7%A0%81/index.html">
+<meta property="og:site_name" content="一缕烟气">
+<meta property="og:description" content="StringlastIndexOf(int ch) : int注释：Return the index within this string of the last occurrence of the specified character. For values of ch in the range from 0 to 0xFFFF (inclusive), the index (in Unico">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-12-15T06:17:01.000Z">
+<meta property="article:modified_time" content="2021-02-18T13:27:21.106Z">
+<meta property="article:author" content="田园隐士">
+<meta property="article:tag" content="java">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://wrr123.github.io/2020/12/15/java%E6%BA%90%E7%A0%81/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>java源码 | 一缕烟气</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="一缕烟气" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">一缕烟气</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">沧海月明珠有泪，蓝田日暖玉生烟</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2020/12/15/java%E6%BA%90%E7%A0%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="田园隐士">
+      <meta itemprop="description" content="talk is cheap, show me the code">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一缕烟气">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          java源码
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-12-15 14:17:01" itemprop="dateCreated datePublished" datetime="2020-12-15T14:17:01+08:00">2020-12-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-02-18 21:27:21" itemprop="dateModified" datetime="2021-02-18T21:27:21+08:00">2021-02-18</time>
+              </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>5k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>5 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h4 id="String"><a href="#String" class="headerlink" title="String"></a>String</h4><h5 id="lastIndexOf-int-ch-int"><a href="#lastIndexOf-int-ch-int" class="headerlink" title="lastIndexOf(int ch) : int"></a>lastIndexOf(int ch) : int</h5><p>注释：Return the index within this string of the last occurrence of the specified character.</p>
+<p>For values of <strong>ch</strong> in the range from <code>0</code> to <code>0xFFFF</code> (inclusive), the index (in Unicode code units) returned is the largest value <strong><em>i</em></strong>  such that:</p>
+<p><code>this.charAt(k) == ch</code></p>
+<p>is true. for other value of <strong>ch</strong> , it is the largest value <strong><em>k</em></strong> such that:</p>
+<p><code>this.codePointAt(k) == ch</code></p>
+<p>is true. In either case, if no such character occurs in this string, then <code>-1</code> is returned. the <strong>string</strong> is searched backwards starting at the last character.</p>
+<span id="more"></span>
+<h5 id="indexOf-String-str-int"><a href="#indexOf-String-str-int" class="headerlink" title="indexOf(String str) : int"></a>indexOf(String str) : int</h5><p>注释：Returns the index within this string of the first occurrence of the specified substring.</p>
+<h5 id="indexOf-char-source-int-sourceOffset-int-sourceCount-char-target-int-targetOffset-int-targetCount-int-fromIndex-int"><a href="#indexOf-char-source-int-sourceOffset-int-sourceCount-char-target-int-targetOffset-int-targetCount-int-fromIndex-int" class="headerlink" title="indexOf(char[] source, int sourceOffset, int sourceCount, char[] target, int targetOffset, int targetCount, int fromIndex) : int"></a>indexOf(char[] source, int sourceOffset, int sourceCount, char[] target, int targetOffset, int targetCount, int fromIndex) : int</h5><p>注释：Code shared by String and StringBuffer to do searches. The source is the character array being searched, and the target is the string being searched for.</p>
+<h5 id="lastIndexOf-String-str-int"><a href="#lastIndexOf-String-str-int" class="headerlink" title="lastIndexOf(String str) : int"></a>lastIndexOf(String str) : int</h5><p>注释: Returns the index within this string of the last occurrence of the specified substring. The last occurrence of the empty string <code>&quot;&quot;</code> is considered to occur at the index value <strong><code>this.length()</code></strong> .</p>
+<p>The returned index is the largest value <strong>k</strong> for which:</p>
+<p><code>this.startsWith(str, k)</code></p>
+<p>If no such value of <strong>k</strong> exists, then <code>-1</code> is returned.</p>
+<h5 id="lastIndexOf-char-source-int-sourceOffset-int-sourceCount-char-target-int-targetOffset-int-targetCount-int-fromIndex-int"><a href="#lastIndexOf-char-source-int-sourceOffset-int-sourceCount-char-target-int-targetOffset-int-targetCount-int-fromIndex-int" class="headerlink" title="lastIndexOf(char[] source, int sourceOffset, int sourceCount, char[] target, int targetOffset, int targetCount, int fromIndex) : int"></a>lastIndexOf(char[] source, int sourceOffset, int sourceCount, char[] target, int targetOffset, int targetCount, int fromIndex) : int</h5><p>注释: Code shared by <strong>String</strong> and <strong>StringBuffer</strong> to do searches. The source is the character array being searched,and the target is the string being searched for.</p>
+<p><strong>给循环添加别名来直接跳出for、while循环，而不是仅仅跳出当前循环。</strong></p>
+<p>一个栗子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">startSearchForLastChar:</span><br><span class="line">    <span class="keyword">while</span>(<span class="keyword">true</span>) &#123;</span><br><span class="line">        <span class="keyword">int</span> j = <span class="number">10</span>, start = <span class="number">8</span>;</span><br><span class="line">        <span class="keyword">int</span>[] source = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">9</span>], target = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">9</span>];</span><br><span class="line">        <span class="keyword">while</span>(j &gt; start) &#123;</span><br><span class="line">            <span class="keyword">if</span> (source[j--] != target[k--]) &#123;</span><br><span class="line">                <span class="keyword">continue</span> startSearchForLastChar;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">...    </span><br></pre></td></tr></table></figure>
+<h5 id="subString-int-beginIndex-String"><a href="#subString-int-beginIndex-String" class="headerlink" title="subString(int beginIndex) : String"></a>subString(int beginIndex) : String</h5><p>注释： Returns a string that is a substring of this string. The substring begins with the character at the specified index and extends to the end of this string.</p>
+<p>几个方法使用的栗子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;unhappy&quot;</span>.substring(<span class="number">2</span>) <span class="comment">// &quot;happy&quot;</span></span><br><span class="line"><span class="string">&quot;Harbison&quot;</span>.substring(<span class="number">3</span>) <span class="comment">// &quot;bison&quot;</span></span><br><span class="line"><span class="string">&quot;emptiness&quot;</span>.substring(<span class="number">9</span>) <span class="comment">// &quot;&quot;    </span></span><br></pre></td></tr></table></figure>
+<h5 id="substring-int-beginIndex-int-endIndex-String"><a href="#substring-int-beginIndex-int-endIndex-String" class="headerlink" title="substring(int beginIndex, int endIndex) : String"></a>substring(int beginIndex, int endIndex) : String</h5><p>注释: Returns a string that is a substring if this string. The substring begins at the specified <strong>beginIndex</strong> and extends to the character at index <strong><code>endIndex - 1</code></strong> . Thus the length of the substring is <strong><code>endIndex - beginIndex</code></strong> .</p>
+<p>几个方法使用的栗子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;hamburger&quot;</span>.substring(<span class="number">4</span>, <span class="number">8</span>) <span class="comment">// &quot;urge&quot;</span></span><br><span class="line"><span class="string">&quot;simles&quot;</span>.substring(<span class="number">1</span>, <span class="number">5</span>) <span class="comment">// &quot;imle&quot;</span></span><br></pre></td></tr></table></figure>
+<h5 id="subSequence-int-beginIndex-int-endIndex-CharSequence"><a href="#subSequence-int-beginIndex-int-endIndex-CharSequence" class="headerlink" title="subSequence(int beginIndex, int endIndex) : CharSequence"></a>subSequence(int beginIndex, int endIndex) : CharSequence</h5><p>注释: Returns a character sequence that is a subsequence of this sequence.</p>
+<p><strong>java8开始，在匿名内部类使用外部变量是，要么是使用final修饰的，要么是自初始化值之后，值不会被改变。</strong></p>
+<h5 id="replace-char-oldChar-char-newChar-String"><a href="#replace-char-oldChar-char-newChar-String" class="headerlink" title="replace(char oldChar, char newChar) : String"></a>replace(char oldChar, char newChar) : String</h5><p>注释: returns a string resulting from replacing all occurrences of <strong>oldChar</strong> in this string with <strong>newChar</strong> .</p>
+<p>几个栗子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;mesquite in your cellar&quot;</span>.replace(<span class="string">&#x27;e&#x27;</span>, <span class="string">&#x27;o&#x27;</span>) <span class="comment">// &quot;mosquite in your collar&quot;</span></span><br><span class="line"> <span class="string">&quot;JonL&quot;</span>.replace(<span class="string">&#x27;q&#x27;</span>, <span class="string">&#x27;x&#x27;</span>) <span class="comment">// &quot;JonL&quot; (no change)</span></span><br></pre></td></tr></table></figure>
+<h5 id="matches-String-regex-boolean"><a href="#matches-String-regex-boolean" class="headerlink" title="matches(String regex) : boolean"></a>matches(String regex) : boolean</h5><p>注释: Tells whether or not this string matches the given <strong>regular expression</strong> .</p>
+<p>An invocation of this method of form <strong>str</strong> <code>.matches(regex)</code> yields exactly the same result as the expression </p>
+<p><code>java.util.regex.Pattern.matches(String, CharSequence)</code> </p>
+<p><code>matches(regex, str)</code>.</p>
+<h5 id="contains-CharSequence-s-boolean"><a href="#contains-CharSequence-s-boolean" class="headerlink" title="contains(CharSequence s) : boolean"></a>contains(CharSequence s) : boolean</h5><p>注释: Returns true if and only if this string contains the specified sequence of char values.</p>
+<h5 id="replaceFirst-String-regex-replacement-String"><a href="#replaceFirst-String-regex-replacement-String" class="headerlink" title="replaceFirst(String regex, replacement) : String"></a>replaceFirst(String regex, replacement) : String</h5><p>注释: replaces the first substring of this string that matches the given <strong>regular expression</strong> with the given replacement.</p>
+<p>这等同于</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Pattern.compile(regex)</span><br><span class="line">Pattern.matcher(CharSequence)</span><br><span class="line">Matcher.replaceFirst(replacement)</span><br></pre></td></tr></table></figure>
+<h5 id="replaceAll-String-regex-String-replacement-String"><a href="#replaceAll-String-regex-String-replacement-String" class="headerlink" title="replaceAll(String regex, String replacement) : String"></a>replaceAll(String regex, String replacement) : String</h5><p>注释: Replaces each substring of this string that matches the given <strong>regular expression</strong> with the given replacement.</p>
+<p><strong>java8中，类的实例方法和变量的实例方法一样吗?</strong></p>
+<p>形式：</p>
+<ul>
+<li><p>instance::MethodName</p>
+<p>没有隐式的参数传递。</p>
+</li>
+<li><p>ClassName::MethodName</p>
+<p>这个会隐式的传递一个 <strong>this</strong> 变量，作为第一个参数。</p>
+</li>
+</ul>
+<h5 id="split-String-regex-int-limit-String"><a href="#split-String-regex-int-limit-String" class="headerlink" title="split(String regex, int limit) : String[]"></a>split(String regex, int limit) : String[]</h5><p>注释: Splits this string around matches of the given <strong>regular expression</strong> .</p>
+<p>
+    The array returned by this method contains each substring of this string that is terminated by another substring that matches the given expression or is terminated by the end of the string. The substrings in the array are int the order in which they occur in this string. If the expression does not match any part of the input then the resulting array has just one element, namely this string.
+</p>
+
+<p>
+    When there is a positive-width match at the beginning of this string then an empty leading substring is included at the beginning of the resulting array.
+    A zero-width match at the beginning however never produces such empty leading substring.
+</p>
+
+<p>
+    The <code>limit</code> parameter controls the number of times the pattern is applied and therefore affects the length of the resulting array. If the limit <i>n</i> is greater than zero then the pattern will be applied at most <i>n</i> &nbsp;-&nbsp;1 times,the array's length will be no greater than <i>n</i>, and the array's last entry will contain all input beyond the last matched delimiter. If <i>n</i> is non-positive then the pattern will be applied as many times as possible and the array can have any length. If <i>n</i> is zero then the pattern will be applied as many times as possible, the array can have any length, and trailing empty strings will be discarded.
+</p>
+
+<h5 id="static-join-CharSequence-delimiter-CharSequence…-elements-String"><a href="#static-join-CharSequence-delimiter-CharSequence…-elements-String" class="headerlink" title="static join(CharSequence delimiter, CharSequence… elements) : String"></a>static join(CharSequence delimiter, CharSequence… elements) : String</h5><p>Returns a new String composed of copies of <code>CharSequence element</code> joined together with a copy of the specified <code>delimeter</code> .</p>
+<blockquote>
+    For example,
+    <pre>
+        <code>
+            String message = String.join("-", "Java", "is", "cool");
+            // message returned is: "Java-is-cool"
+        </code>
+    </pre>
+</blockquote>
+
+<p>Note that if an element is null, then <code>&quot;null&quot;</code> is added.</p>
+
+    </div>
+
+    
+    
+    
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/java/" rel="tag"># java</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/12/03/oracle%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/" rel="prev" title="oracle存储过程">
+      <i class="fa fa-chevron-left"></i> oracle存储过程
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/01/04/oracle/" rel="next" title="oracle">
+      oracle <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#String"><span class="nav-number">1.</span> <span class="nav-text">String</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#lastIndexOf-int-ch-int"><span class="nav-number">1.1.</span> <span class="nav-text">lastIndexOf(int ch) : int</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#indexOf-String-str-int"><span class="nav-number">1.2.</span> <span class="nav-text">indexOf(String str) : int</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#indexOf-char-source-int-sourceOffset-int-sourceCount-char-target-int-targetOffset-int-targetCount-int-fromIndex-int"><span class="nav-number">1.3.</span> <span class="nav-text">indexOf(char[] source, int sourceOffset, int sourceCount, char[] target, int targetOffset, int targetCount, int fromIndex) : int</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#lastIndexOf-String-str-int"><span class="nav-number">1.4.</span> <span class="nav-text">lastIndexOf(String str) : int</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#lastIndexOf-char-source-int-sourceOffset-int-sourceCount-char-target-int-targetOffset-int-targetCount-int-fromIndex-int"><span class="nav-number">1.5.</span> <span class="nav-text">lastIndexOf(char[] source, int sourceOffset, int sourceCount, char[] target, int targetOffset, int targetCount, int fromIndex) : int</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#subString-int-beginIndex-String"><span class="nav-number">1.6.</span> <span class="nav-text">subString(int beginIndex) : String</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#substring-int-beginIndex-int-endIndex-String"><span class="nav-number">1.7.</span> <span class="nav-text">substring(int beginIndex, int endIndex) : String</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#subSequence-int-beginIndex-int-endIndex-CharSequence"><span class="nav-number">1.8.</span> <span class="nav-text">subSequence(int beginIndex, int endIndex) : CharSequence</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#replace-char-oldChar-char-newChar-String"><span class="nav-number">1.9.</span> <span class="nav-text">replace(char oldChar, char newChar) : String</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#matches-String-regex-boolean"><span class="nav-number">1.10.</span> <span class="nav-text">matches(String regex) : boolean</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#contains-CharSequence-s-boolean"><span class="nav-number">1.11.</span> <span class="nav-text">contains(CharSequence s) : boolean</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#replaceFirst-String-regex-replacement-String"><span class="nav-number">1.12.</span> <span class="nav-text">replaceFirst(String regex, replacement) : String</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#replaceAll-String-regex-String-replacement-String"><span class="nav-number">1.13.</span> <span class="nav-text">replaceAll(String regex, String replacement) : String</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#split-String-regex-int-limit-String"><span class="nav-number">1.14.</span> <span class="nav-text">split(String regex, int limit) : String[]</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#static-join-CharSequence-delimiter-CharSequence%E2%80%A6-elements-String"><span class="nav-number">1.15.</span> <span class="nav-text">static join(CharSequence delimiter, CharSequence… elements) : String</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="田园隐士"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">田园隐士</p>
+  <div class="site-description" itemprop="description">talk is cheap, show me the code</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">240</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">60</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">田园隐士</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">441k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">6:41</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

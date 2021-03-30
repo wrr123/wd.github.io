@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.0.2">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/002.jpg">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/002.jpg">
@@ -79,6 +79,7 @@
   </style>
 </noscript>
 
+<link rel="alternate" href="/atom.xml" title="一缕烟气" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -271,8 +272,7 @@
 <li><code>diff</code> 对没有更改的文本进行折叠</li>
 <li><code>marker</code> 用标志折叠</li>
 </ol>
-<a id="more"></a>
-
+<span id="more"></span>
 <h5 id="indent-折叠命令"><a href="#indent-折叠命令" class="headerlink" title="indent 折叠命令"></a>indent 折叠命令</h5><h6 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h6><ul>
 <li><code>za</code>  打开或关闭当前折叠</li>
 <li><code>zM</code> 关闭所有折叠</li>
@@ -294,7 +294,6 @@
 <p>然后希望替换这些内容，于是输入命令：</p>
 <p><code>%s/</code>，这时候使用 <code>ctrl-R 再按 &quot;</code>,那么复制的内容就会出现在命令行中了。</p>
 <h4 id="统计一个字符串出现的次数"><a href="#统计一个字符串出现的次数" class="headerlink" title="统计一个字符串出现的次数"></a>统计一个字符串出现的次数</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:%s/string/&amp;/gn</span><br></pre></td></tr></table></figure>
-
 <h4 id="Movement-Characters"><a href="#Movement-Characters" class="headerlink" title="Movement: Characters"></a>Movement: Characters</h4><p><code>t [char]</code> : Jump to one character before the next occurence of [char]</p>
 <p><code>T [char]</code>: Jump to one character after the next occurence of [char]</p>
 <p><code>;</code>: repeat last <code>f F t T</code> movement</p>
@@ -441,12 +440,31 @@
 <p>  Make it so typing ‘dts’ followed by a space will insert the current date.</p>
 </li>
 </ul>
-<h4 id><a href="#" class="headerlink" title></a></h4>
+<h4 id><a href="#" class="headerlink" title=" "></a> </h4>
     </div>
 
     
     
     
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
 
       <footer class="post-footer">
           <div class="post-tags">
@@ -524,7 +542,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E6%8A%98%E5%8F%A0"><span class="nav-number">1.</span> <span class="nav-text">代码折叠</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9C%89-6-%E7%A7%8D%E6%96%B9%E5%BC%8F%E6%9D%A5%E6%8A%98%E5%8F%A0%E4%BB%A3%E7%A0%81"><span class="nav-number">1.1.</span> <span class="nav-text">有 6 种方式来折叠代码</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#indent-%E6%8A%98%E5%8F%A0%E5%91%BD%E4%BB%A4"><span class="nav-number">1.2.</span> <span class="nav-text">indent 折叠命令</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C"><span class="nav-number">1.2.1.</span> <span class="nav-text">操作</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#marker-%E6%8A%98%E5%8F%A0%E5%91%BD%E4%BB%A4"><span class="nav-number">1.3.</span> <span class="nav-text">marker 折叠命令</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F%E4%B8%8B%E7%B2%98%E8%B4%B4%E6%95%B0%E6%8D%AE"><span class="nav-number">2.</span> <span class="nav-text">在命令模式下粘贴数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%9F%E8%AE%A1%E4%B8%80%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%BA%E7%8E%B0%E7%9A%84%E6%AC%A1%E6%95%B0"><span class="nav-number">3.</span> <span class="nav-text">统计一个字符串出现的次数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Movement-Characters"><span class="nav-number">4.</span> <span class="nav-text">Movement: Characters</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Movement-Code"><span class="nav-number">5.</span> <span class="nav-text">Movement: Code</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Indenting-text"><span class="nav-number">6.</span> <span class="nav-text">Indenting text</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#buffers"><span class="nav-number">7.</span> <span class="nav-text">buffers</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Scrolling"><span class="nav-number">8.</span> <span class="nav-text">Scrolling</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Floding"><span class="nav-number">9.</span> <span class="nav-text">Floding</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Bookmark-and-History"><span class="nav-number">10.</span> <span class="nav-text">Bookmark and History</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Miscellaneous"><span class="nav-number">11.</span> <span class="nav-text">Miscellaneous</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">12.</span> <span class="nav-text"></span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E6%8A%98%E5%8F%A0"><span class="nav-number">1.</span> <span class="nav-text">代码折叠</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9C%89-6-%E7%A7%8D%E6%96%B9%E5%BC%8F%E6%9D%A5%E6%8A%98%E5%8F%A0%E4%BB%A3%E7%A0%81"><span class="nav-number">1.1.</span> <span class="nav-text">有 6 种方式来折叠代码</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#indent-%E6%8A%98%E5%8F%A0%E5%91%BD%E4%BB%A4"><span class="nav-number">1.2.</span> <span class="nav-text">indent 折叠命令</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C"><span class="nav-number">1.2.1.</span> <span class="nav-text">操作</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#marker-%E6%8A%98%E5%8F%A0%E5%91%BD%E4%BB%A4"><span class="nav-number">1.3.</span> <span class="nav-text">marker 折叠命令</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F%E4%B8%8B%E7%B2%98%E8%B4%B4%E6%95%B0%E6%8D%AE"><span class="nav-number">2.</span> <span class="nav-text">在命令模式下粘贴数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%9F%E8%AE%A1%E4%B8%80%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%BA%E7%8E%B0%E7%9A%84%E6%AC%A1%E6%95%B0"><span class="nav-number">3.</span> <span class="nav-text">统计一个字符串出现的次数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Movement-Characters"><span class="nav-number">4.</span> <span class="nav-text">Movement: Characters</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Movement-Code"><span class="nav-number">5.</span> <span class="nav-text">Movement: Code</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Indenting-text"><span class="nav-number">6.</span> <span class="nav-text">Indenting text</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#buffers"><span class="nav-number">7.</span> <span class="nav-text">buffers</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Scrolling"><span class="nav-number">8.</span> <span class="nav-text">Scrolling</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Floding"><span class="nav-number">9.</span> <span class="nav-text">Floding</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Bookmark-and-History"><span class="nav-number">10.</span> <span class="nav-text">Bookmark and History</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Miscellaneous"><span class="nav-number">11.</span> <span class="nav-text">Miscellaneous</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">12.</span> <span class="nav-text"> </span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -540,20 +558,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">177</span>
+          <span class="site-state-item-count">240</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">49</span>
+        <span class="site-state-item-count">60</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -580,7 +598,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -589,12 +607,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">315k</span>
+    <span title="站点总字数">441k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:46</span>
+    <span title="站点阅读时长">6:41</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
@@ -669,6 +687,8 @@
 
 
 
+
+  
 
   
 

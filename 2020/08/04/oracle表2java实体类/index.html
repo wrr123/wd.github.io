@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.0.2">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/002.jpg">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/002.jpg">
@@ -80,6 +80,7 @@
   </style>
 </noscript>
 
+<link rel="alternate" href="/atom.xml" title="一缕烟气" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -266,17 +267,18 @@
         <h4 id="将oracle中的表转为java实体类"><a href="#将oracle中的表转为java实体类" class="headerlink" title="将oracle中的表转为java实体类"></a>将oracle中的表转为java实体类</h4><ul>
 <li>swagger实体类注解<code>@ApiModelProperty</code></li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> </span><br><span class="line"><span class="keyword">listagg</span>(<span class="string">&#x27;@ApiModelProperty(&quot;&#x27;</span>||t.COMMENTS||<span class="string">&#x27;&quot;)&#x27;</span>||<span class="keyword">chr</span>(<span class="number">13</span>)||<span class="string">&#x27;private String &#x27;</span>||<span class="keyword">lower</span>(t.COLUMN_NAME)||<span class="string">&#x27;;&#x27;</span>||<span class="keyword">chr</span>(<span class="number">13</span>)||<span class="keyword">chr</span>(<span class="number">13</span>), <span class="string">&#x27;&#x27;</span>) <span class="keyword">within</span> <span class="keyword">group</span>(<span class="keyword">order</span> <span class="keyword">by</span> t.COLUMN_NAME)</span><br><span class="line"><span class="keyword">from</span> all_col_comments t <span class="keyword">where</span> t.TABLE_NAME = <span class="string">&#x27;TEMP01&#x27;</span>;</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> </span><br><span class="line"><span class="built_in">listagg</span>(<span class="string">&#x27;@ApiModelProperty(&quot;&#x27;</span><span class="operator">||</span>t.COMMENTS<span class="operator">||</span><span class="string">&#x27;&quot;)&#x27;</span><span class="operator">||</span>chr(<span class="number">13</span>)<span class="operator">||</span><span class="string">&#x27;private String &#x27;</span><span class="operator">||</span><span class="built_in">lower</span>(t.COLUMN_NAME)<span class="operator">||</span><span class="string">&#x27;;&#x27;</span><span class="operator">||</span>chr(<span class="number">13</span>)<span class="operator">||</span>chr(<span class="number">13</span>), <span class="string">&#x27;&#x27;</span>) <span class="keyword">within</span> <span class="keyword">group</span>(<span class="keyword">order</span> <span class="keyword">by</span> t.COLUMN_NAME)</span><br><span class="line"><span class="keyword">from</span> all_col_comments t <span class="keyword">where</span> t.TABLE_NAME <span class="operator">=</span> <span class="string">&#x27;TEMP01&#x27;</span>;</span><br></pre></td></tr></table></figure>
 <p>​    <u><em>listagg函数可以使用wm_concat函数来替换</em></u></p>
-<h4 id="oracle中一些特殊符号的转换"><a href="#oracle中一些特殊符号的转换" class="headerlink" title="oracle中一些特殊符号的转换"></a>oracle中一些特殊符号的转换</h4><table>
+<h4 id="oracle中一些特殊符号的转换"><a href="#oracle中一些特殊符号的转换" class="headerlink" title="oracle中一些特殊符号的转换"></a>oracle中一些特殊符号的转换</h4><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>说明</th>
 <th>转换</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>制表符</td>
 <td>chr(9)</td>
 </tr>
@@ -288,221 +290,246 @@
 <td>回车符</td>
 <td>chr(13)</td>
 </tr>
-</tbody></table>
-<h4 id="oracle和java的数据类型对应关系"><a href="#oracle和java的数据类型对应关系" class="headerlink" title="oracle和java的数据类型对应关系"></a>oracle和java的数据类型对应关系</h4><table>
+</tbody>
+</table>
+</div>
+<h4 id="oracle和java的数据类型对应关系"><a href="#oracle和java的数据类型对应关系" class="headerlink" title="oracle和java的数据类型对应关系"></a>oracle和java的数据类型对应关系</h4><div class="table-container">
+<table>
 <thead>
 <tr>
-<th align="left">SQL数据类型</th>
-<th align="left">JDBC类型代码</th>
-<th align="left">标准的Java类型</th>
-<th align="left">Oracle扩展的Java类型</th>
+<th style="text-align:left">SQL数据类型</th>
+<th style="text-align:left">JDBC类型代码</th>
+<th style="text-align:left">标准的Java类型</th>
+<th style="text-align:left">Oracle扩展的Java类型</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left"></td>
-<td align="left">1.0标准的JDBC类型:</td>
-<td align="left"></td>
-<td align="left"></td>
+<tbody>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">1.0标准的JDBC类型:</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
 </tr>
 <tr>
-<td align="left"><code>CHAR</code></td>
-<td align="left"><code>java.sql.Types.CHAR</code></td>
-<td align="left"><code>java.lang.String</code></td>
-<td align="left"><code>oracle.sql.CHAR</code></td>
+<td style="text-align:left"><code>CHAR</code></td>
+<td style="text-align:left"><code>java.sql.Types.CHAR</code></td>
+<td style="text-align:left"><code>java.lang.String</code></td>
+<td style="text-align:left"><code>oracle.sql.CHAR</code></td>
 </tr>
 <tr>
-<td align="left"><code>VARCHAR2</code></td>
-<td align="left"><code>java.sql.Types.VARCHAR</code></td>
-<td align="left"><code>java.lang.String</code></td>
-<td align="left"><code>oracle.sql.CHAR</code></td>
+<td style="text-align:left"><code>VARCHAR2</code></td>
+<td style="text-align:left"><code>java.sql.Types.VARCHAR</code></td>
+<td style="text-align:left"><code>java.lang.String</code></td>
+<td style="text-align:left"><code>oracle.sql.CHAR</code></td>
 </tr>
 <tr>
-<td align="left"><code>LONG</code></td>
-<td align="left"><code>java.sql.Types.LONGVARCHAR</code></td>
-<td align="left"><code>java.lang.String</code></td>
-<td align="left"><code>oracle.sql.CHAR</code></td>
+<td style="text-align:left"><code>LONG</code></td>
+<td style="text-align:left"><code>java.sql.Types.LONGVARCHAR</code></td>
+<td style="text-align:left"><code>java.lang.String</code></td>
+<td style="text-align:left"><code>oracle.sql.CHAR</code></td>
 </tr>
 <tr>
-<td align="left"><code>NUMBER</code></td>
-<td align="left"><code>java.sql.Types.NUMERIC</code></td>
-<td align="left"><code>java.math.BigDecimal</code></td>
-<td align="left"><code>oracle.sql.NUMBER</code></td>
+<td style="text-align:left"><code>NUMBER</code></td>
+<td style="text-align:left"><code>java.sql.Types.NUMERIC</code></td>
+<td style="text-align:left"><code>java.math.BigDecimal</code></td>
+<td style="text-align:left"><code>oracle.sql.NUMBER</code></td>
 </tr>
 <tr>
-<td align="left"><code>NUMBER</code></td>
-<td align="left"><code>java.sql.Types.DECIMAL</code></td>
-<td align="left"><code>java.math.BigDecimal</code></td>
-<td align="left"><code>oracle.sql.NUMBER</code></td>
+<td style="text-align:left"><code>NUMBER</code></td>
+<td style="text-align:left"><code>java.sql.Types.DECIMAL</code></td>
+<td style="text-align:left"><code>java.math.BigDecimal</code></td>
+<td style="text-align:left"><code>oracle.sql.NUMBER</code></td>
 </tr>
 <tr>
-<td align="left"><code>NUMBER</code></td>
-<td align="left"><code>java.sql.Types.BIT</code></td>
-<td align="left"><code>boolean</code></td>
-<td align="left"><code>oracle.sql.NUMBER</code></td>
+<td style="text-align:left"><code>NUMBER</code></td>
+<td style="text-align:left"><code>java.sql.Types.BIT</code></td>
+<td style="text-align:left"><code>boolean</code></td>
+<td style="text-align:left"><code>oracle.sql.NUMBER</code></td>
 </tr>
 <tr>
-<td align="left"><code>NUMBER</code></td>
-<td align="left"><code>java.sql.Types.TINYINT</code></td>
-<td align="left"><code>byte</code></td>
-<td align="left"><code>oracle.sql.NUMBER</code></td>
+<td style="text-align:left"><code>NUMBER</code></td>
+<td style="text-align:left"><code>java.sql.Types.TINYINT</code></td>
+<td style="text-align:left"><code>byte</code></td>
+<td style="text-align:left"><code>oracle.sql.NUMBER</code></td>
 </tr>
 <tr>
-<td align="left"><code>NUMBER</code></td>
-<td align="left"><code>java.sql.Types.SMALLINT</code></td>
-<td align="left"><code>short</code></td>
-<td align="left"><code>oracle.sql.NUMBER</code></td>
+<td style="text-align:left"><code>NUMBER</code></td>
+<td style="text-align:left"><code>java.sql.Types.SMALLINT</code></td>
+<td style="text-align:left"><code>short</code></td>
+<td style="text-align:left"><code>oracle.sql.NUMBER</code></td>
 </tr>
 <tr>
-<td align="left"><code>NUMBER</code></td>
-<td align="left"><code>java.sql.Types.INTEGER</code></td>
-<td align="left"><code>int</code></td>
-<td align="left"><code>oracle.sql.NUMBER</code></td>
+<td style="text-align:left"><code>NUMBER</code></td>
+<td style="text-align:left"><code>java.sql.Types.INTEGER</code></td>
+<td style="text-align:left"><code>int</code></td>
+<td style="text-align:left"><code>oracle.sql.NUMBER</code></td>
 </tr>
 <tr>
-<td align="left"><code>NUMBER</code></td>
-<td align="left"><code>java.sql.Types.BIGINT</code></td>
-<td align="left"><code>long</code></td>
-<td align="left"><code>oracle.sql.NUMBER</code></td>
+<td style="text-align:left"><code>NUMBER</code></td>
+<td style="text-align:left"><code>java.sql.Types.BIGINT</code></td>
+<td style="text-align:left"><code>long</code></td>
+<td style="text-align:left"><code>oracle.sql.NUMBER</code></td>
 </tr>
 <tr>
-<td align="left"><code>NUMBER</code></td>
-<td align="left"><code>java.sql.Types.REAL</code></td>
-<td align="left"><code>float</code></td>
-<td align="left"><code>oracle.sql.NUMBER</code></td>
+<td style="text-align:left"><code>NUMBER</code></td>
+<td style="text-align:left"><code>java.sql.Types.REAL</code></td>
+<td style="text-align:left"><code>float</code></td>
+<td style="text-align:left"><code>oracle.sql.NUMBER</code></td>
 </tr>
 <tr>
-<td align="left"><code>NUMBER</code></td>
-<td align="left"><code>java.sql.Types.FLOAT</code></td>
-<td align="left"><code>double</code></td>
-<td align="left"><code>oracle.sql.NUMBER</code></td>
+<td style="text-align:left"><code>NUMBER</code></td>
+<td style="text-align:left"><code>java.sql.Types.FLOAT</code></td>
+<td style="text-align:left"><code>double</code></td>
+<td style="text-align:left"><code>oracle.sql.NUMBER</code></td>
 </tr>
 <tr>
-<td align="left"><code>NUMBER</code></td>
-<td align="left"><code>java.sql.Types.DOUBLE</code></td>
-<td align="left"><code>double</code></td>
-<td align="left"><code>oracle.sql.NUMBER</code></td>
+<td style="text-align:left"><code>NUMBER</code></td>
+<td style="text-align:left"><code>java.sql.Types.DOUBLE</code></td>
+<td style="text-align:left"><code>double</code></td>
+<td style="text-align:left"><code>oracle.sql.NUMBER</code></td>
 </tr>
 <tr>
-<td align="left"><code>RAW</code></td>
-<td align="left"><code>java.sql.Types.BINARY</code></td>
-<td align="left"><code>byte[]</code></td>
-<td align="left"><code>oracle.sql.RAW</code></td>
+<td style="text-align:left"><code>RAW</code></td>
+<td style="text-align:left"><code>java.sql.Types.BINARY</code></td>
+<td style="text-align:left"><code>byte[]</code></td>
+<td style="text-align:left"><code>oracle.sql.RAW</code></td>
 </tr>
 <tr>
-<td align="left"><code>RAW</code></td>
-<td align="left"><code>java.sql.Types.VARBINARY</code></td>
-<td align="left"><code>byte[]</code></td>
-<td align="left"><code>oracle.sql.RAW</code></td>
+<td style="text-align:left"><code>RAW</code></td>
+<td style="text-align:left"><code>java.sql.Types.VARBINARY</code></td>
+<td style="text-align:left"><code>byte[]</code></td>
+<td style="text-align:left"><code>oracle.sql.RAW</code></td>
 </tr>
 <tr>
-<td align="left"><code>LONGRAW</code></td>
-<td align="left"><code>java.sql.Types.LONGVARBINARY</code></td>
-<td align="left"><code>byte[]</code></td>
-<td align="left"><code>oracle.sql.RAW</code></td>
+<td style="text-align:left"><code>LONGRAW</code></td>
+<td style="text-align:left"><code>java.sql.Types.LONGVARBINARY</code></td>
+<td style="text-align:left"><code>byte[]</code></td>
+<td style="text-align:left"><code>oracle.sql.RAW</code></td>
 </tr>
 <tr>
-<td align="left"><code>DATE</code></td>
-<td align="left"><code>java.sql.Types.DATE</code></td>
-<td align="left"><code>java.sql.Date</code></td>
-<td align="left"><code>oracle.sql.DATE</code></td>
+<td style="text-align:left"><code>DATE</code></td>
+<td style="text-align:left"><code>java.sql.Types.DATE</code></td>
+<td style="text-align:left"><code>java.sql.Date</code></td>
+<td style="text-align:left"><code>oracle.sql.DATE</code></td>
 </tr>
 <tr>
-<td align="left"><code>DATE</code></td>
-<td align="left"><code>java.sql.Types.TIME</code></td>
-<td align="left"><code>java.sql.Time</code></td>
-<td align="left"><code>oracle.sql.DATE</code></td>
+<td style="text-align:left"><code>DATE</code></td>
+<td style="text-align:left"><code>java.sql.Types.TIME</code></td>
+<td style="text-align:left"><code>java.sql.Time</code></td>
+<td style="text-align:left"><code>oracle.sql.DATE</code></td>
 </tr>
 <tr>
-<td align="left"><code>TIMESTAMP</code></td>
-<td align="left"><code>java.sql.Types.TIMESTAMP</code></td>
-<td align="left"><code>javal.sql.Timestamp</code></td>
-<td align="left"><code>oracle.sql.TIMESTAMP</code></td>
+<td style="text-align:left"><code>TIMESTAMP</code></td>
+<td style="text-align:left"><code>java.sql.Types.TIMESTAMP</code></td>
+<td style="text-align:left"><code>javal.sql.Timestamp</code></td>
+<td style="text-align:left"><code>oracle.sql.TIMESTAMP</code></td>
 </tr>
 <tr>
-<td align="left"></td>
-<td align="left">2.0标准的JDBC类型:</td>
-<td align="left"></td>
-<td align="left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">2.0标准的JDBC类型:</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
 </tr>
 <tr>
-<td align="left"><code>BLOB</code></td>
-<td align="left"><code>java.sql.Types.BLOB</code></td>
-<td align="left"><code>java.sql.Blob</code></td>
-<td align="left"><code>oracle.sql.BLOB</code></td>
+<td style="text-align:left"><code>BLOB</code></td>
+<td style="text-align:left"><code>java.sql.Types.BLOB</code></td>
+<td style="text-align:left"><code>java.sql.Blob</code></td>
+<td style="text-align:left"><code>oracle.sql.BLOB</code></td>
 </tr>
 <tr>
-<td align="left"><code>CLOB</code></td>
-<td align="left"><code>java.sql.Types.CLOB</code></td>
-<td align="left"><code>java.sql.Clob</code></td>
-<td align="left"><code>oracle.sql.CLOB</code></td>
+<td style="text-align:left"><code>CLOB</code></td>
+<td style="text-align:left"><code>java.sql.Types.CLOB</code></td>
+<td style="text-align:left"><code>java.sql.Clob</code></td>
+<td style="text-align:left"><code>oracle.sql.CLOB</code></td>
 </tr>
 <tr>
-<td align="left">用户定义的对象</td>
-<td align="left"><code>java.sql.Types.STRUCT</code></td>
-<td align="left"><code>java.sql.Struct</code></td>
-<td align="left"><code>oracle.sql.STRUCT</code></td>
+<td style="text-align:left">用户定义的对象</td>
+<td style="text-align:left"><code>java.sql.Types.STRUCT</code></td>
+<td style="text-align:left"><code>java.sql.Struct</code></td>
+<td style="text-align:left"><code>oracle.sql.STRUCT</code></td>
 </tr>
 <tr>
-<td align="left">用户定义的参考</td>
-<td align="left"><code>java.sql.Types.REF</code></td>
-<td align="left"><code>java.sql.Ref</code></td>
-<td align="left"><code>oracle.sql.REF</code></td>
+<td style="text-align:left">用户定义的参考</td>
+<td style="text-align:left"><code>java.sql.Types.REF</code></td>
+<td style="text-align:left"><code>java.sql.Ref</code></td>
+<td style="text-align:left"><code>oracle.sql.REF</code></td>
 </tr>
 <tr>
-<td align="left">用户定义的集合</td>
-<td align="left"><code>java.sql.Types.ARRAY</code></td>
-<td align="left"><code>java.sql.Array</code></td>
-<td align="left"><code>oracle.sql.ARRAY</code></td>
+<td style="text-align:left">用户定义的集合</td>
+<td style="text-align:left"><code>java.sql.Types.ARRAY</code></td>
+<td style="text-align:left"><code>java.sql.Array</code></td>
+<td style="text-align:left"><code>oracle.sql.ARRAY</code></td>
 </tr>
 <tr>
-<td align="left"></td>
-<td align="left">Oracle扩展:</td>
-<td align="left"></td>
-<td align="left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">Oracle扩展:</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
 </tr>
 <tr>
-<td align="left"><code>BFILE</code></td>
-<td align="left"><code>oracle.jdbc.OracleTypes.BFILE</code></td>
-<td align="left">N/A</td>
-<td align="left"><code>oracle.sql.BFILE</code></td>
+<td style="text-align:left"><code>BFILE</code></td>
+<td style="text-align:left"><code>oracle.jdbc.OracleTypes.BFILE</code></td>
+<td style="text-align:left">N/A</td>
+<td style="text-align:left"><code>oracle.sql.BFILE</code></td>
 </tr>
 <tr>
-<td align="left"><code>ROWID</code></td>
-<td align="left"><code>oracle.jdbc.OracleTypes.ROWID</code></td>
-<td align="left">N/A</td>
-<td align="left"><code>oracle.sql.ROWID</code></td>
+<td style="text-align:left"><code>ROWID</code></td>
+<td style="text-align:left"><code>oracle.jdbc.OracleTypes.ROWID</code></td>
+<td style="text-align:left">N/A</td>
+<td style="text-align:left"><code>oracle.sql.ROWID</code></td>
 </tr>
 <tr>
-<td align="left"><code>REF CURSOR</code></td>
-<td align="left"><code>oracle.jdbc.OracleTypes.CURSOR</code></td>
-<td align="left"><code>java.sql.ResultSet</code></td>
-<td align="left"><code>oracle.jdbc.OracleResultSet</code></td>
+<td style="text-align:left"><code>REF CURSOR</code></td>
+<td style="text-align:left"><code>oracle.jdbc.OracleTypes.CURSOR</code></td>
+<td style="text-align:left"><code>java.sql.ResultSet</code></td>
+<td style="text-align:left"><code>oracle.jdbc.OracleResultSet</code></td>
 </tr>
 <tr>
-<td align="left"><code>TIMESTAMP</code></td>
-<td align="left"><code>oracle.jdbc.OracleTypes.TIMESTAMP</code></td>
-<td align="left"><code>java.sql.Timestamp</code></td>
-<td align="left"><code>oracle.sql.TIMESTAMP</code></td>
+<td style="text-align:left"><code>TIMESTAMP</code></td>
+<td style="text-align:left"><code>oracle.jdbc.OracleTypes.TIMESTAMP</code></td>
+<td style="text-align:left"><code>java.sql.Timestamp</code></td>
+<td style="text-align:left"><code>oracle.sql.TIMESTAMP</code></td>
 </tr>
 <tr>
-<td align="left"><code>TIMESTAMP WITH TIME ZONE</code></td>
-<td align="left"><code>oracle.jdbc.OracleTypes.TIMESTAMPTZ</code></td>
-<td align="left"><code>java.sql.Timestamp</code></td>
-<td align="left"><code>oracle.sql.TIMESTAMPTZ</code></td>
+<td style="text-align:left"><code>TIMESTAMP WITH TIME ZONE</code></td>
+<td style="text-align:left"><code>oracle.jdbc.OracleTypes.TIMESTAMPTZ</code></td>
+<td style="text-align:left"><code>java.sql.Timestamp</code></td>
+<td style="text-align:left"><code>oracle.sql.TIMESTAMPTZ</code></td>
 </tr>
 <tr>
-<td align="left"><code>TIMESTAMP WITH LOCAL TIME ZONE</code></td>
-<td align="left"><code>oracle.jdbc.OracleTypes.TIMESTAMPLTZ</code></td>
-<td align="left"><code>java.sql.Timestamp</code></td>
-<td align="left"><code>oracle.sql.TIMESTAMPLTZ</code></td>
+<td style="text-align:left"><code>TIMESTAMP WITH LOCAL TIME ZONE</code></td>
+<td style="text-align:left"><code>oracle.jdbc.OracleTypes.TIMESTAMPLTZ</code></td>
+<td style="text-align:left"><code>java.sql.Timestamp</code></td>
+<td style="text-align:left"><code>oracle.sql.TIMESTAMPLTZ</code></td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 
     </div>
 
     
     
     
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
 
       <footer class="post-footer">
           <div class="post-tags">
@@ -597,20 +624,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">177</span>
+          <span class="site-state-item-count">240</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">49</span>
+        <span class="site-state-item-count">60</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -637,7 +664,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -646,12 +673,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">315k</span>
+    <span title="站点总字数">441k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:46</span>
+    <span title="站点阅读时长">6:41</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
@@ -726,6 +753,8 @@
 
 
 
+
+  
 
   
 

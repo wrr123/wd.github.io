@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.0.2">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/002.jpg">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/002.jpg">
@@ -22,12 +22,12 @@
     var CONFIG = {"hostname":"wrr123.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="忽略映射字段某些属性不是数据库的表字段，但是又是必须使用的 1@TableField(exist &#x3D; false)  @TableField(exist &#x3D; true) 表示该属性为数据库字段。 1234@TableName &#x2F;&#x2F; 数据库表相关@TableId &#x2F;&#x2F; 表主键标识@TableField &#x2F;&#x2F; 表字段标识@TableLogic &#x2F;&#x2F; 表字段逻辑处理注解(逻辑删除)">
+  <meta name="description" content="忽略映射字段某些属性不是数据库的表字段，但是又是必须使用的 1@TableField(exist &#x3D; false) @TableField(exist &#x3D; true) 表示该属性为数据库字段。 1234@TableName &#x2F;&#x2F; 数据库表相关@TableId &#x2F;&#x2F; 表主键标识@TableField &#x2F;&#x2F; 表字段标识@TableLogic &#x2F;&#x2F; 表字段逻辑处理注解(逻辑删除)">
 <meta property="og:type" content="article">
 <meta property="og:title" content="mybatis-plus基本使用">
 <meta property="og:url" content="https://wrr123.github.io/2020/08/12/mybatis-plus%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/index.html">
 <meta property="og:site_name" content="一缕烟气">
-<meta property="og:description" content="忽略映射字段某些属性不是数据库的表字段，但是又是必须使用的 1@TableField(exist &#x3D; false)  @TableField(exist &#x3D; true) 表示该属性为数据库字段。 1234@TableName &#x2F;&#x2F; 数据库表相关@TableId &#x2F;&#x2F; 表主键标识@TableField &#x2F;&#x2F; 表字段标识@TableLogic &#x2F;&#x2F; 表字段逻辑处理注解(逻辑删除)">
+<meta property="og:description" content="忽略映射字段某些属性不是数据库的表字段，但是又是必须使用的 1@TableField(exist &#x3D; false) @TableField(exist &#x3D; true) 表示该属性为数据库字段。 1234@TableName &#x2F;&#x2F; 数据库表相关@TableId &#x2F;&#x2F; 表主键标识@TableField &#x2F;&#x2F; 表字段标识@TableLogic &#x2F;&#x2F; 表字段逻辑处理注解(逻辑删除)">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://wrr123.github.io/2020/08/12/mybatis-plus%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/001.png">
 <meta property="og:image" content="http://wrr123.github.io/2020/08/12/mybatis-plus%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/002.png">
@@ -84,6 +84,7 @@
   </style>
 </noscript>
 
+<link rel="alternate" href="/atom.xml" title="一缕烟气" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -269,61 +270,62 @@
       
         <h4 id="忽略映射字段"><a href="#忽略映射字段" class="headerlink" title="忽略映射字段"></a>忽略映射字段</h4><p>某些属性不是数据库的表字段，但是又是必须使用的</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@TableField(exist = false)</span></span><br></pre></td></tr></table></figure>
-
 <p><code>@TableField(exist = true)</code> 表示该属性为数据库字段。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@TableName</span> <span class="comment">// 数据库表相关</span></span><br><span class="line"><span class="meta">@TableId</span> <span class="comment">// 表主键标识</span></span><br><span class="line"><span class="meta">@TableField</span> <span class="comment">// 表字段标识</span></span><br><span class="line"><span class="meta">@TableLogic</span> <span class="comment">// 表字段逻辑处理注解(逻辑删除)</span></span><br></pre></td></tr></table></figure>
-
-<a id="more"></a>
-
+<span id="more"></span>
 <h4 id="全局配置主键生成策略"><a href="#全局配置主键生成策略" class="headerlink" title="全局配置主键生成策略"></a>全局配置主键生成策略</h4><p>mybatis-plus 可以配置全局的主键生成策略：</p>
-<p><img src="http://wrr123.github.io/2020/08/12/mybatis-plus%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/001.png"></p>
+<p><img src="http://wrr123.github.io/2020/08/12/mybatis-plus%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/001.png" alt></p>
 <p>也可以通过 bean 的属性加注解的方式设置，主键上使用 <code>@TableId</code> 注解，注解的 type 属性有 6 种选值，对应 6 种主键生成策略。</p>
-<p><img src="http://wrr123.github.io/2020/08/12/mybatis-plus%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/002.png"></p>
+<p><img src="http://wrr123.github.io/2020/08/12/mybatis-plus%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/002.png" alt></p>
 <p>还可以在数据库中设置该表字段的生成策略，mybatis-plus 默认使用全局唯一的数字类型。</p>
 <p><strong>三种设置的优先级： 注解 &gt; 全局 &gt; 默认</strong></p>
-<h5 id="IdType"><a href="#IdType" class="headerlink" title="IdType"></a>IdType</h5><table>
+<h5 id="IdType"><a href="#IdType" class="headerlink" title="IdType"></a>IdType</h5><div class="table-container">
+<table>
 <thead>
 <tr>
-<th align="center">值</th>
-<th align="center">描述</th>
+<th style="text-align:center">值</th>
+<th style="text-align:center">描述</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">AUTO</td>
-<td align="center">数据库自增</td>
+<tbody>
+<tr>
+<td style="text-align:center">AUTO</td>
+<td style="text-align:center">数据库自增</td>
 </tr>
 <tr>
-<td align="center">INPUT</td>
-<td align="center">自行输入</td>
+<td style="text-align:center">INPUT</td>
+<td style="text-align:center">自行输入</td>
 </tr>
 <tr>
-<td align="center">ID_WORKER</td>
-<td align="center">分布式全局唯一 ID 长整型类型</td>
+<td style="text-align:center">ID_WORKER</td>
+<td style="text-align:center">分布式全局唯一 ID 长整型类型</td>
 </tr>
 <tr>
-<td align="center">UUID</td>
-<td align="center">32 位 UUID 字符串</td>
+<td style="text-align:center">UUID</td>
+<td style="text-align:center">32 位 UUID 字符串</td>
 </tr>
 <tr>
-<td align="center">NONE</td>
-<td align="center">无状态</td>
+<td style="text-align:center">NONE</td>
+<td style="text-align:center">无状态</td>
 </tr>
 <tr>
-<td align="center">ID_WORKER_STR</td>
-<td align="center">分布式全局唯一 ID 字符串类型</td>
+<td style="text-align:center">ID_WORKER_STR</td>
+<td style="text-align:center">分布式全局唯一 ID 字符串类型</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <h5 id="在Oracle-数据库中使用-自增策略"><a href="#在Oracle-数据库中使用-自增策略" class="headerlink" title="在Oracle 数据库中使用 自增策略"></a>在Oracle 数据库中使用 自增策略</h5><ol>
 <li><p>需要创建 <code>OracleKeyGenerate</code> 的 bean</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> class <span class="title">Configuration</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> OracleKeyGenerate <span class="title">oracleKetGenerate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> OracleKetGenerate();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>在配置文件 application.yml 中配置策略</p>
-<p><img src="http://wrr123.github.io/2020/08/12/mybatis-plus%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/003.png"></p>
+<p><img src="http://wrr123.github.io/2020/08/12/mybatis-plus%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/003.png" alt></p>
 </li>
 <li><p>在实体类中添加注解</p>
 <p>序列注解 <code>@KeySequence</code></p>
 <p>id注解 <code>@TableId</code></p>
-<p><img src="http://wrr123.github.io/2020/08/12/mybatis-plus%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/004.png"></p>
+<p><img src="http://wrr123.github.io/2020/08/12/mybatis-plus%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/004.png" alt></p>
 </li>
 </ol>
 
@@ -332,6 +334,25 @@
     
     
     
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
 
       <footer class="post-footer">
           <div class="post-tags">
@@ -425,20 +446,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">177</span>
+          <span class="site-state-item-count">240</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">49</span>
+        <span class="site-state-item-count">60</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -465,7 +486,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -474,12 +495,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">315k</span>
+    <span title="站点总字数">441k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:46</span>
+    <span title="站点阅读时长">6:41</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
@@ -554,6 +575,8 @@
 
 
 
+
+  
 
   
 

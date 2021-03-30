@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.0.2">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/002.jpg">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/002.jpg">
@@ -82,6 +82,7 @@
   </style>
 </noscript>
 
+<link rel="alternate" href="/atom.xml" title="一缕烟气" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -270,8 +271,7 @@
 <li>是否有一个全局视角来查看系统的运行状况？</li>
 <li>有什么办法可以监控到 JVM 的实时运行状态？</li>
 </ol>
-<a id="more"></a>
-
+<span id="more"></span>
 <h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><ol>
 <li><h5 id="基础命令"><a href="#基础命令" class="headerlink" title="基础命令"></a>基础命令</h5><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">help——查看命令帮助信息</span><br><span class="line">cls——清空当前屏幕区域</span><br><span class="line">session——查看当前会话的信息</span><br><span class="line">reset——重置增强类，将被 Arthas 增强过的类全部还原，Arthas 服务端关闭时会重置所有增强过的类</span><br><span class="line">version——输出当前目标 Java 进程所加载的 Arthas 版本号</span><br><span class="line">quit——退出当前 Arthas 客户端，其他 Arthas 客户端不受影响</span><br><span class="line">shutdown——关闭 Arthas 服务端，所有 Arthas 客户端全部退出</span><br><span class="line">keymap——Arthas快捷键列表及自定义快捷键</span><br></pre></td></tr></table></figure>
 </li>
@@ -302,7 +302,7 @@
 <h5 id="在-windows-下操作-as-sh-命令"><a href="#在-windows-下操作-as-sh-命令" class="headerlink" title="在 windows 下操作 as.sh 命令"></a>在 windows 下操作 <code>as.sh</code> 命令</h5><p><em>Please start cmd.exe from Windows start menu, and then run telnet 127.0.0.1 3658 to connect to target process.</em></p>
 <h4 id="常用操作"><a href="#常用操作" class="headerlink" title="常用操作"></a>常用操作</h4><h5 id="全局监控"><a href="#全局监控" class="headerlink" title="全局监控"></a>全局监控</h5><p>使用 <strong>dashboard</strong> 命令可以概览程序的线程、内存、GC 、运行环境信息。</p>
 <h5 id="CPU-为什么起飞了"><a href="#CPU-为什么起飞了" class="headerlink" title="CPU 为什么起飞了"></a>CPU 为什么起飞了</h5><p>使用 <strong>thread</strong> 查看所有线程信息，同时会列出每个线程的 <code>CPU</code> 使用率，如下图：</p>
-<p><img src="http://wrr123.github.io/2020/08/18/ali-arthas/001.png"></p>
+<p><img src="http://wrr123.github.io/2020/08/18/ali-arthas/001.png" alt></p>
 <p><strong>使用命令 thread -n [显示的线程个数]，就可以排列出 CPU 使用率 TOP n 的线程。</strong></p>
 <h5 id="线程池线程状态"><a href="#线程池线程状态" class="headerlink" title="线程池线程状态"></a>线程池线程状态</h5><ul>
 <li><strong>runnable</strong> 运行中</li>
@@ -324,8 +324,7 @@
 </ul>
 <h5 id="线程死锁"><a href="#线程死锁" class="headerlink" title="线程死锁"></a>线程死锁</h5><p>使用 <code>thread -b</code> 命令查看直接定位到死锁信息。</p>
 <h5 id="反编译"><a href="#反编译" class="headerlink" title="反编译"></a>反编译</h5><p>使用 <strong>jad</strong> 命令直接反编译 class。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 反编译只显示源码</span></span><br><span class="line">jad --<span class="built_in">source</span>-only com.Arthas</span><br><span class="line"><span class="comment"># 反编译某个类的某个方法</span></span><br><span class="line">jad --<span class="built_in">source</span>-only com.Arthas mysql</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 反编译只显示源码</span></span><br><span class="line">jad --source-only com.Arthas</span><br><span class="line"><span class="comment"># 反编译某个类的某个方法</span></span><br><span class="line">jad --source-only com.Arthas mysql</span><br></pre></td></tr></table></figure>
 <h5 id="查看字段信息"><a href="#查看字段信息" class="headerlink" title="查看字段信息"></a>查看字段信息</h5><p>使用 <strong>sc -d -f</strong> 命令查看类的字段信息。</p>
 <h5 id="查看方法信息"><a href="#查看方法信息" class="headerlink" title="查看方法信息"></a>查看方法信息</h5><p>使用 <strong>sm</strong> 命令查看类的方法信息。</p>
 <h5 id="对变量的值很是好奇"><a href="#对变量的值很是好奇" class="headerlink" title="对变量的值很是好奇"></a>对变量的值很是好奇</h5><p>使用 <strong>ognl</strong> 命令，ognl 表达式可以轻松操作想要的信息。</p>
@@ -333,14 +332,11 @@
 <h6 id="统计方法耗时"><a href="#统计方法耗时" class="headerlink" title="统计方法耗时"></a>统计方法耗时</h6><p>使用 <strong>monitor</strong> 命令监控统计方法的执行情况。</p>
 <p>一个栗子：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 每 5 秒统计一次 `com.UserServiceImpl` 类的 `get` 方法执行情况</span><br><span class="line">monitor -c 5 com.UserServiceImpl get</span><br></pre></td></tr></table></figure>
-
 <h5 id="想观察方法信息"><a href="#想观察方法信息" class="headerlink" title="想观察方法信息"></a>想观察方法信息</h5><h6 id="观察方法的入参出参信息"><a href="#观察方法的入参出参信息" class="headerlink" title="观察方法的入参出参信息"></a>观察方法的入参出参信息</h6><p>使用 <strong>watch</strong> 命令轻松查看输入输出参数以及异常等信息。</p>
 <p>常见操作：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看入参和出参</span></span><br><span class="line">$ watch com.Arthas addHashSet <span class="string">&#x27;&#123;params[0],returnObj&#125;&#x27;</span></span><br><span class="line"><span class="comment"># 查看入参和出参大小</span></span><br><span class="line">$ watch com.Arthas addHashSet <span class="string">&#x27;&#123;params[0],returnObj.size&#125;&#x27;</span></span><br><span class="line"><span class="comment"># 查看入参和出参中是否包含 &#x27;count10&#x27;</span></span><br><span class="line">$ watch com.Arthas addHashSet <span class="string">&#x27;&#123;params[0],returnObj.contains(&quot;count10&quot;)&#125;&#x27;</span></span><br><span class="line"><span class="comment"># 查看入参和出参，出参 toString</span></span><br><span class="line">$ watch com.Arthas addHashSet <span class="string">&#x27;&#123;params[0],returnObj.toString()&#125;&#x27;</span></span><br></pre></td></tr></table></figure>
-
 <h6 id="观察方法的调用路径"><a href="#观察方法的调用路径" class="headerlink" title="观察方法的调用路径"></a>观察方法的调用路径</h6><p>使用 <strong>stack</strong> 命令查看方法的调用参数</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 观察 类com.UserServiceImpl的 mysql 方法调用路径</span></span><br><span class="line">stack com.UserServiceImpl mysql</span><br></pre></td></tr></table></figure>
-
 <h5 id="方法调用时空隧道"><a href="#方法调用时空隧道" class="headerlink" title="方法调用时空隧道"></a>方法调用时空隧道</h5><p>使用 <strong>tt</strong> 命令记录方法执行的详细情况</p>
 <blockquote>
 <p><strong>tt</strong> 命令方法执行数据的时空隧道，记录下指定方法每次调用的入参和返回信息，并能对这些不同的时间下调用进行观测 。</p>
@@ -355,6 +351,25 @@
     
     
     
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
 
       <footer class="post-footer">
           <div class="post-tags">
@@ -449,20 +464,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">177</span>
+          <span class="site-state-item-count">240</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">49</span>
+        <span class="site-state-item-count">60</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -489,7 +504,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -498,12 +513,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">315k</span>
+    <span title="站点总字数">441k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:46</span>
+    <span title="站点阅读时长">6:41</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
@@ -578,6 +593,8 @@
 
 
 
+
+  
 
   
 

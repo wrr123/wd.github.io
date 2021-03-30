@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.0.2">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/002.jpg">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/002.jpg">
@@ -79,6 +79,7 @@
   </style>
 </noscript>
 
+<link rel="alternate" href="/atom.xml" title="一缕烟气" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -268,8 +269,7 @@
 <p><code>ctrl + d</code></p>
 <p>表示结束当前输入(即用户不再给当前程序发出指令)。</p>
 <p>它不是发送信号，而是表示一个特殊的二进制值，表示EOF。</p>
-<a id="more"></a>
-
+<span id="more"></span>
 <p><code>jobs</code></p>
 <p>查看当前有多少在后台运行的命令</p>
 <p><code>fg</code></p>
@@ -279,7 +279,6 @@
 <p>将一个在后台暂停的命令，变成继续执行</p>
 <p>如果后台中有多个命令，可以用<code>bg %jobNumber</code>将选中的命令调出，<code>%jobNumber</code>是通过<code>jobs</code>命令查到的后台正在执行的命令的序号(<strong>不是pid</strong>)</p>
 <h4 id="延申：nohup"><a href="#延申：nohup" class="headerlink" title="延申：nohup"></a>延申：<code>nohup</code></h4><h5 id="一个栗子"><a href="#一个栗子" class="headerlink" title="一个栗子"></a>一个栗子</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> nohup /root/start.sh &amp;</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 原程序的标准输出被自动改向到当前目录下的nohup.out文件，起到了<span class="built_in">log</span>的作用。</span></span><br></pre></td></tr></table></figure>
-
 <h5 id="nohup命令"><a href="#nohup命令" class="headerlink" title="nohup命令"></a>nohup命令</h5><p>用途：不挂断的运行命令。</p>
 <p>语法：<code>nohup Command [arg...] [&amp;]</code></p>
 <blockquote>
@@ -295,8 +294,6 @@
 <p>实际上就是把标准错误也重定向到file中</p>
 <h6 id="command-gt-a-2-gt-amp-1与command-gt-a-2-gt-a的区别"><a href="#command-gt-a-2-gt-amp-1与command-gt-a-2-gt-a的区别" class="headerlink" title="command&gt;a 2&gt;&amp;1与command&gt;a 2&gt;a的区别"></a>command&gt;a 2&gt;&amp;1与command&gt;a 2&gt;a的区别</h6><blockquote>
 <p>经过上面的分析，<code>command&gt;a 2&gt;&amp;1</code>这条命令，等价于<code>command 1&gt;a 2&gt;&amp;1</code>，也就是说执行command产生的标准输入重定向到文件a中，标准错误也重定向到文件a中，那么是否等价于<code>command 1&gt;a 2&gt;a</code>呢？其实不是，区别在于前者只打开一次文件a，后者会打开两次并导致标准输出被标准错误<strong>覆盖</strong>。</p>
-</blockquote>
-<blockquote>
 <p><code>&amp;1</code>的含义就可以理解为用标准输出的引用，引用的就是重定向标准输出产生打开的a。从IO效率上来讲，<code>command 1&gt;a 2&gt;&amp;1</code>比<code>command 1&gt;a 2&gt;a</code>的效率更高。</p>
 </blockquote>
 
@@ -305,6 +302,25 @@
     
     
     
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
 
       <footer class="post-footer">
           <div class="post-tags">
@@ -398,20 +414,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">177</span>
+          <span class="site-state-item-count">240</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">49</span>
+        <span class="site-state-item-count">60</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -438,7 +454,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -447,12 +463,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">315k</span>
+    <span title="站点总字数">441k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:46</span>
+    <span title="站点阅读时长">6:41</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
@@ -527,6 +543,8 @@
 
 
 
+
+  
 
   
 

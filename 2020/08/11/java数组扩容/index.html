@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.0.2">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/002.jpg">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/002.jpg">
@@ -79,6 +79,7 @@
   </style>
 </noscript>
 
+<link rel="alternate" href="/atom.xml" title="一缕烟气" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -263,12 +264,9 @@
 
       
         <h4 id="数组扩容的几个方法"><a href="#数组扩容的几个方法" class="headerlink" title="数组扩容的几个方法"></a>数组扩容的几个方法</h4><h5 id="数组拷贝"><a href="#数组拷贝" class="headerlink" title="数组拷贝"></a>数组拷贝</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[] copy = Arrays.copyOf(array, <span class="number">2</span> * array.length);</span><br><span class="line"><span class="comment">// 第一个参数为原数组对象</span></span><br><span class="line"><span class="comment">// 第二个参数为新数组的长度</span></span><br></pre></td></tr></table></figure>
-
-<a id="more"></a>
-
+<span id="more"></span>
 <h5 id="使用动态的-ArrayList-类"><a href="#使用动态的-ArrayList-类" class="headerlink" title="使用动态的 ArrayList 类"></a>使用动态的 <code>ArrayList</code> 类</h5><p>它可以随意的添加或删除元素，而不用考虑自身的长度问题。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ArrayList&lt;Object&gt; staff = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"><span class="comment">// 将arrayList转换成数组</span></span><br><span class="line">Object[] objs = staff.toArray();</span><br></pre></td></tr></table></figure>
-
 <h4 id="延申：ArrayList-和-LinkedList-之间的区别"><a href="#延申：ArrayList-和-LinkedList-之间的区别" class="headerlink" title="延申：ArrayList 和 LinkedList 之间的区别"></a>延申：ArrayList 和 LinkedList 之间的区别</h4><ul>
 <li>ArrayList 的实现是基于数组的，LinkedList 的实现是基于双向链表。</li>
 <li>对于随机访问，ArrayList 优于 LinkedList。</li>
@@ -279,13 +277,11 @@
 <h4 id="Java复制数组的几个方法"><a href="#Java复制数组的几个方法" class="headerlink" title="Java复制数组的几个方法"></a>Java复制数组的几个方法</h4><ul>
 <li><p>Arrays类的 <code>copy()</code> 方法</p>
   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Arrays.copyOf(dataType[] srcArray,<span class="keyword">int</span> length);</span><br></pre></td></tr></table></figure>
-
 <p>  其中，srcArray 表示要进行复制的数组，length 表示复制后的新数组的长度。</p>
 <p>  <strong>注意：目标数组如果已经存在，将会被重构。</strong></p>
 </li>
 <li><p>Arrays类的 <code>copyOfRange()</code>方法</p>
   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Arrays.copyOfRange(dataType[] srcArray,<span class="keyword">int</span> startIndex,<span class="keyword">int</span> endIndex)</span><br></pre></td></tr></table></figure>
-
 <p>  其中：</p>
 <blockquote>
 <ul>
@@ -307,6 +303,25 @@
     
     
     
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
 
       <footer class="post-footer">
           <div class="post-tags">
@@ -400,20 +415,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">177</span>
+          <span class="site-state-item-count">240</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">49</span>
+        <span class="site-state-item-count">60</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -440,7 +455,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -449,12 +464,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">315k</span>
+    <span title="站点总字数">441k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:46</span>
+    <span title="站点阅读时长">6:41</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
@@ -529,6 +544,8 @@
 
 
 
+
+  
 
   
 

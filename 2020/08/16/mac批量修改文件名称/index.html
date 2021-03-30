@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.0.2">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/002.jpg">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/002.jpg">
@@ -79,6 +79,7 @@
   </style>
 </noscript>
 
+<link rel="alternate" href="/atom.xml" title="一缕烟气" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -260,11 +261,9 @@
 <li><p>方式一 <code>使用 sed 命令</code></p>
 <p>  一个栗子</p>
   <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls *jpg|sed -r <span class="string">&#x27;s#(.*).jpg#mv &amp;  \1.mp4#&#x27;</span>|bash</span><br></pre></td></tr></table></figure>
-
 </li>
 </ul>
-<a id="more"></a>
-
+<span id="more"></span>
 <ul>
 <li><p>方式二 <code>使用 rename 命令</code></p>
 <p>  格式：rename 原名 替换名 要改的文件</p>
@@ -273,28 +272,21 @@
 </blockquote>
 <p>  一个栗子</p>
   <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@cache01 <span class="built_in">test</span>]<span class="comment"># ls </span></span><br><span class="line">01.txt  03.txt  05.txt  07.txt  09.txt</span><br><span class="line">02.txt  04.txt  06.txt  08.txt  10.txt</span><br><span class="line">[root@cache01 <span class="built_in">test</span>]<span class="comment"># rename txt jpg *</span></span><br><span class="line">[root@cache01 <span class="built_in">test</span>]<span class="comment"># ls </span></span><br><span class="line">01.jpg  03.jpg  05.jpg  07.jpg  09.jpg</span><br><span class="line">02.jpg  04.jpg  06.jpg  08.jpg  10.jpg</span><br></pre></td></tr></table></figure>
-
 <p>  rename 的一些用法</p>
 <blockquote>
 <p><code>rename</code> 支持 perl 的正则表达式</p>
 <h5 id="替换文件名中特定字段"><a href="#替换文件名中特定字段" class="headerlink" title="替换文件名中特定字段"></a>替换文件名中特定字段</h5><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rename <span class="string">&quot;s/AA/aa/&quot;</span> *  <span class="comment"># 把文件名中的AA替换成aa</span></span><br></pre></td></tr></table></figure>
-
 <p>这一行命令的解释就是，对当前文件夹下满足 <code>*</code> 的所有文件，文件名中包含 <code>AA</code> 字符的替换为 <code>aa</code> 其中 <code>&quot;s/pattern/new/&quot;</code> 中的 <code>/</code> 一个都不能少。</p>
 <h5 id="修改文件后缀"><a href="#修改文件后缀" class="headerlink" title="修改文件后缀"></a>修改文件后缀</h5><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rename <span class="string">&quot;s/.html/.php/&quot;</span> *     <span class="comment"># 把.html 后缀的改成 .php后缀</span></span><br><span class="line">rename <span class="string">&quot;s/.png/.jpg/&quot;</span> *      <span class="comment"># 将 png 改为 jpg</span></span><br></pre></td></tr></table></figure>
-
 <p>批量修改文件后缀名</p>
 <h5 id="批量添加文件后缀"><a href="#批量添加文件后缀" class="headerlink" title="批量添加文件后缀"></a>批量添加文件后缀</h5><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rename <span class="string">&quot;s/$/.txt/&quot;</span> *     <span class="comment"># 把所有的文件名都以txt结尾</span></span><br></pre></td></tr></table></figure>
-
 <p>因为支持正则表达式，那么 <code>$</code> 表示的就是结尾，将结尾替换为 <code>.txt</code> 也就意味着给所有文件添加 <code>.txt</code> 的后缀</p>
 <h5 id="批量删除文件名"><a href="#批量删除文件名" class="headerlink" title="批量删除文件名"></a>批量删除文件名</h5><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rename <span class="string">&quot;s/.txt//&quot;</span> *      <span class="comment"># 把所有以.txt结尾的文件名的.txt删掉</span></span><br></pre></td></tr></table></figure>
-
 <p>同理，结尾有 <code>.txt</code> 的内容替换为空，也就是删掉后缀了。</p>
 <h5 id="应用正则匹配的部分文件名"><a href="#应用正则匹配的部分文件名" class="headerlink" title="应用正则匹配的部分文件名"></a>应用正则匹配的部分文件名</h5><p>假如需要在批量修改的时候保留部分文件名，可以使用引用 <code>\1</code> ，比如有下面格式的文件</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Screenshot from 2019-01-02 15-56-49.jpg</span><br></pre></td></tr></table></figure>
-
 <p>我只希望保留其中的日期部分，那么可以</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rename -n <span class="string">&quot;s/Screenshot from ([0-9\\- ]+).jpg/\1.jpg/&quot;</span> *</span><br></pre></td></tr></table></figure>
-
 <p>将 <code>()</code> 匹配的内容取出来放到替换部分。</p>
 </blockquote>
 </li>
@@ -306,6 +298,25 @@
     
     
     
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
 
       <footer class="post-footer">
           <div class="post-tags">
@@ -399,20 +410,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">177</span>
+          <span class="site-state-item-count">240</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">49</span>
+        <span class="site-state-item-count">60</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -439,7 +450,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -448,12 +459,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">315k</span>
+    <span title="站点总字数">441k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:46</span>
+    <span title="站点阅读时长">6:41</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
@@ -528,6 +539,8 @@
 
 
 
+
+  
 
   
 

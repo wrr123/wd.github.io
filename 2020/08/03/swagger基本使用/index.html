@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.0.2">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/002.jpg">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/002.jpg">
@@ -83,6 +83,7 @@
   </style>
 </noscript>
 
+<link rel="alternate" href="/atom.xml" title="一缕烟气" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -280,7 +281,6 @@
 <li>还可以将文档规范导入相关的工具(例如<code>SnopUI</code>),这些工具将会为我们自动的创建自动化测试。</li>
 </ol>
 <h4 id="基于spring-boot-web项目的基本使用"><a href="#基于spring-boot-web项目的基本使用" class="headerlink" title="基于spring boot web项目的基本使用"></a>基于spring boot web项目的基本使用</h4><h5 id="添加依赖"><a href="#添加依赖" class="headerlink" title="添加依赖"></a>添加依赖</h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
 <h5 id="编写接口"><a href="#编写接口" class="headerlink" title="编写接口"></a>编写接口</h5><ol>
 <li>首先我们创建三个包：<code>cn.itweknow.sbswagger.controller</code>、<code>cn.itweknow.sbswagger.testcontroller</code> 以及 <code>cn.itweknow.sbswagger.model</code>。</li>
 <li>在 controller 包下新建 <code>UserController.java</code> 类，在 <code>testcontroller</code> 包下新建 <code>TestController.java</code> 类，在 model 包下新建 <code>User.java</code> 类。</li>
@@ -288,7 +288,6 @@
 </ol>
 <p>UserController.java代码如下</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/user&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@PostMapping(&quot;/add&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">addUser</span><span class="params">(<span class="meta">@RequestBody</span> User user)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@GetMapping(&quot;/find/&#123;id&#125;&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> User <span class="title">findById</span><span class="params">(<span class="meta">@PathVariable(&quot;id&quot;)</span> <span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> User();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@PutMapping(&quot;/update&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">update</span><span class="params">(<span class="meta">@RequestBody</span> User user)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">     <span class="meta">@DeleteMapping(&quot;/delete/&#123;id&#125;&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">delete</span><span class="params">(<span class="meta">@PathVariable(&quot;id&quot;)</span> <span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h5 id="集成Swagger2"><a href="#集成Swagger2" class="headerlink" title="集成Swagger2"></a>集成Swagger2</h5><p>上面的java类已经具有了如下的几个接口</p>
 <ol>
 <li>/user/add：新增用户。</li>
@@ -297,20 +296,17 @@
 <li>/user/delete/{id}：根据 id 删除用户。</li>
 </ol>
 <h6 id="添加swagger依赖"><a href="#添加swagger依赖" class="headerlink" title="添加swagger依赖"></a>添加swagger依赖</h6><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.springfox<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>springfox-swagger2<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.9.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
 <h6 id="java配置"><a href="#java配置" class="headerlink" title="java配置"></a>java配置</h6><p>添加如下的类</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableSwagger2</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SwaggerConfig</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Docket <span class="title">api</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Docket(DocumentationType.SWAGGER_2)</span><br><span class="line">                .select()</span><br><span class="line">                .apis(RequestHandlerSelectors.any())</span><br><span class="line">                .paths(PathSelectors.any())</span><br><span class="line">                .build();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p><strong>注意: <code>@Configuration</code> 是告诉 Spring Boot 需要加载这个配置类， <code>@EnableSwagger2</code> 是启用 Swagger2，如果没加的话自然而然也就看不到后面的验证效果了</strong></p>
 <h6 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h6><blockquote>
 <p>至此，我们已经成功的在 Spring Boot 项目中集成了 Swagger2，启动项目后，我们可以通过在浏览器中访问 <code>http://localhost:8080/v2/api-docs</code> 来验证，您会发现返回的结果是一段 JSON 串，可读性非常差。幸运的是 Swagger2 为我们提供了可视化的交互界面 SwaggerUI，下面我们就一起来试试吧。</p>
 </blockquote>
 <h5 id="集成Swagger-UI"><a href="#集成Swagger-UI" class="headerlink" title="集成Swagger UI"></a>集成Swagger UI</h5><h6 id="添加依赖-1"><a href="#添加依赖-1" class="headerlink" title="添加依赖"></a>添加依赖</h6><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.springfox<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>springfox-swagger-ui<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.9.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
 <h6 id="访问验证"><a href="#访问验证" class="headerlink" title="访问验证"></a>访问验证</h6><blockquote>
 <p>其实就只需要添加一下依赖就可以了，我们重新启动一下项目，然后在浏览器中访问 <code>http://localhost:8080/swagger-ui.html</code> 就可以看到如下的效果了:</p>
 </blockquote>
-<p><img src="http://wrr123.github.io/2020/08/03/swagger%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/001.png"></p>
+<p><img src="http://wrr123.github.io/2020/08/03/swagger%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/001.png" alt></p>
 <h4 id="高级配置"><a href="#高级配置" class="headerlink" title="高级配置"></a>高级配置</h4><h5 id="文档相关描述配置"><a href="#文档相关描述配置" class="headerlink" title="文档相关描述配置"></a>文档相关描述配置</h5><ol>
 <li><p>通过在控制器类上增加<code>@Api</code>注解，可以给控制器增加描述和标签信息。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Api(tags = &quot;用户相关接口&quot;, description = &quot;提供用户相关的 Rest API&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserController</span></span></span><br></pre></td></tr></table></figure>
@@ -325,11 +321,10 @@
 <p>文档信息配置，Swagger 还支持设置一些文档的版本号、联系人邮箱、网站、版权、开源协议等等信息，但与上面几条不同的是这些信息不是通过注解配置，而是通过创建一个 ApiInfo 对象，并且使用 <code>Docket.appInfo()</code> 方法来设置，我们在 SwaggerConfig.java 类中新增如下内容即可。</p>
 </blockquote>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Docket <span class="title">api</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="keyword">return</span> <span class="keyword">new</span> Docket(DocumentationType.SWAGGER_2)</span><br><span class="line">.select()</span><br><span class="line">            .apis(RequestHandlerSelectors.any())</span><br><span class="line">            .paths(PathSelectors.any())</span><br><span class="line">            .build()</span><br><span class="line">            .apiInfo(apiInfo());</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">private</span> ApiInfo <span class="title">apiInfo</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="keyword">return</span> <span class="keyword">new</span> ApiInfo(</span><br><span class="line">            <span class="string">&quot;Spring Boot 项目集成 Swagger 实例文档&quot;</span>,</span><br><span class="line">            <span class="string">&quot;我的博客网站：https://itweknow.cn，欢迎大家访问。&quot;</span>,</span><br><span class="line">            <span class="string">&quot;API V1.0&quot;</span>,</span><br><span class="line">            <span class="string">&quot;Terms of service&quot;</span>,</span><br><span class="line">            <span class="keyword">new</span> Contact(<span class="string">&quot;名字想好没&quot;</span>, <span class="string">&quot;https://itweknow.cn&quot;</span>, <span class="string">&quot;gancy.programmer@gmail.com&quot;</span>),</span><br><span class="line">                <span class="string">&quot;Apache&quot;</span>, <span class="string">&quot;http://www.apache.org/&quot;</span>, Collections.emptyList());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 </li>
 </ol>
 <p>补全信息后的swagger文档界面</p>
-<p><img src="http://wrr123.github.io/2020/08/03/swagger%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/002.png"></p>
+<p><img src="http://wrr123.github.io/2020/08/03/swagger%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/002.png" alt></p>
 <h4 id="接口过滤"><a href="#接口过滤" class="headerlink" title="接口过滤"></a>接口过滤</h4><blockquote>
 <p>有些时候我们并不是希望所有的 Rest API 都呈现在文档上，这种情况下 Swagger2 提供给我们了两种方式配置，一种是基于 <code>@ApiIgnore</code> 注解，另一种是在 Docket 上增加筛选。</p>
 </blockquote>
@@ -343,157 +338,190 @@
 <li><code>paths()</code> ：这种方式可以通过筛选 API 的 url 来进行过滤。</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.apis(RequestHandlerSelectors.basePackage(<span class="string">&quot;cn.itweknow.sbswagger.controller&quot;</span>))</span><br><span class="line">.paths(Predicates.or(PathSelectors.ant(<span class="string">&quot;/user/add&quot;</span>),</span><br><span class="line">        PathSelectors.ant(<span class="string">&quot;/user/find/*&quot;</span>)))</span><br></pre></td></tr></table></figure>
-
 </li>
 </ol>
 <h4 id="自定义响应信息"><a href="#自定义响应信息" class="headerlink" title="自定义响应信息"></a>自定义响应信息</h4><blockquote>
 <p>Swagger 允许我们通过 Docket 的 <code>globalResponseMessage()</code> 方法全局覆盖 HTTP 方法的响应消息，但是首先我们得通过 Docket 的 <code>useDefaultResponseMessages</code> 方法告诉 Swagger 不使用默认的 HTTP 响应消息，假设我们现在需要覆盖所有 GET 方法的 500 和 403 错误的响应消息，我们只需要在 SwaggerConfig.java 类中的 Docket Bean 下添加如下内容</p>
 </blockquote>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">.useDefaultResponseMessages(<span class="keyword">false</span>)</span><br><span class="line">.globalResponseMessage(RequestMethod.GET, newArrayList(</span><br><span class="line"><span class="keyword">new</span> ResponseMessageBuilder()</span><br><span class="line">              .code(<span class="number">500</span>)</span><br><span class="line">              .message(<span class="string">&quot;服务器发生异常&quot;</span>)</span><br><span class="line">              .responseModel(<span class="keyword">new</span> ModelRef(<span class="string">&quot;Error&quot;</span>))</span><br><span class="line">              .build(),</span><br><span class="line">       <span class="keyword">new</span> ResponseMessageBuilder()</span><br><span class="line">              .code(<span class="number">403</span>)</span><br><span class="line">              .message(<span class="string">&quot;资源不可用&quot;</span>)</span><br><span class="line">              .build()</span><br><span class="line">));</span><br></pre></td></tr></table></figure>
-
 <h4 id="相关注解说明"><a href="#相关注解说明" class="headerlink" title="相关注解说明"></a>相关注解说明</h4><h5 id="Controller相关注解"><a href="#Controller相关注解" class="headerlink" title="Controller相关注解"></a>Controller相关注解</h5><p><code>@Api</code>: 可设置对控制器的描述。</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th align="left"><strong>注解属性</strong></th>
-<th align="left"><strong>类型</strong></th>
-<th align="left"><strong>描述</strong></th>
+<th style="text-align:left"><strong>注解属性</strong></th>
+<th style="text-align:left"><strong>类型</strong></th>
+<th style="text-align:left"><strong>描述</strong></th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left">tags</td>
-<td align="left">String[]</td>
-<td align="left">控制器标签。</td>
+<tbody>
+<tr>
+<td style="text-align:left">tags</td>
+<td style="text-align:left">String[]</td>
+<td style="text-align:left">控制器标签。</td>
 </tr>
 <tr>
-<td align="left">description</td>
-<td align="left">String</td>
-<td align="left">控制器描述（该字段被申明为过期）。</td>
+<td style="text-align:left">description</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">控制器描述（该字段被申明为过期）。</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <h5 id="接口相关注解"><a href="#接口相关注解" class="headerlink" title="接口相关注解"></a>接口相关注解</h5><p><code>@ApiOperation</code>: 可设置对接口的描述。</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th align="left"><strong>注解属性</strong></th>
-<th align="left"><strong>类型</strong></th>
-<th align="left"><strong>描述</strong></th>
+<th style="text-align:left"><strong>注解属性</strong></th>
+<th style="text-align:left"><strong>类型</strong></th>
+<th style="text-align:left"><strong>描述</strong></th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left">value</td>
-<td align="left">String</td>
-<td align="left">接口说明。</td>
+<tbody>
+<tr>
+<td style="text-align:left">value</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">接口说明。</td>
 </tr>
 <tr>
-<td align="left">notes</td>
-<td align="left">String</td>
-<td align="left">接口发布说明。</td>
+<td style="text-align:left">notes</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">接口发布说明。</td>
 </tr>
 <tr>
-<td align="left">tags</td>
-<td align="left">Stirng[]</td>
-<td align="left">标签。</td>
+<td style="text-align:left">tags</td>
+<td style="text-align:left">Stirng[]</td>
+<td style="text-align:left">标签。</td>
 </tr>
 <tr>
-<td align="left">response</td>
-<td align="left">Class&lt;?&gt;</td>
-<td align="left">接口返回类型。</td>
+<td style="text-align:left">response</td>
+<td style="text-align:left">Class&lt;?&gt;</td>
+<td style="text-align:left">接口返回类型。</td>
 </tr>
 <tr>
-<td align="left">httpMethod</td>
-<td align="left">String</td>
-<td align="left">接口请求方式。</td>
+<td style="text-align:left">httpMethod</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">接口请求方式。</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p><code>@ApiIgnore</code>: Swagger 文档不会显示拥有该注解的接口。 <code>@ApiImplicitParams</code>: 用于描述接口的非对象参数集。 <code>@ApiImplicitParam</code>: 用于描述接口的非对象参数，一般与 <code>@ApiImplicitParams</code> 组合使用。</p>
 <p><strong>@ApiImplicitParam 主要属性</strong></p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th align="left"><strong>注解属性</strong></th>
-<th align="left"><strong>描述</strong></th>
+<th style="text-align:left"><strong>注解属性</strong></th>
+<th style="text-align:left"><strong>描述</strong></th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left">paramType</td>
-<td align="left">查询参数类型，实际上就是参数放在那里。取值：path：以地址的形式提交数据，根据 id 查询用户的接口就是这种形式传参；query：Query string 的方式传参；header：以流的形式提交；form：以 Form 表单的形式提交。</td>
+<tbody>
+<tr>
+<td style="text-align:left">paramType</td>
+<td style="text-align:left">查询参数类型，实际上就是参数放在那里。取值：path：以地址的形式提交数据，根据 id 查询用户的接口就是这种形式传参；query：Query string 的方式传参；header：以流的形式提交；form：以 Form 表单的形式提交。</td>
 </tr>
 <tr>
-<td align="left">dataType</td>
-<td align="left">参数的数据类型。取值：Long 和 String</td>
+<td style="text-align:left">dataType</td>
+<td style="text-align:left">参数的数据类型。取值：Long 和 String</td>
 </tr>
 <tr>
-<td align="left">name</td>
-<td align="left">参数名字。</td>
+<td style="text-align:left">name</td>
+<td style="text-align:left">参数名字。</td>
 </tr>
 <tr>
-<td align="left">value</td>
-<td align="left">参数意义的描述。</td>
+<td style="text-align:left">value</td>
+<td style="text-align:left">参数意义的描述。</td>
 </tr>
 <tr>
-<td align="left">required</td>
-<td align="left">是否必填。取值：true：必填参数；false：非必填参数。</td>
+<td style="text-align:left">required</td>
+<td style="text-align:left">是否必填。取值：true：必填参数；false：非必填参数。</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <h5 id="Model相关注解"><a href="#Model相关注解" class="headerlink" title="Model相关注解"></a>Model相关注解</h5><p><code>@ApiModel</code>: 可设置接口相关实体的描述。 <code>@ApiModelProperty</code>: 可设置实体属性的相关描述。</p>
 <p><strong>@ApiModelProperty 主要属性</strong></p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th align="left"><strong>注解属性</strong></th>
-<th align="left"><strong>类型</strong></th>
-<th align="left"><strong>描述</strong></th>
+<th style="text-align:left"><strong>注解属性</strong></th>
+<th style="text-align:left"><strong>类型</strong></th>
+<th style="text-align:left"><strong>描述</strong></th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left">value</td>
-<td align="left">String</td>
-<td align="left">字段说明。</td>
+<tbody>
+<tr>
+<td style="text-align:left">value</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">字段说明。</td>
 </tr>
 <tr>
-<td align="left">name</td>
-<td align="left">String</td>
-<td align="left">重写字段名称。</td>
+<td style="text-align:left">name</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">重写字段名称。</td>
 </tr>
 <tr>
-<td align="left">dataType</td>
-<td align="left">Stirng</td>
-<td align="left">重写字段类型。</td>
+<td style="text-align:left">dataType</td>
+<td style="text-align:left">Stirng</td>
+<td style="text-align:left">重写字段类型。</td>
 </tr>
 <tr>
-<td align="left">required</td>
-<td align="left">boolean</td>
-<td align="left">是否必填。</td>
+<td style="text-align:left">required</td>
+<td style="text-align:left">boolean</td>
+<td style="text-align:left">是否必填。</td>
 </tr>
 <tr>
-<td align="left">example</td>
-<td align="left">Stirng</td>
-<td align="left">举例说明。</td>
+<td style="text-align:left">example</td>
+<td style="text-align:left">Stirng</td>
+<td style="text-align:left">举例说明。</td>
 </tr>
 <tr>
-<td align="left">hidden</td>
-<td align="left">boolean</td>
-<td align="left">是否在文档中隐藏该字段。</td>
+<td style="text-align:left">hidden</td>
+<td style="text-align:left">boolean</td>
+<td style="text-align:left">是否在文档中隐藏该字段。</td>
 </tr>
 <tr>
-<td align="left">allowEmptyValue</td>
-<td align="left">boolean</td>
-<td align="left">是否允许为空。</td>
+<td style="text-align:left">allowEmptyValue</td>
+<td style="text-align:left">boolean</td>
+<td style="text-align:left">是否允许为空。</td>
 </tr>
 <tr>
-<td align="left">allowableValues</td>
-<td align="left">String</td>
-<td align="left">该字段允许的值，当我们 API 的某个参数为枚举类型时，使用这个属性就可以清楚地告诉 API 使用者该参数所能允许传入的值。</td>
+<td style="text-align:left">allowableValues</td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">该字段允许的值，当我们 API 的某个参数为枚举类型时，使用这个属性就可以清楚地告诉 API 使用者该参数所能允许传入的值。</td>
 </tr>
-</tbody></table>
-<h4 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h4><h5 id="Required-String-parameter-39-xxxx-39-is-not-present？"><a href="#Required-String-parameter-39-xxxx-39-is-not-present？" class="headerlink" title="Required String parameter &#39;xxxx&#39; is not present？"></a><code>Required String parameter &#39;xxxx&#39; is not present</code>？</h5><p><img src="http://wrr123.github.io/2020/08/03/swagger%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/003.png"></p>
+</tbody>
+</table>
+</div>
+<h4 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h4><h5 id="Required-String-parameter-39-xxxx-39-is-not-present？"><a href="#Required-String-parameter-39-xxxx-39-is-not-present？" class="headerlink" title="Required String parameter &#39;xxxx&#39; is not present？"></a><code>Required String parameter &#39;xxxx&#39; is not present</code>？</h5><p><img src="http://wrr123.github.io/2020/08/03/swagger%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/003.png" alt></p>
 
     </div>
 
     
     
     
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
 
       <footer class="post-footer">
           <div class="post-tags">
@@ -587,20 +615,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">177</span>
+          <span class="site-state-item-count">240</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">49</span>
+        <span class="site-state-item-count">60</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -627,7 +655,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -636,12 +664,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">315k</span>
+    <span title="站点总字数">441k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:46</span>
+    <span title="站点阅读时长">6:41</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
@@ -716,6 +744,8 @@
 
 
 
+
+  
 
   
 

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.0.2">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/002.jpg">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/002.jpg">
@@ -79,6 +79,7 @@
   </style>
 </noscript>
 
+<link rel="alternate" href="/atom.xml" title="一缕烟气" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -243,7 +244,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1.8k</span>
+              <span>1.9k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -267,8 +268,7 @@
 <blockquote>
 <p>举个栗子：<br> int占4个字节（byte）<br> 1byte = 8bit<br> 换算下来，一个int类型即占32bit<br> int i = 88; 这里的88为十进制，转换为二进制为：1011000，使用完整的32位表示即为：00000000 00000000 00000000 01011000</p>
 </blockquote>
-<a id="more"></a>
-
+<span id="more"></span>
 <h4 id="原码、反码和补码"><a href="#原码、反码和补码" class="headerlink" title="原码、反码和补码"></a>原码、反码和补码</h4><blockquote>
 <p>在计算机内，有符号数有三种表示法：原码、反码以及补码。<br> 原码：就是二进制定点表示法，即最高位为符号位，“0”正负“1”，其余位表示数值的大小。<br> 反码：正数的反码与其原码相同；负数的反码是对正数逐位取反，符号位保持为1。<br> 补码：正数的补码与其原码相同；负数的补码是在其反码的末位加1。</p>
 </blockquote>
@@ -280,6 +280,7 @@
 <p>程序中的所有数在计算机内存中都是以二进制的形式储存的。位运算就是直接对整数在内存中的二进制位进行操作。比如，and运算本来是一个逻辑运算符，但整数与整数之间也可以进行and运算。举个例子，6的二进制是110，11的二进制是1011，那么6 and 11的结果就是2，它是二进制对应位进行逻辑运算的结果（0表示False，1表示True，空位都当0处理）。</p>
 </blockquote>
 <p>下表列出了 <strong>位运算</strong> 的基本运算（A = 8，B = 9）</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -288,15 +289,18 @@
 <th>例子</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>按位与&amp;</td>
 <td>如果相对应位都是1，则结果为1，否则为0</td>
 <td>A&amp;B=8，即1000</td>
 </tr>
 <tr>
-<td>按位或|</td>
+<td>按位或\</td>
+<td></td>
 <td>如果相对应位都是0，则结果为0，否则为1</td>
 <td>A</td>
+<td>B=9，即1001</td>
 </tr>
 <tr>
 <td>按位异或^</td>
@@ -318,33 +322,28 @@
 <td>按位右移运算符。左操作数按位右移右操作数指定的位数</td>
 <td>A &gt;&gt; 2 = 2，即0010</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <h4 id="位运算的常用小技巧"><a href="#位运算的常用小技巧" class="headerlink" title="位运算的常用小技巧"></a>位运算的常用小技巧</h4><h5 id="判断奇偶数"><a href="#判断奇偶数" class="headerlink" title="判断奇偶数"></a>判断奇偶数</h5><p><strong>只要根据最末位是 0 还是 1 来决定，为 0 就是偶数，为 1 就是奇数。</strong></p>
 <p>因此可以用 <code>if((a &amp; 1) ==0)</code> 代替 <code>if(a % 2 == 0)</code> 来判断 a 是不是偶数。</p>
 <p>一个栗子：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 输出 0-100 之间的所有偶数</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span>((i &amp; <span class="number">1</span>) == <span class="number">0</span>) &#123;</span><br><span class="line">        System.out.println(i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 输出 0-100 之间的所有偶数</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span>((i &amp; <span class="number">1</span>) == <span class="number">0</span>) &#123;</span><br><span class="line">        System.out.println(i);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h5 id="交换两数"><a href="#交换两数" class="headerlink" title="交换两数"></a>交换两数</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">1</span>, b = <span class="number">2</span>;</span><br><span class="line">a ^= b;</span><br><span class="line">b ^= a;</span><br><span class="line">a ^= b;</span><br><span class="line"></span><br><span class="line">System.out.println(<span class="string">&quot;a = &quot;</span> + a); <span class="comment">// a = 2</span></span><br><span class="line">System.out.println(<span class="string">&quot;b = &quot;</span> + b); <span class="comment">// b = 1</span></span><br></pre></td></tr></table></figure>
-
 <h5 id="交换符号"><a href="#交换符号" class="headerlink" title="交换符号"></a>交换符号</h5><p>交换符号就是正数变成负数，负数变成正数。</p>
 <p>因此变换符号只需要 <strong>执行取反操作 + 1 即可。</strong></p>
 <p>一个栗子：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a = -<span class="number">15</span>, b = <span class="number">15</span>;</span><br><span class="line">System.out.println(<span class="string">&quot;a = &quot;</span> + (~a + <span class="number">1</span>)); <span class="comment">// a = 15</span></span><br><span class="line">System.out.println(<span class="string">&quot;b = &quot;</span> + (~b + <span class="number">1</span>)); <span class="comment">// b = -15</span></span><br></pre></td></tr></table></figure>
-
 <h4 id="java-逻辑运算符"><a href="#java-逻辑运算符" class="headerlink" title="java 逻辑运算符"></a>java 逻辑运算符</h4><p>包含下面的6种：</p>
 <ul>
 <li><p><code>&amp;&amp;</code>: 短路与，其两边的表达式必须都是 true，才返回 true，否则返回 false。</p>
 </li>
 <li><p><code>&amp;</code>: 不短路与，其两边的表达式都会执行到</p>
 </li>
-<li><p><code>||</code>: 短路或，其两边的表达式只要有一个为 true，就返回 true，否则返回 false。</p>
-</li>
-<li><p><code>|</code>:  不短路或，其两边的表达式都会执行到</p>
-</li>
-<li><p><code>!</code>： 取相反的操作，若表达式为 true，返回 false，反之亦然。</p>
-</li>
-<li><p><code>^</code>: 当两边的表达式结果不一样时，返回 true， 一样时，返回 false。</p>
-</li>
+<li><code>||</code>: 短路或，其两边的表达式只要有一个为 true，就返回 true，否则返回 false。</li>
+<li><code>|</code>:  不短路或，其两边的表达式都会执行到</li>
+<li><code>!</code>： 取相反的操作，若表达式为 true，返回 false，反之亦然。</li>
+<li><code>^</code>: 当两边的表达式结果不一样时，返回 true， 一样时，返回 false。</li>
 </ul>
 
     </div>
@@ -352,6 +351,25 @@
     
     
     
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
 
       <footer class="post-footer">
           <div class="post-tags">
@@ -445,20 +463,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">177</span>
+          <span class="site-state-item-count">240</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">49</span>
+        <span class="site-state-item-count">60</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -485,7 +503,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -494,12 +512,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">315k</span>
+    <span title="站点总字数">441k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:46</span>
+    <span title="站点阅读时长">6:41</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
@@ -574,6 +592,8 @@
 
 
 
+
+  
 
   
 

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.0.2">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/002.jpg">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/002.jpg">
@@ -79,6 +79,7 @@
   </style>
 </noscript>
 
+<link rel="alternate" href="/atom.xml" title="一缕烟气" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -264,49 +265,58 @@
       
         <h4 id="简单介绍"><a href="#简单介绍" class="headerlink" title="简单介绍"></a>简单介绍</h4><p>Quill 是一个很流行的富文本编辑器，</p>
 <p>github：<a target="_blank" rel="noopener" href="https://github.com/quilljs/quill/">https://github.com/quilljs/quill/</a></p>
-<p>官网：<a target="_blank" rel="noopener" href="https://quilljs.com/">官网</a></p>
-<h5 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- Include stylesheet --&gt;</span><br><span class="line">&lt;link href=<span class="string">&quot;https://cdn.quilljs.com/1.3.6/quill.snow.css&quot;</span> rel=<span class="string">&quot;stylesheet&quot;</span>&gt;</span><br><span class="line"> </span><br><span class="line">&lt;!-- Create the editor container --&gt;</span><br><span class="line">&lt;div id=<span class="string">&quot;editor&quot;</span>&gt;</span><br><span class="line">  &lt;p&gt;Hello World!&lt;/p&gt;</span><br><span class="line">  &lt;p&gt;Some initial &lt;strong&gt;bold&lt;<span class="regexp">/strong&gt; text&lt;/</span>p&gt;</span><br><span class="line">  &lt;p&gt;<span class="xml"><span class="tag">&lt;<span class="name">br</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line">&lt;/div&gt;</span><br><span class="line"> </span><br><span class="line">&lt;!-- Include the Quill library --&gt;</span><br><span class="line">&lt;script src=<span class="string">&quot;https://cdn.quilljs.com/1.3.6/quill.js&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line"> </span><br><span class="line">&lt;!-- Initialize Quill editor --&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="keyword">var</span> quill = <span class="keyword">new</span> Quill(<span class="string">&#x27;#editor&#x27;</span>, &#123;</span><br><span class="line">    theme: <span class="string">&#x27;snow&#x27;</span></span><br><span class="line">  &#125;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<a id="more"></a>
-
+<p>官网：<a target="_blank" rel="noopener" href="https://quilljs.com">官网</a></p>
+<h5 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- Include stylesheet --&gt;</span><br><span class="line">&lt;link href=<span class="string">&quot;https://cdn.quilljs.com/1.3.6/quill.snow.css&quot;</span> rel=<span class="string">&quot;stylesheet&quot;</span>&gt;</span><br><span class="line"> </span><br><span class="line">&lt;!-- Create the editor container --&gt;</span><br><span class="line">&lt;div id=<span class="string">&quot;editor&quot;</span>&gt;</span><br><span class="line">  &lt;p&gt;Hello World!&lt;/p&gt;</span><br><span class="line">  &lt;p&gt;Some initial &lt;strong&gt;bold&lt;<span class="regexp">/strong&gt; text&lt;/</span>p&gt;</span><br><span class="line">  &lt;p&gt;&lt;br&gt;&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"> </span><br><span class="line">&lt;!-- Include the Quill library --&gt;</span><br><span class="line">&lt;script src=<span class="string">&quot;https://cdn.quilljs.com/1.3.6/quill.js&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line"> </span><br><span class="line">&lt;!-- Initialize Quill editor --&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="keyword">var</span> quill = <span class="keyword">new</span> Quill(<span class="string">&#x27;#editor&#x27;</span>, &#123;</span><br><span class="line">    theme: <span class="string">&#x27;snow&#x27;</span></span><br><span class="line">  &#125;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
 <p>vue 中使用：</p>
 <p><code>npm install quill@1.3.6</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;div id&#x3D;&quot;editor&quot;&gt;</span><br><span class="line">      &lt;p&gt;Hello World!&lt;&#x2F;p&gt;</span><br><span class="line">      &lt;p&gt;Some initial &lt;strong&gt;bold&lt;&#x2F;strong&gt; text&lt;&#x2F;p&gt;</span><br><span class="line">      &lt;p&gt;&lt;br&gt;&lt;&#x2F;p&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"> </span><br><span class="line">&lt;script&gt;</span><br><span class="line">import Quill from &#39;quill&#39;</span><br><span class="line"> </span><br><span class="line">export default &#123;</span><br><span class="line">  name: &quot;QuillEditor&quot;,</span><br><span class="line">  mounted () &#123;</span><br><span class="line">    this.initQuill()</span><br><span class="line">  &#125;,</span><br><span class="line">  beforeDestroy () &#123;</span><br><span class="line">    this.quill &#x3D; null</span><br><span class="line">    delete this.quill</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    initQuill () &#123;</span><br><span class="line">      const quill &#x3D; new Quill(&#39;#editor&#39;, &#123;</span><br><span class="line">        theme: &#39;snow&#39;</span><br><span class="line">      &#125;)</span><br><span class="line">      this.quill &#x3D; quill</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>创建Quill实例需要两个参数，container与options</p>
 <h3 id="Container"><a href="#Container" class="headerlink" title="Container"></a>Container</h3><p>container可以是css选择器，也可以是DOM对象：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> editor = <span class="string">``</span><span class="keyword">new</span><span class="string">` `</span>Quill(<span class="string">``</span><span class="string">&#x27;#editor&#x27;</span><span class="string">``</span>)</span><br></pre></td></tr></table></figure>
-
 <p>或者</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> container = <span class="built_in">document</span>.getElementById(<span class="string">``</span><span class="string">&#x27;editor&#x27;</span><span class="string">``</span>);<span class="string">``</span><span class="keyword">const</span> editor = <span class="string">``</span><span class="keyword">new</span><span class="string">` `</span>Quill(container);</span><br></pre></td></tr></table></figure>
-
 <h3 id="Options"><a href="#Options" class="headerlink" title="Options"></a>Options</h3><p>包括theme、formats、modules等</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> options = &#123;<span class="string">``</span> <span class="string">``</span>debug: <span class="string">``</span><span class="string">&#x27;info&#x27;</span><span class="string">``</span>,<span class="string">``</span> <span class="string">``</span>modules: &#123;<span class="string">``</span>  <span class="string">``</span>toolbar: <span class="string">``</span><span class="string">&#x27;#toolbar&#x27;</span><span class="string">``</span> <span class="string">``</span>&#125;,<span class="string">``</span> <span class="string">``</span>placeholder: <span class="string">``</span><span class="string">&#x27;Compose an epic...&#x27;</span><span class="string">``</span>,<span class="string">``</span> <span class="string">``</span>readOnly: <span class="string">``</span><span class="literal">true</span><span class="string">``</span>,<span class="string">``</span> <span class="string">``</span>theme: <span class="string">``</span><span class="string">&#x27;snow&#x27;</span><span class="string">``</span>&#125;;<span class="string">``</span><span class="keyword">const</span> editor = <span class="string">``</span><span class="keyword">new</span><span class="string">` `</span>Quill(<span class="string">``</span><span class="string">&#x27;#editor&#x27;</span><span class="string">``</span>, options);</span><br></pre></td></tr></table></figure>
 </blockquote>
 <h5 id="获取与显示编辑内容"><a href="#获取与显示编辑内容" class="headerlink" title="获取与显示编辑内容"></a>获取与显示编辑内容</h5><p>富文本编辑器的主要作用是编辑文本、保存、显示等。</p>
 <p>获取编辑完成的内容：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> html = <span class="built_in">document</span>.querySelector(<span class="string">``</span><span class="string">&#x27;#editor&#x27;</span><span class="string">``</span>).children[<span class="number">0</span>].innerHTML<span class="string">``</span><span class="built_in">console</span>.log(html)</span><br></pre></td></tr></table></figure>
-
 <p>内容：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hello World!Some initial bold text </span><br></pre></td></tr></table></figure>
-
 <p>获取内容后置于编辑器中显示：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> html = <span class="built_in">document</span>.querySelector(<span class="string">``</span><span class="string">&#x27;#editor&#x27;</span><span class="string">``</span>).children[<span class="number">0</span>].innerHTML<span class="string">``</span><span class="built_in">this</span><span class="string">``</span>.quill.pasteHTML(<span class="string">``</span><span class="string">&#x27;add some title&#x27;</span><span class="string">` `</span>+ html)</span><br></pre></td></tr></table></figure>
-
 <h5 id="Toolbar"><a href="#Toolbar" class="headerlink" title="Toolbar"></a>Toolbar</h5><p>编辑器上方一栏可以设置文本格式部分，即为modules中的toolbar，可以使用默认值，也可以定制。</p>
 <p>使用数组：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> toolbarOptions = [<span class="string">``</span><span class="string">&#x27;bold&#x27;</span><span class="string">``</span>, <span class="string">``</span><span class="string">&#x27;italic&#x27;</span><span class="string">``</span>, <span class="string">``</span><span class="string">&#x27;underline&#x27;</span><span class="string">``</span>, <span class="string">``</span><span class="string">&#x27;strike&#x27;</span><span class="string">``</span>];<span class="string">` `</span><span class="keyword">const</span> quill = <span class="string">``</span><span class="keyword">new</span><span class="string">` `</span>Quill(<span class="string">``</span><span class="string">&#x27;#editor&#x27;</span><span class="string">``</span>, &#123;<span class="string">``</span> <span class="string">``</span>modules: &#123;<span class="string">``</span>  <span class="string">``</span>toolbar: toolbarOptions<span class="string">``</span> <span class="string">``</span>&#125;<span class="string">``</span>&#125;);</span><br></pre></td></tr></table></figure>
-
 <p>也可以分组</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> toolbarOptions = [</span><br><span class="line">  [<span class="string">&#x27;bold&#x27;</span>, <span class="string">&#x27;italic&#x27;</span>, <span class="string">&#x27;underline&#x27;</span>, <span class="string">&#x27;strike&#x27;</span>],        <span class="comment">// toggled buttons</span></span><br><span class="line">  [<span class="string">&#x27;blockquote&#x27;</span>, <span class="string">&#x27;code-block&#x27;</span>],</span><br><span class="line"> </span><br><span class="line">  [&#123; <span class="string">&#x27;header&#x27;</span>: <span class="number">1</span> &#125;, &#123; <span class="string">&#x27;header&#x27;</span>: <span class="number">2</span> &#125;],               <span class="comment">// custom button values</span></span><br><span class="line">  [&#123; <span class="string">&#x27;list&#x27;</span>: <span class="string">&#x27;ordered&#x27;</span>&#125;, &#123; <span class="string">&#x27;list&#x27;</span>: <span class="string">&#x27;bullet&#x27;</span> &#125;],</span><br><span class="line">  [&#123; <span class="string">&#x27;script&#x27;</span>: <span class="string">&#x27;sub&#x27;</span>&#125;, &#123; <span class="string">&#x27;script&#x27;</span>: <span class="string">&#x27;super&#x27;</span> &#125;],      <span class="comment">// superscript/subscript</span></span><br><span class="line">  [&#123; <span class="string">&#x27;indent&#x27;</span>: <span class="string">&#x27;-1&#x27;</span>&#125;, &#123; <span class="string">&#x27;indent&#x27;</span>: <span class="string">&#x27;+1&#x27;</span> &#125;],          <span class="comment">// outdent/indent</span></span><br><span class="line">  [&#123; <span class="string">&#x27;direction&#x27;</span>: <span class="string">&#x27;rtl&#x27;</span> &#125;],                         <span class="comment">// text direction</span></span><br><span class="line"> </span><br><span class="line">  [&#123; <span class="string">&#x27;size&#x27;</span>: [<span class="string">&#x27;small&#x27;</span>, <span class="literal">false</span>, <span class="string">&#x27;large&#x27;</span>, <span class="string">&#x27;huge&#x27;</span>] &#125;],  <span class="comment">// custom dropdown</span></span><br><span class="line">  [&#123; <span class="string">&#x27;header&#x27;</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="literal">false</span>] &#125;],</span><br><span class="line"> </span><br><span class="line">  [&#123; <span class="string">&#x27;color&#x27;</span>: [] &#125;, &#123; <span class="string">&#x27;background&#x27;</span>: [] &#125;],          <span class="comment">// dropdown with defaults from theme</span></span><br><span class="line">  [&#123; <span class="string">&#x27;font&#x27;</span>: [] &#125;],</span><br><span class="line">  [&#123; <span class="string">&#x27;align&#x27;</span>: [] &#125;],</span><br><span class="line"> </span><br><span class="line">  [<span class="string">&#x27;clean&#x27;</span>]                                         <span class="comment">// remove formatting button</span></span><br><span class="line">];</span><br><span class="line"> </span><br><span class="line"><span class="keyword">const</span> quill = <span class="keyword">new</span> Quill(<span class="string">&#x27;#editor&#x27;</span>, &#123;</span><br><span class="line">  modules: &#123;</span><br><span class="line">    toolbar: toolbarOptions</span><br><span class="line">  &#125;,</span><br><span class="line">  theme: <span class="string">&#x27;snow&#x27;</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
 
     </div>
 
     
     
     
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
 
       <footer class="post-footer">
           <div class="post-tags">
@@ -400,20 +410,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">177</span>
+          <span class="site-state-item-count">240</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">49</span>
+        <span class="site-state-item-count">60</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -440,7 +450,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -449,12 +459,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">315k</span>
+    <span title="站点总字数">441k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:46</span>
+    <span title="站点阅读时长">6:41</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
@@ -529,6 +539,8 @@
 
 
 
+
+  
 
   
 

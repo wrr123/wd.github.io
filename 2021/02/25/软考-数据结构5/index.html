@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/002.jpg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/002.jpg">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-material.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"wrr123.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="图 - 最短路径最短路径有着广泛的应用，比如 地图两点间的距离计算，公交查询系统，路由选择等。 介绍最短路径问题是图论研究中的一个经典算法问题，旨在寻找图（由结点和路径组成）中两结点之间的最短路径。最短路径不一定是经过边最少的路径，但在这些最短路径中，长度最短的那一条路径上只有一条边，且它的权值在从源点出发的所有边的权值最小。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软考-数据结构5">
+<meta property="og:url" content="https://wrr123.github.io/2021/02/25/%E8%BD%AF%E8%80%83-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%845/index.html">
+<meta property="og:site_name" content="一缕烟气">
+<meta property="og:description" content="图 - 最短路径最短路径有着广泛的应用，比如 地图两点间的距离计算，公交查询系统，路由选择等。 介绍最短路径问题是图论研究中的一个经典算法问题，旨在寻找图（由结点和路径组成）中两结点之间的最短路径。最短路径不一定是经过边最少的路径，但在这些最短路径中，长度最短的那一条路径上只有一条边，且它的权值在从源点出发的所有边的权值最小。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://wrr123.github.io/2021/02/25/%E8%BD%AF%E8%80%83-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%845/001.gif">
+<meta property="og:image" content="http://wrr123.github.io/2021/02/25/%E8%BD%AF%E8%80%83-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%845/002.png">
+<meta property="article:published_time" content="2021-02-25T01:50:26.000Z">
+<meta property="article:modified_time" content="2021-03-02T12:28:52.450Z">
+<meta property="article:author" content="田园隐士">
+<meta property="article:tag" content="软考">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://wrr123.github.io/2021/02/25/%E8%BD%AF%E8%80%83-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%845/001.gif">
+
+<link rel="canonical" href="https://wrr123.github.io/2021/02/25/%E8%BD%AF%E8%80%83-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%845/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>软考-数据结构5 | 一缕烟气</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="一缕烟气" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">一缕烟气</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">沧海月明珠有泪，蓝田日暖玉生烟</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2021/02/25/%E8%BD%AF%E8%80%83-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%845/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="田园隐士">
+      <meta itemprop="description" content="talk is cheap, show me the code">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一缕烟气">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          软考-数据结构5
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-02-25 09:50:26" itemprop="dateCreated datePublished" datetime="2021-02-25T09:50:26+08:00">2021-02-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-03-02 20:28:52" itemprop="dateModified" datetime="2021-03-02T20:28:52+08:00">2021-03-02</time>
+              </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.6k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h4 id="图-最短路径"><a href="#图-最短路径" class="headerlink" title="图 - 最短路径"></a>图 - 最短路径</h4><p>最短路径有着广泛的应用，比如 <strong>地图两点间的距离计算，公交查询系统，路由选择等</strong>。</p>
+<h5 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h5><p>最短路径问题是图论研究中的一个经典算法问题，旨在寻找图（<strong>由结点和路径组成</strong>）中两结点之间的最短路径。最短路径不一定是经过边最少的路径，但在这些最短路径中，长度最短的那一条路径上只有一条边，且它的权值在从源点出发的所有边的权值最小。</p>
+<span id="more"></span>
+<h5 id="路径长度最短的最短路径的特点："><a href="#路径长度最短的最短路径的特点：" class="headerlink" title="路径长度最短的最短路径的特点："></a>路径长度最短的最短路径的特点：</h5><ul>
+<li>在这条路径上，必定只含一条弧，并且这条弧的权值最小。</li>
+</ul>
+<h5 id="下一条路径长度次短的最短路径的特点："><a href="#下一条路径长度次短的最短路径的特点：" class="headerlink" title="下一条路径长度次短的最短路径的特点："></a>下一条路径长度次短的最短路径的特点：</h5><p>它只可能有两种情况：</p>
+<ol>
+<li>直接从源点到该点（只含一条弧）</li>
+<li>从源点经过顶点 <code>V1</code>，再到达该顶点（由两条弧组成）</li>
+</ol>
+<h5 id="最短路径算法"><a href="#最短路径算法" class="headerlink" title="最短路径算法"></a>最短路径算法</h5><h6 id="Dijkstra算法"><a href="#Dijkstra算法" class="headerlink" title="Dijkstra算法"></a>Dijkstra算法</h6><ol>
+<li><p>定义概览</p>
+<p>Dijkstra（缔结斯特拉）算法是典型的单源最短路径算法，用于计算一个节点到其他所有节点的最短路径。主要特点是以起始点为中心向外层层扩展，直到扩展到终点为止。Dijkstra算法是很有代表性的最短路径算法，它有很多代表课程，如 <strong>数据结构、图论、运筹学等等</strong>，注意 <strong>该算法要求图中不存在负权边。</strong></p>
+<p>问题描述：在无向图 <code>G = (V, E)</code>中，假设每条边 <code>E[i]</code> 的长度为 <code>W[i]</code>，找到由顶点 <code>V0</code> 到其余各顶点的最短路径（单源最短路径）。</p>
+</li>
+<li><p>算法描述</p>
+<ol>
+<li><p>算法思想</p>
+<p>设 <code>G = (V, E)</code> 是一个带权有向图，把图中顶点集合 <code>V</code> 分成两组，第一组为已求出最短路径的顶点集合（用 S 表示，初始 S 中只有一个源点，以后每求得一条最短路径，就将加入到集合 S 中，直至全部顶点都加入到 S 中，算法就结束了），第二组为其余未确定最短路径的顶点集合（用 U 表示），按最短路径长度的递增次序依次把第二组的顶点加入 S 中。在加入的过程中，总保持源点 V 到 S 中各顶点的最短路径长度不大于从源点 V 到 U 中任何顶点的最短路径长度。此外，每个顶点对应一个距离，S 中的顶点的距离就是从 V 到此顶点的最短路径长度，U 中的顶点的距离，是从V到此顶点只包含 S 中的顶点为中间顶点的当前最短路径长度。</p>
+</li>
+<li><p>算法步骤</p>
+<ol>
+<li>初始时，S 只包含源点，即 S = {v}, v 的距离为 0。U 包含除 v 外的其余顶点，即：U = {其余顶点}，若v 与 U 中顶点 u 有边，则 <code>&lt;u, v&gt;</code> 正常有权值，若 u 不是 v 的出边邻接点，则 <code>&lt;u, v&gt;</code> 权值为 <code>∞</code>。</li>
+<li>从 U 中选取一个距离 v 最小的顶点 k， 把 k， 加入 S 中（该选定的距离就是 v 到 k 的最短路径长度）。</li>
+<li>以 k 为新考虑的中间点，修改 U 中各顶点的距离；若从源点 v 到顶点 u 的距离 （经过顶点 k）比原来距离（不经过顶点 k）<strong>短</strong>，则修改顶点 u 的距离值，修改后的距离值的顶点 k 的距离加上边上的权。</li>
+<li>重复步骤 2 和 3 直至所有顶点都包含在 S 中。</li>
+</ol>
+</li>
+</ol>
+<p><img src="http://wrr123.github.io/2021/02/25/%E8%BD%AF%E8%80%83-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%845/001.gif" alt></p>
+</li>
+</ol>
+<h6 id="Floyd算法"><a href="#Floyd算法" class="headerlink" title="Floyd算法"></a>Floyd算法</h6><p>…</p>
+<h4 id="图-拓扑排序"><a href="#图-拓扑排序" class="headerlink" title="图 - 拓扑排序"></a>图 - 拓扑排序</h4><p>拓扑排序主要用来解决有向图中的依赖解析（dependency resolution）问题。</p>
+<h5 id="介绍-1"><a href="#介绍-1" class="headerlink" title="介绍"></a>介绍</h5><p>对于任何有向图而言，其拓扑排序为其所有顶点的一个线性排序（对于同一个有向图而言可能存在多个这样的顶点排序）。该排序满足这样的条件 — 对于图中的任意两个顶点 u 和 v，若存在一条有向边从 u 指向 v，则在 <strong>拓扑排序中 u 一定出现在 v 前面。</strong></p>
+<h5 id="拓扑排序的前提"><a href="#拓扑排序的前提" class="headerlink" title="拓扑排序的前提"></a>拓扑排序的前提</h5><p>当且仅当一个有向图为 <strong>有向无环图（directed acyclic graph, 或称 DAG）</strong>时，才能得到对应于该图的拓扑排序。</p>
+<p>这里有两点需要注意：</p>
+<ul>
+<li>对于有环图，必然会造成循环依赖（circular dependency），不符号拓扑排序定义；</li>
+<li>对于每一个有向无环图都至少存在一种拓扑排序；</li>
+</ul>
+<h4 id="图-AOE-amp-关键路径"><a href="#图-AOE-amp-关键路径" class="headerlink" title="图 - AOE &amp; 关键路径"></a>图 - AOE &amp; 关键路径</h4><blockquote>
+<p>关键路径在项目管理计算工期等方面有广泛的应用，提升工期就是所见缩减所有关键路径上的工期，并且在实现时，需要应用到之前拓扑排序的算法（前提：有向无环图，有依赖关系）。</p>
+</blockquote>
+<h5 id="相关术语"><a href="#相关术语" class="headerlink" title="相关术语"></a>相关术语</h5><ul>
+<li><code>AOV网络（Activity On Vertex Network）</code>：有向图，用顶点表示活动，用弧表示活动的先后顺序。</li>
+<li><code>AOE网络（Activity On Edge）</code>： 有向图，用顶点表示事件，用弧表示活动，用权值表示活动消耗时间（带权的有向无环图）。</li>
+<li><code>活动</code>：业务逻辑中的行为，用边表示。</li>
+<li><code>事件</code>：活动的结果或触发条件。</li>
+<li><code>关键路径</code>：具有最大路径长度（权重）的路径，可能不止一条。</li>
+<li><code>活动的两个属性</code>：<code>e(i)</code> 最早开始时间，<code>l(i)</code>最晚开始时间。</li>
+<li><code>事件的两个属性</code>：<code>ve(i)</code> 最早开始时间，<code>vl(i)</code>最晚开始时间。</li>
+</ul>
+<h6 id="AOE-和-AOV-的对比："><a href="#AOE-和-AOV-的对比：" class="headerlink" title="AOE 和 AOV 的对比："></a>AOE 和 AOV 的对比：</h6><ul>
+<li>AOV 网是顶点表示活动的网，它只描述活动之间的制约更新；</li>
+<li>AOE 网是用边表示活动的网，边上的权值表示活动持续的时间；</li>
+</ul>
+<h5 id="关键路径的实现"><a href="#关键路径的实现" class="headerlink" title="关键路径的实现"></a>关键路径的实现</h5><h6 id="4-个关键概念"><a href="#4-个关键概念" class="headerlink" title="4 个关键概念"></a>4 个关键概念</h6><ol>
+<li><p>事件最早发生时间</p>
+<p>事件最早发生时间 etv(earliest time of vertex)，即顶点 Vk 的最早发生时间。</p>
+</li>
+<li><p>事件最晚发生时间</p>
+<p>事件最晚发生时间 <code>ltv(lastest time of vertex)</code>，即顶点 <code>Vk</code>的最晚发生时间，也就是每个顶点对应的事件最晚需要开始的事件，超出此事件将会延误整个工期。</p>
+</li>
+<li><p>活动的最早开工时间</p>
+<p>活动的最早开工时间 <code>ete（earliest time of edge）</code>,即弧  <code>ak</code> 的最早发生时间。</p>
+</li>
+<li><p>活动的最晚开工时间</p>
+<p>活动的最晚开工时间 <code>lte(lastest time of edge)</code>，即弧的最晚发生时间，也就是不推迟工期的最晚开工时间。</p>
+</li>
+</ol>
+<h6 id="4-个时间的关系"><a href="#4-个时间的关系" class="headerlink" title="4 个时间的关系"></a>4 个时间的关系</h6><p>我们可以 <strong>由事件的最早发生时间和事件的最晚发生时间求出活动的最早和最晚开工时间。</strong></p>
+<p>由 <code>1, 2</code> 可以求得  <code>3, 4</code>,然后再根据 <code>ete[k]</code> 是否与 <code>lte[k]</code> 相等来判断 <code>ak</code> 是否是关键活动。</p>
+<h6 id="两个原则："><a href="#两个原则：" class="headerlink" title="两个原则："></a>两个原则：</h6><ul>
+<li>只有某顶点所代表的事件发生后，从该顶点出发的各活动才能开始；</li>
+<li>只有进入某顶点的各活动都结束，该顶点所代表的事件才发生。</li>
+</ul>
+<h6 id="顶点-事件最早发生时间"><a href="#顶点-事件最早发生时间" class="headerlink" title="(顶点)事件最早发生时间"></a>(顶点)事件最早发生时间</h6><p>从前往后，前驱结点到当前结点所需时间，取最大值。</p>
+<h6 id="（顶点）事件最迟发生时间"><a href="#（顶点）事件最迟发生时间" class="headerlink" title="（顶点）事件最迟发生时间"></a>（顶点）事件最迟发生时间</h6><p>从后往前，后继结点的最迟发生时间 <code>(减去)-</code>  边权值，取最小值。</p>
+<h6 id="（边）活动最早发生时间"><a href="#（边）活动最早发生时间" class="headerlink" title="（边）活动最早发生时间"></a>（边）活动最早发生时间</h6><p>活动最早发生时间 = 事件的最早发生事件</p>
+<h6 id="（边）活动最迟发生时间"><a href="#（边）活动最迟发生时间" class="headerlink" title="（边）活动最迟发生时间"></a>（边）活动最迟发生时间</h6><p>活动最迟发生时间 = 下一事件最迟发生时间 - 活动的持续时间</p>
+<h6 id="活动的剩余时间"><a href="#活动的剩余时间" class="headerlink" title="活动的剩余时间"></a>活动的剩余时间</h6><p>活动的最迟发生时间 <code>减去(-)</code> 活动的最早发生时间</p>
+<h6 id="关键活动"><a href="#关键活动" class="headerlink" title="关键活动"></a>关键活动</h6><p>活动的剩余时间为 <code>0</code>的活动</p>
+<h6 id="关键路径"><a href="#关键路径" class="headerlink" title="关键路径"></a>关键路径</h6><p>由关键路径所连接的路径即为关键路径。</p>
+<p><strong>关键路径可能不止一条。</strong></p>
+<h5 id="算法实现"><a href="#算法实现" class="headerlink" title="算法实现"></a>算法实现</h5><h6 id="推演图"><a href="#推演图" class="headerlink" title="推演图"></a>推演图</h6><p><img src="http://wrr123.github.io/2021/02/25/%E8%BD%AF%E8%80%83-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%845/002.png" alt></p>
+<h6 id="etv-从左向右-从前往后-推导"><a href="#etv-从左向右-从前往后-推导" class="headerlink" title="etv 从左向右(从前往后)推导"></a><code>etv</code> 从左向右(从前往后)推导</h6><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">顶点（事件）</th>
+<th style="text-align:center"><code>etv</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">v0</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">v1</td>
+<td style="text-align:center">6</td>
+</tr>
+<tr>
+<td style="text-align:center">v2</td>
+<td style="text-align:center">4</td>
+</tr>
+<tr>
+<td style="text-align:center">v3</td>
+<td style="text-align:center">5</td>
+</tr>
+<tr>
+<td style="text-align:center">v4</td>
+<td style="text-align:center">7</td>
+</tr>
+<tr>
+<td style="text-align:center">v5</td>
+<td style="text-align:center">7</td>
+</tr>
+<tr>
+<td style="text-align:center">v6</td>
+<td style="text-align:center">14</td>
+</tr>
+<tr>
+<td style="text-align:center">v7</td>
+<td style="text-align:center">12</td>
+</tr>
+<tr>
+<td style="text-align:center">v8</td>
+<td style="text-align:center">16</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h6 id="ltv-从右向左（从后往前）推导"><a href="#ltv-从右向左（从后往前）推导" class="headerlink" title="ltv 从右向左（从后往前）推导"></a><code>ltv</code> 从右向左（从后往前）推导</h6><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">顶点（事件）</th>
+<th style="text-align:center"><code>ltv</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">v0</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">v1</td>
+<td style="text-align:center">6</td>
+</tr>
+<tr>
+<td style="text-align:center">v2</td>
+<td style="text-align:center">6</td>
+</tr>
+<tr>
+<td style="text-align:center">v3</td>
+<td style="text-align:center">6</td>
+</tr>
+<tr>
+<td style="text-align:center">v4</td>
+<td style="text-align:center">7</td>
+</tr>
+<tr>
+<td style="text-align:center">v5</td>
+<td style="text-align:center">8</td>
+</tr>
+<tr>
+<td style="text-align:center">v6</td>
+<td style="text-align:center">14</td>
+</tr>
+<tr>
+<td style="text-align:center">v7</td>
+<td style="text-align:center">12</td>
+</tr>
+<tr>
+<td style="text-align:center">v8</td>
+<td style="text-align:center">16</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h6 id="活动的最早发生时间ete和最迟发生时间lte"><a href="#活动的最早发生时间ete和最迟发生时间lte" class="headerlink" title="活动的最早发生时间ete和最迟发生时间lte"></a>活动的最早发生时间<code>ete</code>和最迟发生时间<code>lte</code></h6><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">弧（边）（活动）</th>
+<th style="text-align:center"><code>ete</code></th>
+<th style="text-align:center"><code>lte</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">a0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">a1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center">a2</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">a3</td>
+<td style="text-align:center">6</td>
+<td style="text-align:center">6</td>
+</tr>
+<tr>
+<td style="text-align:center">a4</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">6</td>
+</tr>
+<tr>
+<td style="text-align:center">a5</td>
+<td style="text-align:center">5</td>
+<td style="text-align:center">6</td>
+</tr>
+<tr>
+<td style="text-align:center">a6</td>
+<td style="text-align:center">7</td>
+<td style="text-align:center">7</td>
+</tr>
+<tr>
+<td style="text-align:center">a7</td>
+<td style="text-align:center">7</td>
+<td style="text-align:center">7</td>
+</tr>
+<tr>
+<td style="text-align:center">a8</td>
+<td style="text-align:center">7</td>
+<td style="text-align:center">8</td>
+</tr>
+<tr>
+<td style="text-align:center">a9</td>
+<td style="text-align:center">14</td>
+<td style="text-align:center">14</td>
+</tr>
+<tr>
+<td style="text-align:center">a10</td>
+<td style="text-align:center">12</td>
+<td style="text-align:center">12</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+    </div>
+
+    
+    
+    
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%BD%AF%E8%80%83/" rel="tag"># 软考</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/02/24/%E8%BD%AF%E8%80%83-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%844/" rel="prev" title="软考-数据结构4">
+      <i class="fa fa-chevron-left"></i> 软考-数据结构4
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/02/26/%E8%BD%AF%E8%80%83-%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%951/" rel="next" title="软考-排序算法1">
+      软考-排序算法1 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%BE-%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84"><span class="nav-number">1.</span> <span class="nav-text">图 - 最短路径</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%B7%AF%E5%BE%84%E9%95%BF%E5%BA%A6%E6%9C%80%E7%9F%AD%E7%9A%84%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%E7%9A%84%E7%89%B9%E7%82%B9%EF%BC%9A"><span class="nav-number">1.2.</span> <span class="nav-text">路径长度最短的最短路径的特点：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%8B%E4%B8%80%E6%9D%A1%E8%B7%AF%E5%BE%84%E9%95%BF%E5%BA%A6%E6%AC%A1%E7%9F%AD%E7%9A%84%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%E7%9A%84%E7%89%B9%E7%82%B9%EF%BC%9A"><span class="nav-number">1.3.</span> <span class="nav-text">下一条路径长度次短的最短路径的特点：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%E7%AE%97%E6%B3%95"><span class="nav-number">1.4.</span> <span class="nav-text">最短路径算法</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Dijkstra%E7%AE%97%E6%B3%95"><span class="nav-number">1.4.1.</span> <span class="nav-text">Dijkstra算法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Floyd%E7%AE%97%E6%B3%95"><span class="nav-number">1.4.2.</span> <span class="nav-text">Floyd算法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%BE-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F"><span class="nav-number">2.</span> <span class="nav-text">图 - 拓扑排序</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D-1"><span class="nav-number">2.1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%E7%9A%84%E5%89%8D%E6%8F%90"><span class="nav-number">2.2.</span> <span class="nav-text">拓扑排序的前提</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%BE-AOE-amp-%E5%85%B3%E9%94%AE%E8%B7%AF%E5%BE%84"><span class="nav-number">3.</span> <span class="nav-text">图 - AOE &amp; 关键路径</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E6%9C%AF%E8%AF%AD"><span class="nav-number">3.1.</span> <span class="nav-text">相关术语</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#AOE-%E5%92%8C-AOV-%E7%9A%84%E5%AF%B9%E6%AF%94%EF%BC%9A"><span class="nav-number">3.1.1.</span> <span class="nav-text">AOE 和 AOV 的对比：</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E8%B7%AF%E5%BE%84%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="nav-number">3.2.</span> <span class="nav-text">关键路径的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#4-%E4%B8%AA%E5%85%B3%E9%94%AE%E6%A6%82%E5%BF%B5"><span class="nav-number">3.2.1.</span> <span class="nav-text">4 个关键概念</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#4-%E4%B8%AA%E6%97%B6%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">3.2.2.</span> <span class="nav-text">4 个时间的关系</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%B8%A4%E4%B8%AA%E5%8E%9F%E5%88%99%EF%BC%9A"><span class="nav-number">3.2.3.</span> <span class="nav-text">两个原则：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E9%A1%B6%E7%82%B9-%E4%BA%8B%E4%BB%B6%E6%9C%80%E6%97%A9%E5%8F%91%E7%94%9F%E6%97%B6%E9%97%B4"><span class="nav-number">3.2.4.</span> <span class="nav-text">(顶点)事件最早发生时间</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%EF%BC%88%E9%A1%B6%E7%82%B9%EF%BC%89%E4%BA%8B%E4%BB%B6%E6%9C%80%E8%BF%9F%E5%8F%91%E7%94%9F%E6%97%B6%E9%97%B4"><span class="nav-number">3.2.5.</span> <span class="nav-text">（顶点）事件最迟发生时间</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%EF%BC%88%E8%BE%B9%EF%BC%89%E6%B4%BB%E5%8A%A8%E6%9C%80%E6%97%A9%E5%8F%91%E7%94%9F%E6%97%B6%E9%97%B4"><span class="nav-number">3.2.6.</span> <span class="nav-text">（边）活动最早发生时间</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%EF%BC%88%E8%BE%B9%EF%BC%89%E6%B4%BB%E5%8A%A8%E6%9C%80%E8%BF%9F%E5%8F%91%E7%94%9F%E6%97%B6%E9%97%B4"><span class="nav-number">3.2.7.</span> <span class="nav-text">（边）活动最迟发生时间</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%B4%BB%E5%8A%A8%E7%9A%84%E5%89%A9%E4%BD%99%E6%97%B6%E9%97%B4"><span class="nav-number">3.2.8.</span> <span class="nav-text">活动的剩余时间</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E6%B4%BB%E5%8A%A8"><span class="nav-number">3.2.9.</span> <span class="nav-text">关键活动</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E8%B7%AF%E5%BE%84"><span class="nav-number">3.2.10.</span> <span class="nav-text">关键路径</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0"><span class="nav-number">3.3.</span> <span class="nav-text">算法实现</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%8E%A8%E6%BC%94%E5%9B%BE"><span class="nav-number">3.3.1.</span> <span class="nav-text">推演图</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#etv-%E4%BB%8E%E5%B7%A6%E5%90%91%E5%8F%B3-%E4%BB%8E%E5%89%8D%E5%BE%80%E5%90%8E-%E6%8E%A8%E5%AF%BC"><span class="nav-number">3.3.2.</span> <span class="nav-text">etv 从左向右(从前往后)推导</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#ltv-%E4%BB%8E%E5%8F%B3%E5%90%91%E5%B7%A6%EF%BC%88%E4%BB%8E%E5%90%8E%E5%BE%80%E5%89%8D%EF%BC%89%E6%8E%A8%E5%AF%BC"><span class="nav-number">3.3.3.</span> <span class="nav-text">ltv 从右向左（从后往前）推导</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%B4%BB%E5%8A%A8%E7%9A%84%E6%9C%80%E6%97%A9%E5%8F%91%E7%94%9F%E6%97%B6%E9%97%B4ete%E5%92%8C%E6%9C%80%E8%BF%9F%E5%8F%91%E7%94%9F%E6%97%B6%E9%97%B4lte"><span class="nav-number">3.3.4.</span> <span class="nav-text">活动的最早发生时间ete和最迟发生时间lte</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="田园隐士"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">田园隐士</p>
+  <div class="site-description" itemprop="description">talk is cheap, show me the code</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">240</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">60</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">田园隐士</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">441k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">6:41</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

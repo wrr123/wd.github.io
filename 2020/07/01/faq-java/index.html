@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.0.2">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/002.jpg">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/002.jpg">
@@ -30,7 +30,7 @@
 <meta property="og:description" content="jdk1.8如何解析和格式化日期解析日期和时间123String str &#x3D; &quot;1986-04-08 12:30&quot;;DateTimeFormatter formatter &#x3D; DateTimeFormatter.ofPattern(&quot;yyyy-MM-dd HH:mm&quot;);LocalDateTime dateTime &#x3D; LocalDateTime.parse">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-07-01T07:04:20.000Z">
-<meta property="article:modified_time" content="2020-11-24T01:54:14.977Z">
+<meta property="article:modified_time" content="2021-03-13T09:47:47.442Z">
 <meta property="article:author" content="田园隐士">
 <meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary">
@@ -79,6 +79,7 @@
   </style>
 </noscript>
 
+<link rel="alternate" href="/atom.xml" title="一缕烟气" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -227,7 +228,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-11-24 09:54:14" itemprop="dateModified" datetime="2020-11-24T09:54:14+08:00">2020-11-24</time>
+                <time title="修改时间：2021-03-13 17:47:47" itemprop="dateModified" datetime="2021-03-13T17:47:47+08:00">2021-03-13</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -252,7 +253,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>3.6k</span>
+              <span>3.8k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -272,11 +273,8 @@
 
       
         <h4 id="jdk1-8如何解析和格式化日期"><a href="#jdk1-8如何解析和格式化日期" class="headerlink" title="jdk1.8如何解析和格式化日期"></a>jdk1.8如何解析和格式化日期</h4><h5 id="解析日期和时间"><a href="#解析日期和时间" class="headerlink" title="解析日期和时间"></a>解析日期和时间</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String str = <span class="string">&quot;1986-04-08 12:30&quot;</span>;</span><br><span class="line">DateTimeFormatter formatter = DateTimeFormatter.ofPattern(<span class="string">&quot;yyyy-MM-dd HH:mm&quot;</span>);</span><br><span class="line">LocalDateTime dateTime = LocalDateTime.parse(str, formatter);</span><br></pre></td></tr></table></figure>
-
 <h5 id="格式化日期和时间"><a href="#格式化日期和时间" class="headerlink" title="格式化日期和时间"></a>格式化日期和时间</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">DateTimeFormatter formatter = DateTimeFormatter.ofPattern(<span class="string">&quot;yyyy-MM-dd HH:mm&quot;</span>);</span><br><span class="line">LocalDateTime dateTime = LocalDateTime.of(<span class="number">1986</span>, Month.APRIL, <span class="number">8</span>, <span class="number">12</span>, <span class="number">30</span>);</span><br><span class="line">String formattedDateTime = dateTime.format(formatter); <span class="comment">// &quot;1986-04-08 12:30&quot;</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="Java8中Date与LocalDateTime、LocalDate、LocalTime之间的互转"><a href="#Java8中Date与LocalDateTime、LocalDate、LocalTime之间的互转" class="headerlink" title="Java8中Date与LocalDateTime、LocalDate、LocalTime之间的互转"></a>Java8中Date与LocalDateTime、LocalDate、LocalTime之间的互转</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 01. java.util.Date --&gt; java.time.LocalDateTime</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">UDateToLocalDateTime</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    java.util.Date date = <span class="keyword">new</span> java.util.Date();</span><br><span class="line">    Instant instant = date.toInstant();</span><br><span class="line">    ZoneId zone = ZoneId.systemDefault();</span><br><span class="line">    LocalDateTime localDateTime = LocalDateTime.ofInstant(instant, zone);</span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line"><span class="comment">// 02. java.util.Date --&gt; java.time.LocalDate</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">UDateToLocalDate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    java.util.Date date = <span class="keyword">new</span> java.util.Date();</span><br><span class="line">    Instant instant = date.toInstant();</span><br><span class="line">    ZoneId zone = ZoneId.systemDefault();</span><br><span class="line">    LocalDateTime localDateTime = LocalDateTime.ofInstant(instant, zone);</span><br><span class="line">    LocalDate localDate = localDateTime.toLocalDate();</span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line"><span class="comment">// 03. java.util.Date --&gt; java.time.LocalTime</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">UDateToLocalTime</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    java.util.Date date = <span class="keyword">new</span> java.util.Date();</span><br><span class="line">    Instant instant = date.toInstant();</span><br><span class="line">    ZoneId zone = ZoneId.systemDefault();</span><br><span class="line">    LocalDateTime localDateTime = LocalDateTime.ofInstant(instant, zone);</span><br><span class="line">    LocalTime localTime = localDateTime.toLocalTime();</span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="comment">// 04. java.time.LocalDateTime --&gt; java.util.Date</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">LocalDateTimeToUdate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    LocalDateTime localDateTime = LocalDateTime.now();</span><br><span class="line">    ZoneId zone = ZoneId.systemDefault();</span><br><span class="line">    Instant instant = localDateTime.atZone(zone).toInstant();</span><br><span class="line">    java.util.Date date = Date.from(instant);</span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="comment">// 05. java.time.LocalDate --&gt; java.util.Date</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">LocalDateToUdate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    LocalDate localDate = LocalDate.now();</span><br><span class="line">    ZoneId zone = ZoneId.systemDefault();</span><br><span class="line">    Instant instant = localDate.atStartOfDay().atZone(zone).toInstant();</span><br><span class="line">    java.util.Date date = Date.from(instant);</span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line"><span class="comment">// 06. java.time.LocalTime --&gt; java.util.Date</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">LocalTimeToUdate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    LocalTime localTime = LocalTime.now();</span><br><span class="line">    LocalDate localDate = LocalDate.now();</span><br><span class="line">    LocalDateTime localDateTime = LocalDateTime.of(localDate, localTime);</span><br><span class="line">    ZoneId zone = ZoneId.systemDefault();</span><br><span class="line">    Instant instant = localDateTime.atZone(zone).toInstant();</span><br><span class="line">    java.util.Date date = Date.from(instant);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<h4 id="Java8中Date与LocalDateTime、LocalDate、LocalTime之间的互转"><a href="#Java8中Date与LocalDateTime、LocalDate、LocalTime之间的互转" class="headerlink" title="Java8中Date与LocalDateTime、LocalDate、LocalTime之间的互转"></a>Java8中Date与LocalDateTime、LocalDate、LocalTime之间的互转</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 01. java.util.Date --&gt; java.time.LocalDateTime</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">UDateToLocalDateTime</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    java.util.Date date = <span class="keyword">new</span> java.util.Date();</span><br><span class="line">    Instant instant = date.toInstant();</span><br><span class="line">    ZoneId zone = ZoneId.systemDefault();</span><br><span class="line">    LocalDateTime localDateTime = LocalDateTime.ofInstant(instant, zone);</span><br><span class="line">&#125;</span><br><span class="line">	</span><br><span class="line"><span class="comment">// 02. java.util.Date --&gt; java.time.LocalDate</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">UDateToLocalDate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    java.util.Date date = <span class="keyword">new</span> java.util.Date();</span><br><span class="line">    Instant instant = date.toInstant();</span><br><span class="line">    ZoneId zone = ZoneId.systemDefault();</span><br><span class="line">    LocalDateTime localDateTime = LocalDateTime.ofInstant(instant, zone);</span><br><span class="line">    LocalDate localDate = localDateTime.toLocalDate();</span><br><span class="line">&#125;</span><br><span class="line">	</span><br><span class="line"><span class="comment">// 03. java.util.Date --&gt; java.time.LocalTime</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">UDateToLocalTime</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    java.util.Date date = <span class="keyword">new</span> java.util.Date();</span><br><span class="line">    Instant instant = date.toInstant();</span><br><span class="line">    ZoneId zone = ZoneId.systemDefault();</span><br><span class="line">    LocalDateTime localDateTime = LocalDateTime.ofInstant(instant, zone);</span><br><span class="line">    LocalTime localTime = localDateTime.toLocalTime();</span><br><span class="line">&#125;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line"><span class="comment">// 04. java.time.LocalDateTime --&gt; java.util.Date</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">LocalDateTimeToUdate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    LocalDateTime localDateTime = LocalDateTime.now();</span><br><span class="line">    ZoneId zone = ZoneId.systemDefault();</span><br><span class="line">    Instant instant = localDateTime.atZone(zone).toInstant();</span><br><span class="line">    java.util.Date date = Date.from(instant);</span><br><span class="line">&#125;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line"><span class="comment">// 05. java.time.LocalDate --&gt; java.util.Date</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">LocalDateToUdate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    LocalDate localDate = LocalDate.now();</span><br><span class="line">    ZoneId zone = ZoneId.systemDefault();</span><br><span class="line">    Instant instant = localDate.atStartOfDay().atZone(zone).toInstant();</span><br><span class="line">    java.util.Date date = Date.from(instant);</span><br><span class="line">&#125;</span><br><span class="line">	</span><br><span class="line"><span class="comment">// 06. java.time.LocalTime --&gt; java.util.Date</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">LocalTimeToUdate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    LocalTime localTime = LocalTime.now();</span><br><span class="line">    LocalDate localDate = LocalDate.now();</span><br><span class="line">    LocalDateTime localDateTime = LocalDateTime.of(localDate, localTime);</span><br><span class="line">    ZoneId zone = ZoneId.systemDefault();</span><br><span class="line">    Instant instant = localDateTime.atZone(zone).toInstant();</span><br><span class="line">    java.util.Date date = Date.from(instant);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="http错误代码"><a href="#http错误代码" class="headerlink" title="http错误代码"></a>http错误代码</h4><ol>
 <li><h5 id="400"><a href="#400" class="headerlink" title="400"></a>400</h5><p>请求无效（bad request），出现这个请求报错说明请求没有进入到后台服务中</p>
 <p>原因：</p>
@@ -292,10 +290,8 @@
 </li>
 </ol>
 <h4 id="EasyPOI导出excel文件时，若不想导出表头，怎么设置？"><a href="#EasyPOI导出excel文件时，若不想导出表头，怎么设置？" class="headerlink" title="EasyPOI导出excel文件时，若不想导出表头，怎么设置？"></a>EasyPOI导出excel文件时，若不想导出表头，怎么设置？</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ExportParams exportParams = <span class="keyword">new</span> ExportParams(<span class="string">&quot;支付宝账单&quot;</span>, <span class="string">&quot;支付宝账单&quot;</span>);</span><br><span class="line">List&lt;KnsAliBillVo&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">workbook = ExcelExportUtil.exportExcel(exportParams, KnsAliBillVo.class, list);</span><br><span class="line"><span class="comment">// 如果不想导出表头那一行，可以设置表头字符串参数为null即可。</span></span><br><span class="line">ExportParams exportParams = <span class="keyword">new</span> ExportParams(<span class="keyword">null</span> , <span class="string">&quot;支付宝账单&quot;</span>);</span><br></pre></td></tr></table></figure>
-
 <h4 id="java在同一行代码定义多个变量"><a href="#java在同一行代码定义多个变量" class="headerlink" title="java在同一行代码定义多个变量"></a>java在同一行代码定义多个变量</h4><p>一个栗子：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 同一行定义多个同类型的变量</span></span><br><span class="line">String a = <span class="string">&quot;Hello&quot;</span>, c = <span class="string">&quot;hello&quot;</span>;</span><br><span class="line"><span class="keyword">int</span> x = <span class="number">5</span>, y = <span class="number">5</span>;</span><br></pre></td></tr></table></figure>
-
 <h4 id="i-和-i-的区别"><a href="#i-和-i-的区别" class="headerlink" title="++i 和 i++ 的区别"></a>++i 和 i++ 的区别</h4><p>i++ 和 ++i 都是自增运算符，<code>i++</code> 有时被称作 <strong>后加运算符</strong> ，<code>++i</code> 被称作 <strong>前加运算符 。</strong></p>
 <ul>
 <li><code>i++</code> 是先赋值，再运算(自增长 1)</li>
@@ -308,7 +304,6 @@
 <h4 id="报错信息java-lang-NoSuchMethodError-org-json-JSONObject-put-String-Collection"><a href="#报错信息java-lang-NoSuchMethodError-org-json-JSONObject-put-String-Collection" class="headerlink" title="报错信息java.lang.NoSuchMethodError:org.json.JSONObject.put(String, Collection)"></a>报错信息<code>java.lang.NoSuchMethodError:org.json.JSONObject.put(String, Collection)</code></h4><p>经检查，引入的包中是存在这个方法的，但是依然报错，</p>
 <p>可能原因：包依赖冲突的问题，需要检查<code>org.json</code>包是否引入了多次。</p>
 <h4 id="springboot项目-Value取不到值的一些情况"><a href="#springboot项目-Value取不到值的一些情况" class="headerlink" title="springboot项目@Value取不到值的一些情况"></a>springboot项目<code>@Value</code>取不到值的一些情况</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Value(&quot;$&#123;tag&#125;&quot;)</span></span><br><span class="line"><span class="keyword">private</span> String tagValue;</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li><p>使用 <code>static</code> 或者 <code>final</code> 修改了 <code>tagValue</code></p>
 </li>
@@ -322,12 +317,35 @@
 <li>peek 可对元素的内部数据进行处理，返回的是原来的数据类型，不生成新的数据类型。</li>
 <li>map 重新返回一个新的数据类型。</li>
 </ul>
+<h4 id="Math-floor-Math-ceil-Math-rint-Math-round用法详解"><a href="#Math-floor-Math-ceil-Math-rint-Math-round用法详解" class="headerlink" title="Math.floor, Math.ceil, Math.rint, Math.round用法详解"></a>Math.floor, Math.ceil, Math.rint, Math.round用法详解</h4><h5 id="Math-floor"><a href="#Math-floor" class="headerlink" title="Math.floor"></a>Math.floor</h5><p>求一个最接近它的整数，它的值小于或等于这个浮点数。</p>
+<h5 id="Math-ceil"><a href="#Math-ceil" class="headerlink" title="Math.ceil"></a>Math.ceil</h5><p>它是向上取整计算，它返回的是大于或等于函数参数的值，并且与之最接近的整数。</p>
+<h5 id="Math-rint"><a href="#Math-rint" class="headerlink" title="Math.rint"></a>Math.rint</h5><p>它返回最接近参数的整数，如果有两个数同样相近，则返回偶数的那个。</p>
+<h5 id="Math-round"><a href="#Math-round" class="headerlink" title="Math.round"></a>Math.round</h5><p>它表示“四舍五入”，算法为<code>Math.floor(x + 0.5)</code>，即将原来的数字加上<code>0.5</code>再向下取整。</p>
 
     </div>
 
     
     
     
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
 
       <footer class="post-footer">
           <div class="post-tags">
@@ -405,7 +423,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#jdk1-8%E5%A6%82%E4%BD%95%E8%A7%A3%E6%9E%90%E5%92%8C%E6%A0%BC%E5%BC%8F%E5%8C%96%E6%97%A5%E6%9C%9F"><span class="nav-number">1.</span> <span class="nav-text">jdk1.8如何解析和格式化日期</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E6%9E%90%E6%97%A5%E6%9C%9F%E5%92%8C%E6%97%B6%E9%97%B4"><span class="nav-number">1.1.</span> <span class="nav-text">解析日期和时间</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96%E6%97%A5%E6%9C%9F%E5%92%8C%E6%97%B6%E9%97%B4"><span class="nav-number">1.2.</span> <span class="nav-text">格式化日期和时间</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java8%E4%B8%ADDate%E4%B8%8ELocalDateTime%E3%80%81LocalDate%E3%80%81LocalTime%E4%B9%8B%E9%97%B4%E7%9A%84%E4%BA%92%E8%BD%AC"><span class="nav-number">2.</span> <span class="nav-text">Java8中Date与LocalDateTime、LocalDate、LocalTime之间的互转</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#http%E9%94%99%E8%AF%AF%E4%BB%A3%E7%A0%81"><span class="nav-number">3.</span> <span class="nav-text">http错误代码</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#400"><span class="nav-number">3.1.</span> <span class="nav-text">400</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#EasyPOI%E5%AF%BC%E5%87%BAexcel%E6%96%87%E4%BB%B6%E6%97%B6%EF%BC%8C%E8%8B%A5%E4%B8%8D%E6%83%B3%E5%AF%BC%E5%87%BA%E8%A1%A8%E5%A4%B4%EF%BC%8C%E6%80%8E%E4%B9%88%E8%AE%BE%E7%BD%AE%EF%BC%9F"><span class="nav-number">4.</span> <span class="nav-text">EasyPOI导出excel文件时，若不想导出表头，怎么设置？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java%E5%9C%A8%E5%90%8C%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E5%AE%9A%E4%B9%89%E5%A4%9A%E4%B8%AA%E5%8F%98%E9%87%8F"><span class="nav-number">5.</span> <span class="nav-text">java在同一行代码定义多个变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#i-%E5%92%8C-i-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">6.</span> <span class="nav-text">++i 和 i++ 的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%A8%E8%AE%BA-i-%E4%B8%8E-i-%E7%9A%84%E6%95%88%E7%8E%87"><span class="nav-number">6.1.</span> <span class="nav-text">讨论 i++ 与 ++i 的效率</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#spring%E4%B8%AD%E7%9A%84%E6%B3%A8%E8%A7%A3-Component-Repository-Service-Controller-%E7%AD%89%E6%A0%87%E6%B3%A8%E7%9A%84%E9%BB%98%E8%AE%A4-Bean-%E5%90%8D%E7%A7%B0"><span class="nav-number">7.</span> <span class="nav-text">spring中的注解 @Component, @Repository, @Service, @Controller 等标注的默认 Bean 名称</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8A%A5%E9%94%99%E4%BF%A1%E6%81%AFjava-lang-NoSuchMethodError-org-json-JSONObject-put-String-Collection"><span class="nav-number">8.</span> <span class="nav-text">报错信息java.lang.NoSuchMethodError:org.json.JSONObject.put(String, Collection)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#springboot%E9%A1%B9%E7%9B%AE-Value%E5%8F%96%E4%B8%8D%E5%88%B0%E5%80%BC%E7%9A%84%E4%B8%80%E4%BA%9B%E6%83%85%E5%86%B5"><span class="nav-number">9.</span> <span class="nav-text">springboot项目@Value取不到值的一些情况</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#stream%E4%B8%AD%E6%96%B9%E6%B3%95peek%E5%92%8Cmap%E6%96%B9%E6%B3%95%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">10.</span> <span class="nav-text">stream中方法peek和map方法之间的区别</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#jdk1-8%E5%A6%82%E4%BD%95%E8%A7%A3%E6%9E%90%E5%92%8C%E6%A0%BC%E5%BC%8F%E5%8C%96%E6%97%A5%E6%9C%9F"><span class="nav-number">1.</span> <span class="nav-text">jdk1.8如何解析和格式化日期</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E6%9E%90%E6%97%A5%E6%9C%9F%E5%92%8C%E6%97%B6%E9%97%B4"><span class="nav-number">1.1.</span> <span class="nav-text">解析日期和时间</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96%E6%97%A5%E6%9C%9F%E5%92%8C%E6%97%B6%E9%97%B4"><span class="nav-number">1.2.</span> <span class="nav-text">格式化日期和时间</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java8%E4%B8%ADDate%E4%B8%8ELocalDateTime%E3%80%81LocalDate%E3%80%81LocalTime%E4%B9%8B%E9%97%B4%E7%9A%84%E4%BA%92%E8%BD%AC"><span class="nav-number">2.</span> <span class="nav-text">Java8中Date与LocalDateTime、LocalDate、LocalTime之间的互转</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#http%E9%94%99%E8%AF%AF%E4%BB%A3%E7%A0%81"><span class="nav-number">3.</span> <span class="nav-text">http错误代码</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#400"><span class="nav-number">3.1.</span> <span class="nav-text">400</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#EasyPOI%E5%AF%BC%E5%87%BAexcel%E6%96%87%E4%BB%B6%E6%97%B6%EF%BC%8C%E8%8B%A5%E4%B8%8D%E6%83%B3%E5%AF%BC%E5%87%BA%E8%A1%A8%E5%A4%B4%EF%BC%8C%E6%80%8E%E4%B9%88%E8%AE%BE%E7%BD%AE%EF%BC%9F"><span class="nav-number">4.</span> <span class="nav-text">EasyPOI导出excel文件时，若不想导出表头，怎么设置？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java%E5%9C%A8%E5%90%8C%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E5%AE%9A%E4%B9%89%E5%A4%9A%E4%B8%AA%E5%8F%98%E9%87%8F"><span class="nav-number">5.</span> <span class="nav-text">java在同一行代码定义多个变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#i-%E5%92%8C-i-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">6.</span> <span class="nav-text">++i 和 i++ 的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%A8%E8%AE%BA-i-%E4%B8%8E-i-%E7%9A%84%E6%95%88%E7%8E%87"><span class="nav-number">6.1.</span> <span class="nav-text">讨论 i++ 与 ++i 的效率</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#spring%E4%B8%AD%E7%9A%84%E6%B3%A8%E8%A7%A3-Component-Repository-Service-Controller-%E7%AD%89%E6%A0%87%E6%B3%A8%E7%9A%84%E9%BB%98%E8%AE%A4-Bean-%E5%90%8D%E7%A7%B0"><span class="nav-number">7.</span> <span class="nav-text">spring中的注解 @Component, @Repository, @Service, @Controller 等标注的默认 Bean 名称</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8A%A5%E9%94%99%E4%BF%A1%E6%81%AFjava-lang-NoSuchMethodError-org-json-JSONObject-put-String-Collection"><span class="nav-number">8.</span> <span class="nav-text">报错信息java.lang.NoSuchMethodError:org.json.JSONObject.put(String, Collection)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#springboot%E9%A1%B9%E7%9B%AE-Value%E5%8F%96%E4%B8%8D%E5%88%B0%E5%80%BC%E7%9A%84%E4%B8%80%E4%BA%9B%E6%83%85%E5%86%B5"><span class="nav-number">9.</span> <span class="nav-text">springboot项目@Value取不到值的一些情况</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#stream%E4%B8%AD%E6%96%B9%E6%B3%95peek%E5%92%8Cmap%E6%96%B9%E6%B3%95%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">10.</span> <span class="nav-text">stream中方法peek和map方法之间的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Math-floor-Math-ceil-Math-rint-Math-round%E7%94%A8%E6%B3%95%E8%AF%A6%E8%A7%A3"><span class="nav-number">11.</span> <span class="nav-text">Math.floor, Math.ceil, Math.rint, Math.round用法详解</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Math-floor"><span class="nav-number">11.1.</span> <span class="nav-text">Math.floor</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Math-ceil"><span class="nav-number">11.2.</span> <span class="nav-text">Math.ceil</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Math-rint"><span class="nav-number">11.3.</span> <span class="nav-text">Math.rint</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Math-round"><span class="nav-number">11.4.</span> <span class="nav-text">Math.round</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -421,20 +439,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">177</span>
+          <span class="site-state-item-count">240</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">49</span>
+        <span class="site-state-item-count">60</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -461,7 +479,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -470,12 +488,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">315k</span>
+    <span title="站点总字数">441k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:46</span>
+    <span title="站点阅读时长">6:41</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
@@ -550,6 +568,8 @@
 
 
 
+
+  
 
   
 

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.0.2">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/002.jpg">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/002.jpg">
@@ -79,6 +79,7 @@
   </style>
 </noscript>
 
+<link rel="alternate" href="/atom.xml" title="一缕烟气" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -272,7 +273,6 @@
 <li>临时使用 <code>npm --registry https://registry.npm.taobao.org install express</code></li>
 <li>永久使用<figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">npm config set registry https://registry.npm.taobao.org</span><br><span class="line"></span><br><span class="line">// 配置后可通过下面方式来验证是否成功</span><br><span class="line">npm config get registry</span><br><span class="line">// 或</span><br><span class="line">npm info express</span><br></pre></td></tr></table></figure></li>
 <li>使用<code>cnpm</code>命令<figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install -g cnpm --registry=https://registry.npm.taobao.org</span><br><span class="line">// 使用</span><br><span class="line">cnpm install expresstall express</span><br></pre></td></tr></table></figure>
-
 </li>
 </ul>
 <h5 id="vue的计算属性和观察属性"><a href="#vue的计算属性和观察属性" class="headerlink" title="vue的计算属性和观察属性"></a>vue的计算属性和观察属性</h5><p>计算属性是自动监听依赖值的变化，从而动态返回内容；<br>监听是一个过程，在监听的值变化时，可以触发一个回调，并做一些事情。</p>
@@ -284,7 +284,6 @@
 <li>注解<code>@Cleanup</code><br>使用在局部变量上面。<br>在需要关闭流对象时，帮助你自动关闭。</li>
 </ul>
 <h5 id="java-try-with-resources-语法糖"><a href="#java-try-with-resources-语法糖" class="headerlink" title="java try-with-resources 语法糖"></a>java try-with-resources 语法糖</h5><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">try(声明并初始化需要关闭资源的变量，多个的话使用分号`;`分隔) &#123;</span><br><span class="line">&#125;catch(e) &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>java 获取项目中文件的输入流<br>获取到<code>this.getClass().getClassLoader().getResourceStream(&quot;文件的类路径&quot;);</code><br>or<br>使用springboot下的<code>ResourceUtils.getFile(&quot;classpath:类路径&quot;)</code></p>
 <p>java 文件下载到浏览器端<br>前端调用： <code>window.open(url)</code>, 使用ajax的话，下载不了。<br>后端下载： HttpServletResponse的输出流</p>
 <h5 id="springboot-多数据源实现"><a href="#springboot-多数据源实现" class="headerlink" title="springboot 多数据源实现"></a>springboot 多数据源实现</h5><p>在application.yml中添加其他数据源的配置信息，<br>在config中初始化每个数据源，</p>
@@ -298,6 +297,25 @@
     
     
     
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
 
       <footer class="post-footer">
           <div class="post-tags">
@@ -391,20 +409,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">177</span>
+          <span class="site-state-item-count">240</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">49</span>
+        <span class="site-state-item-count">60</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -431,7 +449,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -440,12 +458,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">315k</span>
+    <span title="站点总字数">441k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:46</span>
+    <span title="站点阅读时长">6:41</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
@@ -520,6 +538,8 @@
 
 
 
+
+  
 
   
 

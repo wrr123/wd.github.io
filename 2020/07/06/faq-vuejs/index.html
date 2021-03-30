@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.0.2">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/002.jpg">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/002.jpg">
@@ -81,6 +81,7 @@
   </style>
 </noscript>
 
+<link rel="alternate" href="/atom.xml" title="一缕烟气" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -280,24 +281,19 @@
 <p><code>npm install [--save-dev] babel-polyfill</code></p>
 <p>如果使用 vue-cli 项目，在 webpack.config.js 中添加：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>(<span class="string">&#x27;babel-polyfill&#x27;</span>)</span><br><span class="line"></span><br><span class="line">entry: &#123;</span><br><span class="line">    app: [<span class="string">&#x27;babel-polyfill&#x27;</span>, <span class="string">&#x27;./src/main.js&#x27;</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<a id="more"></a>
-
+<span id="more"></span>
 <h4 id="有作用域的-css"><a href="#有作用域的-css" class="headerlink" title="有作用域的 css"></a>有作用域的 css</h4><p>当 <code>&lt;style&gt;</code> 标签有 <code>scoped</code> 属性时，它的 css 只作用于当前组件中的元素。这类似于 Shadow DOM 中的样式封装。</p>
 <p><strong>注意</strong></p>
 <h5 id="混用本地和全局样式"><a href="#混用本地和全局样式" class="headerlink" title="混用本地和全局样式"></a>混用本地和全局样式</h5><p>你可以在一个组件中同时使用有作用域和无作用域的样式：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css"><span class="comment">/* 全局样式 */</span></span></span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">scoped</span>&gt;</span></span><br><span class="line"><span class="css"><span class="comment">/* 本地样式 */</span></span></span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
 <h5 id="子组件的根元素"><a href="#子组件的根元素" class="headerlink" title="子组件的根元素"></a>子组件的根元素</h5><blockquote>
 <p>使用 <code>scoped</code> 后，父组件的样式将不会渗透到子组件中。不过一个子组件的根节点会同时受其父组件有作用域的 CSS 和子组件有作用域的 CSS 的影响。这样设计是为了让父组件可以从布局的角度出发，调整其子组件根元素的样式。</p>
 </blockquote>
 <h5 id="深度作用选择器"><a href="#深度作用选择器" class="headerlink" title="深度作用选择器"></a>深度作用选择器</h5><blockquote>
 <p>如果你希望 <code>scoped</code> 样式中的一个选择器能够作用得“更深”，例如影响子组件，你可以使用 <code>&gt;&gt;&gt;</code> 操作符：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">scoped</span>&gt;</span></span><br><span class="line"><span class="css"><span class="selector-class">.a</span> &gt;&gt;&gt; <span class="selector-class">.b</span> &#123; <span class="comment">/* ... */</span> &#125;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
 <p>上述代码将会编译成：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.a</span><span class="selector-attr">[data-v-f3f3eg9]</span> <span class="selector-class">.b</span> &#123; <span class="comment">/* ... */</span> &#125;</span><br></pre></td></tr></table></figure>
-
 <p>有些像 Sass 之类的预处理器无法正确解析 <code>&gt;&gt;&gt;</code>。这种情况下你可以使用 <code>/deep/</code> 操作符取而代之——这是一个 <code>&gt;&gt;&gt;</code> 的别名，同样可以正常工作。</p>
 </blockquote>
 <h5 id="动态生成的内容"><a href="#动态生成的内容" class="headerlink" title="动态生成的内容"></a>动态生成的内容</h5><blockquote>
@@ -311,17 +307,13 @@
 </blockquote>
 <h4 id="Module-build-failed-Error-ENOENT-no-such-file-or-directory-scandir-‘D-www-第三方Demo-vue2-0-demos-node-modules-node-sass-vendor’"><a href="#Module-build-failed-Error-ENOENT-no-such-file-or-directory-scandir-‘D-www-第三方Demo-vue2-0-demos-node-modules-node-sass-vendor’" class="headerlink" title="Module build failed: Error: ENOENT: no such file or directory, scandir ‘D:\www\第三方Demo\vue2.0-demos\node_modules\node-sass\vendor’"></a>Module build failed: Error: ENOENT: no such file or directory, scandir ‘D:\www\第三方Demo\vue2.0-demos\node_modules\node-sass\vendor’</h4><h5 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h5><p><code>npm rebuild node-sass</code></p>
 <h4 id="Vue-js-中的图片引用路径"><a href="#Vue-js-中的图片引用路径" class="headerlink" title="Vue.js 中的图片引用路径"></a>Vue.js 中的图片引用路径</h4><h5 id="使用-import-的方式导入"><a href="#使用-import-的方式导入" class="headerlink" title="使用 import 的方式导入"></a>使用 import 的方式导入</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import avatar from &#39;@&#x2F;assets&#x2F;logo.png&#39;</span><br><span class="line">&#x2F;&#x2F; 在 data 中定义</span><br><span class="line">avatar: avatar</span><br></pre></td></tr></table></figure>
-
 <h5 id="使用-require-的方式导入"><a href="#使用-require-的方式导入" class="headerlink" title="使用 require 的方式导入"></a>使用 require 的方式导入</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 在 data 中定义</span><br><span class="line">avatar: require(&#39;@&#x2F;assets&#x2F;logo.png&#39;)</span><br></pre></td></tr></table></figure>
-
-<p><img src="http://wrr123.github.io/2020/07/06/faq-vuejs/001.png"></p>
+<p><img src="http://wrr123.github.io/2020/07/06/faq-vuejs/001.png" alt></p>
 <h5 id="资源路径处理"><a href="#资源路径处理" class="headerlink" title="资源路径处理"></a>资源路径处理</h5><p>默认情况下，<code>vue-loader</code> 使用 css-loader 和 Vue 模板编译器自动处理样式和模板文件。在编译过程中，所有的资源路径例如 <code>&lt;img src=&quot;...&quot;&gt;</code> 、<code>background: url(...) 和 @import</code> <strong>会作为模块依赖 。</strong></p>
 <p>一个栗子：url(./image.png) 会被转换为 require(‘./image.png’)，而</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;../image.png&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
 <p>将会编译为：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">createElement(<span class="string">&#x27;img&#x27;</span>, &#123;<span class="attr">attrs</span>: &#123;<span class="attr">src</span>: <span class="built_in">require</span>(<span class="string">&#x27;../image.png&#x27;</span>)&#125;&#125;)</span><br></pre></td></tr></table></figure>
-
 <h5 id="编译规则"><a href="#编译规则" class="headerlink" title="编译规则"></a>编译规则</h5><blockquote>
 <ul>
 <li><p>如果路径是绝对路径，会原样保留。</p>
@@ -346,48 +338,38 @@
 <h4 id="出现-Uncaught-in-Promise-错误"><a href="#出现-Uncaught-in-Promise-错误" class="headerlink" title="出现 Uncaught (in Promise) 错误"></a>出现 <code>Uncaught (in Promise)</code> 错误</h4><p>错误原因：<code>你的某个 promise 没有加上 catch 语句。</code></p>
 <h4 id="vue强制刷新组件的方法"><a href="#vue强制刷新组件的方法" class="headerlink" title="vue强制刷新组件的方法"></a>vue强制刷新组件的方法</h4><h5 id="不妥的方式：使用-v-if"><a href="#不妥的方式：使用-v-if" class="headerlink" title="不妥的方式：使用 v-if"></a>不妥的方式：使用 <code>v-if</code></h5><p>栗子：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;my-component v-if&#x3D;&quot;renderComponent&quot; &#x2F;&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">  export default &#123;</span><br><span class="line">    data() &#123;</span><br><span class="line">      return &#123;</span><br><span class="line">        renderComponent: true,</span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">      forceRerender() &#123;</span><br><span class="line">        &#x2F;&#x2F; 从 DOM 中删除 my-component 组件</span><br><span class="line">        this.renderComponent &#x3D; false;</span><br><span class="line">        </span><br><span class="line">        this.$nextTick(() &#x3D;&gt; &#123;</span><br><span class="line">          &#x2F;&#x2F; 在 DOM 中添加 my-component 组件</span><br><span class="line">          this.renderComponent &#x3D; true;</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
-
 <h5 id="较好的方法：forceUpdate方法"><a href="#较好的方法：forceUpdate方法" class="headerlink" title="较好的方法：forceUpdate方法"></a>较好的方法：<code>forceUpdate</code>方法</h5><p>栗子：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 全局</span><br><span class="line">import Vue from &#39;vue&#39;;</span><br><span class="line">Vue.forceUpdate();</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 使用组件实例</span><br><span class="line">export default &#123;</span><br><span class="line">  methods: &#123;</span><br><span class="line">    methodThatForcesUpdate() &#123;</span><br><span class="line">      &#x2F;&#x2F; ...</span><br><span class="line">      this.$forceUpdate();</span><br><span class="line">      &#x2F;&#x2F; ...</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h5 id="最好的方法：在组件上进行-key-更改"><a href="#最好的方法：在组件上进行-key-更改" class="headerlink" title="最好的方法：在组件上进行 key 更改"></a>最好的方法：在组件上进行 <code>key</code> 更改</h5><blockquote>
 <p>要正确地做到这一点，我们将提供一个<code>key</code>属性，以便 Vue 知道特定的组件与特定的数据片段相关联。如果<code>key</code>保持不变，则不会更改组件，但是如果<code>key</code>发生更改，Vue 就会知道应该删除旧组件并创建新组件。</p>
 </blockquote>
 <p>栗子：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;component-to-re-render :key&#x3D;&quot;componentKey&quot; &#x2F;&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      componentKey: 0,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    forceRerender() &#123;</span><br><span class="line">      this.componentKey +&#x3D; 1;  </span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     </div>
 
     
     
     
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
 
       <footer class="post-footer">
           <div class="post-tags">
@@ -481,20 +463,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">177</span>
+          <span class="site-state-item-count">240</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">49</span>
+        <span class="site-state-item-count">60</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -521,7 +503,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -530,12 +512,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">315k</span>
+    <span title="站点总字数">441k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:46</span>
+    <span title="站点阅读时长">6:41</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
@@ -610,6 +592,8 @@
 
 
 
+
+  
 
   
 

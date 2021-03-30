@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.0.2">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/002.jpg">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/002.jpg">
@@ -82,6 +82,7 @@
   </style>
 </noscript>
 
+<link rel="alternate" href="/atom.xml" title="一缕烟气" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -273,7 +274,7 @@
 <p>window下检查nginx服务是否启动</p>
 <blockquote>
 <p><code>tasklist /fi &quot;imagename eq nginx.exe&quot;</code>,在cmd窗口输入前面的命令，若如下图所示，表示已经启动了。</p>
-<p><img src="http://wrr123.github.io/2020/07/13/nginx%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/22.png"></p>
+<p><img src="http://wrr123.github.io/2020/07/13/nginx%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/22.png" alt></p>
 </blockquote>
 <h4 id="nginx常用命令"><a href="#nginx常用命令" class="headerlink" title="nginx常用命令"></a>nginx常用命令</h4><blockquote>
 <p>验证配置是否正确: nginx -t</p>
@@ -286,16 +287,14 @@
 <h4 id="nginx反向代理的作用"><a href="#nginx反向代理的作用" class="headerlink" title="nginx反向代理的作用"></a>nginx反向代理的作用</h4><blockquote>
 <p>项目部署在多个tomcat上，即使其中一个tomcat不能访问了也能访问其他的tomcat服务，</p>
 </blockquote>
-<p><img src="http://wrr123.github.io/2020/07/13/nginx%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/11.png"></p>
+<p><img src="http://wrr123.github.io/2020/07/13/nginx%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/11.png" alt></p>
 <h4 id="nginx配置并部署-案例1"><a href="#nginx配置并部署-案例1" class="headerlink" title="nginx配置并部署(案例1)"></a>nginx配置并部署(案例1)</h4><blockquote>
 <p>配置两个Tomcat服务指向 localhost:8070 和 localhost:8071他们的权重都是5（权重越大就越容易被访问）</p>
 </blockquote>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">upstream localhost &#123;  </span><br><span class="line">     #根据ip计算将请求分配各那个后端tomcat，许多人误认为可以解决session问题，其实并不能。  </span><br><span class="line">     #同一机器在多网情况下，路由切换，ip可能不同  </span><br><span class="line">     #ip_hash;   </span><br><span class="line">     server localhost:8070 weight=5;  </span><br><span class="line">     server localhost:8071 weight=5;  </span><br><span class="line">    &#125;  </span><br></pre></td></tr></table></figure>
-
 <h4 id="Nginx-部署-vue-项目"><a href="#Nginx-部署-vue-项目" class="headerlink" title="Nginx 部署 vue 项目"></a>Nginx 部署 vue 项目</h4><p>在 vue 项目根目录中使用命令 <code>npm run build</code>  创建输出文件，将 dist 文件夹下的所有内容复制到 nginx 目录下的 <code>webapp</code> 内（没有的话，自行创建）</p>
 <p>修改 nignx 目录中的 <code>conf/nginx.conf</code> 文件，在 <code>http -&gt; server</code> 节点中，修改 location 节点的内容：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">location &#x2F; &#123;</span><br><span class="line">    root   webapp;</span><br><span class="line">    index  index.html index.htm;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>在nginx根目录使用命令<code>nginx -s reload</code>即可在浏览器中通过<code>http://localhost</code>访问项目。</p>
 </blockquote>
@@ -305,6 +304,25 @@
     
     
     
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
 
       <footer class="post-footer">
           <div class="post-tags">
@@ -398,20 +416,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">177</span>
+          <span class="site-state-item-count">240</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">49</span>
+        <span class="site-state-item-count">60</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -438,7 +456,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -447,12 +465,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">315k</span>
+    <span title="站点总字数">441k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:46</span>
+    <span title="站点阅读时长">6:41</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
@@ -527,6 +545,8 @@
 
 
 
+
+  
 
   
 

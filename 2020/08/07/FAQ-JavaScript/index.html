@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.0.2">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/002.jpg">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/002.jpg">
@@ -80,6 +80,7 @@
   </style>
 </noscript>
 
+<link rel="alternate" href="/atom.xml" title="一缕烟气" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -264,10 +265,8 @@
 
       
         <h4 id="数值0-0的布尔值是true-还是false？"><a href="#数值0-0的布尔值是true-还是false？" class="headerlink" title="数值0,-0的布尔值是true,还是false？"></a>数值<code>0,-0</code>的布尔值是true,还是false？</h4><p>几个栗子</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">!!<span class="number">0</span> <span class="comment">//false</span></span><br><span class="line">!!<span class="string">&#x27;0&#x27;</span> <span class="comment">//true</span></span><br><span class="line">!!<span class="string">&#x27;&#x27;</span> <span class="comment">//false</span></span><br><span class="line">!![] <span class="comment">//true</span></span><br><span class="line">!!<span class="literal">NaN</span> <span class="comment">//false</span></span><br><span class="line">!!<span class="literal">undefined</span> <span class="comment">//false</span></span><br><span class="line">!!<span class="number">-0</span> <span class="comment">// false</span></span><br><span class="line">!!<span class="literal">null</span> <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
-
-<a id="more"></a>
-
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">!!<span class="number">0</span> <span class="comment">//false</span></span><br><span class="line">!!<span class="string">&#x27;0&#x27;</span> <span class="comment">//true</span></span><br><span class="line">!!<span class="string">&#x27;&#x27;</span> <span class="comment">//false</span></span><br><span class="line">!![] <span class="comment">//true</span></span><br><span class="line">!!<span class="literal">NaN</span> <span class="comment">//false</span></span><br><span class="line">!!<span class="literal">undefined</span> <span class="comment">//false</span></span><br><span class="line">!!-<span class="number">0</span> <span class="comment">// false</span></span><br><span class="line">!!<span class="literal">null</span> <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+<span id="more"></span>
 <h5 id="延申：Boolean对象是一个布尔值的对象包装器。"><a href="#延申：Boolean对象是一个布尔值的对象包装器。" class="headerlink" title="延申：Boolean对象是一个布尔值的对象包装器。"></a>延申：<code>Boolean对象是一个布尔值的对象包装器。</code></h5><h6 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h6><p>如果需要，作为第一个参数传递的值将转换为布尔值。</p>
 <p>如果省略或值<code>0，-0，null，false，NaN，undefined</code>，或者空字符串(<code>&quot;&quot;</code>)，该对象具有的初始值为<code>false</code>。</p>
 <p>所有的其他值，包括任何对象，空数组(<code>[]</code>)，或者字符串(<code>&quot;false&quot;</code>)，都会创建一个初始值为<code>true</code>的对象。</p>
@@ -275,18 +274,14 @@
 <p>其值不是<code>undefined</code>或者<code>null</code>的任何对象（<em>包括其值为<code>false</code>的布尔对象</em>）在传递给条件语句时，都将计算为<code>true</code>。</p>
 <p>一个栗子：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="keyword">new</span> <span class="built_in">Boolean</span>(<span class="literal">false</span>);</span><br><span class="line"><span class="keyword">if</span>(x) &#123;</span><br><span class="line">  <span class="comment">// 这里的代码将会被执行</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>但是基本类型的布尔值不受其规则影响。</p>
 <p>再一个栗子：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="literal">false</span>;</span><br><span class="line"><span class="keyword">if</span>(x) &#123;</span><br><span class="line">  <span class="comment">// 这里的代码不会被执行</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>不要用创建<code>Boolean</code>对象的方式将一个 <strong>非布尔值</strong> 转化为布尔值，直接将<code>Boolean</code>当作转换函数来使用即可。或者使用 <strong>双重非(<code>!!</code>)运算符。</strong></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="built_in">Boolean</span>(expression);     <span class="comment">// 推荐</span></span><br><span class="line"><span class="keyword">var</span> x = !!(expression);          <span class="comment">// 推荐</span></span><br><span class="line"><span class="keyword">var</span> x = <span class="keyword">new</span> <span class="built_in">Boolean</span>(expression); <span class="comment">// 不太好</span></span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>对于任何对象，即使是值为 <code>false</code> 的 <code>Boolean</code> 对象，当将其传给 <code>Boolean</code> 函数时，生成的 <code>Boolean</code> 对象的值都是 <code>true</code>。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myFalse = <span class="keyword">new</span> <span class="built_in">Boolean</span>(<span class="literal">false</span>);   <span class="comment">// true</span></span><br><span class="line"><span class="keyword">var</span> g = <span class="keyword">new</span> <span class="built_in">Boolean</span>(myFalse);       <span class="comment">// true</span></span><br><span class="line"><span class="keyword">var</span> myString = <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">&quot;Hello&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> s = <span class="keyword">new</span> <span class="built_in">Boolean</span>(myString);      <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
-
 <p>最后，不要在应该使用基本类型布尔值的地方使用 <code>Boolean</code> 对象。</p>
 </blockquote>
 <h4 id="实现左右布局拖拽功能"><a href="#实现左右布局拖拽功能" class="headerlink" title="实现左右布局拖拽功能"></a>实现左右布局拖拽功能</h4><p>描述：当拖动分割线时，可以重置左右两侧模块宽度实现宽度自定义。</p>
@@ -316,8 +311,7 @@
 </li>
 <li><p>利用 js 的弱类型转换</p>
 <p> 一个栗子：</p>
- <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line"><span class="keyword">var</span>   str= <span class="string">&#x27;012.345 &#x27;</span>;</span><br><span class="line"><span class="keyword">var</span>   x   =   str<span class="number">-0</span>;</span><br><span class="line">x   =   x*<span class="number">1</span>;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line"><span class="keyword">var</span>   str= <span class="string">&#x27;012.345 &#x27;</span>;</span><br><span class="line"><span class="keyword">var</span>   x   =   str-<span class="number">0</span>;</span><br><span class="line">x   =   x*<span class="number">1</span>;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <h4 id="js数组合并的方法（一个数组的元素添加到另一个元素中）"><a href="#js数组合并的方法（一个数组的元素添加到另一个元素中）" class="headerlink" title="js数组合并的方法（一个数组的元素添加到另一个元素中）"></a>js数组合并的方法（一个数组的元素添加到另一个元素中）</h4><p>直接使用 <code>push</code> 方法的话，一个数组会成为另一个数组的子元素。</p>
@@ -331,6 +325,25 @@
     
     
     
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
 
       <footer class="post-footer">
           <div class="post-tags">
@@ -425,20 +438,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">177</span>
+          <span class="site-state-item-count">240</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">49</span>
+        <span class="site-state-item-count">60</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -465,7 +478,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -474,12 +487,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">315k</span>
+    <span title="站点总字数">441k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:46</span>
+    <span title="站点阅读时长">6:41</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
@@ -554,6 +567,8 @@
 
 
 
+
+  
 
   
 

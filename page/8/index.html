@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.0.2">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/002.jpg">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/002.jpg">
@@ -76,6 +76,7 @@
   </style>
 </noscript>
 
+<link rel="alternate" href="/atom.xml" title="一缕烟气" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -193,7 +194,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2020/08/20/yarn/">
+    <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2020/11/06/java%E5%88%9D%E5%A7%8B%E5%8C%96list%E7%9A%84%E9%9B%86%E4%B8%AD%E6%96%B9%E6%B3%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -207,7 +208,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/08/20/yarn/" class="post-title-link" itemprop="url">yarn</a>
+            <a href="/2020/11/06/java%E5%88%9D%E5%A7%8B%E5%8C%96list%E7%9A%84%E9%9B%86%E4%B8%AD%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">java初始化list的集中方法</a>
         </h2>
 
         <div class="post-meta">
@@ -216,10 +217,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-08-20 11:36:37 / 修改时间：21:45:54" itemprop="dateCreated datePublished" datetime="2020-08-20T11:36:37+08:00">2020-08-20</time>
+              <time title="创建时间：2020-11-06 15:18:25" itemprop="dateCreated datePublished" datetime="2020-11-06T15:18:25+08:00">2020-11-06</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-11-10 09:10:29" itemprop="dateModified" datetime="2020-11-10T09:10:29+08:00">2020-11-10</time>
+              </span>
 
           <br>
             <span class="post-meta-item" title="本文字数">
@@ -227,7 +234,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1.2k</span>
+              <span>194</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -246,12 +253,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h4 id="快速入门"><a href="#快速入门" class="headerlink" title="快速入门"></a>快速入门</h4><p>Yarn 对你的代码来说是一个包管理器。它可以让你使用并分享 <strong>全世界开发者的（例如 JavaScript）</strong> 代码。Yarn 能够快速、安全、并可靠地完成这些工作，所以你不用有任何担心。</p>
-<p>通过 Yarn 你可以使用其他开发者针对不同问题的解决方案，使自己的开发过程更简单。使用过程中遇到问题，你可以将其上报或者贡献解决方案。一旦问题被修复，Yarn 会更新保持同步。</p>
-<p>代码通过 <strong>包（package）</strong> （或者称为 <strong>模块（module）</strong>） 的方式来共享。一个包里包含所有需要共享的代码，一级描述包信息的文件，称为 <code>package.json</code> 。</p>
+          <h4 id="在-Java-中初始化-List-的几种方法"><a href="#在-Java-中初始化-List-的几种方法" class="headerlink" title="在 Java 中初始化 List 的几种方法"></a>在 Java 中初始化 List 的几种方法</h4><p><img src="http://wrr123.github.io/2020/11/06/java%E5%88%9D%E5%A7%8B%E5%8C%96list%E7%9A%84%E9%9B%86%E4%B8%AD%E6%96%B9%E6%B3%95/001.png" alt></p>
+<h5 id="使用-双括号语法"><a href="#使用-双括号语法" class="headerlink" title="使用{ { } }双括号语法"></a>使用<code>&#123; &#123; &#125; &#125;</code>双括号语法</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; stringList = <span class="keyword">new</span> LinkedList&lt;String&gt;()&#123;&#123;</span><br><span class="line">    add(<span class="string">&quot;a&quot;</span>);</span><br><span class="line">    add(<span class="string">&quot;b&quot;</span>);</span><br><span class="line">    add(<span class="string">&quot;c&quot;</span>);</span><br><span class="line">&#125;&#125;;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2020/08/20/yarn/#more" rel="contents">
+              <a class="btn" href="/2020/11/06/java%E5%88%9D%E5%A7%8B%E5%8C%96list%E7%9A%84%E9%9B%86%E4%B8%AD%E6%96%B9%E6%B3%95/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -275,7 +281,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2020/08/20/vim/">
+    <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2020/10/30/faq-python/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -289,7 +295,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/08/20/vim/" class="post-title-link" itemprop="url">vim</a>
+            <a href="/2020/10/30/faq-python/" class="post-title-link" itemprop="url">faq-python</a>
         </h2>
 
         <div class="post-meta">
@@ -299,14 +305,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-08-20 10:41:04" itemprop="dateCreated datePublished" datetime="2020-08-20T10:41:04+08:00">2020-08-20</time>
+              <time title="创建时间：2020-10-30 14:58:09" itemprop="dateCreated datePublished" datetime="2020-10-30T14:58:09+08:00">2020-10-30</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-11-02 11:13:33" itemprop="dateModified" datetime="2020-11-02T11:13:33+08:00">2020-11-02</time>
+                <time title="修改时间：2020-11-02 16:49:40" itemprop="dateModified" datetime="2020-11-02T16:49:40+08:00">2020-11-02</time>
               </span>
 
           <br>
@@ -315,101 +321,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>3.4k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="代码折叠"><a href="#代码折叠" class="headerlink" title="代码折叠"></a>代码折叠</h4><p>vim 代码折叠方式可以用 “foldmethod” 选项来设置，如: <code>set foldmethod = indent</code></p>
-<h5 id="有-6-种方式来折叠代码"><a href="#有-6-种方式来折叠代码" class="headerlink" title="有 6 种方式来折叠代码"></a>有 6 种方式来折叠代码</h5><ol>
-<li><code>manual</code> 手工定义折叠</li>
-<li><code>indent</code> 用缩进来表示折叠</li>
-<li><code>expr</code> 用表达式来定义折叠</li>
-<li><code>syntax</code> 用语法高亮来定义折叠</li>
-<li><code>diff</code> 对没有更改的文本进行折叠</li>
-<li><code>marker</code> 用标志折叠</li>
-</ol>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/08/20/vim/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2020/08/19/shiro%E5%9F%BA%E7%A1%80/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="田园隐士">
-      <meta itemprop="description" content="talk is cheap, show me the code">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一缕烟气">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/08/19/shiro%E5%9F%BA%E7%A1%80/" class="post-title-link" itemprop="url">shiro基础</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-08-19 13:54:45" itemprop="dateCreated datePublished" datetime="2020-08-19T13:54:45+08:00">2020-08-19</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-20 21:45:54" itemprop="dateModified" datetime="2020-08-20T21:45:54+08:00">2020-08-20</time>
-              </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>459</span>
+              <span>270</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -428,13 +340,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h4 id="设置超时时间"><a href="#设置超时时间" class="headerlink" title="设置超时时间"></a>设置超时时间</h4><p>通过 api：Shiro 的 Session 接口的一个 setTimeout() 方法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 登录后，可以用如下的方式取得 session</span></span><br><span class="line">SecurityUtils.getSubject().getSession().setTimeout(<span class="number">30000</span>)</span><br></pre></td></tr></table></figure>
-
-<p><strong>设置的最大时间，正负都可以，为负数时表示永不过期。</strong></p>
+          <h4 id="在某些函数定义的入参中，使用-表示什么？"><a href="#在某些函数定义的入参中，使用-表示什么？" class="headerlink" title="在某些函数定义的入参中，使用 / 表示什么？"></a>在某些函数定义的入参中，使用 <code>/</code> 表示什么？</h4><p>如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">len(obj, &#x2F;)</span><br><span class="line">    # Return the number of items in a container.</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2020/08/19/shiro%E5%9F%BA%E7%A1%80/#more" rel="contents">
+              <a class="btn" href="/2020/10/30/faq-python/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -458,7 +368,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2020/08/18/gradle/">
+    <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2020/10/30/python/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -472,7 +382,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/08/18/gradle/" class="post-title-link" itemprop="url">gradle</a>
+            <a href="/2020/10/30/python/" class="post-title-link" itemprop="url">python</a>
         </h2>
 
         <div class="post-meta">
@@ -482,14 +392,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-08-18 17:27:21" itemprop="dateCreated datePublished" datetime="2020-08-18T17:27:21+08:00">2020-08-18</time>
+              <time title="创建时间：2020-10-30 11:28:20" itemprop="dateCreated datePublished" datetime="2020-10-30T11:28:20+08:00">2020-10-30</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-25 13:39:43" itemprop="dateModified" datetime="2020-09-25T13:39:43+08:00">2020-09-25</time>
+                <time title="修改时间：2020-11-30 16:26:46" itemprop="dateModified" datetime="2020-11-30T16:26:46+08:00">2020-11-30</time>
               </span>
 
           <br>
@@ -498,279 +408,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>9.6k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>9 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>Gradle，这是一个基于 JVM 的富有突破性的构建工具。</p>
-<p>Gradle 正迅速成为许多开源项目和前沿企业构建系统的选择，同时也在挑战遗留的自动化构建工具。</p>
-<h4 id="特性说明"><a href="#特性说明" class="headerlink" title="特性说明"></a>特性说明</h4><h5 id="基于声明的构建和基于约定的构建"><a href="#基于声明的构建和基于约定的构建" class="headerlink" title="基于声明的构建和基于约定的构建"></a>基于声明的构建和基于约定的构建</h5><p>gradle 的核心在于基于 Groovy 的丰富而可扩展的域描述语言(DSL)。Groovy 通过声明性的语言元素将基于声明的构建推向下层，你可以按你想要的方式进行组合。这些元素同样也为支持 Java，Groovy，OSGI，Web 和 Scala 项目提供了基于约定的构建；并且，这种声明性的语言是可以扩展的。你可以添加新的或者增强现有的语言元素。因此，它提供了简明、可维护和易理解的构建。</p>
-<h5 id="为以依赖为基础的编程方式提供语言支持"><a href="#为以依赖为基础的编程方式提供语言支持" class="headerlink" title="为以依赖为基础的编程方式提供语言支持"></a>为以依赖为基础的编程方式提供语言支持</h5><p>声明性语言优点在于通用任务图，你可以将其充分利用在构建中，它提供了最大限度的灵活性，以让 Gradle 适应你的特殊需求。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/08/18/gradle/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2020/08/18/ali-arthas/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="田园隐士">
-      <meta itemprop="description" content="talk is cheap, show me the code">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一缕烟气">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/08/18/ali-arthas/" class="post-title-link" itemprop="url">ali-arthas</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-08-18 14:18:21 / 修改时间：22:55:50" itemprop="dateCreated datePublished" datetime="2020-08-18T14:18:21+08:00">2020-08-18</time>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>3k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><p>这是阿里的一个开源的 Java 诊断工具。</p>
-<p>这个工具可以协助你做哪些事情：</p>
-<ol>
-<li>这个类是从哪个 jar 包加载进来的？</li>
-<li>为什么会报各种类相关的 Exception ?</li>
-<li>线上遇到问题无法 debug 好蛋疼，难道只能反复通过增加 System.out 或通过加日志再重新发布吗？</li>
-<li>线上的代码为什么没有执行到这里？是由于代码没有提交？还是搞错了分支？</li>
-<li>线上遇到某个用户的数据处理有问题，但线上同样无法 debug ，线下无法重现？</li>
-<li>是否有一个全局视角来查看系统的运行状况？</li>
-<li>有什么办法可以监控到 JVM 的实时运行状态？</li>
-</ol>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/08/18/ali-arthas/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2020/08/18/java%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="田园隐士">
-      <meta itemprop="description" content="talk is cheap, show me the code">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一缕烟气">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/08/18/java%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88/" class="post-title-link" itemprop="url">java快慢指针</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-08-18 10:16:32" itemprop="dateCreated datePublished" datetime="2020-08-18T10:16:32+08:00">2020-08-18</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-22 10:01:10" itemprop="dateModified" datetime="2020-09-22T10:01:10+08:00">2020-09-22</time>
-              </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>864</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="一个问题：判断一个单向链表是否为环形链表"><a href="#一个问题：判断一个单向链表是否为环形链表" class="headerlink" title="一个问题：判断一个单向链表是否为环形链表"></a>一个问题：判断一个单向链表是否为环形链表</h4><p>“快慢指针” 的思路：</p>
-<p>当我们在遍历链表的时候，设计两个指针，分别为快指针和慢指针，快指针每次走 2 步，慢指针每次走 1 步，这样的话当我们的两个指针在链表中，如果第二次相遇的话，说明这个链表是环形链表。</p>
-<p>一个栗子：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 查看 链表中是否存在环形</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasRing</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (head != <span class="keyword">null</span> &amp;&amp; size &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        Node&lt;T&gt; fastTemp = head, lowTemp = head;</span><br><span class="line">        <span class="keyword">while</span> (lowTemp.getNext() != <span class="keyword">null</span> &amp;&amp; fastTemp.getNext() != <span class="keyword">null</span>) &#123;</span><br><span class="line">            fastTemp = fastTemp.getNext().getNext();</span><br><span class="line">            lowTemp = lowTemp.getNext();</span><br><span class="line">            <span class="keyword">if</span> (lowTemp == fastTemp) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="双指针算法"><a href="#双指针算法" class="headerlink" title="双指针算法"></a>双指针算法</h4><h5 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h5><p>数组完成排序后，我们可以放置两个指针 i 和 j，其中 i 是慢指针，而 j 是快指针。只要 nums[i] = nums[j],我们就增加 j 以跳过该重复项。</p>
-<p>当我们遇到 nums[i] 不等于 nums[j] 时，跳过重复项的运行已经结束，因此我们必须把它（nums[j]）的值复制到 nums[i + 1]。然后递增 i，接着我们将重复相同的过程，直到 j 到达数组的末尾为止。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">removeDuplicates</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (nums.length == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; nums.length; j++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (nums[j] != nums[i]) &#123;</span><br><span class="line">            i++;</span><br><span class="line">            nums[i] = nums[j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> i + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/08/18/java%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2020/08/17/%E9%80%92%E5%BD%92%E7%AE%97%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="田园隐士">
-      <meta itemprop="description" content="talk is cheap, show me the code">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一缕烟气">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/08/17/%E9%80%92%E5%BD%92%E7%AE%97%E6%B3%95/" class="post-title-link" itemprop="url">递归算法</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-08-17 13:31:18" itemprop="dateCreated datePublished" datetime="2020-08-17T13:31:18+08:00">2020-08-17</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-18 22:55:50" itemprop="dateModified" datetime="2020-08-18T22:55:50+08:00">2020-08-18</time>
-              </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>2.3k</span>
+              <span>2.1k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -789,16 +427,278 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><p>递归算法是一种直接或间接调用自身函数或方法的算法。</p>
-<p>Java 递归算法是基于 Java 语言实现的递归算法。</p>
-<p>递归算法的实质是把问题分解成规模缩小的同类问题的子问题，然后递归调用方法来表示问题的解。</p>
-<p>递归算法对解决一大类问题很有效，它可以使算法简洁和易于理解。</p>
+          <h4 id="guide"><a href="#guide" class="headerlink" title="guide"></a>guide</h4><h4 id="语言进阶"><a href="#语言进阶" class="headerlink" title="语言进阶"></a>语言进阶</h4><h5 id="数据结构和算法"><a href="#数据结构和算法" class="headerlink" title="数据结构和算法"></a>数据结构和算法</h5><ul>
+<li>算法：解决问题的方法和步骤</li>
+<li>评价算法的好坏：渐进时间复杂度和渐进空间复杂度</li>
+<li>排序算法（冒泡、选择和归并(分治法)）和查找算法（顺序和折半）</li>
+</ul>
+<p><strong>lambda函数</strong></p>
+<p>匿名函数lambda：是指一类无需定义标识符（函数名）的函数或子程序。所谓匿名函数，通俗的说就是没有名字的函数，lambda函数没有名字，是一种 <strong>简单、在同一行中定义函数的</strong> 方式。</p>
+<p>lambda函数可以接收任意多个参数（包括可选参数）并且返回单个表达式的值。</p>
+<p><strong>lambda函数只允许包含一个表达式，不能包含复杂语句，该表示式的运算结果就是函数的返回结果。</strong></p>
+<p>lambda函数基本的基本语法：<strong>lambda args1, args2, args3,…..: &lt;表达式&gt;</strong></p>
+<p>一个栗子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">lambda x, y: x + y</span><br><span class="line">lambda:None # 函数没有输入参数，输出为 None</span><br><span class="line">lambda *args: sum(args) # 输入任意多个参数，输出是它们的和</span><br><span class="line">lambda **kargs: 1 # 输入任意多个键值对参数，输出为 1</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/10/30/python/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2020/10/28/java%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="田园隐士">
+      <meta itemprop="description" content="talk is cheap, show me the code">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一缕烟气">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/10/28/java%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84/" class="post-title-link" itemprop="url">java二维数组</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-10-28 09:59:39 / 修改时间：10:04:53" itemprop="dateCreated datePublished" datetime="2020-10-28T09:59:39+08:00">2020-10-28</time>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>319</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="创建二维数组"><a href="#创建二维数组" class="headerlink" title="创建二维数组"></a>创建二维数组</h4><p>在 java 中二维数组被看作数组的数组，即二维数组是一个特殊的一维数组，其每个元素又是一个一维数组。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">type arr[][];</span><br><span class="line">type[][] arr;</span><br><span class="line"><span class="comment">// 其中 type 表示二维数组的类型，arr 表示数组名称，第一个中括号表示行，第二个中括号表示列。</span></span><br></pre></td></tr></table></figure>
+<h4 id="初始化二维数组"><a href="#初始化二维数组" class="headerlink" title="初始化二维数组"></a>初始化二维数组</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">array=<span class="keyword">new</span> type[][]&#123;值 <span class="number">1</span>,值 <span class="number">2</span>,值 <span class="number">3</span>,…,值 n&#125;;</span><br><span class="line">array=<span class="keyword">new</span> type[][]&#123;<span class="keyword">new</span> 构造方法(参数列),…&#125;;</span><br><span class="line">type[][] array=&#123;&#123;第<span class="number">1</span>行第<span class="number">1</span>列的值,第<span class="number">1</span>行第<span class="number">2</span>列的值,…&#125;,&#123;第<span class="number">2</span>行第<span class="number">1</span>列的值,第<span class="number">2</span>行第<span class="number">2</span>列的值,…&#125;,…&#125;;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/10/28/java%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2020/10/23/java%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="田园隐士">
+      <meta itemprop="description" content="talk is cheap, show me the code">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一缕烟气">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/10/23/java%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6/" class="post-title-link" itemprop="url">java日志框架</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-10-23 10:44:39 / 修改时间：10:47:03" itemprop="dateCreated datePublished" datetime="2020-10-23T10:44:39+08:00">2020-10-23</time>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>106</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="java-日志框架的等级和优先级"><a href="#java-日志框架的等级和优先级" class="headerlink" title="java 日志框架的等级和优先级"></a>java 日志框架的等级和优先级</h4><p>log4j 定义了 8 个级别的 log ，优先级 <strong>从高到低</strong> 依次为：</p>
+<p><code>OFF &gt; FATAL &gt; ERROR &gt; WARN &gt; INFO &gt; DEBUG &gt; TRACE &gt; ALL</code> 。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/10/23/java%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2020/10/23/faq-mysql/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="田园隐士">
+      <meta itemprop="description" content="talk is cheap, show me the code">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一缕烟气">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/10/23/faq-mysql/" class="post-title-link" itemprop="url">faq-mysql</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-10-23 10:38:11 / 修改时间：13:47:36" itemprop="dateCreated datePublished" datetime="2020-10-23T10:38:11+08:00">2020-10-23</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/faq/" itemprop="url" rel="index"><span itemprop="name">faq</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>268</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="discard-long-time-none-received-connection-错误信息"><a href="#discard-long-time-none-received-connection-错误信息" class="headerlink" title="discard long time none received connection 错误信息"></a><code>discard long time none received connection</code> 错误信息</h4><p>可能原因：</p>
 <blockquote>
-<p>递归算法，其实说白了，就是程序的自身调用。它表现在一段程序中往往会遇到调用自身的那样一种coding策略，这样我们就可以利用大道至简的思想，把一个大的复杂的问题层层转换为一个小的和原问题相似的问题来求解的这样一种策略。递归往往能给我们带来非常简洁非常直观的代码形势，从而使我们的编码大大简化，然而递归的思维确实很我们的常规思维相逆的，我们通常都是从上而下的思维问题， 而递归趋势从下往上的进行思维。这样我们就能看到我们会用很少的语句解决了非常大的问题，所以递归策略的最主要体现就是小的代码量解决了非常复杂的问题。</p>
+<p>druid的版本问题，从最新的1.1.23 回退到 1.1.22可解决。</p>
 </blockquote>
+<h4 id="慢-sql-的问题"><a href="#慢-sql-的问题" class="headerlink" title="慢 sql 的问题"></a>慢 sql 的问题</h4><p>使用 <code>druid-spring-boot-starter</code> 时，某些 sql 执行的速度很慢。</p>
+<h5 id="慢-sql-监控"><a href="#慢-sql-监控" class="headerlink" title="慢 sql 监控"></a>慢 sql 监控</h5><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#是否开启慢sql查询监控  </span></span><br><span class="line"><span class="meta">spring.datasource.druid.filter.stat.log-slow-sql</span>=<span class="string">true  </span></span><br><span class="line">  </span><br><span class="line"><span class="comment">#慢SQL执行时间  </span></span><br><span class="line"><span class="meta">spring.datasource.druid.filter.stat.slow-sql-millis</span>=<span class="string">1  </span></span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2020/08/17/%E9%80%92%E5%BD%92%E7%AE%97%E6%B3%95/#more" rel="contents">
+              <a class="btn" href="/2020/10/23/faq-mysql/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -822,7 +722,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2020/08/16/mac%E6%89%B9%E9%87%8F%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E5%90%8D%E7%A7%B0/">
+    <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2020/10/23/faq-mybatis/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -836,7 +736,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/08/16/mac%E6%89%B9%E9%87%8F%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E5%90%8D%E7%A7%B0/" class="post-title-link" itemprop="url">mac批量修改文件名称</a>
+            <a href="/2020/10/23/faq-mybatis/" class="post-title-link" itemprop="url">faq-mybatis</a>
         </h2>
 
         <div class="post-meta">
@@ -847,7 +747,16 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-08-16 21:26:00 / 修改时间：21:26:19" itemprop="dateCreated datePublished" datetime="2020-08-16T21:26:00+08:00">2020-08-16</time>
+              <time title="创建时间：2020-10-23 10:36:46 / 修改时间：10:37:33" itemprop="dateCreated datePublished" datetime="2020-10-23T10:36:46+08:00">2020-10-23</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/faq/" itemprop="url" rel="index"><span itemprop="name">faq</span></a>
+                </span>
             </span>
 
           <br>
@@ -856,7 +765,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1k</span>
+              <span>0</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -875,21 +784,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h4 id="批量修改文件名的方法"><a href="#批量修改文件名的方法" class="headerlink" title="批量修改文件名的方法"></a>批量修改文件名的方法</h4><ul>
-<li><p>方式一 <code>使用 sed 命令</code></p>
-<p>  一个栗子</p>
-  <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls *jpg|sed -r <span class="string">&#x27;s#(.*).jpg#mv &amp;  \1.mp4#&#x27;</span>|bash</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/08/16/mac%E6%89%B9%E9%87%8F%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E5%90%8D%E7%A7%B0/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+          <h4 id><a href="#" class="headerlink" title=" "></a> </h4>
       
     </div>
 
@@ -908,7 +803,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2020/08/16/mac%E4%B8%8A%E6%9F%A5%E7%9C%8B%E5%92%8C%E5%AE%89%E8%A3%85%E5%AD%97%E4%BD%93/">
+    <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2020/10/22/mybatis%E5%88%86%E9%A1%B5%E6%8F%92%E4%BB%B6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -922,7 +817,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/08/16/mac%E4%B8%8A%E6%9F%A5%E7%9C%8B%E5%92%8C%E5%AE%89%E8%A3%85%E5%AD%97%E4%BD%93/" class="post-title-link" itemprop="url">mac上查看和安装字体</a>
+            <a href="/2020/10/22/mybatis%E5%88%86%E9%A1%B5%E6%8F%92%E4%BB%B6/" class="post-title-link" itemprop="url">mybatis分页插件</a>
         </h2>
 
         <div class="post-meta">
@@ -933,7 +828,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-08-16 00:42:17 / 修改时间：19:52:21" itemprop="dateCreated datePublished" datetime="2020-08-16T00:42:17+08:00">2020-08-16</time>
+              <time title="创建时间：2020-10-22 15:34:39 / 修改时间：15:49:55" itemprop="dateCreated datePublished" datetime="2020-10-22T15:34:39+08:00">2020-10-22</time>
             </span>
 
           <br>
@@ -942,7 +837,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>294</span>
+              <span>1.6k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -961,18 +856,97 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h4 id="查看安装的字体"><a href="#查看安装的字体" class="headerlink" title="查看安装的字体"></a>查看安装的字体</h4><ol>
-<li><p>使用应用程序 Font Book.app</p>
+          <h4 id="Mybatis通用分页插件-PageHelper"><a href="#Mybatis通用分页插件-PageHelper" class="headerlink" title="Mybatis通用分页插件 PageHelper"></a>Mybatis通用分页插件 PageHelper</h4><h5 id="简述-mybatis-中-PageHelper-的使用"><a href="#简述-mybatis-中-PageHelper-的使用" class="headerlink" title="简述 mybatis 中 PageHelper 的使用"></a>简述 mybatis 中 PageHelper 的使用</h5><ol>
+<li><p>需要引入 PageHelper 的 jar 包</p>
+ <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.github.pagehelper<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>pagehelper<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.1.4<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>使用命令行的方式</p>
- <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ls ~/Library/Fonts/</span><br><span class="line">ls /Library/Fonts/</span><br><span class="line">ls /System/Library/Fonts/</span><br></pre></td></tr></table></figure>
+<li><p>在 mybatis 的全局配置文件 SqlMapConfig.xml 中配置该插件</p>
+ <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">configuration</span></span></span><br><span class="line"><span class="meta">        <span class="meta-keyword">PUBLIC</span> <span class="meta-string">&quot;-//mybatis.org//DTD Config 3.0//EN&quot;</span></span></span><br><span class="line"><span class="meta">        <span class="meta-string">&quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 配置分页插件 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span> <span class="attr">interceptor</span>=<span class="string">&quot;com.github.pagehelper.PageHelper&quot;</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- 设置数据库类型 Oracle,Mysql,MariaDB,SQLite,Hsqldb,PostgreSQL六种数据库--&gt;</span>        </span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;dialect&quot;</span> <span class="attr">value</span>=<span class="string">&quot;mysql&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p><code>fc-list :lang=zh</code>  查看支持中文的字体</p>
+<li><p>在执行 sql 前，添加插件完成分页功能</p>
+ <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">public class TestPageHelper &#123;</span><br><span class="line"></span><br><span class="line">    @Test</span><br><span class="line">    public void testPageHelper() &#123;</span><br><span class="line">        // 创建一个spring容器</span><br><span class="line">        ApplicationContext context = new ClassPathXmlApplicationContext(&quot;classpath:spring/applicationContext-*&quot;);</span><br><span class="line">        // 从spring容器中获取mapper代理对象</span><br><span class="line">        TbItemMapper mapper = context.getBean(TbItemMapper.class);</span><br><span class="line">        // 执行查询并分页,TbItemExample是逆向工程自动生成的，用来进行条件查询，这里不设置则表示无条件</span><br><span class="line">        TbItemExample example = new TbItemExample();</span><br><span class="line">        //分页处理，显示第一页的10条数据</span><br><span class="line">        PageHelper.startPage(1, 10);</span><br><span class="line">        List<span class="tag">&lt;<span class="name">TbItem</span>&gt;</span> list = mapper.selectByExample(example);//查询</span><br><span class="line">        // 取商品列表</span><br><span class="line">        for(TbItem item : list) &#123;</span><br><span class="line">            System.out.println(item.getTitle());</span><br><span class="line">        &#125;</span><br><span class="line">        // 取分页信息</span><br><span class="line">        PageInfo<span class="tag">&lt;<span class="name">TbItem</span>&gt;</span> pageInfo = new PageInfo<span class="tag">&lt;<span class="name">TbItem</span>&gt;</span>(list);</span><br><span class="line">        long total = pageInfo.getTotal(); //获取总记录数</span><br><span class="line">        System.out.println(&quot;共有商品信息：&quot; + total);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2020/10/21/java%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88%E7%AE%97%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="田园隐士">
+      <meta itemprop="description" content="talk is cheap, show me the code">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一缕烟气">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/10/21/java%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88%E7%AE%97%E6%B3%95/" class="post-title-link" itemprop="url">java排列组合算法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-10-21 10:19:44 / 修改时间：10:52:52" itemprop="dateCreated datePublished" datetime="2020-10-21T10:19:44+08:00">2020-10-21</time>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>96</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="组合和排列的区别"><a href="#组合和排列的区别" class="headerlink" title="组合和排列的区别"></a>组合和排列的区别</h4><p>排列：需要考虑取出元素的顺序。</p>
+<p>组合：组合取出元素的顺序是不考虑的。</p>
+<p><strong>因组合是不考虑顺序的，故组合的个数比排列的个数要少。</strong></p>
+<p>计算公式：</p>
+<p><img src="http://wrr123.github.io/2020/10/21/java%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88%E7%AE%97%E6%B3%95/002.png" alt></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2020/08/16/mac%E4%B8%8A%E6%9F%A5%E7%9C%8B%E5%92%8C%E5%AE%89%E8%A3%85%E5%AD%97%E4%BD%93/#more" rel="contents">
+              <a class="btn" href="/2020/10/21/java%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88%E7%AE%97%E6%B3%95/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -996,7 +970,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2020/08/16/notebook-IDEs/">
+    <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2020/10/14/%E6%97%A5%E5%B8%B8%E7%94%9F%E6%B4%BB%E4%B8%AD%E7%9A%84%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -1010,7 +984,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/08/16/notebook-IDEs/" class="post-title-link" itemprop="url">notebook-ideas</a>
+            <a href="/2020/10/14/%E6%97%A5%E5%B8%B8%E7%94%9F%E6%B4%BB%E4%B8%AD%E7%9A%84%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" class="post-title-link" itemprop="url">日常生活中的基础概念</a>
         </h2>
 
         <div class="post-meta">
@@ -1021,7 +995,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-08-16 00:42:17 / 修改时间：23:08:50" itemprop="dateCreated datePublished" datetime="2020-08-16T00:42:17+08:00">2020-08-16</time>
+              <time title="创建时间：2020-10-14 09:18:59 / 修改时间：09:51:44" itemprop="dateCreated datePublished" datetime="2020-10-14T09:18:59+08:00">2020-10-14</time>
             </span>
 
           <br>
@@ -1030,7 +1004,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1.1k</span>
+              <span>128</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -1049,35 +1023,18 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="Mon-Oct-28-15-09-06-CST-2019"><a href="#Mon-Oct-28-15-09-06-CST-2019" class="headerlink" title="Mon Oct 28 15:09:06 CST 2019"></a>Mon Oct 28 15:09:06 CST 2019</h1><h2 id="idea-编译项目时，出现错误非法字符-65279"><a href="#idea-编译项目时，出现错误非法字符-65279" class="headerlink" title="idea 编译项目时，出现错误非法字符 \65279?"></a>idea 编译项目时，出现错误<code>非法字符 \65279</code>?</h2><ul>
-<li>IDEA导入项目出现\65279非法字符</li>
-<li>这个问题也是由于带BOM的UTF-8格式引起的，至少我遇到都是这样，一般在linux上和macos上导入项目会发生，可能是由于在windows上用一些软件编辑过文件导致的。解决办法也很简单，下面就说一下解决办法。</li>
-<li>比如说我将一个项目导入到idea发现报错了，可以使用命令行，首先进入src目录的同级目录：</li>
-<li>输入：vi</li>
-<li>输入：:args ./src/** 这里的**表示循环src下的所有文件夹</li>
-<li>输入：:ar 这一步可选，目的是查看当前添加了哪些目标文件</li>
-<li>输入：:argdo set nobomb | update! 这句意思是对args列表中的文件分别执行 set nobomb 然后强制保存</li>
-<li>以上就是步骤，这样就可以了。</li>
-</ul>
-<h1 id="Thu-Oct-31-10-11-40-CST-2019"><a href="#Thu-Oct-31-10-11-40-CST-2019" class="headerlink" title="Thu Oct 31 10:11:40 CST 2019"></a>Thu Oct 31 10:11:40 CST 2019</h1><h2 id="idea2019-2版本激活报错error-1653219"><a href="#idea2019-2版本激活报错error-1653219" class="headerlink" title="idea2019-2版本激活报错error 1653219?"></a>idea2019-2版本激活报错<code>error 1653219</code>?</h2><ol>
-<li>说法1：注释掉<code>/etc/hosts</code>文件里的<code>0.0.0.0 account.jetbrains.com</code>等信息,并添加<code>0.0.0.0 https://account.jetbrains.com:443</code>到hosts文件。</li>
-</ol>
-<h1 id="Thu-Nov-7-23-17-14-CST-2019"><a href="#Thu-Nov-7-23-17-14-CST-2019" class="headerlink" title="Thu Nov  7 23:17:14 CST 2019"></a>Thu Nov  7 23:17:14 CST 2019</h1><h2 id="常用的一些插件推荐"><a href="#常用的一些插件推荐" class="headerlink" title="常用的一些插件推荐"></a>常用的一些插件推荐</h2><ul>
-<li>FindBugs</li>
-<li>maven helper</li>
-<li>Rainbow brackets</li>
-<li>Key Promoter X</li>
-<li>GsonFormat</li>
-<li>RestfulToolkit</li>
-<li>Free Mybatis</li>
-</ul>
-<h1 id="Tue-Nov-12-13-30-31-CST-2019"><a href="#Tue-Nov-12-13-30-31-CST-2019" class="headerlink" title="Tue Nov 12 13:30:31 CST 2019"></a>Tue Nov 12 13:30:31 CST 2019</h1><h2 id="解决idea自动重置LanguageLevel和JavaCompiler版本的问题？"><a href="#解决idea自动重置LanguageLevel和JavaCompiler版本的问题？" class="headerlink" title="解决idea自动重置LanguageLevel和JavaCompiler版本的问题？"></a>解决idea自动重置LanguageLevel和JavaCompiler版本的问题？</h2><ul>
-<li>产生的原因：修改pom文件后，maven会自动修改编译器版本到maven的默认编译版本</li>
-<li>解决办法：修改pom文件，增加如下一段：<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-compiler-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.5.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">source</span>&gt;</span>1.8<span class="tag">&lt;/<span class="name">source</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">target</span>&gt;</span>1.8<span class="tag">&lt;/<span class="name">target</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-
+          <h4 id="什么叫同比和环比"><a href="#什么叫同比和环比" class="headerlink" title="什么叫同比和环比"></a>什么叫同比和环比</h4><p>同比是 <code>month-on-month</code> 翻译过来的；环比是 <code>year-on-yaer</code> 翻译过来的。</p>
+<p>环比可分为 <code>日环比、周环比、月环比和年环比。</code></p>
+<p>计算公式：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">环比增长率 = （本期数 - 上期数）/ 上期数 * 100%</span><br><span class="line">同比增长率 = （本期数 - 同期数）/ 同期数 * 100%</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/10/14/%E6%97%A5%E5%B8%B8%E7%94%9F%E6%B4%BB%E4%B8%AD%E7%9A%84%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1095,7 +1052,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/24/">24</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1163,20 +1120,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">177</span>
+          <span class="site-state-item-count">240</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">49</span>
+        <span class="site-state-item-count">60</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1203,7 +1160,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -1212,12 +1169,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">315k</span>
+    <span title="站点总字数">441k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:46</span>
+    <span title="站点阅读时长">6:41</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
@@ -1292,6 +1249,8 @@
 
 
 
+
+  
 
   
 

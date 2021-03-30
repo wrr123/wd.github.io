@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.0.2">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/002.jpg">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/002.jpg">
@@ -76,6 +76,7 @@
   </style>
 </noscript>
 
+<link rel="alternate" href="/atom.xml" title="一缕烟气" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -193,7 +194,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2020/09/15/git-add%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+    <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2021/02/25/%E8%BD%AF%E8%80%83-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%845/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -207,7 +208,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/09/15/git-add%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="post-title-link" itemprop="url">git-add正则表达式</a>
+            <a href="/2021/02/25/%E8%BD%AF%E8%80%83-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%845/" class="post-title-link" itemprop="url">软考-数据结构5</a>
         </h2>
 
         <div class="post-meta">
@@ -217,14 +218,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-09-15 14:31:37" itemprop="dateCreated datePublished" datetime="2020-09-15T14:31:37+08:00">2020-09-15</time>
+              <time title="创建时间：2021-02-25 09:50:26" itemprop="dateCreated datePublished" datetime="2021-02-25T09:50:26+08:00">2021-02-25</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-16 09:53:48" itemprop="dateModified" datetime="2020-09-16T09:53:48+08:00">2020-09-16</time>
+                <time title="修改时间：2021-03-02 20:28:52" itemprop="dateModified" datetime="2021-03-02T20:28:52+08:00">2021-03-02</time>
               </span>
 
           <br>
@@ -233,14 +234,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>160</span>
+              <span>2.6k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
+              <span>2 分钟</span>
             </span>
 
         </div>
@@ -252,13 +253,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h4 id="几个栗子"><a href="#几个栗子" class="headerlink" title="几个栗子"></a>几个栗子</h4><h5 id="从-Docuemnt-目录下或者其子目录下添加所有的-txt-文件"><a href="#从-Docuemnt-目录下或者其子目录下添加所有的-txt-文件" class="headerlink" title="从 Docuemnt 目录下或者其子目录下添加所有的 *.txt 文件"></a>从 <code>Docuemnt</code> 目录下或者其子目录下添加所有的 <code>*.txt</code> 文件</h5><p><code>git add Document/\*.txt</code></p>
-<p><strong>在这个栗子中，<code>*</code> 号是被引用的，这可以让命令包含 Document 的子文件夹下的内容</strong></p>
-<h5 id="添加所有的-git-sh-文件"><a href="#添加所有的-git-sh-文件" class="headerlink" title="添加所有的 git-*.sh 文件"></a>添加所有的 <code>git-*.sh</code> 文件</h5><p><code>git add git-*.sh</code></p>
-<p><strong>上面的栗子不考虑子文件夹下的内容，如 <code>subdir/git-foo.sh</code></strong></p>
+          <h4 id="图-最短路径"><a href="#图-最短路径" class="headerlink" title="图 - 最短路径"></a>图 - 最短路径</h4><p>最短路径有着广泛的应用，比如 <strong>地图两点间的距离计算，公交查询系统，路由选择等</strong>。</p>
+<h5 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h5><p>最短路径问题是图论研究中的一个经典算法问题，旨在寻找图（<strong>由结点和路径组成</strong>）中两结点之间的最短路径。最短路径不一定是经过边最少的路径，但在这些最短路径中，长度最短的那一条路径上只有一条边，且它的权值在从源点出发的所有边的权值最小。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2020/09/15/git-add%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/#more" rel="contents">
+              <a class="btn" href="/2021/02/25/%E8%BD%AF%E8%80%83-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%845/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -282,7 +281,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2020/09/15/css%E5%9B%9B%E4%B8%AA%E5%AE%9A%E4%BD%8D%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB/">
+    <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2021/02/24/%E8%BD%AF%E8%80%83-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%844/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -296,7 +295,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/09/15/css%E5%9B%9B%E4%B8%AA%E5%AE%9A%E4%BD%8D%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB/" class="post-title-link" itemprop="url">css四个定位之间的区别</a>
+            <a href="/2021/02/24/%E8%BD%AF%E8%80%83-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%844/" class="post-title-link" itemprop="url">软考-数据结构4</a>
         </h2>
 
         <div class="post-meta">
@@ -306,14 +305,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-09-15 09:56:53" itemprop="dateCreated datePublished" datetime="2020-09-15T09:56:53+08:00">2020-09-15</time>
+              <time title="创建时间：2021-02-24 17:14:33" itemprop="dateCreated datePublished" datetime="2021-02-24T17:14:33+08:00">2021-02-24</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-16 09:54:35" itemprop="dateModified" datetime="2020-09-16T09:54:35+08:00">2020-09-16</time>
+                <time title="修改时间：2021-03-02 20:28:52" itemprop="dateModified" datetime="2021-03-02T20:28:52+08:00">2021-03-02</time>
               </span>
 
           <br>
@@ -322,7 +321,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>286</span>
+              <span>520</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -341,29 +340,113 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h4 id="CSS-的四个定位"><a href="#CSS-的四个定位" class="headerlink" title="CSS 的四个定位"></a>CSS 的四个定位</h4><ul>
-<li><p>static</p>
-<p>  静态定位。没有定位，元素出现在正常的流中。(忽略 top、bottom、left、right 或者 z-index 声明)</p>
+          <h4 id="图-最小生成树"><a href="#图-最小生成树" class="headerlink" title="图 - 最小生成树"></a>图 - 最小生成树</h4><h5 id="相关名词"><a href="#相关名词" class="headerlink" title="相关名词"></a>相关名词</h5><ul>
+<li><p><code>连通图</code>：在无向图中，若任意两个顶点<code>Vi</code>与<code>Vj</code>都有路径相通，则称该无向图为连通图。</p>
 </li>
-<li><p>relative</p>
-<p>  相对定位。</p>
-<p>  生成相对定位的元素，通过 top、bottom、left、right 的设置相对其 <strong>正常（原先本身）</strong> 位置进行定位。可通过 z-index 进行层次分级。</p>
+<li><p><code>强连通图</code>：在有向图中，若任意两个顶点<code>Vi</code>与<code>Vj</code>都有路径相通，则称该 <strong>有向图</strong> 为 <strong>强连通图</strong>。</p>
 </li>
-<li><p>absolute</p>
-<p>  绝对定位。生成绝对定位的元素，相对于 static 定位以外的第一个 <strong>父元素</strong> 进行定位。</p>
+<li><p><code>连通网</code>：在连通图中，若图的边具有一定的意义，每一条边都对应着一个数，称为 <strong>权</strong>；权代表着连接两个顶点的代价，这种 <strong>连通图</strong> 被称为 <strong>连通网</strong>。</p>
 </li>
-<li><p>fixed</p>
-<p>  固定定位。生成绝对定位的元素，相对于 <strong>浏览器窗口</strong> 进行定位。</p>
+<li><p><code>生成树</code>：一个连通网的生成树是指一个子连通网，它包含图中全部 n 个顶点，但只有足以构成一棵树的 <code>n - 1</code> 条边。</p>
+<p>一棵有 n 个顶点的生成树有且仅有 <code>n - 1</code> 条边，如果生成树中再添加一条边，则必定成环。</p>
+</li>
+<li><p><code>最小生成树</code>：在连通网的所有生成树中，所有边的 <strong>代价和最小</strong> 的生成树，称为最小生成树。</p>
 </li>
 </ul>
-<h4 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h4><ol>
-<li><p>relative</p>
-<p> 定位为 relative 的元素，脱离正常的文本流中，但其在 <strong>文本流中的位置依然存在。</strong></p>
-</li>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/02/24/%E8%BD%AF%E8%80%83-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%844/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2021/02/23/%E8%BD%AF%E8%80%83-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%843/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="田园隐士">
+      <meta itemprop="description" content="talk is cheap, show me the code">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一缕烟气">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/02/23/%E8%BD%AF%E8%80%83-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%843/" class="post-title-link" itemprop="url">软考-数据结构3</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-02-23 09:22:33" itemprop="dateCreated datePublished" datetime="2021-02-23T09:22:33+08:00">2021-02-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-03-02 20:28:52" itemprop="dateModified" datetime="2021-03-02T20:28:52+08:00">2021-03-02</time>
+              </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.6k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="树"><a href="#树" class="headerlink" title="树"></a>树</h4><h5 id="红黑树"><a href="#红黑树" class="headerlink" title="红黑树"></a>红黑树</h5><p>它（<code>Red Black Tree</code>）是一种自平衡二叉查找树，是在计算机科学中用到的一种数据结构，典型的用途是实现关联数组，是平衡二叉树和<code>AVL</code>树的折中。</p>
+<h6 id="红黑树与AVL树的比较："><a href="#红黑树与AVL树的比较：" class="headerlink" title="红黑树与AVL树的比较："></a>红黑树与AVL树的比较：</h6><ol>
+<li>AVL树的时间复杂度虽然优于红黑树，但是对于现在的计算机，cpu太快，可以忽略性能差异；</li>
+<li>红黑树的插入删除比AVL树更便于控制操作；</li>
+<li>红黑树的整体性能略优于AVL树（红黑树旋转情况少于AVL树）</li>
 </ol>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2020/09/15/css%E5%9B%9B%E4%B8%AA%E5%AE%9A%E4%BD%8D%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB/#more" rel="contents">
+              <a class="btn" href="/2021/02/23/%E8%BD%AF%E8%80%83-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%843/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -387,7 +470,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2020/09/13/java%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/">
+    <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2021/02/22/%E8%BD%AF%E8%80%83-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%842/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -401,7 +484,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/09/13/java%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/" class="post-title-link" itemprop="url">java分布式系统</a>
+            <a href="/2021/02/22/%E8%BD%AF%E8%80%83-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%842/" class="post-title-link" itemprop="url">软考-数据结构2</a>
         </h2>
 
         <div class="post-meta">
@@ -411,14 +494,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-09-13 13:22:59" itemprop="dateCreated datePublished" datetime="2020-09-13T13:22:59+08:00">2020-09-13</time>
+              <time title="创建时间：2021-02-22 09:36:18" itemprop="dateCreated datePublished" datetime="2021-02-22T09:36:18+08:00">2021-02-22</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-14 09:52:11" itemprop="dateModified" datetime="2020-09-14T09:52:11+08:00">2020-09-14</time>
+                <time title="修改时间：2021-03-02 20:28:52" itemprop="dateModified" datetime="2021-03-02T20:28:52+08:00">2021-03-02</time>
               </span>
 
           <br>
@@ -427,7 +510,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>112</span>
+              <span>811</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -446,11 +529,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h4 id="什么叫分布式系统"><a href="#什么叫分布式系统" class="headerlink" title="什么叫分布式系统"></a>什么叫分布式系统</h4><p>分布式系统是一组通过网络进行通信、为了完成共同的任务而协调工作的计算机节点组成的系统。</p>
-<p>分布式系统的出现是为了用廉价的、普通的机器完成单个计算机无法完成的计算、存储任务。其目的是 <strong>利用更多的机器，处理更多的数据。</strong></p>
+          <h4 id="数据结构基础知识系统性梳理"><a href="#数据结构基础知识系统性梳理" class="headerlink" title="数据结构基础知识系统性梳理"></a>数据结构基础知识系统性梳理</h4><p><img src="http://wrr123.github.io/2021/02/22/%E8%BD%AF%E8%80%83-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%842/001.png" alt></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2020/09/13/java%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/#more" rel="contents">
+              <a class="btn" href="/2021/02/22/%E8%BD%AF%E8%80%83-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%842/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -474,7 +556,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2020/09/10/vue%E4%B9%8Binject%E7%9A%84%E7%94%A8%E6%B3%95/">
+    <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2021/02/20/%E8%BD%AF%E8%80%83-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%841/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -488,88 +570,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/09/10/vue%E4%B9%8Binject%E7%9A%84%E7%94%A8%E6%B3%95/" class="post-title-link" itemprop="url">vue之inject的用法</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-09-10 14:12:41 / 修改时间：14:20:51" itemprop="dateCreated datePublished" datetime="2020-09-10T14:12:41+08:00">2020-09-10</time>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.6k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><p>inject 选项可以是：一个字符串数组、或一个对象，对象的 key 是本地的绑定名，value 是在可用的注入内容中搜索用的 key(字符串 或 Symbol)。</p>
-<p><strong>使用场景：由于 Vue 有 $parent 属性可以让子组件访问父组件，但是孙组件想要访问祖先组件就比较困难。通过 provide/inject 可以轻松实现跨级访问祖先组件的数据。</strong></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/09/10/vue%E4%B9%8Binject%E7%9A%84%E7%94%A8%E6%B3%95/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2020/09/09/vue%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="田园隐士">
-      <meta itemprop="description" content="talk is cheap, show me the code">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一缕烟气">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/09/vue%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/" class="post-title-link" itemprop="url">vue数据存储</a>
+            <a href="/2021/02/20/%E8%BD%AF%E8%80%83-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%841/" class="post-title-link" itemprop="url">软考-数据结构1</a>
         </h2>
 
         <div class="post-meta">
@@ -579,14 +580,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-09-09 15:14:41" itemprop="dateCreated datePublished" datetime="2020-09-09T15:14:41+08:00">2020-09-09</time>
+              <time title="创建时间：2021-02-20 09:35:11" itemprop="dateCreated datePublished" datetime="2021-02-20T09:35:11+08:00">2021-02-20</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-11 11:18:23" itemprop="dateModified" datetime="2020-09-11T11:18:23+08:00">2020-09-11</time>
+                <time title="修改时间：2021-03-02 20:28:52" itemprop="dateModified" datetime="2021-03-02T20:28:52+08:00">2021-03-02</time>
               </span>
 
           <br>
@@ -614,14 +615,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h4 id="localStorage-和-SessionStorage-的区别"><a href="#localStorage-和-SessionStorage-的区别" class="headerlink" title="localStorage 和 SessionStorage 的区别"></a>localStorage 和 SessionStorage 的区别</h4><ul>
-<li>localStorage 没有时间限制的数据存储</li>
-<li>sessionStorage 针对一个 session 的数据存储(关闭窗口，存储的数据清空)</li>
-</ul>
-<p>都是存储在浏览器端的</p>
+          <h4 id="线性数据结构"><a href="#线性数据结构" class="headerlink" title="线性数据结构"></a>线性数据结构</h4><h5 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h5><p>它是一种很常见的数据结构，它由相同类型的元素组成，并且是使用一块连续的内存来存储。</p>
+<p>我们可以直接利用元素的索引（index）来计算出该元素对应的存储地址。</p>
+<p>它的特点：<span style="color:red;">提供随机访问且容量有限。</span></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2020/09/09/vue%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/#more" rel="contents">
+              <a class="btn" href="/2021/02/20/%E8%BD%AF%E8%80%83-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%841/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -645,7 +644,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2020/09/08/vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E9%92%A9%E5%AD%90/">
+    <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2021/02/19/%E8%BD%AF%E8%80%83-uml%E6%B5%81%E7%A8%8B%E5%9B%BE2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -659,7 +658,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/09/08/vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E9%92%A9%E5%AD%90/" class="post-title-link" itemprop="url">vue生命周期钩子</a>
+            <a href="/2021/02/19/%E8%BD%AF%E8%80%83-uml%E6%B5%81%E7%A8%8B%E5%9B%BE2/" class="post-title-link" itemprop="url">软考-uml流程图2</a>
         </h2>
 
         <div class="post-meta">
@@ -669,14 +668,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-09-08 10:48:16" itemprop="dateCreated datePublished" datetime="2020-09-08T10:48:16+08:00">2020-09-08</time>
+              <time title="创建时间：2021-02-19 13:45:08" itemprop="dateCreated datePublished" datetime="2021-02-19T13:45:08+08:00">2021-02-19</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-20 13:58:45" itemprop="dateModified" datetime="2020-10-20T13:58:45+08:00">2020-10-20</time>
+                <time title="修改时间：2021-03-02 20:28:52" itemprop="dateModified" datetime="2021-03-02T20:28:52+08:00">2021-03-02</time>
               </span>
 
           <br>
@@ -685,7 +684,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>627</span>
+              <span>792</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -704,10 +703,33 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h4 id="生命周期图示"><a href="#生命周期图示" class="headerlink" title="生命周期图示"></a>生命周期图示</h4><p><img src="http://wrr123.github.io/2020/09/08/vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E9%92%A9%E5%AD%90/lifecycle.png"></p>
+          <h4 id="业务流程图"><a href="#业务流程图" class="headerlink" title="业务流程图"></a>业务流程图</h4><h5 id="人员和流程图之间的关系"><a href="#人员和流程图之间的关系" class="headerlink" title="人员和流程图之间的关系"></a>人员和流程图之间的关系</h5><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">人员</th>
+<th style="text-align:center">流程图类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">产品、开发</td>
+<td style="text-align:center">业务流程图</td>
+</tr>
+<tr>
+<td style="text-align:center">交互设计师</td>
+<td style="text-align:center">页面流程图</td>
+</tr>
+<tr>
+<td style="text-align:center">系统分析师</td>
+<td style="text-align:center">数据流程图</td>
+</tr>
+</tbody>
+</table>
+</div>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2020/09/08/vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E9%92%A9%E5%AD%90/#more" rel="contents">
+              <a class="btn" href="/2021/02/19/%E8%BD%AF%E8%80%83-uml%E6%B5%81%E7%A8%8B%E5%9B%BE2/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -731,7 +753,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2020/09/08/Transactional%E6%B3%A8%E8%A7%A3%E8%AF%A6%E8%A7%A3/">
+    <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2021/02/18/%E8%BD%AF%E8%80%83-uml%E6%B5%81%E7%A8%8B%E5%9B%BE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -745,264 +767,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/09/08/Transactional%E6%B3%A8%E8%A7%A3%E8%AF%A6%E8%A7%A3/" class="post-title-link" itemprop="url">@Transactional注解详解</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-09-08 10:03:28 / 修改时间：10:24:14" itemprop="dateCreated datePublished" datetime="2020-09-08T10:03:28+08:00">2020-09-08</time>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>592</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>明确下面两点：</p>
-<ol>
-<li>默认配置下，Spring 只会回滚运行时、未检查异常（继承自 RuntimeException 的异常）或者 Error 。</li>
-<li><code>@Transactional</code> 注解只能应用到 public 才有效。</li>
-</ol>
-<h4 id="有些情况下，-Transactional-注解不能回滚事务的问题？"><a href="#有些情况下，-Transactional-注解不能回滚事务的问题？" class="headerlink" title="有些情况下，@Transactional 注解不能回滚事务的问题？"></a>有些情况下，@Transactional 注解不能回滚事务的问题？</h4><p>可能的一些原因：</p>
-<ol>
-<li>检查你的方法是不是 public 的</li>
-<li>你的异常类型是不是 unchecked 异常<br>如果你的 check 异常也想回滚，那么在注解上面写明异常类型即可。<br><code>@Transactional(rollbackFor = Exception.class)</code></li>
-<li>数据库引擎要支持事务，如果是 mysql， 注意表要使用支持事务的引擎，比如 innodb， 如果是 myisam，事务是不起作用的。</li>
-<li>是否开启了注解的解析<br><code>&lt;tx:annotation-driven transaction-manager=&quot;transactionManager&quot; proxy-target-class=&quot;true&quot;/&gt;</code></li>
-<li>spring 是否扫描到你的这个包，<br>如下是扫描到 <code>org.test</code> 下面的包<br><code>&lt;context:component-scan base-package=&quot;org.test&quot; &gt;&lt;/context:component-scan&gt;</code></li>
-<li>检查是不是同一个类中的方法调用 </li>
-<li>异常是不是被你 catch 住了</li>
-</ol>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/09/08/Transactional%E6%B3%A8%E8%A7%A3%E8%AF%A6%E8%A7%A3/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2020/09/07/macOS%E6%96%87%E4%BB%B6%E7%BC%96%E7%A0%81%E8%BD%AC%E6%8D%A2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="田园隐士">
-      <meta itemprop="description" content="talk is cheap, show me the code">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一缕烟气">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/07/macOS%E6%96%87%E4%BB%B6%E7%BC%96%E7%A0%81%E8%BD%AC%E6%8D%A2/" class="post-title-link" itemprop="url">macOS文件编码转换</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-09-07 12:47:44 / 修改时间：13:16:23" itemprop="dateCreated datePublished" datetime="2020-09-07T12:47:44+08:00">2020-09-07</time>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>259</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="查看文件编码"><a href="#查看文件编码" class="headerlink" title="查看文件编码"></a>查看文件编码</h4><ol>
-<li>在 Vim 中可以直接查看文件编码</li>
-<li><code>ecna</code> 命令查看文件编码</li>
-<li><code>file</code> 命令查看文件编码</li></ol>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/09/07/macOS%E6%96%87%E4%BB%B6%E7%BC%96%E7%A0%81%E8%BD%AC%E6%8D%A2/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2020/09/07/oracle%E6%96%B0%E5%BB%BA%E8%A1%A8%E7%A9%BA%E9%97%B4%E5%92%8C%E7%94%A8%E6%88%B7/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="田园隐士">
-      <meta itemprop="description" content="talk is cheap, show me the code">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一缕烟气">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/07/oracle%E6%96%B0%E5%BB%BA%E8%A1%A8%E7%A9%BA%E9%97%B4%E5%92%8C%E7%94%A8%E6%88%B7/" class="post-title-link" itemprop="url">oracle新建表空间和用户</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-09-07 10:44:38 / 修改时间：13:16:20" itemprop="dateCreated datePublished" datetime="2020-09-07T10:44:38+08:00">2020-09-07</time>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>544</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="表空间"><a href="#表空间" class="headerlink" title="表空间"></a>表空间</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 创建表空间</span><br><span class="line">create database $&#123;tableSpace&#125;</span><br><span class="line">&#x2F;&#x2F; 指定表空间物理文件位置</span><br><span class="line">datafile &#39;$&#123;path&#x2F;dataFileName&#125;&#39;</span><br><span class="line">&#x2F;&#x2F; 大小</span><br><span class="line">size 50M autoextend on next 5M maxsize unlimited;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/09/07/oracle%E6%96%B0%E5%BB%BA%E8%A1%A8%E7%A9%BA%E9%97%B4%E5%92%8C%E7%94%A8%E6%88%B7/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2020/09/05/axios%E4%B8%8Eajax%E6%AF%94%E8%BE%83/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="田园隐士">
-      <meta itemprop="description" content="talk is cheap, show me the code">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一缕烟气">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/05/axios%E4%B8%8Eajax%E6%AF%94%E8%BE%83/" class="post-title-link" itemprop="url">axios与ajax比较</a>
+            <a href="/2021/02/18/%E8%BD%AF%E8%80%83-uml%E6%B5%81%E7%A8%8B%E5%9B%BE/" class="post-title-link" itemprop="url">软考-uml流程图</a>
         </h2>
 
         <div class="post-meta">
@@ -1012,14 +777,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-09-05 10:21:36" itemprop="dateCreated datePublished" datetime="2020-09-05T10:21:36+08:00">2020-09-05</time>
+              <time title="创建时间：2021-02-18 11:23:01" itemprop="dateCreated datePublished" datetime="2021-02-18T11:23:01+08:00">2021-02-18</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-11-11 13:50:15" itemprop="dateModified" datetime="2020-11-11T13:50:15+08:00">2020-11-11</time>
+                <time title="修改时间：2021-03-09 21:32:05" itemprop="dateModified" datetime="2021-03-09T21:32:05+08:00">2021-03-09</time>
               </span>
 
           <br>
@@ -1028,7 +793,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>144</span>
+              <span>351</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -1047,20 +812,278 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h4 id="什么叫-axios"><a href="#什么叫-axios" class="headerlink" title="什么叫 axios"></a>什么叫 axios</h4><p>Axios 是一个基于 promise 的 HTTP库，可以用在浏览器和 node.js 中。</p>
-<h5 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h5><ul>
-<li>从浏览器中创建 <code>XMLHttpRequests</code></li>
-<li>从 node.js 创建 http 请求</li>
-<li>支持 Promise API</li>
-<li>拦截请求和响应</li>
-<li>转换请求数据和响应数据</li>
-<li>取消请求</li>
-<li>自动转换 JSON 数据</li>
-<li>客户端支持防御 XSRF</li>
+          <h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><p>流程，flow，是指特定主体为了满足特定需求而进行的有特定逻辑关系的一系列操作，流程是自然而然就存在的。</p>
+<p>图，chart或diagram，是将基本固化有一定规律的流程进行显性化和书面化，从而有利于传播和沉淀、流程重组参考。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/02/18/%E8%BD%AF%E8%80%83-uml%E6%B5%81%E7%A8%8B%E5%9B%BE/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2021/02/05/%E5%8A%9B%E6%89%A3-%E5%B0%BD%E5%8F%AF%E8%83%BD%E4%BD%BF%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E7%AD%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="田园隐士">
+      <meta itemprop="description" content="talk is cheap, show me the code">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一缕烟气">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/02/05/%E5%8A%9B%E6%89%A3-%E5%B0%BD%E5%8F%AF%E8%83%BD%E4%BD%BF%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E7%AD%89/" class="post-title-link" itemprop="url">力扣-尽可能使字符串相等</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-02-05 10:45:25" itemprop="dateCreated datePublished" datetime="2021-02-05T10:45:25+08:00">2021-02-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-02-18 21:27:21" itemprop="dateModified" datetime="2021-02-18T21:27:21+08:00">2021-02-18</time>
+              </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>361</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="题目（what）"><a href="#题目（what）" class="headerlink" title="题目（what）"></a>题目（what）</h4><p>给你两个长度相同的字符串: <code>s</code> 和 <code>t</code>。</p>
+<p>将 <code>s</code> 中的第 <code>i</code> 个字符变到 <code>t</code> 中的第 <code>i</code> 个字符需要 <code>|s[i] - t[i]|</code> 的开销（开销可能为 <code>0</code>），也就是两个字符的 <code>ASCII</code> 码值的差的绝对值。</p>
+<p>用于变更字符串的最大预算为 <code>maxCost</code>。在转化字符串时，总开销应当小于等于该预算，这也意味着字符串的转化可能是不完全的。</p>
+<p>如果你可以将 <code>s</code> 的子字符串转化为它在 <code>t</code> 中对应的子字符串，则返回可以转化的最大长度。</p>
+<p>如果 <code>s</code> 中没有子字符串可以转化为 <code>t</code> 中对应的子字符串，则返回 <code>0</code>。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/02/05/%E5%8A%9B%E6%89%A3-%E5%B0%BD%E5%8F%AF%E8%83%BD%E4%BD%BF%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E7%AD%89/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2021/02/04/%E5%8A%9B%E6%89%A3-%E5%8D%95%E8%AF%8D%E9%A2%91%E7%8E%87/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="田园隐士">
+      <meta itemprop="description" content="talk is cheap, show me the code">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一缕烟气">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/02/04/%E5%8A%9B%E6%89%A3-%E5%8D%95%E8%AF%8D%E9%A2%91%E7%8E%87/" class="post-title-link" itemprop="url">力扣-单词频率</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-02-04 13:39:19" itemprop="dateCreated datePublished" datetime="2021-02-04T13:39:19+08:00">2021-02-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-02-18 21:27:21" itemprop="dateModified" datetime="2021-02-18T21:27:21+08:00">2021-02-18</time>
+              </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>139</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="题目（what）"><a href="#题目（what）" class="headerlink" title="题目（what）"></a>题目（what）</h4><p>设计一个方法，找出任意指定单词在一本书中的出现频率。</p>
+<p>你的实现应该支持如下操作：</p>
+<ul>
+<li><code>WordsFrequency(book)</code> 构造函数，参数为字符串数组构成的一本书</li>
+<li><code>get(word)</code> 查询指定单词在书中出现的频率</li>
 </ul>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2020/09/05/axios%E4%B8%8Eajax%E6%AF%94%E8%BE%83/#more" rel="contents">
+              <a class="btn" href="/2021/02/04/%E5%8A%9B%E6%89%A3-%E5%8D%95%E8%AF%8D%E9%A2%91%E7%8E%87/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wrr123.github.io/2021/02/01/%E5%8A%9B%E6%89%A3-%E7%A4%BC%E7%89%A9%E7%9A%84%E6%9C%80%E5%A4%A7%E4%BB%B7%E5%80%BC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="田园隐士">
+      <meta itemprop="description" content="talk is cheap, show me the code">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一缕烟气">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/02/01/%E5%8A%9B%E6%89%A3-%E7%A4%BC%E7%89%A9%E7%9A%84%E6%9C%80%E5%A4%A7%E4%BB%B7%E5%80%BC/" class="post-title-link" itemprop="url">力扣-礼物的最大价值</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-02-01 13:35:44" itemprop="dateCreated datePublished" datetime="2021-02-01T13:35:44+08:00">2021-02-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-02-18 21:27:21" itemprop="dateModified" datetime="2021-02-18T21:27:21+08:00">2021-02-18</time>
+              </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>132</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="题目（what）"><a href="#题目（what）" class="headerlink" title="题目（what）"></a>题目（what）</h4><p>在一个 <code>m * n</code> 的期盼的每一格都放有一个礼物，每个礼物都有一定的价值（价值大于 <code>0</code>）。你可以从棋盘的左上角拿格子里的礼物，并每次向右或向下移动一格、直到到达棋盘的右下角。给定一个棋盘及其上卖弄的礼物的价值，请计算你最多能拿到多少价值的礼物？</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/02/01/%E5%8A%9B%E6%89%A3-%E7%A4%BC%E7%89%A9%E7%9A%84%E6%9C%80%E5%A4%A7%E4%BB%B7%E5%80%BC/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1083,7 +1106,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/24/">24</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1151,20 +1174,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">177</span>
+          <span class="site-state-item-count">240</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">49</span>
+        <span class="site-state-item-count">60</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1191,7 +1214,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -1200,12 +1223,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">315k</span>
+    <span title="站点总字数">441k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:46</span>
+    <span title="站点阅读时长">6:41</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
@@ -1280,6 +1303,8 @@
 
 
 
+
+  
 
   
 

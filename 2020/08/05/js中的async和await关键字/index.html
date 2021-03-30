@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.0.2">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/002.jpg">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/002.jpg">
@@ -79,6 +79,7 @@
   </style>
 </noscript>
 
+<link rel="alternate" href="/atom.xml" title="一缕烟气" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -269,21 +270,16 @@
 <ul>
 <li>在本轮 <code>事件循环</code> 运行完成之前，回调函数是不会被调用的。</li>
 <li>即使异步操作已经完成（成功或者失败），在这之后通过 <code>then()</code> 添加的函数也会被调用。</li>
-<li>通过多次调用 <code>then()</code> 可以添加多个回调函数，它们会按照插入顺序依次执行。</li>
+<li>通过多次调用 <code>then()</code> 可以添加多个回调函数，它们会按照插入顺序依次执行。<br><em>Promise 很棒的一点就是 <code>链式调用</code></em></li>
 </ul>
-<p><em>Promise 很棒的一点就是 <code>链式调用</code></em></p>
 <h6 id="老式传入-回调-函数的改造"><a href="#老式传入-回调-函数的改造" class="headerlink" title="老式传入 回调 函数的改造"></a>老式传入 <code>回调</code> 函数的改造</h6><ol>
 <li>setTimeout(function() {…}, 1000)<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> wait = <span class="function"><span class="params">ms</span> =&gt;</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> <span class="built_in">setTimeout</span>(resolve, ms))</span><br><span class="line">wait(<span class="number">1000</span>).then(<span class="function">() =&gt;</span> saySomething(<span class="string">&#x27;10 seconds&#x27;</span>)).catch(failureCallback)</span><br></pre></td></tr></table></figure>
-
 </li>
 </ol>
 <h5 id="组合"><a href="#组合" class="headerlink" title="组合"></a>组合</h5><p><code>Promise.resolve()</code> 和 <code>Promise.reject()</code> 是手动创建一个已经 resolve 或者 reject 的 Promise 快捷方法。</p>
 <p><code>Promise.all()</code> 和 <code>Promise.race()</code> 是并行运行异步操作的两个组合式工具。</p>
-<p>通常，我们递归调用一个由异步函数组成的数组时，相当于一个 Promise 链。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[func1, func2, func3].reduce(<span class="function">(<span class="params">p, f</span>) =&gt;</span> p.then(f), <span class="built_in">Promise</span>.resolve())</span><br><span class="line">.then(<span class="function"><span class="params">result3</span> =&gt;</span> &#123; <span class="comment">/* use result3 */</span> &#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">Promise</span>.resolve().then(func1).then(func2).then(func3);</span><br></pre></td></tr></table></figure>
-
+<p>通常，我们递归调用一个由异步函数组成的数组时，相当于一个 Promise 链。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[func1, func2, func3].reduce(<span class="function">(<span class="params">p, f</span>) =&gt;</span> p.then(f), <span class="built_in">Promise</span>.resolve())</span><br><span class="line">.then(<span class="function"><span class="params">result3</span> =&gt;</span> &#123; <span class="comment">/* use result3 */</span> &#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">Promise</span>.resolve().then(func1).then(func2).then(func3);</span><br></pre></td></tr></table></figure></p>
 <h5 id="promise对象的基本语法"><a href="#promise对象的基本语法" class="headerlink" title="promise对象的基本语法"></a>promise对象的基本语法</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">//.....</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
 <h4 id="async-await起到什么作用"><a href="#async-await起到什么作用" class="headerlink" title="async/await起到什么作用"></a>async/await起到什么作用</h4><blockquote>
 <p><code>async/await</code>从字面意思上很好理解，<code>async</code>是异步的意思，<code>await</code>有等待的意思，而两者的用法上也是如此。<code>async</code>用于申明一个<code>function</code>是异步的，而<code>await</code> 用于等待一个异步方法执行完成。</p>
 </blockquote>
@@ -291,12 +287,10 @@
 <li>用try-catch来做错误捕捉</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">myFunction</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">await</span> <span class="built_in">Promise</span>.reject(<span class="string">&#x27;1&#x27;</span>);</span><br><span class="line">  &#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(err);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">myFunction(); <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>用promise的catch来做错误捕捉</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">myFunction</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">await</span> <span class="built_in">Promise</span>.reject(<span class="string">&#x27;1&#x27;</span>).catch(<span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(err);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line">myFunction(); <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
-
 <h4 id="js中的解构赋值"><a href="#js中的解构赋值" class="headerlink" title="js中的解构赋值"></a>js中的解构赋值</h4><p><strong>解构赋值</strong>语法是一种JavaScript表达式。通过 <strong>解构赋值</strong>，可以将属性/值从对象/数组中取出，来赋值给其他的变量。</p>
 
     </div>
@@ -304,6 +298,25 @@
     
     
     
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
 
       <footer class="post-footer">
           <div class="post-tags">
@@ -397,20 +410,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">177</span>
+          <span class="site-state-item-count">240</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">49</span>
+        <span class="site-state-item-count">60</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -437,7 +450,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -446,12 +459,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">315k</span>
+    <span title="站点总字数">441k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:46</span>
+    <span title="站点阅读时长">6:41</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
@@ -526,6 +539,8 @@
 
 
 
+
+  
 
   
 

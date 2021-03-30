@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.0.2">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/002.jpg">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/002.jpg">
@@ -22,12 +22,12 @@
     var CONFIG = {"hostname":"wrr123.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="使用freemarker的基本语法$&amp;#123;变量名称&amp;#125; 12var fileId &#x3D; &amp;#x27;$&amp;#123;fileId&amp;#125;&amp;#x27;var fileId &#x3D; &amp;#x27;$&amp;#123;fileId?js_string&amp;#125;&amp;#x27;  和在html标签中使用是一样的 在html界面中引入的javascript文件中是不行的，必须在html本页面上内联的java">
+  <meta name="description" content="使用freemarker的基本语法$&amp;#123;变量名称&amp;#125; 12var fileId &#x3D; &amp;#x27;$&amp;#123;fileId&amp;#125;&amp;#x27;var fileId &#x3D; &amp;#x27;$&amp;#123;fileId?js_string&amp;#125;&amp;#x27; 和在html标签中使用是一样的 在html界面中引入的javascript文件中是不行的，必须在html本页面上内联的javas">
 <meta property="og:type" content="article">
 <meta property="og:title" content="freemarker之html页面传参">
 <meta property="og:url" content="https://wrr123.github.io/2020/07/02/freemarker%E4%B9%8Bhtml%E9%A1%B5%E9%9D%A2%E4%BC%A0%E5%8F%82/index.html">
 <meta property="og:site_name" content="一缕烟气">
-<meta property="og:description" content="使用freemarker的基本语法$&amp;#123;变量名称&amp;#125; 12var fileId &#x3D; &amp;#x27;$&amp;#123;fileId&amp;#125;&amp;#x27;var fileId &#x3D; &amp;#x27;$&amp;#123;fileId?js_string&amp;#125;&amp;#x27;  和在html标签中使用是一样的 在html界面中引入的javascript文件中是不行的，必须在html本页面上内联的java">
+<meta property="og:description" content="使用freemarker的基本语法$&amp;#123;变量名称&amp;#125; 12var fileId &#x3D; &amp;#x27;$&amp;#123;fileId&amp;#125;&amp;#x27;var fileId &#x3D; &amp;#x27;$&amp;#123;fileId?js_string&amp;#125;&amp;#x27; 和在html标签中使用是一样的 在html界面中引入的javascript文件中是不行的，必须在html本页面上内联的javas">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://wrr123.github.io/2020/07/02/freemarker%E4%B9%8Bhtml%E9%A1%B5%E9%9D%A2%E4%BC%A0%E5%8F%82/22.png">
 <meta property="og:image" content="http://wrr123.github.io/2020/07/02/freemarker%E4%B9%8Bhtml%E9%A1%B5%E9%9D%A2%E4%BC%A0%E5%8F%82/11.png">
@@ -82,6 +82,7 @@
   </style>
 </noscript>
 
+<link rel="alternate" href="/atom.xml" title="一缕烟气" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -276,11 +277,10 @@
       
         <h5 id="使用freemarker的基本语法"><a href="#使用freemarker的基本语法" class="headerlink" title="使用freemarker的基本语法"></a>使用freemarker的基本语法</h5><p><code>$&#123;变量名称&#125;</code></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fileId = <span class="string">&#x27;$&#123;fileId&#125;&#x27;</span></span><br><span class="line"><span class="keyword">var</span> fileId = <span class="string">&#x27;$&#123;fileId?js_string&#125;&#x27;</span></span><br></pre></td></tr></table></figure>
-
 <p><strong>和在html标签中使用是一样的</strong></p>
 <p><strong>在html界面中引入的javascript文件中是不行的，必须在html本页面上内联的javascript语句中执行</strong></p>
-<p><img src="http://wrr123.github.io/2020/07/02/freemarker%E4%B9%8Bhtml%E9%A1%B5%E9%9D%A2%E4%BC%A0%E5%8F%82/22.png"></p>
-<p><img src="http://wrr123.github.io/2020/07/02/freemarker%E4%B9%8Bhtml%E9%A1%B5%E9%9D%A2%E4%BC%A0%E5%8F%82/11.png"></p>
+<p><img src="http://wrr123.github.io/2020/07/02/freemarker%E4%B9%8Bhtml%E9%A1%B5%E9%9D%A2%E4%BC%A0%E5%8F%82/22.png" alt></p>
+<p><img src="http://wrr123.github.io/2020/07/02/freemarker%E4%B9%8Bhtml%E9%A1%B5%E9%9D%A2%E4%BC%A0%E5%8F%82/11.png" alt></p>
 <p>若在上面的<code>initStockDetails.js</code>文件中，使用freemarker的语法是不生效的。</p>
 
     </div>
@@ -288,6 +288,25 @@
     
     
     
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
 
       <footer class="post-footer">
           <div class="post-tags">
@@ -381,20 +400,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">177</span>
+          <span class="site-state-item-count">240</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">49</span>
+        <span class="site-state-item-count">60</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -421,7 +440,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -430,12 +449,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">315k</span>
+    <span title="站点总字数">441k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:46</span>
+    <span title="站点阅读时长">6:41</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
@@ -510,6 +529,8 @@
 
 
 
+
+  
 
   
 

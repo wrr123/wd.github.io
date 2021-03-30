@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.0.2">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/002.jpg">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/002.jpg">
@@ -80,6 +80,7 @@
   </style>
 </noscript>
 
+<link rel="alternate" href="/atom.xml" title="一缕烟气" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -258,8 +259,7 @@
 
       
         <h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>Quartz 是基于 Spring 框架之上的更加强大的定时器，它不仅可以实现其他定时器(如 Java 定时器，Soring 定时器)的功能，还实现了非常繁复的时间触发执行的任务， Quartz 有两种方式来调度定时任务，一是使用 Spring 提供的 MethodInvokingJobDetailFactoryBean 代理类，Quartz 通过该代理直接调度任务类的某个函数；二是任务类继承 QuartzJobBean 类或者实现 org.quatrz.Job 接口，Quartz 通过该父类或者接口进行调度。</p>
-<a id="more"></a>
-
+<span id="more"></span>
 <h4 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h4><ul>
 <li>基于 XML 文件的方式</li>
 <li>基于注解的方式</li>
@@ -276,6 +276,7 @@
 <p>使用<code>CronTrigger</code>主要的是要掌握<code>Cron</code>表达式。<code>Cron</code>表达式包含6个必要组件和一个可选组件，如下表所示。</p>
 <p>Cron 表达式是由 7个子表达式组成的字符串，描述了时间表的详细信息。<br>格式：[秒] [分] [小时] [日] [月] [周] [年]</p>
 </blockquote>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -284,7 +285,8 @@
 <th>允许的特殊字符</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>1</td>
 <td>秒（0~59）</td>
 <td>, - * /</td>
@@ -306,12 +308,12 @@
 </tr>
 <tr>
 <td>5</td>
-<td>月（JAN<del>DEC或1</del>12）</td>
+<td>月（JAN~DEC或1~12）</td>
 <td>, - * /</td>
 </tr>
 <tr>
 <td>6</td>
-<td>星期（SUN<del>SAT或1</del>7）</td>
+<td>星期（SUN~SAT或1~7）</td>
 <td>, - * / ? L C #</td>
 </tr>
 <tr>
@@ -319,8 +321,11 @@
 <td>年（可选，1970~2099），若为空，表示全部时间范围</td>
 <td>, - * /</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p>特殊字符含义：</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -328,7 +333,8 @@
 <th>说 明</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>*</td>
 <td>通配符，任意值</td>
 </tr>
@@ -364,13 +370,34 @@
 <td>C</td>
 <td>日历值。日期值是根据一个给定的日历计算出来的。在日期域中给定一个20C将在20日（日历包括20日）或20日后日历中包含的第一天（不包括20日）激活触发器。例如在一个星期域中使用6C表示日历中星期五（日历包括星期五）或者第一天（日历不包括星期五）</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 
     </div>
 
     
     
     
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
 
       <footer class="post-footer">
           <div class="post-tags">
@@ -465,20 +492,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">177</span>
+          <span class="site-state-item-count">240</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">49</span>
+        <span class="site-state-item-count">60</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -505,7 +532,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -514,12 +541,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">315k</span>
+    <span title="站点总字数">441k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:46</span>
+    <span title="站点阅读时长">6:41</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
@@ -594,6 +621,8 @@
 
 
 
+
+  
 
   
 

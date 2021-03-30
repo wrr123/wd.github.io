@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.0.2">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/002.jpg">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/002.jpg">
@@ -30,7 +30,7 @@
 <meta property="og:description" content="shell 脚本Shell 脚本（shell script），是一种为 shell 编写的脚本程序。 业界所说的 shell 通常都是指 shell 脚本，但需要知道，shell 和 shell script 是两个不同的概念。 由于习惯的原因，简洁起见，通常所说的 “shell 编程”都是指 shell 脚本编程，不是指开发 shell 自身。 一个栗子： 12#!&#x2F;bin&#x2F;bashecho &amp;">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-08-10T02:35:59.000Z">
-<meta property="article:modified_time" content="2020-09-27T09:07:07.665Z">
+<meta property="article:modified_time" content="2021-02-18T13:27:21.108Z">
 <meta property="article:author" content="田园隐士">
 <meta property="article:tag" content="linux">
 <meta name="twitter:card" content="summary">
@@ -79,6 +79,7 @@
   </style>
 </noscript>
 
+<link rel="alternate" href="/atom.xml" title="一缕烟气" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -227,7 +228,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-27 17:07:07" itemprop="dateModified" datetime="2020-09-27T17:07:07+08:00">2020-09-27</time>
+                <time title="修改时间：2021-02-18 21:27:21" itemprop="dateModified" datetime="2021-02-18T21:27:21+08:00">2021-02-18</time>
               </span>
 
           
@@ -243,7 +244,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1.1k</span>
+              <span>1.4k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -267,18 +268,14 @@
 <p>由于习惯的原因，简洁起见，通常所说的 “shell 编程”都是指 shell 脚本编程，不是指开发 shell 自身。</p>
 <p>一个栗子：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Hello World !&quot;</span></span><br></pre></td></tr></table></figure>
-
 <p><strong><code>#!</code> 是一个约定的标记，它告诉系统这个脚本需要什么解释器来执行，即使用哪一种 shell 。</strong></p>
-<a id="more"></a>
-
+<span id="more"></span>
 <h4 id="搜索命令"><a href="#搜索命令" class="headerlink" title="搜索命令"></a>搜索命令</h4><ul>
 <li><code>grep -nri &lt;字符串&gt;</code></li>
 </ul>
 <h4 id="设置别名"><a href="#设置别名" class="headerlink" title="设置别名"></a>设置别名</h4><h5 id="创建别名"><a href="#创建别名" class="headerlink" title="创建别名"></a>创建别名</h5><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> ll=<span class="string">&#x27;ls -alh&#x27;</span></span><br></pre></td></tr></table></figure>
-
 <p><strong>注意：等于号(<code>=</code>) 前后不能有空格。</strong></p>
 <h5 id="删除别名"><a href="#删除别名" class="headerlink" title="删除别名"></a>删除别名</h5><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">unalias</span> name <span class="comment"># name 为要删除的别名名称</span></span><br></pre></td></tr></table></figure>
-
 <p><em>如果创建和删除别名需要永久生效，请在配置文件（如 .bashrc）中配置。</em></p>
 <h4 id="source-命令"><a href="#source-命令" class="headerlink" title="source 命令"></a>source 命令</h4><h5 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h5><p>在当前 bash 环境下读取并执行 fileName 中的命令。</p>
 <p><strong>注：该命令通常用命令 <code>.</code> 来替代</strong></p>
@@ -301,13 +298,77 @@
 <h4 id="eval-的用法"><a href="#eval-的用法" class="headerlink" title="eval 的用法"></a><code>eval</code> 的用法</h4><h5 id="eval-command-line"><a href="#eval-command-line" class="headerlink" title="eval command-line"></a><code>eval command-line</code></h5><p>其中 command-line 是在终端上键入的一条普通命令行。<strong>然而，当在它前面放上 <code>eval</code> 时，其结果是 shell 在执行命令行之前扫描它两次。</strong></p>
 <p>一个栗子：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pipe=<span class="string">&quot;|&quot;</span></span><br><span class="line"><span class="built_in">eval</span> ls <span class="variable">$pipe</span> wc -l</span><br><span class="line"><span class="comment"># shell 第 1 次扫描命令行时，它替换出 pipe 的值 `|`,接着 eval 使它再次扫描命令行，这是 shell 把 `|` 作为管道符号了。</span></span><br></pre></td></tr></table></figure>
+<h4 id="wc命令—统计文件的字节数、字数、行数"><a href="#wc命令—统计文件的字节数、字数、行数" class="headerlink" title="wc命令—统计文件的字节数、字数、行数"></a>wc命令—统计文件的字节数、字数、行数</h4><p style="color:sienna;">
+    wc命令统计指定文件中的字节数、字数、行数，并将统计结果显示输出。利用wc指令我们可以计算文件Byte数、字数或是列数，若不指定文件名称，或是所给予的文件名为"-"，则wc指令会从标准输入设备读取数据。wc同时也给出所指定文件的总统计数。
+</p>
 
+<p>语法格式：wc [参数] [文件]</p>
+<p>常用的参数</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">-w</td>
+<td style="text-align:center">统计字数，或 <code>--words:只显示字数</code>。一个字被定义为由空白、跳格或换行字符分割的字符串</td>
+</tr>
+<tr>
+<td style="text-align:center">-c</td>
+<td style="text-align:center">统计字节数，或<code>--bytes,--chars</code>，只显示Bytes数</td>
+</tr>
+<tr>
+<td style="text-align:center">-l</td>
+<td style="text-align:center">统计行数，<code>或--lines</code>，只显示列数</td>
+</tr>
+<tr>
+<td style="text-align:center">-m</td>
+<td style="text-align:center">统计字符数</td>
+</tr>
+<tr>
+<td style="text-align:center">-L</td>
+<td style="text-align:center">打印最长行的长度</td>
+</tr>
+<tr>
+<td style="text-align:center">—help</td>
+<td style="text-align:center">显示帮助信息</td>
+</tr>
+<tr>
+<td style="text-align:center">—version</td>
+<td style="text-align:center">显示版本信息</td>
+</tr>
+</tbody>
+</table>
+</div>
 
     </div>
 
     
     
     
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
 
       <footer class="post-footer">
           <div class="post-tags">
@@ -385,7 +446,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#shell-%E8%84%9A%E6%9C%AC"><span class="nav-number">1.</span> <span class="nav-text">shell 脚本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%90%9C%E7%B4%A2%E5%91%BD%E4%BB%A4"><span class="nav-number">2.</span> <span class="nav-text">搜索命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E5%88%AB%E5%90%8D"><span class="nav-number">3.</span> <span class="nav-text">设置别名</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E5%88%AB%E5%90%8D"><span class="nav-number">3.1.</span> <span class="nav-text">创建别名</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E5%88%AB%E5%90%8D"><span class="nav-number">3.2.</span> <span class="nav-text">删除别名</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#source-%E5%91%BD%E4%BB%A4"><span class="nav-number">4.</span> <span class="nav-text">source 命令</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8"><span class="nav-number">4.1.</span> <span class="nav-text">作用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#source-fileName-sh-fileName-%E5%8F%8A-fileName-%E6%89%A7%E8%A1%8C%E8%84%9A%E6%9C%AC%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">4.2.</span> <span class="nav-text">source fileName, sh fileName 及 .&#x2F;fileName 执行脚本的区别</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Linux-%E4%B8%8B%E5%BF%AB%E9%80%9F%E5%88%A0%E9%99%A4%E5%B7%B2%E8%BE%93%E5%85%A5%E7%9A%84%E5%91%BD%E4%BB%A4"><span class="nav-number">5.</span> <span class="nav-text">Linux 下快速删除已输入的命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#eval-%E7%9A%84%E7%94%A8%E6%B3%95"><span class="nav-number">6.</span> <span class="nav-text">eval 的用法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#eval-command-line"><span class="nav-number">6.1.</span> <span class="nav-text">eval command-line</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#shell-%E8%84%9A%E6%9C%AC"><span class="nav-number">1.</span> <span class="nav-text">shell 脚本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%90%9C%E7%B4%A2%E5%91%BD%E4%BB%A4"><span class="nav-number">2.</span> <span class="nav-text">搜索命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E5%88%AB%E5%90%8D"><span class="nav-number">3.</span> <span class="nav-text">设置别名</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E5%88%AB%E5%90%8D"><span class="nav-number">3.1.</span> <span class="nav-text">创建别名</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E5%88%AB%E5%90%8D"><span class="nav-number">3.2.</span> <span class="nav-text">删除别名</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#source-%E5%91%BD%E4%BB%A4"><span class="nav-number">4.</span> <span class="nav-text">source 命令</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8"><span class="nav-number">4.1.</span> <span class="nav-text">作用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#source-fileName-sh-fileName-%E5%8F%8A-fileName-%E6%89%A7%E8%A1%8C%E8%84%9A%E6%9C%AC%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">4.2.</span> <span class="nav-text">source fileName, sh fileName 及 .&#x2F;fileName 执行脚本的区别</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Linux-%E4%B8%8B%E5%BF%AB%E9%80%9F%E5%88%A0%E9%99%A4%E5%B7%B2%E8%BE%93%E5%85%A5%E7%9A%84%E5%91%BD%E4%BB%A4"><span class="nav-number">5.</span> <span class="nav-text">Linux 下快速删除已输入的命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#eval-%E7%9A%84%E7%94%A8%E6%B3%95"><span class="nav-number">6.</span> <span class="nav-text">eval 的用法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#eval-command-line"><span class="nav-number">6.1.</span> <span class="nav-text">eval command-line</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#wc%E5%91%BD%E4%BB%A4%E2%80%94%E7%BB%9F%E8%AE%A1%E6%96%87%E4%BB%B6%E7%9A%84%E5%AD%97%E8%8A%82%E6%95%B0%E3%80%81%E5%AD%97%E6%95%B0%E3%80%81%E8%A1%8C%E6%95%B0"><span class="nav-number">7.</span> <span class="nav-text">wc命令—统计文件的字节数、字数、行数</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -401,20 +462,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">177</span>
+          <span class="site-state-item-count">240</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">49</span>
+        <span class="site-state-item-count">60</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -441,7 +502,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -450,12 +511,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">315k</span>
+    <span title="站点总字数">441k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:46</span>
+    <span title="站点阅读时长">6:41</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
@@ -530,6 +591,8 @@
 
 
 
+
+  
 
   
 

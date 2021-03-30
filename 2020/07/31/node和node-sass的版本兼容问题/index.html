@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.0.2">
+<meta name="generator" content="Hexo 5.4.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/002.jpg">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/002.jpg">
@@ -22,12 +22,12 @@
     var CONFIG = {"hostname":"wrr123.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="问题描述 node-sass和node版本的对应关系Supported Node.js versions vary by release, please consult the releases page. Below is a quick guide for minimun support:    NodeJS Minimum node-sass version Node Module    N">
+  <meta name="description" content="问题描述 node-sass和node版本的对应关系Supported Node.js versions vary by release, please consult the releases page. Below is a quick guide for minimun support:     NodeJS Minimum node-sass version Node Module">
 <meta property="og:type" content="article">
 <meta property="og:title" content="node和node-sass的版本兼容问题">
 <meta property="og:url" content="https://wrr123.github.io/2020/07/31/node%E5%92%8Cnode-sass%E7%9A%84%E7%89%88%E6%9C%AC%E5%85%BC%E5%AE%B9%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="一缕烟气">
-<meta property="og:description" content="问题描述 node-sass和node版本的对应关系Supported Node.js versions vary by release, please consult the releases page. Below is a quick guide for minimun support:    NodeJS Minimum node-sass version Node Module    N">
+<meta property="og:description" content="问题描述 node-sass和node版本的对应关系Supported Node.js versions vary by release, please consult the releases page. Below is a quick guide for minimun support:     NodeJS Minimum node-sass version Node Module">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://wrr123.github.io/2020/07/31/node%E5%92%8Cnode-sass%E7%9A%84%E7%89%88%E6%9C%AC%E5%85%BC%E5%AE%B9%E9%97%AE%E9%A2%98/001.png">
 <meta property="article:published_time" content="2020-07-31T06:14:31.000Z">
@@ -81,6 +81,7 @@
   </style>
 </noscript>
 
+<link rel="alternate" href="/atom.xml" title="一缕烟气" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -266,51 +267,74 @@
       
         <h4 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h4><p><img src="http://wrr123.github.io/2020/07/31/node%E5%92%8Cnode-sass%E7%9A%84%E7%89%88%E6%9C%AC%E5%85%BC%E5%AE%B9%E9%97%AE%E9%A2%98/001.png" alt="npm编译出错日志"></p>
 <h5 id="node-sass和node版本的对应关系"><a href="#node-sass和node版本的对应关系" class="headerlink" title="node-sass和node版本的对应关系"></a>node-sass和node版本的对应关系</h5><p>Supported Node.js versions vary by release, please consult the <a target="_blank" rel="noopener" href="https://github.com/sass/node-sass/releases">releases page</a>. Below is a quick guide for minimun support:</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th align="left">NodeJS</th>
-<th align="left">Minimum node-sass version</th>
-<th align="left">Node Module</th>
+<th style="text-align:left">NodeJS</th>
+<th style="text-align:left">Minimum node-sass version</th>
+<th style="text-align:left">Node Module</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left">Node 14</td>
-<td align="left">4.14+</td>
-<td align="left">83</td>
+<tbody>
+<tr>
+<td style="text-align:left">Node 14</td>
+<td style="text-align:left">4.14+</td>
+<td style="text-align:left">83</td>
 </tr>
 <tr>
-<td align="left">Node 13</td>
-<td align="left">4.13+</td>
-<td align="left">79</td>
+<td style="text-align:left">Node 13</td>
+<td style="text-align:left">4.13+</td>
+<td style="text-align:left">79</td>
 </tr>
 <tr>
-<td align="left">Node 12</td>
-<td align="left">4.12+</td>
-<td align="left">72</td>
+<td style="text-align:left">Node 12</td>
+<td style="text-align:left">4.12+</td>
+<td style="text-align:left">72</td>
 </tr>
 <tr>
-<td align="left">Node 11</td>
-<td align="left">4.10+</td>
-<td align="left">67</td>
+<td style="text-align:left">Node 11</td>
+<td style="text-align:left">4.10+</td>
+<td style="text-align:left">67</td>
 </tr>
 <tr>
-<td align="left">Node 10</td>
-<td align="left">4.9+</td>
-<td align="left">64</td>
+<td style="text-align:left">Node 10</td>
+<td style="text-align:left">4.9+</td>
+<td style="text-align:left">64</td>
 </tr>
 <tr>
-<td align="left">Node 8</td>
-<td align="left">4.5.3+</td>
-<td align="left">57</td>
+<td style="text-align:left">Node 8</td>
+<td style="text-align:left">4.5.3+</td>
+<td style="text-align:left">57</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 
     </div>
 
     
     
     
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
 
       <footer class="post-footer">
           <div class="post-tags">
@@ -404,20 +428,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">177</span>
+          <span class="site-state-item-count">240</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">49</span>
+        <span class="site-state-item-count">60</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -444,7 +468,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -453,12 +477,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">315k</span>
+    <span title="站点总字数">441k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:46</span>
+    <span title="站点阅读时长">6:41</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
@@ -533,6 +557,8 @@
 
 
 
+
+  
 
   
 
